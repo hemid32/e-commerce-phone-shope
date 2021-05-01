@@ -16,6 +16,14 @@ class SmailCardCircleIconRed extends StatelessWidget {
       decoration: BoxDecoration(
         color: Colors.white ,
         shape: BoxShape.circle ,
+        border: Border.all(color: Colors.black.withOpacity(0.12)) ,
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withOpacity(0.1),
+            blurRadius: 10 ,
+            offset: Offset(0,10)
+          )
+        ]
 
       ),
       child: Stack(
