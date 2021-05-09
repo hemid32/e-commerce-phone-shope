@@ -3,8 +3,10 @@ import 'package:phoneshop/constant.dart';
 
 class ProgressShopping extends StatelessWidget {
   const ProgressShopping({
-    Key key,
+    Key key, this.stat,
   }) : super(key: key);
+
+  final int stat ;
 
   @override
   Widget build(BuildContext context) {
@@ -17,9 +19,9 @@ class ProgressShopping extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          CircelerChekedIconIsTrue( confermed: true , icon: Icons.check, title: 'Sand Domand',) ,
-          CircelerChekedIconIsTrue( confermed: false, icon: Icons.shopping_bag_outlined, title: 'Accept and SHoping',) ,
-          CircelerChekedIconIsTrue( icon: Icons.check, deletLine: true, title:  'Shoping ',) ,
+          CircelerChekedIconIsTrue( confermed: stat >= 1  ?  true : false  , icon: Icons.check, title: 'Sand Domand',) ,
+          CircelerChekedIconIsTrue( confermed: stat >= 2  ?  true : false, icon: Icons.shopping_bag_outlined, title: 'Accept and SHoping',) ,
+          CircelerChekedIconIsTrue( icon:  Icons.check, deletLine: true, title:  'Shoping ', confermed:  stat >= 3  ?  true : false,) ,
           //CircelerChekedIconIsTrue(icon: Icons.account_box,) ,
         ],
       ),
