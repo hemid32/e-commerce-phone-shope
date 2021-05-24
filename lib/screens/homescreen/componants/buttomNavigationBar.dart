@@ -1,79 +1,110 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:phoneshop/bloc/manageScreen/home/bloc.dart';
+import 'package:phoneshop/bloc/manageScreen/home/events.dart';
 import 'package:phoneshop/constant.dart';
+import 'package:phoneshop/screens/homescreen/widgeets/favorite.dart';
+import 'package:phoneshop/screens/homescreen/widgeets/home.dart';
+import 'package:phoneshop/screens/homescreen/widgeets/setting_app.dart';
+import 'package:phoneshop/screens/screen_pay/widgets/cart.dart';
 
 class BottomNavigationsBars extends StatelessWidget {
-  const BottomNavigationsBars({
+
+   BottomNavigationsBars({
     Key key,
   }) : super(key: key);
 
+
+
+
   @override
   Widget build(BuildContext context) {
+
+
+    //print( BlocProvider.of<CounterBloc>(context).state == (Home().runtimeType)? ' false' : ' true ' ) ;
     return Container(
-      padding:EdgeInsets.symmetric(horizontal: 20 ),
+      //alignment: Alignment.center,
+      padding:EdgeInsets.symmetric(horizontal: 20 , vertical: 10 ),
       width:  MediaQuery.of(context).size.width,
-      height:  50,
+      height:  60,
       decoration:  BoxDecoration(
         color: Colors.white ,
 
       ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        //crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Column(
-            children: [
-              Icon(Icons.home , size:  30, color: kPrimaryColor, ) ,
-              Container(
-                height: 2,
-                width: 15,
-                decoration: BoxDecoration(
-                    color: kPrimaryColor,
-                    shape: BoxShape.rectangle
-                ),
-              )
-            ],
+          BlocBuilder<CounterBloc , Widget>(
+            builder: (_, snapshot) {
+              return IconButtonBottom(
+                icon:   Icons.home,
+                onTap: (){ BlocProvider.of<CounterBloc>(context).add(GoToHome()); },
+                active:  (snapshot.runtimeType) == Home  ,
+              );
+            }
           ) ,
-          Column(
-            children: [
-              Icon(Icons.favorite , size:  30, color: Colors.black.withOpacity(0.23),) ,
-              Container(
-                height: 2,
-                width: 15,
-                decoration: BoxDecoration(
-                    color: Colors.black,
-                    shape: BoxShape.rectangle
-                ),
-              )
-            ],
-          ),
-          Column(
-            children: [
-              Icon(Icons.shopping_cart , size:  30, color: Colors.black.withOpacity(0.23),) ,
-              Container(
-                height: 2,
-                width: 15,
-                decoration: BoxDecoration(
-                    color: Colors.black,
-                    shape: BoxShape.rectangle
-                ),
-              )
-            ],
+          BlocBuilder<CounterBloc , Widget >(
+            builder: (_, state) {
+              return IconButtonBottom(
+                icon:Icons.favorite,
+                onTap: ()=> BlocProvider.of<CounterBloc>(context).add(GoToFavorite()),
+                active:   (state.runtimeType) == Favorite ,
+              );
+            }
           ) ,
-          Column(
-            children: [
-              Icon(Icons.person , size:  30,color: Colors.black.withOpacity(0.23), ) ,
-              Container(
-                height: 2,
-                width: 15,
-                decoration: BoxDecoration(
-                    color: Colors.black,
-                    shape: BoxShape.rectangle
-                ),
-              )
-            ],
-          )
+          BlocBuilder<CounterBloc , Widget>(
+            builder: (_, state) {
+              return IconButtonBottom(
+                icon:Icons.shopping_cart,
+                onTap: ()=> BlocProvider.of<CounterBloc>(context).add(GoToCart()),
+                active:   (state.runtimeType) == Cart ,
+              );
+            }
+          ) ,
+          BlocBuilder<CounterBloc , Widget>(
+            builder: (_, state) {
+              return IconButtonBottom(
+                icon:Icons.person,
+                onTap: ()=> BlocProvider.of<CounterBloc>(context).add(GoToSetting()),
+                active:  (state.runtimeType) == SettingAPP,
+              );
+            }
+          ) ,
+
         ],
       ),
 
+    );
+  }
+}
+
+class IconButtonBottom extends StatelessWidget {
+  const IconButtonBottom({
+    Key key, this.icon, this.onTap, this.active = false ,
+  }) : super(key: key);
+  final IconData icon ;
+  final Function onTap ;
+  final bool active ;
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: onTap,
+      child: Column(
+        children: [
+
+          Icon(icon , size:  30, color:  active ? kPrimaryColor : Colors.black.withOpacity(0.4), ) ,
+          Container(
+            height: 2,
+            width: 15,
+            decoration: BoxDecoration(
+                color: active ? kPrimaryColor : Colors.transparent,
+                shape: BoxShape.rectangle
+            ),
+          )
+        ],
+      ),
     );
   }
 }

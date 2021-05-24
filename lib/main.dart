@@ -1,8 +1,13 @@
+import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:phoneshop/constant.dart';
 import 'package:phoneshop/screens/homescreen/homescreen.dart';
 
+import 'bloc/manageScreen/home/bloc.dart';
+
 void main() {
+  Bloc.observer = SimpleBlocObserver();
+
   runApp(MyApp());
 }
 

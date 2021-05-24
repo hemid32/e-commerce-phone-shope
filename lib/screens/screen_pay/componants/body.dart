@@ -1,6 +1,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:phoneshop/constant.dart';
+import 'package:phoneshop/screens/screen_pay/widgets/adress.dart';
 import 'package:phoneshop/screens/screen_pay/widgets/buy/widgestStateRequst/accept_and_shopping.dart';
 import 'package:phoneshop/screens/screen_pay/widgets/buy/widgestStateRequst/conferm_arreved.dart';
 import 'package:phoneshop/screens/screen_pay/widgets/buy/widgestStateRequst/sand_domand.dart';
@@ -38,7 +39,7 @@ class Body extends StatelessWidget {
           // this is state buy
           //SandDomand() ** 1
           // AcceptAndChopping() ** 2
-          ConfermArrived() 
+          //ConfermArrived()
 
 
 

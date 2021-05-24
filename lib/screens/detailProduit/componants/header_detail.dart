@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:phoneshop/widgets/shaw_and_zoom_Image_details.dart';
 
 import 'samail_circler_icon_red_isactiv.dart';
 
 class HeaderDetail extends StatelessWidget {
 
   const HeaderDetail({
-    Key key,
+    Key key, this.image,
   }) : super(key: key);
+
+  final String image ;
 
 
   @override
@@ -14,31 +17,34 @@ class HeaderDetail extends StatelessWidget {
     Size size = MediaQuery.of(context).size ;
     return ClipPath(
       clipper: CostomP(),
-      child: Container(
-        alignment: Alignment.topCenter,
-        height: size.height *0.4 ,
-        width: size.width,
-        decoration: BoxDecoration(
-          //color: Colors.red ,
-          image: DecorationImage(
-              image: AssetImage(
-                'assets/images/Redmi_Note_9_Pro_5G_6.png' ,
-
-              ),
-              fit: BoxFit.cover ,
-              alignment: Alignment.topCenter
-          ),
-
-
-        ),
+      child: GestureDetector(
+        onTap: ()=> Navigator.push(context, MaterialPageRoute(builder: (context)=> ImageViews(image: image,))),
         child: Container(
-          margin: EdgeInsets.symmetric(horizontal: 20 , vertical:  30),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              SmailCardCircleIconRed(icon:  Icon(Icons.shopping_cart)) ,
-              SmailCardCircleIconRed(icon:  Icon(Icons.share)  , activeRed: false,)  ,
-            ],
+          alignment: Alignment.topCenter,
+          height: size.height *0.4 ,
+          width: size.width,
+          decoration: BoxDecoration(
+            //color: Colors.red ,
+            image: DecorationImage(
+                image: AssetImage(
+                  image ,
+
+                ),
+                fit: BoxFit.cover ,
+                alignment: Alignment.topCenter
+            ),
+
+
+          ),
+          child: Container(
+            margin: EdgeInsets.symmetric(horizontal: 20 , vertical:  30),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                SmailCardCircleIconRed(icon:  Icon(Icons.shopping_cart)) ,
+                SmailCardCircleIconRed(icon:  Icon(Icons.share)  , activeRed: false,)  ,
+              ],
+            ),
           ),
         ),
       ),

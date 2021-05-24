@@ -9,9 +9,7 @@ class Body extends StatelessWidget {
     return Column(
       children: [
         Header(),
-        SizedBox(
-          height: 20,
-        ),
+
         TextAndLogo(title: 'Best Salling', logo: 'assets/icons/icons8-apple-logo.svg',) ,
         ItemsGredViews()
       ],
