@@ -14,11 +14,13 @@ class Header extends StatelessWidget {
       child: Row(
         mainAxisAlignment:MainAxisAlignment.spaceBetween,
         children: [
-          Icon(Icons.close) ,
+          GestureDetector(
+              onTap: ()=>  Navigator.pop(context),
+              child: Icon(Icons.close , color: Colors.black.withOpacity(0.4),size: 30,)) ,
           Spacer() ,
-          Text('Buy' , style: Theme.of(context).textTheme.button,) ,
+          Text('Buy' , style: Theme.of(context).textTheme.button.copyWith(color: Colors.black.withOpacity(0.4) ,fontSize: 20),) ,
           SizedBox(width: 20,) ,
-          Icon(Icons.chevron_right) ,
+          Icon(Icons.chevron_right ,color: Colors.black.withOpacity(0.4),size: 30,) ,
         ],
       ),
     );

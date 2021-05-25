@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:phoneshop/bloc/manageScreen/puy_screen/bloc.dart';
+import 'package:phoneshop/bloc/manageScreen/puy_screen/events.dart';
 import 'package:phoneshop/screens/screen_pay/componants/button_costom_wight_infinty.dart';
 import 'package:phoneshop/screens/screen_pay/componants/card_shoping_phone.dart';
 import 'package:phoneshop/screens/screen_pay/componants/expendad_shoping_verefaid.dart';
@@ -57,7 +60,7 @@ class Cart extends StatelessWidget {
         SizedBox(height: 10,) ,
         TitleTextAligns(title:  'Notes',) ,
         FieldNotes(onChanged: (text){print(text) ; }, hintText: 'Write Your Notes',) ,
-        ButtonCostomWithInfiniti(title: 'Contunu Bay', onTap:  (){},) ,
+        ButtonCostomWithInfiniti(title: 'Contunu Bay', onTap:  ()=> BlocProvider.of<PuyScreenBloc>(context).add(LastPuy()),) ,
         TextBack(text: 'Return Shopping ', onTap: (){},)
 
       ],

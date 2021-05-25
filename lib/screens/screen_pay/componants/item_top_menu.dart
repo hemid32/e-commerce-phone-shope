@@ -1,5 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:phoneshop/bloc/manageScreen/puy_screen/bloc.dart';
+import 'package:phoneshop/bloc/manageScreen/puy_screen/events.dart';
 import 'package:phoneshop/constant.dart';
+import 'package:phoneshop/screens/screen_pay/screen_pay.dart';
+import 'package:phoneshop/screens/screen_pay/widgets/adress.dart';
+import 'package:phoneshop/screens/screen_pay/widgets/buy/widgestStateRequst/sand_domand.dart';
+import 'package:phoneshop/screens/screen_pay/widgets/cart.dart';
+import 'package:phoneshop/screens/screen_pay/widgets/shopping.dart';
 class Items_Menuu extends StatelessWidget {
   const Items_Menuu({
     Key key,
@@ -11,10 +19,43 @@ class Items_Menuu extends StatelessWidget {
       margin: EdgeInsets.only(top: 20 , left:  20 , right:  20),
       child: Row(
         children: [
-          ItemTopMenu(title:  'Adress ', active:  true,) ,
-          ItemTopMenu(title:  'Shopping', active:  false , fin:  true ,) ,
-          ItemTopMenu(title: 'Verefaid', active:  false ,) ,
-          ItemTopMenu(title: 'Buy', active: false,) ,
+          BlocBuilder<PuyScreenBloc, Widget>(
+            builder: (_, state) {
+              return ItemTopMenu(
+                title:  'Adress ',
+                active:  state.runtimeType == Addres ,
+                onTap: ()=>BlocProvider.of<PuyScreenBloc>(context).add(FirstAddAdress()),
+              );
+            }
+          ) ,
+          BlocBuilder<PuyScreenBloc, Widget>(
+            builder: (_, state) {
+              return ItemTopMenu(
+                title:  'Shopping',
+                active:  state.runtimeType == Shopping ,
+                fin:  true ,
+                onTap: ()=>BlocProvider.of<PuyScreenBloc>(context).add(ContinuShopping()),
+              );
+            }
+          ),
+          BlocBuilder<PuyScreenBloc, Widget>(
+            builder: (_, state) {
+              return ItemTopMenu(
+                  title: 'Verefaid',
+                  active:  state.runtimeType == Cart ,
+                  onTap: ()=>BlocProvider.of<PuyScreenBloc>(context).add(ContenuVarifeid())
+              );
+            }
+          ),
+          BlocBuilder<PuyScreenBloc, Widget>(
+            builder: (_, state) {
+              return ItemTopMenu(
+                  title: 'Buy',
+                  active: state.runtimeType == SandDomand ,
+                  onTap: ()=>BlocProvider.of<PuyScreenBloc>(context).add(LastPuy())
+              );
+            }
+          ) ,
 
         ],
       ),
@@ -27,29 +68,33 @@ class Items_Menuu extends StatelessWidget {
 class ItemTopMenu extends StatelessWidget {
 
   const ItemTopMenu({
-    Key key, this.title ,this.active = false, this.fin = false
+    Key key, this.title ,this.active = false, this.fin = false, this.onTap
   }) : super(key: key);
   final bool active ;
   final bool fin  ;
   final String title ;
+  final Function onTap ;
 
 
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size ;
 
-    return Container(
-      width:  size.width / 4  - kDefaultPadding/2,
-      child: Column(
-        children: [
-          Text('$title' , style: Theme.of(context).textTheme.button.copyWith(
-            color: active ? kPrimaryColor.withOpacity(0.6) : Colors.black.withOpacity(0.4) ,
-          ),) ,
-          Divider( color: active || fin  ? kPrimaryColor.withOpacity(0.6) :  Colors.black.withOpacity(0.23) ),
+    return GestureDetector(
+      onTap: fin ?  onTap : (){} ,
+      child: Container(
+        width:  size.width / 4  - kDefaultPadding/2,
+        child: Column(
+          children: [
+            Text('$title' , style: Theme.of(context).textTheme.button.copyWith(
+              color: active || fin ? kPrimaryColor.withOpacity(0.6) : Colors.black.withOpacity(0.4) ,
+            ),) ,
+            Divider( color: active || fin  ? kPrimaryColor.withOpacity(0.6) :  Colors.black.withOpacity(0.23) ),
 
-        ],
+          ],
+        ),
+
       ),
-
     );
   }
 }

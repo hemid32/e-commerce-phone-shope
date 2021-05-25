@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:phoneshop/screens/homescreen/componants/search_and_icon_menu.dart';
+import 'package:phoneshop/screens/homescreen/componants/header_setting.dart';
 import 'package:phoneshop/screens/screen_pay/componants/button_costom_wight_infinty.dart';
 import 'package:phoneshop/screens/screen_pay/componants/card_shoping_phone.dart';
-import 'package:phoneshop/screens/screen_pay/componants/expendad_shoping_verefaid.dart';
 import 'package:phoneshop/screens/screen_pay/componants/field_notes.dart';
 import 'package:phoneshop/screens/screen_pay/componants/text_price_shoping.dart';
-import 'package:phoneshop/screens/screen_pay/componants/text_return_back.dart';
 import 'package:phoneshop/screens/screen_pay/componants/title.dart';
 
 class CartHome extends StatelessWidget {
@@ -19,8 +17,8 @@ class CartHome extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
 
       children: [
-        SearchAndIconMenu() ,
-
+        //SearchAndIconMenu() ,
+        HeaderSetting(titre:  'Cart',) ,
         Container(
           margin: EdgeInsets.symmetric(horizontal: 20 , vertical: 20),
           child: Column(
@@ -47,7 +45,6 @@ class CartHome extends StatelessWidget {
                 price: 1200,
                 deletCard: (){},
               ) ,
-
             ],
           ),
         ),
@@ -59,7 +56,6 @@ class CartHome extends StatelessWidget {
         TitleTextAligns(title:  'Notes',) ,
         FieldNotes(onChanged: (text){print(text) ; }, hintText: 'Write Your Notes',) ,
         ButtonCostomWithInfiniti(title: 'Contunu Bay', onTap:  (){},) ,
-
       ],
     );
   }

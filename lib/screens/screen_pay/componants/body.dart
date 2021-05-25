@@ -1,5 +1,7 @@
 
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:phoneshop/bloc/manageScreen/puy_screen/bloc.dart';
 import 'package:phoneshop/constant.dart';
 import 'package:phoneshop/screens/screen_pay/widgets/adress.dart';
 import 'package:phoneshop/screens/screen_pay/widgets/buy/widgestStateRequst/accept_and_shopping.dart';
@@ -40,6 +42,11 @@ class Body extends StatelessWidget {
           //SandDomand() ** 1
           // AcceptAndChopping() ** 2
           //ConfermArrived()
+
+          BlocBuilder<PuyScreenBloc , Widget>(builder: (_, widget){
+            return widget ;
+          })
+
 
 
 

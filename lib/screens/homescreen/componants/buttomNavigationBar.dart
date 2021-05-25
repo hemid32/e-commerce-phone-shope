@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:phoneshop/bloc/manageScreen/home/bloc.dart';
 import 'package:phoneshop/bloc/manageScreen/home/events.dart';
 import 'package:phoneshop/constant.dart';
+import 'package:phoneshop/screens/homescreen/widgeets/card.dart';
 import 'package:phoneshop/screens/homescreen/widgeets/favorite.dart';
 import 'package:phoneshop/screens/homescreen/widgeets/home.dart';
 import 'package:phoneshop/screens/homescreen/widgeets/setting_app.dart';
@@ -58,7 +59,7 @@ class BottomNavigationsBars extends StatelessWidget {
               return IconButtonBottom(
                 icon:Icons.shopping_cart,
                 onTap: ()=> BlocProvider.of<CounterBloc>(context).add(GoToCart()),
-                active:   (state.runtimeType) == Cart ,
+                active:   (state.runtimeType) == CartHome ,
               );
             }
           ) ,

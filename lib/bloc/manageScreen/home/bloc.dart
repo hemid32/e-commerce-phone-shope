@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:phoneshop/screens/homescreen/widgeets/card.dart';
 import 'package:phoneshop/screens/homescreen/widgeets/favorite.dart';
 import 'package:phoneshop/screens/homescreen/widgeets/home.dart';
 import 'package:phoneshop/screens/homescreen/widgeets/setting_app.dart';
@@ -21,7 +22,7 @@ class CounterBloc extends Bloc<EventsHome, Widget> {
         yield Favorite();
         break;
       case GoToCart:
-        yield Cart();
+        yield CartHome();
         break;
       case GoToHome:
         yield Home();
