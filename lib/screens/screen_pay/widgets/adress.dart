@@ -4,6 +4,8 @@ import 'package:phoneshop/bloc/manageData/puy/bloc.dart';
 import 'package:phoneshop/bloc/manageData/puy/event.dart';
 import 'package:phoneshop/bloc/manageScreen/puy_screen/bloc.dart';
 import 'package:phoneshop/bloc/manageScreen/puy_screen/events.dart';
+import 'package:phoneshop/bloc/validatorTaxtField/bloc.dart';
+import 'package:phoneshop/bloc/validatorTaxtField/event.dart';
 import 'package:phoneshop/model/puy/address.dart';
 import 'package:phoneshop/screens/screen_pay/componants/container_text_And_icon.dart';
 import 'package:phoneshop/screens/screen_pay/componants/drop_dawen.dart';
@@ -29,7 +31,16 @@ class Addres extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        FieldTextGet(title: 'Nome', onChange: (valur){  nome = valur;},) ,
+        BlocBuilder<ValidatorTexxtBlocString , dynamic> (
+          builder: (context, state) {
+            return FieldTextGet(title: 'Nome', onChange: (valur){
+              BlocProvider.of<ValidatorTexxtBlocString>(context).add(TextFieldValidatorEventNome(valur: valur  , titleErurr: 'erurr Nome short')) ;
+
+              nome = valur;
+
+              },validErurr: state ,  );
+          }
+        ) ,
         FieldTextGet(title: 'Prenome',onChange: (valur){  prenome = valur;}) ,
         FieldTextGet(title: 'Nombre Phone',onChange: (valur){  nomberPhone = valur;}) ,
         FieldTextGet(title: 'Email Adress',) ,
@@ -42,6 +53,7 @@ class Addres extends StatelessWidget {
         FieldTextGet(title: 'adress 2 ',onChange: (valur){  address2 = valur;}) ,
         FieldTextGet(title: 'Cod Postal',onChange: (valur){  codPostal = int.parse(valur);}) ,
         FooterButtons(titleButton1: 'Continu Shoping', titleButton2: 'Save Address', onTapButton1: (){
+
           ModelAdress  addres = ModelAdress.fromJson({
             'nome': nome  ,
             'prenome':  prenome ,
