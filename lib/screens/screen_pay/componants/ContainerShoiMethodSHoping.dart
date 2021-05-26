@@ -6,12 +6,13 @@ import 'body.dart';
 
 class RadioButton extends StatelessWidget {
   const RadioButton({
-    Key key, this.title, this.valure, this.price, this.groub,
+    Key key, this.title, this.valure, this.price, this.groub, this.onChanged,
   }) : super(key: key);
   final String title ;
   final String  valure ;
   final double price ;
   final String   groub  ;
+  final Function onChanged ;
 
 
 
@@ -36,14 +37,7 @@ class RadioButton extends StatelessWidget {
               Radio(
                 value: valure ,
                 groupValue: groub,
-                onChanged: ( value) {
-                  /*
-                  setState(() {
-                      _site = value;
-                    });
-                   */
-
-                },
+                onChanged: onChanged,
               ),
               Column(
                 mainAxisAlignment: MainAxisAlignment.center,

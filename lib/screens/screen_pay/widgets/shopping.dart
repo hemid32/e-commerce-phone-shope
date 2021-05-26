@@ -3,6 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:phoneshop/bloc/manageData/puy/bloc.dart';
 import 'package:phoneshop/bloc/manageScreen/puy_screen/bloc.dart';
 import 'package:phoneshop/bloc/manageScreen/puy_screen/events.dart';
+import 'package:phoneshop/bloc/manageScreen/shoppingShoiMethods/bloc.dart';
+import 'package:phoneshop/bloc/manageScreen/shoppingShoiMethods/event.dart';
 import 'package:phoneshop/model/puy/address.dart';
 import 'package:phoneshop/model/puy/shopping.dart';
 import 'package:phoneshop/screens/screen_pay/componants/ContainerShoiMethodSHoping.dart';
@@ -23,7 +25,17 @@ class Shopping extends StatelessWidget {
         TitleTextAligns(title: 'Methode Shoppin',) ,
         //Text('f')
         for(var i=0 ; i<  testMetod().length   ; i++ )
-          RadioButton(valure: testMetod()[i].titleMethod , title: testMetod()[i].titleMethod, price: testMetod()[i].price,groub: testMetod()[0].titleMethod,),
+          BlocBuilder<ShoppingBlocRadio, dynamic>(
+            builder: (_, state) {
+              return RadioButton(
+                valure: testMetod()[i].titleMethod ,
+                title: testMetod()[i].titleMethod,
+                price: testMetod()[i].price,
+                groub: state??testMetod()[0].titleMethod,
+                onChanged: (valur)=> BlocProvider.of<ShoppingBlocRadio>(context).add(EvenstRadio(valur)),
+              );
+            }
+          ),
 
         //RadioButton(valure: BestTutorSite.tutorialandexample, title: 'Fest Shoping',price:  200,),
         //RadioButton(valure: BestTutorSite.w3schools, title: 'Algeria Post', price:  0,),

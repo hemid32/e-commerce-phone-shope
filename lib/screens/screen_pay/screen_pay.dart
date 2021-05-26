@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:phoneshop/bloc/manageData/puy/bloc.dart';
 import 'package:phoneshop/bloc/manageScreen/puy_screen/bloc.dart';
+import 'package:phoneshop/bloc/manageScreen/shoppingShoiMethods/bloc.dart';
 import 'package:phoneshop/bloc/validatorTaxtField/bloc.dart';
 
 import 'componants/body.dart';
@@ -27,6 +28,10 @@ class Buy extends StatelessWidget {
           BlocProvider<ValidatorTexxtBlocPhoneEmail>(
             create: (BuildContext context) => ValidatorTexxtBlocPhoneEmail(),
           ),
+          BlocProvider<ShoppingBlocRadio>(
+            create: (BuildContext context) => ShoppingBlocRadio(),
+          ),
+
         ],
       child:  Scaffold(
           body: Body(),
