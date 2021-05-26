@@ -6,18 +6,18 @@ import 'body.dart';
 
 class RadioButton extends StatelessWidget {
   const RadioButton({
-    Key key, this.title, this.valure, this.price,
+    Key key, this.title, this.valure, this.price, this.groub,
   }) : super(key: key);
   final String title ;
-  final BestTutorSite valure ;
+  final String  valure ;
   final double price ;
+  final String   groub  ;
 
 
 
 
   @override
   Widget build(BuildContext context) {
-    BestTutorSite _site = BestTutorSite.javatpoint;
     return Column(
       children: [
         Container(
@@ -25,7 +25,7 @@ class RadioButton extends StatelessWidget {
           height: 70,
           width: double.infinity,
           decoration: BoxDecoration(
-            color: valure== _site ? Colors.black.withOpacity(0.07): Colors.white ,
+            color:  Colors.black.withOpacity(0.07) ,
 
           ),
 
@@ -35,8 +35,8 @@ class RadioButton extends StatelessWidget {
             children: [
               Radio(
                 value: valure ,
-                groupValue: _site,
-                onChanged: (BestTutorSite value) {
+                groupValue: groub,
+                onChanged: ( value) {
                   /*
                   setState(() {
                       _site = value;

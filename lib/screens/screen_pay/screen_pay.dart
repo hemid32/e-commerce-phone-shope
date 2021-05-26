@@ -21,6 +21,12 @@ class Buy extends StatelessWidget {
           BlocProvider<ValidatorTexxtBlocString>(
             create: (BuildContext context) => ValidatorTexxtBlocString(),
           ),
+          BlocProvider<ValidatorTexxtBlocPhoneNombre>(
+            create: (BuildContext context) => ValidatorTexxtBlocPhoneNombre(),
+          ),
+          BlocProvider<ValidatorTexxtBlocPhoneEmail>(
+            create: (BuildContext context) => ValidatorTexxtBlocPhoneEmail(),
+          ),
         ],
       child:  Scaffold(
           body: Body(),

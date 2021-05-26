@@ -17,33 +17,49 @@ class Addres extends StatelessWidget {
   Addres({
     Key key,
   }) : super(key: key);
-
   String nome , prenome , nomberPhone , email , wilaya , daira , adress1 , address2    ;
   bool fine  ;
   int codPostal  ;
-
-
-
-
-
   @override
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         BlocBuilder<ValidatorTexxtBlocString , dynamic> (
-          builder: (context, state) {
+          builder: (_, state) {
             return FieldTextGet(title: 'Nome', onChange: (valur){
               BlocProvider.of<ValidatorTexxtBlocString>(context).add(TextFieldValidatorEventNome(valur: valur  , titleErurr: 'erurr Nome short')) ;
-
               nome = valur;
-
               },validErurr: state ,  );
           }
         ) ,
-        FieldTextGet(title: 'Prenome',onChange: (valur){  prenome = valur;}) ,
-        FieldTextGet(title: 'Nombre Phone',onChange: (valur){  nomberPhone = valur;}) ,
-        FieldTextGet(title: 'Email Adress',) ,
+        BlocBuilder<ValidatorTexxtBlocString , dynamic>(
+          builder: (_, state) {
+
+            return FieldTextGet(title: 'Prenome',onChange: (valur){
+              BlocProvider.of<ValidatorTexxtBlocString>(context).add(TextFieldValidatorEventNome(valur: valur  , titleErurr: 'erurr Nome short')) ;
+              prenome = valur;
+              },validErurr: state ,);
+          }
+        ) ,
+        BlocBuilder<ValidatorTexxtBlocPhoneNombre , dynamic>(
+          builder: (_, state) {
+            return FieldTextGet(title: 'Nombre Phone',onChange: (valur){
+              BlocProvider.of<ValidatorTexxtBlocPhoneNombre>(context).add(TextFieldValidatorEventPhoneNombre(valur: valur  , titleErurr: 'erurr from nombre')) ;
+
+              nomberPhone = valur;
+              },validErurr: state , );
+          }
+        ) ,
+        BlocBuilder<ValidatorTexxtBlocPhoneEmail , dynamic>(
+          builder: (_, state) {
+            return FieldTextGet(title: 'Email Adress',onChange: (valur){
+              BlocProvider.of<ValidatorTexxtBlocPhoneEmail>(context).add(TextFieldValidatorEventPhoneEmail(valur: valur  , titleErurr: 'erurr email')) ;
+
+              email = valur;
+            },validErurr: state ,);
+          }
+        ) ,
         ContainerAndIconAndText_Seach(title: 'Search Your Adress', icon:  Icon(Icons.location_searching_sharp),),
         ContainerAndIconAndText_Seach(title: 'Shoise Your Adress', icon:  Icon(Icons.account_box),) ,
         TitleTextAligns(title:  'Wilaya',) ,

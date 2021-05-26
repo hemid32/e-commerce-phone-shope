@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:phoneshop/bloc/manageData/puy/bloc.dart';
 import 'package:phoneshop/bloc/manageScreen/puy_screen/bloc.dart';
 import 'package:phoneshop/bloc/manageScreen/puy_screen/events.dart';
 import 'package:phoneshop/constant.dart';
@@ -25,6 +26,7 @@ class Items_Menuu extends StatelessWidget {
                 title:  'Adress ',
                 active:  state.runtimeType == Addres ,
                 onTap: ()=>BlocProvider.of<PuyScreenBloc>(context).add(FirstAddAdress()),
+                fin: BlocProvider.of<AdressDataBloc>(context).state.fine,
               );
             }
           ) ,
