@@ -35,7 +35,7 @@ class Items_Menuu extends StatelessWidget {
               return ItemTopMenu(
                 title:  'Shopping',
                 active:  state.runtimeType == Shopping ,
-                fin:  true ,
+                fin:  BlocProvider.of<ShoppingDataBloc>(context).state.fin ,
                 onTap: ()=>BlocProvider.of<PuyScreenBloc>(context).add(ContinuShopping()),
               );
             }
