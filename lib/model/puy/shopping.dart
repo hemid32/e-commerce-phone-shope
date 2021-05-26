@@ -58,7 +58,7 @@ Map<String ,List<ShoppingModelMethod> >  t = {
 
  List testMetod(){
   TotalShoppingMethod  listMethodTest = TotalShoppingMethod.fromJson(t) ;
-  print('metods == ${listMethodTest.methods}') ;
+  //print('metods == ${listMethodTest.methods}') ;
   return listMethodTest.methods ;
 }
 

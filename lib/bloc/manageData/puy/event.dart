@@ -1,10 +1,10 @@
 import 'package:phoneshop/model/puy/address.dart';
+import 'package:phoneshop/model/puy/shopping_method_is_shoi.dart';
 
 abstract class EventsPuyData{
 
 }
 
-class GetAdressData extends EventsPuyData {}
 class AddAdressData extends EventsPuyData {
 
   final  ModelAdress adress ;
@@ -13,4 +13,10 @@ class AddAdressData extends EventsPuyData {
 
 
 }
-class AddShoppingData extends EventsPuyData {}
+class AddShoppingData extends EventsPuyData {
+
+  final MethodShoppingShoi methodShopping ;
+
+  AddShoppingData(this.methodShopping);
+
+}

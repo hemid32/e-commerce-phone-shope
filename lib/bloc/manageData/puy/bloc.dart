@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:phoneshop/bloc/manageData/puy/event.dart';
 import 'package:phoneshop/model/puy/address.dart';
+import 'package:phoneshop/model/puy/shopping_method_is_shoi.dart';
 
 class AdressDataBloc extends Bloc<AddAdressData, ModelAdress> {
   /// {@macro counter_bloc}
@@ -19,17 +20,17 @@ class AdressDataBloc extends Bloc<AddAdressData, ModelAdress> {
   }
 }
 
-class ShoppingDataBloc extends Bloc<ModelAdress, ModelAdress> {
+class ShoppingDataBloc extends Bloc<AddShoppingData, MethodShoppingShoi> {
   /// {@macro counter_bloc}
-  ShoppingDataBloc() : super(ModelAdress());
+  ShoppingDataBloc() : super(MethodShoppingShoi());
 
   @override
-  Stream<ModelAdress> mapEventToState(ModelAdress event) async* {
+  Stream<MethodShoppingShoi> mapEventToState(AddShoppingData event) async* {
     //print(event.runtimeType) ;
-    if(event.runtimeType == AddAdressData ){
+    if(event.runtimeType == AddShoppingData ){
       //save Data Shopping
       // return data event Shopping
-      yield event ;
+      yield event.methodShopping ;
     }
 
   }

@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:phoneshop/bloc/manageData/puy/bloc.dart';
+import 'package:phoneshop/bloc/manageData/puy/event.dart';
 import 'package:phoneshop/bloc/manageScreen/puy_screen/bloc.dart';
 import 'package:phoneshop/bloc/manageScreen/puy_screen/events.dart';
 import 'package:phoneshop/bloc/manageScreen/shoppingShoiMethods/bloc.dart';
 import 'package:phoneshop/bloc/manageScreen/shoppingShoiMethods/event.dart';
 import 'package:phoneshop/model/puy/address.dart';
 import 'package:phoneshop/model/puy/shopping.dart';
+import 'package:phoneshop/model/puy/shopping_method_is_shoi.dart';
 import 'package:phoneshop/screens/screen_pay/componants/ContainerShoiMethodSHoping.dart';
 import 'package:phoneshop/screens/screen_pay/componants/footer_button_shopping.dart';
 import 'package:phoneshop/screens/screen_pay/componants/title.dart';
@@ -32,21 +34,19 @@ class Shopping extends StatelessWidget {
                 title: testMetod()[i].titleMethod,
                 price: testMetod()[i].price,
                 groub: state??testMetod()[0].titleMethod,
-                onChanged: (valur)=> BlocProvider.of<ShoppingBlocRadio>(context).add(EvenstRadio(valur)),
+                onChanged: (valur){
+                  MethodShoppingShoi methodShop = MethodShoppingShoi.froJson({
+                    'method'  : testMetod()[i]  ,
+                    'fin' : true ,
+                  });
+                  BlocProvider.of<ShoppingDataBloc>(context).add(AddShoppingData(methodShop))  ;
+                  BlocProvider.of<ShoppingBlocRadio>(context).add(EvenstRadio(valur));
+                  },
               );
             }
           ),
-
-        //RadioButton(valure: BestTutorSite.tutorialandexample, title: 'Fest Shoping',price:  200,),
-        //RadioButton(valure: BestTutorSite.w3schools, title: 'Algeria Post', price:  0,),
-
-
-
-
         FooterButton(back: (){}, textButton: 'Continu to  verefaid', backText: 'Return Shoping',buttonTap: (){
-
-
-          print(BlocProvider.of<AdressDataBloc>(context).state.fine) ;
+          print(BlocProvider.of<ShoppingDataBloc>(context).state.method.titleMethod) ;
           BlocProvider.of<PuyScreenBloc>(context).add(ContenuVarifeid()) ;
 
         },)

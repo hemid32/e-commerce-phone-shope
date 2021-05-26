@@ -31,6 +31,10 @@ class Buy extends StatelessWidget {
           BlocProvider<ShoppingBlocRadio>(
             create: (BuildContext context) => ShoppingBlocRadio(),
           ),
+          //ShoppingDataBloc
+          BlocProvider<ShoppingDataBloc>(
+            create: (BuildContext context) => ShoppingDataBloc(),
+          ),
 
         ],
       child:  Scaffold(
