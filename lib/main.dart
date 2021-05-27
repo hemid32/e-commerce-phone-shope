@@ -4,9 +4,11 @@ import 'package:phoneshop/constant.dart';
 import 'package:phoneshop/screens/homescreen/homescreen.dart';
 
 import 'bloc/manageScreen/home/bloc.dart';
+import 'model/cart/services.dart';
 
 void main() {
   Bloc.observer = SimpleBlocObserver();
+
 
   runApp(MyApp());
 }

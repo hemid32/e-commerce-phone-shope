@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:phoneshop/bloc/manageData/puy/bloc.dart';
 import 'package:phoneshop/screens/screen_pay/componants/title.dart';
 class ExpendedShoppingVerefaid extends StatelessWidget {
   const ExpendedShoppingVerefaid({
@@ -18,13 +20,16 @@ class ExpendedShoppingVerefaid extends StatelessWidget {
               margin: EdgeInsets.symmetric(horizontal: 20 , vertical:  10),
               child: Column(
                 children: [
-                  items_shoping_verefaid(text: 'Nome', reponse:  'Hemidi Benameur',),
-                  items_shoping_verefaid(text: 'Email', reponse:  'HemidiBenameur@gmail.com',),
-                  items_shoping_verefaid(text: 'Phone', reponse:  '0665489218',),
-                  items_shoping_verefaid(text: 'Wilaya', reponse:  'El bayadh',),
-                  items_shoping_verefaid(text: 'Daira', reponse:  'BosamGHon',),
-                  items_shoping_verefaid(text: 'Adress1', reponse:  '0665489218',),
-                  items_shoping_verefaid(text: 'Adress2', reponse:  '0665489218',),
+                  items_shoping_verefaid(text: 'Nome', reponse:  BlocProvider.of<AdressDataBloc>(context).state.nome,),
+                  items_shoping_verefaid(text: 'Prenom', reponse:  BlocProvider.of<AdressDataBloc>(context).state.prenome,),
+                  items_shoping_verefaid(text: 'Email', reponse:  BlocProvider.of<AdressDataBloc>(context).state.email,),
+                  items_shoping_verefaid(text: 'Phone', reponse:  BlocProvider.of<AdressDataBloc>(context).state.nomberPhone,),
+                  items_shoping_verefaid(text: 'Wilaya', reponse:  BlocProvider.of<AdressDataBloc>(context).state.wilaya,),
+                  items_shoping_verefaid(text: 'Daira', reponse:  BlocProvider.of<AdressDataBloc>(context).state.daira,),
+                  items_shoping_verefaid(text: 'Adress1', reponse:  BlocProvider.of<AdressDataBloc>(context).state.adress1,),
+                  items_shoping_verefaid(text: 'Adress2', reponse:  BlocProvider.of<AdressDataBloc>(context).state.address2,),
+                  items_shoping_verefaid(text: 'cod Postal', reponse:  BlocProvider.of<AdressDataBloc>(context).state.codPostal.toString(),),
+                  items_shoping_verefaid(text: 'Method shopping', reponse:  BlocProvider.of<ShoppingDataBloc>(context).state.method.titleMethod,),
                 ],
               ),
             )

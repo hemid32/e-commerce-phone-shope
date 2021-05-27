@@ -45,11 +45,26 @@ class Shopping extends StatelessWidget {
               );
             }
           ),
-        FooterButton(back: (){}, textButton: 'Continu to  verefaid', backText: 'Return Shoping',buttonTap: (){
-          print(BlocProvider.of<ShoppingDataBloc>(context).state.method.titleMethod) ;
+        FooterButton(
+          back: (){
+            BlocProvider.of<PuyScreenBloc>(context).add(FirstAddAdress()) ;
+          },
+          textButton: 'Continu to  verefaid',
+          backText: 'Return Shoping',
+          buttonTap: (){
+          //testMetod()[0]
+          //print(' =============****================  ${BlocProvider.of<ShoppingDataBloc>(context).state.fin}') ;
+          if( BlocProvider.of<ShoppingDataBloc>(context).state.fin == false ){
+            MethodShoppingShoi methodShopResq = MethodShoppingShoi.froJson({
+              'method'  : testMetod()[0]  ,
+              'fin' : true ,
+            });
+            BlocProvider.of<ShoppingDataBloc>(context).add(AddShoppingData(methodShopResq)) ;
+          }
           BlocProvider.of<PuyScreenBloc>(context).add(ContenuVarifeid()) ;
 
-        },)
+        },
+        )
 
       ],
     );

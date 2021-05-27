@@ -35,3 +35,24 @@ class ShoppingDataBloc extends Bloc<AddShoppingData, MethodShoppingShoi> {
 
   }
 }
+
+
+
+/*
+class ShoppingDataBloc extends Bloc<AddShoppingData, MethodShoppingShoi> {
+  /// {@macro counter_bloc}
+  ShoppingDataBloc() : super(MethodShoppingShoi());
+
+  @override
+  Stream<MethodShoppingShoi> mapEventToState(AddShoppingData event) async* {
+    //print(event.runtimeType) ;
+    if(event.runtimeType == AddShoppingData ){
+      //save Data Shopping
+      // return data event Shopping
+      yield event.methodShopping ;
+    }
+
+  }
+}
+
+ */

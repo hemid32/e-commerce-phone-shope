@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:phoneshop/bloc/manageScreen/puy_screen/bloc.dart';
 import 'package:phoneshop/bloc/manageScreen/puy_screen/events.dart';
+import 'package:phoneshop/model/cart/services.dart';
 import 'package:phoneshop/screens/screen_pay/componants/button_costom_wight_infinty.dart';
 import 'package:phoneshop/screens/screen_pay/componants/card_shoping_phone.dart';
 import 'package:phoneshop/screens/screen_pay/componants/expendad_shoping_verefaid.dart';
@@ -29,24 +30,14 @@ class Cart extends StatelessWidget {
             children: [
               //TitleTextAligns(title: 'Detail de requist',) ,
               Text('Detail de Requist' , style:  Theme.of(context).textTheme.button.copyWith(color: Colors.black.withOpacity(0.7)),),
-              CardPhoneChope(
-                image: 'assets/images/Redmi_Note_9_Pro_5G_6.png',
-                title: 'Samsung Gtx 10',
-                detail: 'dvfnvfdnjv dfjnvjkdnvdfjvn dkvnndfvnjfd dfkvnjfdvjn fdjvnjfdvn',
-                ram: 4,
-                storage: 120,
-                contitu: 1,
-                price: 1200,
-                deletCard: (){},
-              ) ,
-              CardPhoneChope(
-                image: 'assets/images/Redmi_Note_9_Pro_5G_6.png',
-                title: 'Samsung Gtx 10',
-                detail: 'dvfnvfdnjv dfjnvjkdnvdfjvn dkvnndfvnjfd dfkvnjfdvjn fdjvnjfdvn',
-                ram: 4,
-                storage: 120,
-                contitu: 1,
-                price: 1200,
+              for(var i = 0 ; i< itemsCart().length ; i++)  CardPhoneChope(
+                image: itemsCart()[i].produit.image ,
+                title: itemsCart()[i].produit.nomPhone,
+                detail: itemsCart()[i].produit.detail,
+                ram: itemsCart()[i].produit.ram,
+                storage: itemsCart()[i].produit.storage ,
+                contitu: itemsCart()[i].produit.contitu,
+                price: itemsCart()[i].produit.price,
                 deletCard: (){},
               ) ,
 
