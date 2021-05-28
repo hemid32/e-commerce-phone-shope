@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:phoneshop/bloc/cartCalcul/bloc.dart';
+import 'package:phoneshop/bloc/cartCalcul/events.dart';
 import 'package:phoneshop/bloc/manageData/puy/bloc.dart';
 import 'package:phoneshop/bloc/manageData/puy/event.dart';
 import 'package:phoneshop/bloc/manageScreen/puy_screen/bloc.dart';
 import 'package:phoneshop/bloc/manageScreen/puy_screen/events.dart';
 import 'package:phoneshop/bloc/manageScreen/shoppingShoiMethods/bloc.dart';
 import 'package:phoneshop/bloc/manageScreen/shoppingShoiMethods/event.dart';
+import 'package:phoneshop/model/cart/services.dart';
 import 'package:phoneshop/model/puy/address.dart';
 import 'package:phoneshop/model/puy/shopping.dart';
 import 'package:phoneshop/model/puy/shopping_method_is_shoi.dart';
@@ -51,7 +54,7 @@ class Shopping extends StatelessWidget {
           },
           textButton: 'Continu to  verefaid',
           backText: 'Return Shoping',
-          buttonTap: (){
+          buttonTap: ()   {
           //testMetod()[0]
           //print(' =============****================  ${BlocProvider.of<ShoppingDataBloc>(context).state.fin}') ;
           if( BlocProvider.of<ShoppingDataBloc>(context).state.fin == false ){
@@ -59,9 +62,19 @@ class Shopping extends StatelessWidget {
               'method'  : testMetod()[0]  ,
               'fin' : true ,
             });
-            BlocProvider.of<ShoppingDataBloc>(context).add(AddShoppingData(methodShopResq)) ;
+             BlocProvider.of<ShoppingDataBloc>(context).add(AddShoppingData(methodShopResq)) ;
           }
           BlocProvider.of<PuyScreenBloc>(context).add(ContenuVarifeid()) ;
+
+          BlocProvider.of<CalculCartBloc>(context).add(EventCart(
+            listProduitCart: itemsCart() ,
+            methodShopping: BlocProvider.of<ShoppingDataBloc>(context).state.fin == false ? MethodShoppingShoi.froJson({
+              'method': testMetod()[0] ,
+              'fin': true
+            }):BlocProvider.of<ShoppingDataBloc>(context).state )
+
+          ) ;
+
 
         },
         )

@@ -5,10 +5,12 @@ import 'package:phoneshop/model/produit/produit.dart';
 
 class ModelCart {
   final Produit produit ;
-  ModelCart({this.produit});
-  factory ModelCart.FormJson(Map<String  , Produit > json ){
+  final int  contituPay ;
+  ModelCart({this.produit, this.contituPay = 1  });
+  factory ModelCart.FormJson(Map<String  , dynamic > json ){
     return ModelCart(
       produit: json['produit'] ,
+      contituPay: json['contituPay']
     );
   }
 

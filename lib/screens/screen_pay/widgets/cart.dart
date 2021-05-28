@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:phoneshop/bloc/cartCalcul/bloc.dart';
 import 'package:phoneshop/bloc/manageScreen/puy_screen/bloc.dart';
 import 'package:phoneshop/bloc/manageScreen/puy_screen/events.dart';
+import 'package:phoneshop/model/cart/cartCalcul.dart';
 import 'package:phoneshop/model/cart/services.dart';
 import 'package:phoneshop/screens/screen_pay/componants/button_costom_wight_infinty.dart';
 import 'package:phoneshop/screens/screen_pay/componants/card_shoping_phone.dart';
@@ -36,7 +38,7 @@ class Cart extends StatelessWidget {
                 detail: itemsCart()[i].produit.detail,
                 ram: itemsCart()[i].produit.ram,
                 storage: itemsCart()[i].produit.storage ,
-                contitu: itemsCart()[i].produit.contitu,
+                contitu: itemsCart()[i].contituPay,
                 price: itemsCart()[i].produit.price,
                 deletCard: (){},
               ) ,
@@ -45,9 +47,18 @@ class Cart extends StatelessWidget {
           ),
         ),
         SizedBox(height: 10,) ,
-        TextPriceShoping(title: 'Total Produit : ', price:  1540,)  ,
-        TextPriceShoping(title: 'Shopping : ', price:  1540,)  ,
-        TextPriceShoping(title: 'Total : ', price:  1540,)  ,
+        BlocBuilder<CalculCartBloc, ModelCartCalcul>(
+          builder: (context, state) {
+            return Column(
+              children: [
+                TextPriceShoping(title: 'Total Produit : ', price:  state.totalProduit,)  ,
+                TextPriceShoping(title: 'Shopping : ', price:  state.totalShopping ,)  ,
+                TextPriceShoping(title: 'Total : ', price:  state.total,)  ,
+              ],
+            );
+          }
+        ),
+
         SizedBox(height: 10,) ,
         TitleTextAligns(title:  'Notes',) ,
         FieldNotes(onChanged: (text){print(text) ; }, hintText: 'Write Your Notes',) ,

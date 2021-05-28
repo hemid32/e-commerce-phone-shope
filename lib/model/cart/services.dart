@@ -16,8 +16,9 @@ List<ModelCart> itemsCart(){
         'ram' : 4 ,
         'storage' : 2 ,
         'contitu' : 10 ,
-        'price' : 144.2 ,
+        'price' :10.0 ,
       }),
+      'contituPay' : 1 ,
     }),
     ModelCart.FormJson({
       'produit' : Produit.formJson({
@@ -28,8 +29,10 @@ List<ModelCart> itemsCart(){
         'ram' : 4 ,
         'storage' : 20 ,
         'contitu' : 10 ,
-        'price' : 144.2 ,
+        'price' : 20.0 ,
       }),
+      'contituPay' : 3,
+
     }),
     ModelCart.FormJson({
       'produit' : Produit.formJson({
@@ -40,8 +43,10 @@ List<ModelCart> itemsCart(){
         'ram' : 4 ,
         'storage' : 20 ,
         'contitu' : 10 ,
-        'price' : 144.2 ,
+        'price' : 10.0 ,
       }),
+      'contituPay' : 4 ,
+
     }),
     ModelCart.FormJson({
       'produit' : Produit.formJson({
@@ -52,8 +57,10 @@ List<ModelCart> itemsCart(){
         'ram' : 4 ,
         'storage' : 20 ,
         'contitu' : 10 ,
-        'price' : 144.2 ,
+        'price' : 15.0 ,
       }),
+      'contituPay' : 10,
+
     }),
   ];
 

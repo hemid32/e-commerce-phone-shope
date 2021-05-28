@@ -6,7 +6,7 @@ class TextPriceShoping extends StatelessWidget {
     Key key, this.title, this.price,
   }) : super(key: key);
   final String title ;
-  final int price  ;
+  final double price  ;
 
   @override
   Widget build(BuildContext context) {
