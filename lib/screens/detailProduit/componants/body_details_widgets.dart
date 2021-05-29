@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:phoneshop/bloc/manageScreen/detailProduit/bloc.dart';
 import 'package:phoneshop/constant.dart';
 
 import 'containet_ram_storage_spu.dart';
@@ -32,9 +34,18 @@ class BodyDetail extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
 
-          Text( '$title ' , style: Theme.of(context).textTheme.button.copyWith(fontSize: 20 , color: Colors.black.withOpacity(0.5) ) ) ,
-          SizedBox(height: kDefaultPadding/2,) ,
-          RowPriceANDContitus(price: price, priceOld: priceOld) ,
+          BlocBuilder<BlocScreenDetailProduit, List<dynamic>>(
+            builder: (context, state) {
+              return Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text( '${state[0].nomPhone } ' , style: Theme.of(context).textTheme.button.copyWith(fontSize: 20 , color: Colors.black.withOpacity(0.5) ) ) ,
+                  SizedBox(height: kDefaultPadding/2,) ,
+                  RowPriceANDContitus(price: state[0].price, priceOld: state[0].priceOriginal) ,
+                ],
+              );
+            }
+          ),
 
 
           SizedBox(height: 20,),
@@ -53,11 +64,21 @@ class BodyDetail extends StatelessWidget {
           ),
           SizedBox(height: 20,),
 
-          ContainerRamStockagColors(spu: 'Dragon x2', ram:  4 , stockag:  120,),
+          BlocBuilder<BlocScreenDetailProduit, List<dynamic>>(
+            builder: (context, state) {
+              return ContainerRamStockagColors(
+                spu: state[0].spu,
+                ram:  state[0].ram,
+                stockag:  state[0].storage,
+              );
+            }
+          ),
 
-          DescriptionProduit(description: '''
-          Le Samsung Galaxy A12 est un smartphone entrée de gamme équipé d'un SoC Mediatek couplé à 3, 4 ou 6 Go de RAM et 32, 64 ou 128 Go de stockage, extensible via microSD. Il possède 4 capteurs photo à l'arrière : le principal à 48 mégapixels, un ultra grand-angle à 5 mégapixels, un objectif macro et un capteur de profondeur. Il a une batterie de 5000 mAh compatible charge rapide (15 W)
-          ''',) ,
+          BlocBuilder<BlocScreenDetailProduit, List<dynamic>>(
+            builder: (context, state) {
+              return DescriptionProduit(description: state[0].detail,);
+            }
+          ) ,
 
 
 

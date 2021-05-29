@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:phoneshop/bloc/manageScreen/detailProduit/bloc.dart';
+import 'package:phoneshop/bloc/manageScreen/detailProduit/event.dart';
 
 import 'smail_image_shois_color.dart';
 
@@ -13,11 +16,18 @@ class ItemsColorShoise extends StatelessWidget {
       scrollDirection: Axis.horizontal,
       child: Row(
         children: [
-          SmailImageShoiColor(image:'assets/images/497-4975081_samsung-galaxy-a70-2020-hd-png-download.png',),
-          SmailImageShoiColor(image:'assets/images/iphone-x-samsung-galaxy-s8-iphone-7-smartphone-png-favpng-7ke4DBbj5kLrbQftMD6XuN56h.jpg',),
-          SmailImageShoiColor(image:'assets/images/poco.png',),
-          SmailImageShoiColor(image:'assets/images/iphone-x-samsung-galaxy-s8-iphone-7-smartphone-png-favpng-7ke4DBbj5kLrbQftMD6XuN56h.jpg',),
-          SmailImageShoiColor(image:'assets/images/samsung-galaxy-s10-png-image.jpg',),
+          for(var i = 0 ; i< BlocProvider.of<BlocScreenDetailProduit>(context).state[1].listProduits.length ; i++ )SmailImageShoiColor(
+            image:  BlocProvider.of<BlocScreenDetailProduit>(context).state[1].listProduits[i].image,
+            index: i,
+            onTap: (){
+              BlocProvider.of<BlocScreenDetailProduit>(context).add(EvensGoToProduit(
+                indexProduit: i ,
+                produisColors: BlocProvider.of<BlocScreenDetailProduit>(context).state[1] ,
+              ));
+
+            },
+
+          ),
         ],
       ),
     );

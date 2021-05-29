@@ -36,38 +36,38 @@ class BottomNavigationsBars extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         //crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          BlocBuilder<CounterBloc , Widget>(
+          BlocBuilder<BlocHomeButtomBar , Widget>(
             builder: (_, snapshot) {
               return IconButtonBottom(
                 icon:   Icons.home,
-                onTap: (){ BlocProvider.of<CounterBloc>(context).add(GoToHome()); },
+                onTap: (){ BlocProvider.of<BlocHomeButtomBar>(context).add(GoToHome()); },
                 active:  (snapshot.runtimeType) == Home  ,
               );
             }
           ) ,
-          BlocBuilder<CounterBloc , Widget >(
+          BlocBuilder<BlocHomeButtomBar , Widget >(
             builder: (_, state) {
               return IconButtonBottom(
                 icon:Icons.favorite,
-                onTap: ()=> BlocProvider.of<CounterBloc>(context).add(GoToFavorite()),
+                onTap: ()=> BlocProvider.of<BlocHomeButtomBar>(context).add(GoToFavorite()),
                 active:   (state.runtimeType) == Favorite ,
               );
             }
           ) ,
-          BlocBuilder<CounterBloc , Widget>(
+          BlocBuilder<BlocHomeButtomBar , Widget>(
             builder: (_, state) {
               return IconButtonBottom(
                 icon:Icons.shopping_cart,
-                onTap: ()=> BlocProvider.of<CounterBloc>(context).add(GoToCart()),
+                onTap: ()=> BlocProvider.of<BlocHomeButtomBar>(context).add(GoToCart()),
                 active:   (state.runtimeType) == CartHome ,
               );
             }
           ) ,
-          BlocBuilder<CounterBloc , Widget>(
+          BlocBuilder<BlocHomeButtomBar , Widget>(
             builder: (_, state) {
               return IconButtonBottom(
                 icon:Icons.person,
-                onTap: ()=> BlocProvider.of<CounterBloc>(context).add(GoToSetting()),
+                onTap: ()=> BlocProvider.of<BlocHomeButtomBar>(context).add(GoToSetting()),
                 active:  (state.runtimeType) == SettingAPP,
               );
             }

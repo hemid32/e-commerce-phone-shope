@@ -9,16 +9,16 @@ import 'package:phoneshop/screens/screen_pay/widgets/cart.dart';
 import 'events.dart';
 
 
-class CounterBloc extends Bloc<EventsHome, Widget> {
+class BlocHomeButtomBar extends Bloc<EventsHome, Widget> {
   /// {@macro counter_bloc}
-  CounterBloc() : super(Home());
+  BlocHomeButtomBar() : super(Home());
 
   @override
   Stream<Widget> mapEventToState(EventsHome event) async* {
     //print(event.runtimeType) ;
     switch (event.runtimeType) {
       case GoToFavorite:
-        print('go to fav from event  ');
+        //print('go to fav from event  ');
         yield Favorite();
         break;
       case GoToCart:

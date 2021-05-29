@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:phoneshop/bloc/manageScreen/detailProduit/bloc.dart';
+import 'package:phoneshop/bloc/manageScreen/detailProduit/event.dart';
 import 'package:phoneshop/constant.dart';
+import 'package:phoneshop/model/produit/servises.dart';
 import 'package:phoneshop/screens/detailProduit/detail_produit.dart';
 
 class ItemsCardBestSellingPHone extends StatelessWidget {
@@ -13,39 +17,20 @@ class ItemsCardBestSellingPHone extends StatelessWidget {
       scrollDirection: Axis.horizontal,
       child: Row(
         children: [
-          CardPhoneItems(
-            title: 'Sumsung',
-            price:  50000,
-            descreption:  'hemddv v dvdfv dvdf vdf vdfv ',
-            image: 'assets/images/iphone-x-samsung-galaxy-s8-iphone-7-smartphone-png-favpng-7ke4DBbj5kLrbQftMD6XuN56h.jpg' ,
-            pricintage: 100,
-          ),
-          CardPhoneItems(
-            title: 'Sumsung',
-            price:  50000,
-            descreption:  'hemddv v dvdfv dvdf vdf vdfv ',
-            image: 'assets/images/497-4975081_samsung-galaxy-a70-2020-hd-png-download.png' ,
-          ),
-          CardPhoneItems(
-            title: 'Sumsung',
-            price:  50000,
-            descreption:  'hemddv v dvdfv dvdf vdf vdfv ',
-            image: 'assets/images/poco.png' ,
-          ),
-          CardPhoneItems(
-            title: 'Sumsung',
-            price:  50000,
-            descreption:  'hemddv v dvdfv dvdf vdf vdfv ',
-            image: 'assets/images/497-4975081_samsung-galaxy-a70-2020-hd-png-download.png' ,
-            pricintage: 50,
-          ),
-          CardPhoneItems(
-            title: 'Sumsung',
-            price:  50000,
-            descreption:  'hemddv v dvdfv dvdf vdf vdfv ',
-            image: 'assets/images/samsung-galaxy-s8-4g-smartphone-png-favpng-qNm18RuFag7316FekDYk0Pqy4.jpg' ,
-            pricintage: 20,
-          ),
+          for(var i  = 0 ; i< getProduitColors().produits.length ; i++  )
+            CardPhoneItems(
+              title: getProduitColors().produits[i].listProduits[i].nomPhone , // i deleted
+              price:  getProduitColors().produits[i].listProduits[i].price,
+              descreption: getProduitColors().produits[i].listProduits[i].detail ,
+              image: getProduitColors().produits[i].listProduits[i].image ,
+              onTap: (){
+                BlocProvider.of<BlocScreenDetailProduit>(context).add(EvensGoToProduit(indexProduit: 0 , produisColors: getProduitColors().produits[i] )) ;
+                Navigator.push(context, MaterialPageRoute(builder: (_)=> BlocProvider.value(
+                  value: BlocProvider.of<BlocScreenDetailProduit>(context),
+                  child:  DetailProduit() ,
+                )));},
+            ),
+
         ],
       ),
     );
@@ -54,20 +39,21 @@ class ItemsCardBestSellingPHone extends StatelessWidget {
 
 class CardPhoneItems extends StatelessWidget {
   const CardPhoneItems({
-    Key key, this.image, this.title, this.descreption, this.price, this.pricintage,
+    Key key, this.image, this.title, this.descreption, this.price, this.pricintage, this.onTap,
   }) : super(key: key);
   final String image ;
   final String title ;
   final String descreption ;
   final double price ;
   final int pricintage ;
+  final Function onTap ;
 
 
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size ;
     return GestureDetector(
-      onTap: ()=> Navigator.push(context, MaterialPageRoute(builder: (context)=> DetailProduit())),
+      onTap: onTap,
       child: Container(
         margin:  EdgeInsets.symmetric(horizontal: 10 , vertical:  20),
         width:  size.width /  2 -10 ,

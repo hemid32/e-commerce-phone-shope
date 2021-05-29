@@ -1,6 +1,8 @@
 
 
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:phoneshop/bloc/manageScreen/detailProduit/bloc.dart';
 
 import 'body_details_widgets.dart';
 import 'header_detail.dart';
@@ -12,8 +14,12 @@ class Body extends StatelessWidget {
     return SingleChildScrollView(
       child: Column(
         children: [
-          HeaderDetail(image: 'assets/images/Redmi_Note_9_Pro_5G_6.png',) ,
-          BodyDetail(title: 'Samsung Gtx 23' , price:  500, priceOld:  600,),
+          BlocBuilder<BlocScreenDetailProduit , List<dynamic>>(
+            builder: (context, state) {
+              return HeaderDetail(image: state[0].image,);
+            }
+          ) ,
+          BodyDetail(title: BlocProvider.of<BlocScreenDetailProduit>(context).state[0].detail , price:  500, priceOld:  600,),
 
 
         ],

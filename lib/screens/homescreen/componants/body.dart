@@ -26,7 +26,7 @@ class Body extends StatelessWidget {
       //Favorite()
       // CartHome()
       //  SettingAPP(
-      child:   BlocBuilder<CounterBloc, Widget>(
+      child:   BlocBuilder<BlocHomeButtomBar, Widget>(
         builder: (_, count) {
           print("from builder $count") ;
           return  count;
