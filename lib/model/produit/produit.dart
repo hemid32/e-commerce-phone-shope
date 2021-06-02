@@ -5,8 +5,8 @@ class Produit {
   final String detail ;
   final String phoneType  ;
   final int ram  ;
-  final  int storage ;
-  final int    contitu ;
+  final int storage ;
+  final int  contitu ;
   final double price  ;
   final double priceOriginal ;
   final String spu ;
@@ -27,6 +27,24 @@ class Produit {
       spu: jSonData['spu'],
     ) ;
   }
+
+  Map<String, dynamic> toMap() {
+    return {
+      'image': image,
+      'nomPhone': nomPhone,
+      'detail':detail ,
+      'phoneType':phoneType ,
+      'ram': ram ,
+      'storage':storage ,
+      'contitu': contitu ,
+      'price':price ,
+      'priceOriginal':priceOriginal ,
+      'spu':spu ,
+
+
+    };
+  }
+
 }
 
 

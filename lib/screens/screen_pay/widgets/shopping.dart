@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:phoneshop/bloc/cartCalcul/bloc.dart';
 import 'package:phoneshop/bloc/cartCalcul/events.dart';
+import 'package:phoneshop/bloc/cartScreenManage/bloc.dart';
 import 'package:phoneshop/bloc/manageData/puy/bloc.dart';
 import 'package:phoneshop/bloc/manageData/puy/event.dart';
 import 'package:phoneshop/bloc/manageScreen/puy_screen/bloc.dart';
@@ -67,7 +68,8 @@ class Shopping extends StatelessWidget {
           BlocProvider.of<PuyScreenBloc>(context).add(ContenuVarifeid()) ;
 
           BlocProvider.of<CalculCartBloc>(context).add(EventCart(
-            listProduitCart: itemsCart() ,
+            listProduitCart: BlocProvider.of<BlocListDataCart>(context).state ,
+
             methodShopping: BlocProvider.of<ShoppingDataBloc>(context).state.fin == false ? MethodShoppingShoi.froJson({
               'method': testMetod()[0] ,
               'fin': true

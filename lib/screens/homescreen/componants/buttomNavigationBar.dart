@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:phoneshop/bloc/cartScreenManage/bloc.dart';
+import 'package:phoneshop/bloc/cartScreenManage/event.dart';
 import 'package:phoneshop/bloc/manageScreen/home/bloc.dart';
 import 'package:phoneshop/bloc/manageScreen/home/events.dart';
 import 'package:phoneshop/constant.dart';
@@ -58,7 +60,10 @@ class BottomNavigationsBars extends StatelessWidget {
             builder: (_, state) {
               return IconButtonBottom(
                 icon:Icons.shopping_cart,
-                onTap: ()=> BlocProvider.of<BlocHomeButtomBar>(context).add(GoToCart()),
+                onTap: (){
+                  BlocProvider.of<BlocListDataCart>(context).add(EventShowList()) ;
+                  BlocProvider.of<BlocHomeButtomBar>(context).add(GoToCart());
+                  },
                 active:   (state.runtimeType) == CartHome ,
               );
             }

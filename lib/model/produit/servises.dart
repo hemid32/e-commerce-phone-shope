@@ -19,7 +19,7 @@ Map<String ,  List<Produit>> produitses =
       'phoneType' : 'Samsung' ,
       'ram' : 4 ,
       'storage' : 20 ,
-      'contitu' : 10 ,
+      'contitu' : 5 ,
       'price' : 144.2 ,
       'priceOriginal' : 150.0 ,
       'spu' : 'dragon 125'

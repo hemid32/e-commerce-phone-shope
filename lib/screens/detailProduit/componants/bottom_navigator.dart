@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:phoneshop/bloc/addToCart/bloc.dart';
+import 'package:phoneshop/bloc/addToCart/event.dart';
+import 'package:phoneshop/bloc/manageScreen/detailProduit/bloc.dart';
 import 'package:phoneshop/constant.dart';
 import 'package:phoneshop/screens/screen_pay/screen_pay.dart';
 
@@ -17,8 +21,13 @@ class ButtomNavigatorBar extends StatelessWidget {
       child: Row(
         children: [
           GestureDetector(
-            onTap: ()=> Navigator.push(context, MaterialPageRoute(builder: (context)=> Buy())),
-
+            onTap: (){
+              BlocProvider.of<BlocAddToCartNewProduit>(context).add(EventAddNewProduitToCart(
+                contitu: BlocProvider.of<BlocMinusAddProduitFromDetail>(context).state ,
+                produit: BlocProvider.of<BlocScreenDetailProduit>(context).state[0] ,
+              ));
+              Navigator.push(context, MaterialPageRoute(builder: (context)=> Buy()));
+              },
             child: Container(
               height: double.infinity,
               alignment: Alignment.center,
@@ -33,9 +42,15 @@ class ButtomNavigatorBar extends StatelessWidget {
             ),
           ) ,
           Expanded(
-            child: Container(
-              alignment: Alignment.center,
-              child: Text('ADD TO CART' , style:  Theme.of(context).textTheme.button.copyWith(color: kPrimaryColor , fontSize:  20),),
+            child: GestureDetector(
+              onTap: ()=> BlocProvider.of<BlocAddToCartNewProduit>(context).add(EventAddNewProduitToCart(
+                contitu: BlocProvider.of<BlocMinusAddProduitFromDetail>(context).state ,
+                produit: BlocProvider.of<BlocScreenDetailProduit>(context).state[0] ,
+              )) ,
+              child: Container(
+                alignment: Alignment.center,
+                child: Text('ADD TO CART' , style:  Theme.of(context).textTheme.button.copyWith(color: kPrimaryColor , fontSize:  20),),
+              ),
             ),
           )
         ],

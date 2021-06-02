@@ -17,7 +17,24 @@ class BlocScreenDetailProduit extends  Bloc<EventScreenDetails ,List<dynamic>  >
       yield [produit.produitResult() , produit.produisColors , produit.indexProduit] ;
     }
   }
+}
 
+
+class BlocMinusAddProduitFromDetail extends Bloc <EventScreenDetails , int >{
+  BlocMinusAddProduitFromDetail() : super(1);
+
+  @override
+  Stream<int> mapEventToState(EventScreenDetails event) async* {
+    // TODO: implement mapEventToState
+    if(event.runtimeType == EventMinus){
+      EventMinus results = event ;
+      yield results.minus() ;
+    }else if(event.runtimeType == EventAdd){
+      EventAdd results = event ;
+      yield results.add() ;
+
+    }
+  }
 }
 
 

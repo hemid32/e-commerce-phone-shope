@@ -35,16 +35,18 @@ class BodyDetail extends StatelessWidget {
         children: [
 
           BlocBuilder<BlocScreenDetailProduit, List<dynamic>>(
+
             builder: (context, state) {
               return Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text( '${state[0].nomPhone } ' , style: Theme.of(context).textTheme.button.copyWith(fontSize: 20 , color: Colors.black.withOpacity(0.5) ) ) ,
                   SizedBox(height: kDefaultPadding/2,) ,
-                  RowPriceANDContitus(price: state[0].price, priceOld: state[0].priceOriginal) ,
+                  RowPriceANDContitus(price: state[0].price, priceOld: state[0].priceOriginal ,contitu: state[0].contitu ,) ,
                 ],
               );
             }
+
           ),
 
 

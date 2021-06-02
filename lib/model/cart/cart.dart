@@ -14,6 +14,13 @@ class ModelCart {
     );
   }
 
+  Map<String, dynamic> toMap() {
+    return {
+      'produit': produit,
+      'contituPay': contituPay,
+    };
+  }
+
 }
 
 class ListModelCarte {

@@ -24,9 +24,11 @@ class ItemsColorShoise extends StatelessWidget {
                 indexProduit: i ,
                 produisColors: BlocProvider.of<BlocScreenDetailProduit>(context).state[1] ,
               ));
-
+              BlocProvider.of<BlocMinusAddProduitFromDetail>(context).add(EventMinus(
+                totalProduit: BlocProvider.of<BlocScreenDetailProduit>(context).state[1].listProduits[i].contitu ,
+                courentContitu: 1
+              ));
             },
-
           ),
         ],
       ),

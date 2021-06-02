@@ -13,6 +13,7 @@ class EventCart extends EventsCalculCart {
   final MethodShoppingShoi  methodShopping ;
   EventCart({this.listProduitCart, this.methodShopping});
   ModelCartCalcul  calcule(){
+    print('list produit cart == ${listProduitCart.length}');
     int contituTotalProduit = 0  ;
     double priceTotalProduits = 0   ;
     double priceShoppingTotal = 0  ;

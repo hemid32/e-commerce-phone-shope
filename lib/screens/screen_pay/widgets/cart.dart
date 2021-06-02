@@ -1,10 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:phoneshop/bloc/cartCalcul/bloc.dart';
+import 'package:phoneshop/bloc/cartCalcul/events.dart';
+import 'package:phoneshop/bloc/cartScreenManage/bloc.dart';
+import 'package:phoneshop/bloc/cartScreenManage/event.dart';
+import 'package:phoneshop/bloc/manageData/puy/bloc.dart';
 import 'package:phoneshop/bloc/manageScreen/puy_screen/bloc.dart';
 import 'package:phoneshop/bloc/manageScreen/puy_screen/events.dart';
+import 'package:phoneshop/model/cart/cart.dart';
 import 'package:phoneshop/model/cart/cartCalcul.dart';
 import 'package:phoneshop/model/cart/services.dart';
+import 'package:phoneshop/model/puy/shopping_method_is_shoi.dart';
 import 'package:phoneshop/screens/screen_pay/componants/button_costom_wight_infinty.dart';
 import 'package:phoneshop/screens/screen_pay/componants/card_shoping_phone.dart';
 import 'package:phoneshop/screens/screen_pay/componants/expendad_shoping_verefaid.dart';
@@ -27,23 +33,37 @@ class Cart extends StatelessWidget {
         ExpendedShoppingVerefaid(),
         Container(
           margin: EdgeInsets.symmetric(horizontal: 20),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              //TitleTextAligns(title: 'Detail de requist',) ,
-              Text('Detail de Requist' , style:  Theme.of(context).textTheme.button.copyWith(color: Colors.black.withOpacity(0.7)),),
-              for(var i = 0 ; i< itemsCart().length ; i++)  CardPhoneChope(
-                image: itemsCart()[i].produit.image ,
-                title: itemsCart()[i].produit.nomPhone,
-                detail: itemsCart()[i].produit.detail,
-                ram: itemsCart()[i].produit.ram,
-                storage: itemsCart()[i].produit.storage ,
-                contitu: itemsCart()[i].contituPay,
-                price: itemsCart()[i].produit.price,
-                deletCard: (){},
-              ) ,
+          child: BlocBuilder<BlocListDataCart , List<ModelCart>>(
+            builder: (context, itemsCart) {
+              return  BlocListener<BlocListDataCart,  List<ModelCart>>(
+                listener: (context, state) {
+                  // do stuff here based on BlocA's state
+                  BlocProvider.of<CalculCartBloc>(context).add(EventCart(
+                      listProduitCart: state ,
+                      methodShopping: BlocProvider.of<ShoppingDataBloc>(context).state
+                  ));
+                },
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    //TitleTextAligns(title: 'Detail de requist',) ,
+                    Text('Detail de Requist' , style:  Theme.of(context).textTheme.button.copyWith(color: Colors.black.withOpacity(0.7)),),
+                    for(var i = 0 ; i< itemsCart.length ; i++)  CardPhoneChope(
+                        image: itemsCart[i].produit.image ,
+                        title: itemsCart[i].produit.nomPhone,
+                        detail: itemsCart[i].produit.detail,
+                        ram: itemsCart[i].produit.ram,
+                        storage: itemsCart[i].produit.storage ,
+                        contitu: itemsCart[i].contituPay,
+                        price: itemsCart[i].produit.price,
+                        deletCard:  ()=> BlocProvider.of<BlocListDataCart>(context).add(EventDeletItemFromCart(i)) ,
+                      ),
 
-            ],
+
+                  ],
+                ),
+              );
+            }
           ),
         ),
         SizedBox(height: 10,) ,

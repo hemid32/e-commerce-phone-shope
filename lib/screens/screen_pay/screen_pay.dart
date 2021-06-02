@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:phoneshop/bloc/cartCalcul/bloc.dart';
+import 'package:phoneshop/bloc/cartScreenManage/bloc.dart';
 import 'package:phoneshop/bloc/manageData/puy/bloc.dart';
 import 'package:phoneshop/bloc/manageScreen/puy_screen/bloc.dart';
 import 'package:phoneshop/bloc/manageScreen/shoppingShoiMethods/bloc.dart';
@@ -40,7 +41,10 @@ class Buy extends StatelessWidget {
           BlocProvider<CalculCartBloc>(
             create: (BuildContext context) => CalculCartBloc(),
           ),
-
+          //BlocListDataCart
+          BlocProvider<BlocListDataCart>(
+            create: (BuildContext context) => BlocListDataCart(),
+          ),
         ],
       child:  Scaffold(
           body: Body(),

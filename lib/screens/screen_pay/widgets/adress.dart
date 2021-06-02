@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:phoneshop/bloc/cartScreenManage/bloc.dart';
+import 'package:phoneshop/bloc/cartScreenManage/event.dart';
 import 'package:phoneshop/bloc/manageData/puy/bloc.dart';
 import 'package:phoneshop/bloc/manageData/puy/event.dart';
 import 'package:phoneshop/bloc/manageScreen/puy_screen/bloc.dart';
@@ -83,6 +85,8 @@ class Addres extends StatelessWidget {
             'fine': true
 
           }) ;
+          BlocProvider.of<BlocListDataCart>(context).add(EventShowList()) ;
+
           BlocProvider.of<AdressDataBloc>(context).add(AddAdressData(addres)) ;
 
           BlocProvider.of<PuyScreenBloc>(context).add(ContinuShopping()) ;

@@ -3,6 +3,8 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:phoneshop/bloc/cartCalcul/bloc.dart';
+import 'package:phoneshop/bloc/cartScreenManage/bloc.dart';
 import 'package:phoneshop/bloc/manageScreen/detailProduit/bloc.dart';
 import 'package:phoneshop/bloc/manageScreen/home/bloc.dart';
 
@@ -19,6 +21,9 @@ class HomeScreen extends StatelessWidget {
         ),
         BlocProvider<BlocScreenDetailProduit>(
           create: (BuildContext context) => BlocScreenDetailProduit(),
+        ),
+        BlocProvider<BlocListDataCart>(
+          create: (BuildContext context) => BlocListDataCart(),
         ),
       ],
       child: Scaffold(
