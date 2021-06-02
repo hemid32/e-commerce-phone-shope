@@ -105,7 +105,8 @@ ListProduitsColors getProduitColors(){
       'imagePosterPhone': 'assets/images/RedmiNote10Pro-Bronze.png' ,
       'listProduits':  getProsuits().produits,// produitses['produits'] ,
       'contitu' : 100 ,
-      'nombrePay' : 15 ,
+      'nombrePay' : 6 ,
+      'typePhone': 'samsung'
 
     }),
     ProduitsColors.fromJson({
@@ -113,7 +114,9 @@ ListProduitsColors getProduitColors(){
       'imagePosterPhone': 'assets/images/samsung-galaxy-s8-4g-smartphone-png-favpng-qNm18RuFag7316FekDYk0Pqy4.jpg' ,
       'listProduits' : produitses['produits'] ,
       'contitu' : 100 ,
-      'nombrePay' : 15 ,
+      'nombrePay' : 4 ,
+      'typePhone': 'Alg'
+
 
     }),
     ProduitsColors.fromJson({
@@ -121,7 +124,9 @@ ListProduitsColors getProduitColors(){
       'imagePosterPhone': 'assets/images/iphone-x-samsung-galaxy-s8-iphone-7-smartphone-png-favpng-7ke4DBbj5kLrbQftMD6XuN56h.jpg' ,
       'listProduits' : produitses['produits'] ,
       'contitu' : 100 ,
-      'nombrePay' : 15 ,
+      'nombrePay' : 1 ,
+      'typePhone': 'XD'
+
 
     }),
     ProduitsColors.fromJson({
@@ -129,7 +134,9 @@ ListProduitsColors getProduitColors(){
       'imagePosterPhone': 'assets/images/poco.png' ,
       'listProduits' :  produitses['produits'] ,
       'contitu' : 100 ,
-      'nombrePay' : 15 ,
+      'nombrePay' : 2 ,
+      'typePhone': 'ALG'
+
 
     }),
     ProduitsColors.fromJson({
@@ -138,6 +145,8 @@ ListProduitsColors getProduitColors(){
       'listProduits' : produitses['produits'] ,
       'contitu' : 100 ,
       'nombrePay' : 15 ,
+      'typePhone': 'samsung'
+
 
     }),
 

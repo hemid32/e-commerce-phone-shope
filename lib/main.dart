@@ -5,6 +5,7 @@ import 'package:phoneshop/constant.dart';
 import 'package:phoneshop/model/hiveModel/hive_cart.dart';
 import 'package:phoneshop/screens/homescreen/homescreen.dart';
 import 'package:hive_flutter/hive_flutter.dart';
+import 'bloc/allProduitFilter/event.dart';
 import 'bloc/manageScreen/home/bloc.dart';
 import 'model/cart/services.dart';
 
@@ -21,11 +22,15 @@ void main() async   {
   var box = await Hive.openBox('ModelCart');
   //print('values ==${box.values}') ;
   //box.deleteFromDisk() ;
-
+  /*
   for(var i =0 ; i< box.values.length ; i++){
         print(' elemene from home === ${box.values.toList()[i]}') ;
         print(box.values.toList()[i].modelCart['produit']);
   }
+
+   */
+
+
 
 
 

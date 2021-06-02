@@ -9,8 +9,9 @@ class ProduitsColors {
   final List<Produit> listProduits ;
   final int contitu ;
   final int nombrePay ; // best saller
+  final String typePhone;
 
-  ProduitsColors({this.nomPhone, this.listProduits, this.contitu, this.imagePosterPhone, this.nombrePay});
+  ProduitsColors({this.nomPhone, this.listProduits, this.contitu, this.imagePosterPhone, this.nombrePay , this.typePhone});
 
   factory ProduitsColors.fromJson(Map<String , dynamic> json){
     return ProduitsColors(
@@ -18,7 +19,8 @@ class ProduitsColors {
         imagePosterPhone: json['imagePosterPhone'] ,
         listProduits: json['listProduits'] ,
         contitu : json['contitu'] ,
-        nombrePay :json['nombrePay']
+        nombrePay :json['nombrePay'] ,
+        typePhone :json['typePhone']
     );
   }
 
