@@ -12,7 +12,7 @@ class BlocFavoriteIs extends Bloc<EventFavoriteBloc ,int> {
   Stream<int> mapEventToState(EventFavoriteBloc event) async* {
     // TODO: implement mapEventToState
     IsTapOnFavEvent _resultEvent = event  ;
-    bool _result = await _resultEvent.isTap() ;
+    await _resultEvent.isTap() ;
     ServisesFavoriteHive  _service = new  ServisesFavoriteHive(id: null) ;
     List<int> itemFavorite = await _service.getItemFavorite() ;
     yield itemFavorite.length ;

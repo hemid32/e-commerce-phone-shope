@@ -8,14 +8,12 @@ class IsTapOnFavEvent extends EventFavoriteBloc {
 
   final  ProduitsColors produit ;
 
+  IsTapOnFavEvent(this.produit  );
 
-  IsTapOnFavEvent(this.produit);
 
-
-  isTap() async  {
-    FavoriteModelItem  _servises = new FavoriteModelItem(produit: produit) ;
-    bool _result = await _servises.onTapFav() ;
-    return _result  ;
+  Future<void>  isTap() async  {
+      FavoriteModelItem _servises = new FavoriteModelItem(produit: produit);
+       await _servises.onTapFav();
   }
 
 

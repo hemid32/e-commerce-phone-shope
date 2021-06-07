@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:phoneshop/bloc/cartScreenManage/bloc.dart';
 import 'package:phoneshop/bloc/cartScreenManage/event.dart';
+import 'package:phoneshop/bloc/favorite/listFavoite/bloc.dart';
+import 'package:phoneshop/bloc/favorite/listFavoite/event.dart';
 import 'package:phoneshop/bloc/manageScreen/home/bloc.dart';
 import 'package:phoneshop/bloc/manageScreen/home/events.dart';
 import 'package:phoneshop/constant.dart';
@@ -51,7 +53,11 @@ class BottomNavigationsBars extends StatelessWidget {
             builder: (_, state) {
               return IconButtonBottom(
                 icon:Icons.favorite,
-                onTap: ()=> BlocProvider.of<BlocHomeButtomBar>(context).add(GoToFavorite()),
+                onTap: (){
+                  BlocProvider.of<BlocFavoriteList>(context)
+                      .add(EventListItemsFavoriteShowList()) ;
+                  BlocProvider.of<BlocHomeButtomBar>(context).add(GoToFavorite());
+                  },
                 active:   (state.runtimeType) == Favorite ,
               );
             }
