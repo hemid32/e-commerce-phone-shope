@@ -4,8 +4,12 @@ import 'package:phoneshop/bloc/favorite/bloc.dart';
 import 'package:phoneshop/bloc/favorite/event.dart';
 import 'package:phoneshop/bloc/favorite/listFavoite/bloc.dart';
 import 'package:phoneshop/bloc/favorite/listFavoite/event.dart';
+import 'package:phoneshop/bloc/manageScreen/detailProduit/bloc.dart';
+import 'package:phoneshop/bloc/manageScreen/detailProduit/event.dart';
 import 'package:phoneshop/constant.dart';
 import 'package:phoneshop/model/produit/produit_colors.dart';
+import 'package:phoneshop/model/produit/servises.dart';
+import 'package:phoneshop/screens/detailProduit/detail_produit.dart';
 import 'package:phoneshop/screens/homescreen/componants/card_phone_favorite.dart';
 import 'package:phoneshop/screens/homescreen/componants/favorite_header.dart';
 import 'package:phoneshop/screens/homescreen/componants/search_and_icon_menu.dart';
@@ -29,6 +33,13 @@ class Favorite extends StatelessWidget {
                   margin: EdgeInsets.symmetric(horizontal: 20),
                   child: Divider()) ,
               for(var i =0 ; i< snapshot.produits.length ; i++)  CardPhoneChopeFavorite(
+                onTap: (){
+                  BlocProvider.of<BlocScreenDetailProduit>(context).add(EvensGoToProduit(indexProduit: 0 , produisColors: snapshot.produits[i] )) ;
+                  Navigator.push(context, MaterialPageRoute(builder: (_)=> BlocProvider.value(
+                    value: BlocProvider.of<BlocScreenDetailProduit>(context),
+                    child:  DetailProduit() ,
+                  )));
+                },
                 image: snapshot.produits[i].listProduits[0].image,
                 title: snapshot.produits[i].listProduits[0].nomPhone,
                 detail:snapshot.produits[i].listProduits[0].detail,
