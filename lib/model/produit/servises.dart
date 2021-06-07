@@ -101,51 +101,65 @@ ListProduitsColors getProduitColors(){
 
   List<ProduitsColors> list = [
     ProduitsColors.fromJson({
+      'id' : 1 ,
       'nomPhone': 'redmi 105' ,
       'imagePosterPhone': 'assets/images/RedmiNote10Pro-Bronze.png' ,
       'listProduits':  getProsuits().produits,// produitses['produits'] ,
       'contitu' : 100 ,
       'nombrePay' : 6 ,
-      'typePhone': 'samsung'
+      'typePhone': 'samsung' ,
+      'isFavorite' : false ,
 
     }),
     ProduitsColors.fromJson({
+      'id' : 2  ,
       'nomPhone': 'redmi 106' ,
       'imagePosterPhone': 'assets/images/samsung-galaxy-s8-4g-smartphone-png-favpng-qNm18RuFag7316FekDYk0Pqy4.jpg' ,
       'listProduits' : produitses['produits'] ,
       'contitu' : 100 ,
       'nombrePay' : 4 ,
-      'typePhone': 'Alg'
+      'typePhone': 'Alg' ,
+      'isFavorite' : false ,
+
 
 
     }),
     ProduitsColors.fromJson({
+      'id' : 3 ,
       'nomPhone': 'redmi 107' ,
       'imagePosterPhone': 'assets/images/iphone-x-samsung-galaxy-s8-iphone-7-smartphone-png-favpng-7ke4DBbj5kLrbQftMD6XuN56h.jpg' ,
       'listProduits' : produitses['produits'] ,
       'contitu' : 100 ,
       'nombrePay' : 1 ,
-      'typePhone': 'XD'
+      'typePhone': 'XD' ,
+        'isFavorite' : false ,
+
 
 
     }),
     ProduitsColors.fromJson({
+      'id' : 4  ,
       'nomPhone': 'redmi 108' ,
       'imagePosterPhone': 'assets/images/poco.png' ,
       'listProduits' :  produitses['produits'] ,
       'contitu' : 100 ,
       'nombrePay' : 2 ,
-      'typePhone': 'ALG'
+      'typePhone': 'ALG' ,
+      'isFavorite' : false ,
+
 
 
     }),
     ProduitsColors.fromJson({
+      'id' : 5  ,
       'nomPhone': 'redmi 109' ,
       'imagePosterPhone': 'assets/images/RedmiNote10Pro-Bronze.png' ,
       'listProduits' : produitses['produits'] ,
       'contitu' : 100 ,
       'nombrePay' : 15 ,
-      'typePhone': 'samsung'
+      'typePhone': 'samsung' ,
+      'isFavorite' : false ,
+
 
 
     }),

@@ -8,18 +8,28 @@ import 'package:hive_flutter/hive_flutter.dart';
 import 'bloc/allProduitFilter/event.dart';
 import 'bloc/manageScreen/home/bloc.dart';
 import 'model/cart/services.dart';
+import 'model/favorite/model.dart';
+import 'model/hiveModel/favorite.dart';
 
 
 void main() async   {
-  //Bloc.observer = SimpleBlocObserver();
+  Bloc.observer = SimpleBlocObserver();
   await Hive.initFlutter();
   //final appDocumentDir = await path_provider.getApplicationDocumentsDirectory();
 
   Hive
+    ..registerAdapter(FavoriteHiveAdapter())
     ..registerAdapter(CartHiveAdapter()) ;
 
   //print(itemsCart()[0].produit) ;
   var box = await Hive.openBox('ModelCart');
+  var box2 = await Hive.openBox('FavoriteHive');
+
+  //print('resutl from getItemFavorite === ===> ${box2.values.toList()}');
+  var a = ServisesFavoriteHive() ;
+  //print(box2.values.toList().isEmpty);
+  print( await   a.getItemFavorite()) ;
+  //box2.deleteFromDisk() ;
   //print('values ==${box.values}') ;
   //box.deleteFromDisk() ;
   /*

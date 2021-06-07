@@ -6,6 +6,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:phoneshop/bloc/allProduitFilter/bloc.dart';
 import 'package:phoneshop/bloc/cartCalcul/bloc.dart';
 import 'package:phoneshop/bloc/cartScreenManage/bloc.dart';
+import 'package:phoneshop/bloc/favorite/bloc.dart';
 import 'package:phoneshop/bloc/manageScreen/detailProduit/bloc.dart';
 import 'package:phoneshop/bloc/manageScreen/home/bloc.dart';
 
@@ -29,6 +30,10 @@ class HomeScreen extends StatelessWidget {
         BlocProvider<BlocAllProduitFilter>(
           create: (BuildContext context) => BlocAllProduitFilter(),
         ),
+        BlocProvider<BlocFavoriteIs>(
+          create: (BuildContext context) => BlocFavoriteIs(),
+        ),
+
       ],
       child: Scaffold(
         body:   Body(),

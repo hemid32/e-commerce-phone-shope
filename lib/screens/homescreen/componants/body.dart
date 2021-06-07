@@ -19,6 +19,8 @@ class Body extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    //BlocProvider.of<BlocFavoriteManage>(context).add(EventFav(idItem: null));
+
     Size size = MediaQuery.of(context).size ;
 
     return SingleChildScrollView(
