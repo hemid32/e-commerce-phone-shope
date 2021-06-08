@@ -11,11 +11,11 @@ class FavoriteModelItem {
     Future<bool> ifFavorite() async  {
     ServisesFavoriteHive  service = new  ServisesFavoriteHive(id: null) ;
     List<int> itemFavorite = await service.getItemFavorite() ;
-    print('List <id> == $itemFavorite') ;
+    //print('List <id> == $itemFavorite') ;
     if(itemFavorite.contains(produit.id) ){
       fav = true ;
     }
-    print('fav ======$fav') ;
+    //print('fav ======$fav') ;
     return fav ;
   }
 

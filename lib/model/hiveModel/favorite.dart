@@ -52,7 +52,7 @@ class ServisesFavoriteHive {
       //print('resutl from getItemFavorite === ===> ${box2.values.toList()}');
 
       List<int> result = box2.values.toList()[0].id;
-      print('resutl from getItemFavorite === $result');
+      //print('resutl from getItemFavorite === $result');
       return result ?? [];
     }catch(e){
       return [] ;

@@ -1,5 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:phoneshop/bloc/search/bloc.dart';
+import 'package:phoneshop/bloc/search/event.dart';
+
+
+
+
+
 
 class FieldTextAndIconSearch extends StatelessWidget {
   const FieldTextAndIconSearch({
@@ -26,24 +34,27 @@ class FieldTextAndIconSearch extends StatelessWidget {
                   color: Colors.black.withOpacity(0.04)
               ),
               child: TextFormField(
+                onChanged: (text){
+                  BlocProvider.of<BlocEventSearch>(context).add(EventListSearch(text));
+                },
                 autofocus: true,
                 decoration: InputDecoration(
                     hintText: 'Search produit' ,
-                    hintStyle: Theme.of(context).textTheme.button.copyWith(
+                    hintStyle:
+                    Theme.of(context).textTheme.button.copyWith(
                         color: Colors.black.withOpacity(0.23)
                     )
-
                 ),
               ),
             ),
-
           ) ,
           Expanded(
               child: GestureDetector(
                 onTap: ()=> Navigator.pop(context),
                 child: Icon(Icons.arrow_forward_ios , size:  30, color: Colors.black.withOpacity(0.4),
                 ),
-              ))
+              )
+          )
 
         ],
       ),

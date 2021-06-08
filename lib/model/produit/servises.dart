@@ -102,7 +102,7 @@ ListProduitsColors getProduitColors(){
   List<ProduitsColors> list = [
     ProduitsColors.fromJson({
       'id' : 1 ,
-      'nomPhone': 'redmi 105' ,
+      'nomPhone': 'samsung' ,
       'imagePosterPhone': 'assets/images/RedmiNote10Pro-Bronze.png' ,
       'listProduits':  getProsuits().produits,// produitses['produits'] ,
       'contitu' : 100 ,
@@ -113,7 +113,7 @@ ListProduitsColors getProduitColors(){
     }),
     ProduitsColors.fromJson({
       'id' : 2  ,
-      'nomPhone': 'redmi 106' ,
+      'nomPhone': 'alge' ,
       'imagePosterPhone': 'assets/images/samsung-galaxy-s8-4g-smartphone-png-favpng-qNm18RuFag7316FekDYk0Pqy4.jpg' ,
       'listProduits' : produitses['produits'] ,
       'contitu' : 100 ,
@@ -126,7 +126,7 @@ ListProduitsColors getProduitColors(){
     }),
     ProduitsColors.fromJson({
       'id' : 3 ,
-      'nomPhone': 'redmi 107' ,
+      'nomPhone': 'alge' ,
       'imagePosterPhone': 'assets/images/iphone-x-samsung-galaxy-s8-iphone-7-smartphone-png-favpng-7ke4DBbj5kLrbQftMD6XuN56h.jpg' ,
       'listProduits' : produitses['produits'] ,
       'contitu' : 100 ,
