@@ -5,6 +5,7 @@ import 'package:phoneshop/constant.dart';
 import 'package:phoneshop/model/hiveModel/hive_cart.dart';
 import 'package:phoneshop/screens/homescreen/homescreen.dart';
 import 'package:hive_flutter/hive_flutter.dart';
+import 'package:phoneshop/screens/loginorRegester/login_or_regester.dart';
 import 'bloc/allProduitFilter/event.dart';
 import 'bloc/manageScreen/home/bloc.dart';
 import 'model/cart/services.dart';
@@ -70,7 +71,7 @@ class MyApp extends StatelessWidget {
     scaffoldBackgroundColor: kBackgroundColor,
     primarySwatch: Colors.blue,
       ),
-      home: HomeScreen(),
+      home:  LoginOrRegester()// HomeScreen(),
     );
   }
 }
