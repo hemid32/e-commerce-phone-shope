@@ -73,3 +73,46 @@ class CostomPath3 extends CustomClipper<Path>{
   }
 
 }
+
+
+class CostomPath10 extends CustomClipper<Path>{
+  @override
+  Path getClip(Size size) {
+    // TODO: implement getClip
+    Path path  = Path()  ;
+    path.lineTo(0, size.height) ;
+    path.lineTo(size.width *0.4, size.height) ;
+    path.quadraticBezierTo(-200, size.height *0.3, size.width, size.height *0.15);
+    path.lineTo(size.width, 0) ;
+
+    return path ;
+
+  }
+
+  @override
+  bool shouldReclip(covariant CustomClipper<Path> oldClipper) {
+    // TODO: implement shouldReclip
+    return true ;
+  }
+}
+
+class CostomPath11 extends CustomClipper<Path>{
+  @override
+  Path getClip(Size size) {
+    // TODO: implement getClip
+    Path path  = Path()  ;
+    path.lineTo(0, size.height) ;
+    path.lineTo(size.width *0.5, size.height) ;
+    path.quadraticBezierTo(-200, size.height *0.4, size.width, size.height *0.18);
+    path.lineTo(size.width, 0) ;
+
+    return path ;
+
+  }
+
+  @override
+  bool shouldReclip(covariant CustomClipper<Path> oldClipper) {
+    // TODO: implement shouldReclip
+    return true ;
+  }
+}

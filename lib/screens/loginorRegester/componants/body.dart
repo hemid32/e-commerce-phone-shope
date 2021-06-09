@@ -4,6 +4,8 @@ import 'package:phoneshop/constant.dart';
 import 'package:phoneshop/screens/loginorRegester/componants/icon_sotial.dart';
 import 'package:phoneshop/screens/loginorRegester/widget/log_in.dart';
 import 'package:phoneshop/screens/loginorRegester/widget/register.dart';
+import 'package:phoneshop/screens/loginorRegester/widget/register_form.dart';
+import 'package:phoneshop/screens/screen_pay/componants/field_text.dart';
 
 import 'button_costom_login.dart';
 import 'costom_path.dart';
@@ -18,10 +20,11 @@ class Body extends StatelessWidget {
         children: [
           RigesterOrLogin() ,
           //Login() ,
+          //Register()
+
         ],
       ),
     );
   }
 }
-
 
