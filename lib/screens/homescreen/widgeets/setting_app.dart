@@ -1,9 +1,12 @@
 
 
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:phoneshop/bloc/userManagze/userVirifaid/bloc.dart';
 import 'package:phoneshop/screens/homescreen/componants/costom_listTile.dart';
 import 'package:phoneshop/screens/homescreen/componants/costom_list_tile_switch.dart';
 import 'package:phoneshop/screens/homescreen/componants/header_setting.dart';
+import 'package:phoneshop/screens/loginorRegester/login_or_regester.dart';
 
 class SettingAPP extends StatelessWidget {
   const SettingAPP({
@@ -15,7 +18,20 @@ class SettingAPP extends StatelessWidget {
     return Column(
       children: [
         HeaderSetting(titre:  'Setting App',) ,
-        CostomListTile(title: 'Login' , icon: Icons.person,) ,
+       BlocBuilder<BlocUserVerifaid , bool >(
+          builder: (context, state) {
+            print('state user === $state') ;
+            return CostomListTile(title:  state ? 'Account' : 'Login & register' , icon: Icons.person, onTap: (){
+
+              if(!state){
+                Navigator.push(context, MaterialPageRoute(builder: (context)=> LoginOrRegester())) ;
+
+
+              }
+
+            },);
+          }
+        ) ,
         Container(
           alignment: Alignment.bottomLeft,
           margin: EdgeInsets.symmetric(horizontal: 20 , vertical:  20),

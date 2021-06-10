@@ -1,4 +1,5 @@
 import 'package:bloc/bloc.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 import 'package:phoneshop/constant.dart';
@@ -16,7 +17,9 @@ import 'model/hiveModel/favorite.dart';
 void main() async   {
   Bloc.observer = SimpleBlocObserver();
   await Hive.initFlutter();
-  //final appDocumentDir = await path_provider.getApplicationDocumentsDirectory();
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+
 
   Hive
     ..registerAdapter(FavoriteHiveAdapter())
@@ -71,7 +74,7 @@ class MyApp extends StatelessWidget {
     scaffoldBackgroundColor: kBackgroundColor,
     primarySwatch: Colors.blue,
       ),
-      home:  LoginOrRegester()// HomeScreen(),
+      home:  HomeScreen(),
     );
   }
 }

@@ -6,6 +6,8 @@ import 'package:phoneshop/bloc/favorite/listFavoite/bloc.dart';
 import 'package:phoneshop/bloc/favorite/listFavoite/event.dart';
 import 'package:phoneshop/bloc/manageScreen/home/bloc.dart';
 import 'package:phoneshop/bloc/manageScreen/home/events.dart';
+import 'package:phoneshop/bloc/userManagze/userVirifaid/bloc.dart';
+import 'package:phoneshop/bloc/userManagze/userVirifaid/event.dart';
 import 'package:phoneshop/constant.dart';
 import 'package:phoneshop/screens/homescreen/widgeets/card.dart';
 import 'package:phoneshop/screens/homescreen/widgeets/favorite.dart';
@@ -78,7 +80,12 @@ class BottomNavigationsBars extends StatelessWidget {
             builder: (_, state) {
               return IconButtonBottom(
                 icon:Icons.person,
-                onTap: ()=> BlocProvider.of<BlocHomeButtomBar>(context).add(GoToSetting()),
+                onTap: (){
+
+                  BlocProvider.of<BlocHomeButtomBar>(context).add(GoToSetting());
+                  BlocProvider.of<BlocUserVerifaid>(context).add(EventsUserVerified());
+
+                  },
                 active:  (state.runtimeType) == SettingAPP,
               );
             }

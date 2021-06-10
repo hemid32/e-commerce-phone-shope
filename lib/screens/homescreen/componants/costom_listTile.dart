@@ -20,7 +20,7 @@ class CostomListTile extends StatelessWidget {
           children: [
             Icon(icon , color: Colors.black.withOpacity(0.5), ) ,
             SizedBox(width: 30,) ,
-            Text('Log in ' , style: Theme.of(context).textTheme.button.copyWith(
+            Text('$title ' , style: Theme.of(context).textTheme.button.copyWith(
                 color: Colors.black.withOpacity(0.5)
             ),) ,
             Spacer() ,

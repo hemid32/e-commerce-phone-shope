@@ -10,6 +10,7 @@ import 'package:phoneshop/bloc/favorite/bloc.dart';
 import 'package:phoneshop/bloc/favorite/listFavoite/bloc.dart';
 import 'package:phoneshop/bloc/manageScreen/detailProduit/bloc.dart';
 import 'package:phoneshop/bloc/manageScreen/home/bloc.dart';
+import 'package:phoneshop/bloc/userManagze/userVirifaid/bloc.dart';
 
 import 'componants/body.dart';
 import 'componants/buttomNavigationBar.dart';
@@ -36,6 +37,9 @@ class HomeScreen extends StatelessWidget {
         ),
         BlocProvider<BlocFavoriteList>(
                   create: (BuildContext context) => BlocFavoriteList(),
+                ),
+        BlocProvider<BlocUserVerifaid>(
+                  create: (BuildContext context) => BlocUserVerifaid(),
                 ),
 
       ],

@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "651474041084",
+    "project_id": "phonshop-bca4f",
+    "storage_bucket": "phonshop-bca4f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:651474041084:android:d700c1dd9fcf34e2d9ff79",
+        "android_client_info": {
+          "package_name": "dz.hemidi.phoneshop"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "651474041084-41bcprlera7ia19fvcqbgva86oggmds6.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "dz.hemidi.phoneshop",
+            "certificate_hash": "76b0795f8882a3398b603e37386870f20597b4ed"
+          }
+        },
+        {
+          "client_id": "651474041084-ajdohbilqsoe4g9b2q2gf1d233k063hs.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBzS-Hz_HQcZ7qSSmw2-aIglJIEgPQRZvI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "651474041084-ajdohbilqsoe4g9b2q2gf1d233k063hs.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
