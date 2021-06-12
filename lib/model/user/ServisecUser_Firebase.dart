@@ -2,27 +2,61 @@
 
 
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:phoneshop/model/user/user.dart';
 
 class UserFire {
 
-  final String email ;
-  final String password ;
+  //final String email ;
+  //final String password ;
+  final  UserLocalModel user ;
 
-  UserFire({@required this.email,@required this.password });
+  UserFire({@required this.user });
 
-  creatUser(){
-    FirebaseAuth.instance.createUserWithEmailAndPassword(email: email, password: password).then((value){
-      return true ;
-    }).onError((error, stackTrace) {
-      print('eruur creatUser ==> $error') ;
-      return false ;
-    });
+
+  creatDataUser() async  {
+    var _userCreat =  await  creatUser() ;
+    print('_userCreat =====$_userCreat') ;
+    if(_userCreat != 'Errur' && _userCreat != null  ) {
+      CollectionReference _users = FirebaseFirestore.instance.collection(
+          'users');
+      try {
+        _users.add({
+          'name': user.name,
+          'id': _userCreat,
+          'nombrePhon': user.nombrePhon,
+          'email': user.email,
+        });
+        return true ;
+      }catch(e){
+        print('no add user erurr = $e') ;
+        return false ;
+      }
+    }else {
+      return false;
+    }
+
   }
 
-  login(){
-    FirebaseAuth.instance.signInWithEmailAndPassword(email: email, password: password).then((value){
+
+  
+
+
+  creatUser() async {
+    var _result  ;
+    await FirebaseAuth.instance.createUserWithEmailAndPassword(email: user.email, password: user.password).then((value){
+      _result =  value.user.uid ;
+    }).onError((error, stackTrace) {
+      print('eruur creatUser  from ceatUser 44 lin ===> $error') ;
+     _result =  'Errur' ;
+    });
+    return _result ;
+  }
+
+  login() async {
+   await  FirebaseAuth.instance.signInWithEmailAndPassword(email: user.email, password: user.password).then((value){
       return true ;
     }).onError((error, stackTrace) {
       print('eruur login ==> $error') ;

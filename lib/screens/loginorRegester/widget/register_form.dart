@@ -1,16 +1,32 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:phoneshop/bloc/register/bloc.dart';
+import 'package:phoneshop/bloc/register/event.dart';
+import 'package:phoneshop/bloc/userManagze/formerRegister/termAndCondition/bloc.dart';
+import 'package:phoneshop/bloc/userManagze/formerRegister/termAndCondition/event.dart';
+import 'package:phoneshop/bloc/userManagze/screenLoginRegister/bloc.dart';
+import 'package:phoneshop/bloc/userManagze/screenLoginRegister/event.dart';
+import 'package:phoneshop/bloc/validatorTaxtField/bloc.dart';
+import 'package:phoneshop/bloc/validatorTaxtField/event.dart';
 import 'package:phoneshop/constant.dart';
+import 'package:phoneshop/model/user/user.dart';
+import 'package:phoneshop/screens/loginorRegester/componants/button_register.dart';
 import 'package:phoneshop/screens/loginorRegester/componants/costom_path.dart';
 import 'package:phoneshop/screens/screen_pay/componants/field_text.dart';
 
 class Register extends StatelessWidget {
-  const Register({
+   const Register({
     Key key,
   }) : super(key: key);
 
-
   @override
   Widget build(BuildContext context) {
+    UserLocalModel _user ;
+    String _email ;
+    String  _name ;
+    String _phone ;
+    String _password ;
+    bool allFormIsCompleted ;
     Size size = MediaQuery.of(context).size ;
 
     return Container(
@@ -18,6 +34,8 @@ class Register extends StatelessWidget {
       height: size.height,
       child: Stack(
         children: [
+
+
           ClipPath(
             clipper: CostomPath10(),
             child: Container(
@@ -69,33 +87,70 @@ class Register extends StatelessWidget {
             left: size.width *0.2 ,
             right: 10  ,
             top: size.height * 0.35 ,
-            child: FieldTextGet(title: 'Full name',onChange: (valur){
+            child: BlocBuilder<ValidatorTexxtBlocString , dynamic >(
+              builder: (context, state) {
+                return FieldTextGet(title: 'Full name',onChange: (valur){
 
-            }, ),
+                  BlocProvider.of<ValidatorTexxtBlocString>(context).add(TextFieldValidatorEventNome(
+                    valur: valur ,
+                    titleErurr: 'a very short name ! '
+                  )) ;
+                  _name = valur ;
+                }, validErurr: state, );
+              }
+            ),
           ) ,
           Positioned(
             left: size.width *0.2 ,
             right: 10  ,
             top: size.height * 0.35 + 60 ,
-            child: FieldTextGet(title: 'Nombre Phone',onChange: (valur){
-
-            }, ),
+            child: BlocBuilder<ValidatorTexxtBlocPhoneNombre , dynamic >(
+              builder: (context, state) {
+                return FieldTextGet(title: 'Nombre Phone',onChange: (valur){
+                  BlocProvider.of<ValidatorTexxtBlocPhoneNombre>(context).add(TextFieldValidatorEventPhoneNombre(
+                    valur: valur ,
+                    titleErurr:  'wrong number !',
+                  )) ;
+                  _phone = valur ;
+                },validErurr: state , );
+              }
+            ),
           ) ,
           Positioned(
             left: size.width *0.20 ,
             right: 10  ,
             top: size.height * 0.35 + 120 ,
-            child: FieldTextGet(title: 'Email',onChange: (valur){
+            child: BlocBuilder<ValidatorTexxtBlocPhoneEmail , dynamic >(
+              builder: (context, state) {
+                return FieldTextGet(title: 'Email',onChange: (valur){
+                  //ValidatorTexxtBlocPhoneEmail
+                  BlocProvider.of<ValidatorTexxtBlocPhoneEmail>(context).add(TextFieldValidatorEventPhoneEmail(
+                    valur: valur ,
+                    titleErurr:  'Email error !',
+                  )) ;
+                  _email = valur ;
 
-            }, ),
+                }, validErurr: state, );
+              }
+            ),
           ) ,
           Positioned(
             left: size.width *0.2,
             right: 10  ,
             top: size.height * 0.35 + 180 ,
-            child: FieldTextGet(title: 'Password',onChange: (valur){
+            child: BlocBuilder<ValidatorTexxtBlocPassword  , dynamic >(
+              builder: (context, state) {
+                return FieldTextGet(title: 'Password',onChange: (valur){
 
-            }, ),
+                  //ValidatorTexxtBlocPassword
+                  BlocProvider.of<ValidatorTexxtBlocPassword>(context).add(TextFieldValidatorEventPassword(
+                    valur: valur ,
+                    titleErurr:  'At least 8 characters !',
+                  )) ;
+                  _password = valur ;
+                }, secure: true, validErurr: state, );
+              }
+            ),
           ) ,
 
           Positioned(
@@ -106,7 +161,18 @@ class Register extends StatelessWidget {
 
               child: Row(
                 children: [
-                  Checkbox(value: false, onChanged: (v){}) ,
+                  BlocBuilder<BlocTermaAndConditionChek , bool >(
+                    builder: (context, state) {
+
+                      return  Checkbox(
+                        activeColor: kPrimaryColor,
+                          value: state, onChanged: (value){
+                        BlocProvider.of<BlocTermaAndConditionChek>(context).add(EventChekTermsItem(
+                          value
+                        )) ;
+                      });
+                    }
+                  ) ,
                   Text('agree with Terms & conditions', style: Theme.of(context).textTheme.button.copyWith(
                       color: kPrimaryColor
                   ),)
@@ -121,37 +187,37 @@ class Register extends StatelessWidget {
             //left: size.width *0.25,
             right: 20  ,
             bottom: 20 ,
+            child: ButtonRegister(
+              onTap: (){
+                _user = UserLocalModel.fromJson({
+                  'name' : _name ,
+                  'email' : _email ,
+                  'password' : _password ,
+                  'nombrePhon' : _phone ,
+                  'image' : 'null'
+                });
+                allFormIsCompleted = true ;
+
+                BlocProvider.of<BlocRegisterUser>(context).add(EventsRegisters(
+                  user: _user ,
+                  allFormIsCompletedTrue: allFormIsCompleted ,
+                )) ;
+
+
+              },
+            ),
+          ) ,
+          Positioned(
+            top: 0,
             child: GestureDetector(
-              onTap: (){},
+              onTap: ()=> BlocProvider.of<BlocScreenLoginRegisterManage>(context).add(EventScreenRegisterOrLogin()),
               child: Container(
-                alignment: Alignment.center,
-                width: size.width *0.3 ,
-                height: 40 ,
-                decoration: BoxDecoration(
-                  color: kPrimaryColor ,
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.black.withOpacity(0.4) ,
-                      blurRadius: 5 ,
-
-
-
-                    )
-                  ] ,
-                  borderRadius:  BorderRadius.circular(20) ,
-
-                ),
-                child: Text('Register'
-                  , style:
-                  Theme.of(context).textTheme.button.copyWith(
-                      color: Colors.white ,
-                      fontSize: 20
-                  )
-                  ,
-                ),
+                alignment: Alignment.topLeft,
+                margin: EdgeInsets.only(top: 40 , left: 20 , right:  20 ),
+                child: Icon(Icons.arrow_back , size: 30, color: Colors.white,),
               ),
             ),
-          )
+          ),
 
 
 
@@ -160,5 +226,4 @@ class Register extends StatelessWidget {
     );
   }
 }
-
 

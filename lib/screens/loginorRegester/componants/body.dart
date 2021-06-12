@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:phoneshop/bloc/userManagze/screenLoginRegister/bloc.dart';
 import 'package:phoneshop/constant.dart';
 import 'package:phoneshop/screens/loginorRegester/componants/icon_sotial.dart';
 import 'package:phoneshop/screens/loginorRegester/widget/log_in.dart';
@@ -18,9 +20,13 @@ class Body extends StatelessWidget {
     return SingleChildScrollView(
       child: Column(
         children: [
-          RigesterOrLogin() ,
+          //RigesterOrLogin() ,
           //Login() ,
           //Register()
+          BlocBuilder<BlocScreenLoginRegisterManage ,  Widget>(
+              builder: (context ,  stats){
+            return stats ;
+          })
 
         ],
       ),

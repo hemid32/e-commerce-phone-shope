@@ -46,3 +46,18 @@ class ValidatorTexxtBlocPhoneEmail extends Bloc<EventsTextFeild, dynamic> {
     }
   }
 }
+
+
+class ValidatorTexxtBlocPassword  extends Bloc<EventsTextFeild, dynamic> {
+  /// {@macro counter_bloc}
+  ValidatorTexxtBlocPassword() : super(null);
+  @override
+  Stream<String> mapEventToState(EventsTextFeild event) async* {
+    //print(event.runtimeType) ;
+    if(event.runtimeType == TextFieldValidatorEventPassword ){
+      TextFieldValidatorEventPassword valid =event ;
+      //print(event) ;
+      yield valid.validator() ;
+    }
+  }
+}

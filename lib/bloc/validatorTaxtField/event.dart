@@ -51,5 +51,18 @@ class TextFieldValidatorEventPhoneEmail extends EventsTextFeild {
       return null ;
   }
 
+}
+class TextFieldValidatorEventPassword extends EventsTextFeild {
+  final String valur ;
+  final String titleErurr ;
+  TextFieldValidatorEventPassword({this.valur , this.titleErurr});
+  validator(){
+    //print('length ==== ${this.valur.length}') ;
+    if( this.valur.length < 8  ){
+      return this.titleErurr ;
+    }
+    else
+      return null ;
+  }
 
 }

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:phoneshop/constant.dart';
 import 'package:phoneshop/screens/loginorRegester/componants/button_costom_login.dart';
 import 'package:phoneshop/screens/loginorRegester/componants/costom_path.dart';
+import 'package:phoneshop/screens/loginorRegester/componants/header_login.dart';
 import 'package:phoneshop/screens/loginorRegester/componants/logo_text_header.dart';
 import 'package:phoneshop/screens/screen_pay/componants/field_text.dart';
 
@@ -38,8 +39,7 @@ class Login extends StatelessWidget {
                   ),
                 ),
 
-                child: TextTileHeader(
-                  logo: 'assets/icons/icons8-samsung.svg',
+                child: TextTileHeaderLogin(
                   title: 'Login !',
                   details: 'Log in to your account or create a new account on the store ',
                 ),

@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:phoneshop/bloc/userManagze/screenLoginRegister/bloc.dart';
+import 'package:phoneshop/bloc/userManagze/screenLoginRegister/event.dart';
 import 'package:phoneshop/constant.dart';
 
 import 'button_costom_login.dart';
@@ -28,13 +31,13 @@ class IconSotialAndButtons extends StatelessWidget {
           ButtonCotomLogIn(
             title: 'LOGIN',
             color: kPrimaryColor,
-            onTap: (){},
+            onTap: ()=> BlocProvider.of<BlocScreenLoginRegisterManage>(context).add(EventScreenLogin()),
           ),
           SizedBox(height: 15,) ,
           ButtonCotomLogIn(
             title: 'REGISTER',
             color: Colors.red.withOpacity(0.8),
-            onTap: (){},
+            onTap: ()=> BlocProvider.of<BlocScreenLoginRegisterManage>(context).add(EventScreenRegister()),
           ),
 
           Spacer() ,
