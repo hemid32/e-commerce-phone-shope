@@ -12,6 +12,8 @@ import 'package:phoneshop/constant.dart';
 import 'package:phoneshop/model/user/user.dart';
 import 'package:phoneshop/screens/loginorRegester/componants/button_register.dart';
 import 'package:phoneshop/screens/loginorRegester/componants/costom_path.dart';
+import 'package:phoneshop/screens/loginorRegester/componants/register_r_design.dart';
+import 'package:phoneshop/screens/loginorRegester/componants/test_fiald_and_button_verifaid.dart';
 import 'package:phoneshop/screens/screen_pay/componants/field_text.dart';
 
 class Register extends StatelessWidget {
@@ -60,28 +62,7 @@ class Register extends StatelessWidget {
             top: size.height * 0.15,
             left: 0,
             right: 0,
-            child: Container(
-              padding: EdgeInsets.all(5),
-              width: size.width *0.35,
-              height:size.width *0.35 ,
-              decoration: BoxDecoration(
-                color: Colors.white.withOpacity(0.5) ,
-                shape: BoxShape.circle ,
-              ),
-              child: Container(
-                alignment: Alignment.center,
-                decoration:BoxDecoration(
-                  color: kPrimaryColor ,
-                  shape: BoxShape.circle ,
-
-                ),
-                child: Text('R' , style: Theme.of(context).textTheme.button.copyWith(
-
-                  color: Colors.white.withOpacity(0.23),
-                  fontSize:  size.width *0.30 ,
-                ),),
-              ),
-            ),
+            child: logoRdesign(),
           ),
           Positioned(
             left: size.width *0.2 ,
@@ -106,13 +87,13 @@ class Register extends StatelessWidget {
             top: size.height * 0.35 + 60 ,
             child: BlocBuilder<ValidatorTexxtBlocPhoneNombre , dynamic >(
               builder: (context, state) {
-                return FieldTextGet(title: 'Nombre Phone',onChange: (valur){
+                return FieldTextGetAndVerifeid(title: 'Nombre Phone',onChange: (valur){
                   BlocProvider.of<ValidatorTexxtBlocPhoneNombre>(context).add(TextFieldValidatorEventPhoneNombre(
                     valur: valur ,
                     titleErurr:  'wrong number !',
                   )) ;
                   _phone = valur ;
-                },validErurr: state , );
+                },validErurr: state , color: kPrimaryColor, titleButton: 'verifaid', onTapButton: ()=>_showMyDialogSandCod(context, '545454'),);
               }
             ),
           ) ,
@@ -204,6 +185,8 @@ class Register extends StatelessWidget {
                 )) ;
 
 
+
+
               },
             ),
           ) ,
@@ -225,5 +208,93 @@ class Register extends StatelessWidget {
       ),
     );
   }
+}
+
+
+Future<void> _showMyDialog(contextt , nombre) async {
+  return showDialog<void>(
+    context: contextt,
+    barrierDismissible: false, // user must tap button!
+    builder: (BuildContext context) {
+      return AlertDialog(
+        title: Text('Verify the number'),
+        content: SingleChildScrollView(
+          child: Column(
+            children: <Widget>[
+              //Text('This is a demo alert dialog.'),
+              Text('*Type the code here'),
+
+              TextFormField(
+
+                decoration: InputDecoration(
+                  labelText: 'Type the code here' , 
+                  labelStyle: Theme.of(context).textTheme.button.copyWith(
+                    color: Colors.black.withOpacity(0.4)
+                  )
+                ),
+              )
+
+            ],
+          ),
+        ),
+        actions: <Widget>[
+          TextButton(
+            child: Text('Cencel'),
+            onPressed: () {
+              print('Confirmed');
+              Navigator.of(context).pop();
+            },
+          ),
+          TextButton(
+            child: Text('Confirmed'),
+            onPressed: () {
+              Navigator.of(context).pop();
+            },
+          ),
+        ],
+      );
+    },
+  );
+}
+
+
+Future<void> _showMyDialogSandCod(contextt , nambre ) async {
+  return showDialog<void>(
+    context: contextt,
+    barrierDismissible: false, // user must tap button!
+    builder: (BuildContext context) {
+      return AlertDialog(
+        title: Text('Send verification code'),
+        content: SingleChildScrollView(
+          child: Column(
+            children: <Widget>[
+              //Text('This is a demo alert dialog.'),
+              Text('We will send you a verification code to the number : $nambre'),
+
+
+
+            ],
+          ),
+        ),
+        actions: <Widget>[
+          TextButton(
+            child: Text('sand'),
+            onPressed: () {
+              print('Cencel');
+              Navigator.of(context).pop();
+            },
+          ),
+          TextButton(
+            child: Text('Sand'),
+            onPressed: () {
+              Navigator.of(context).pop();
+              _showMyDialog(contextt, nambre) ;
+
+            },
+          ),
+        ],
+      );
+    },
+  );
 }
 

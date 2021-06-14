@@ -19,7 +19,9 @@ class UserFire {
   creatDataUser() async  {
     var _userCreat =  await  creatUser() ;
     print('_userCreat =====$_userCreat') ;
-    if(_userCreat != 'Errur' && _userCreat != null  ) {
+    var t =  await varifaidNombre() ;
+    print('rification nombre == $t') ;
+    if(_userCreat != 'Errur' && _userCreat != null  && t != null  ) {
       CollectionReference _users = FirebaseFirestore.instance.collection(
           'users');
       try {
@@ -40,13 +42,28 @@ class UserFire {
 
   }
 
+  varifaidNombre()async {
+    await FirebaseAuth.instance.verifyPhoneNumber(
+      phoneNumber: '+213665489218',
+      verificationCompleted: (PhoneAuthCredential credential) async  {print('verificationCompleted credential ====> ===> $credential') ; },
+      verificationFailed: (FirebaseAuthException e) async  {print('verificationId feild ===$e') ; },
+      codeSent: (String verificationId, int resendToken) async  {print('cod is send verificationId ========> =====> ====> $verificationId') ; },
+      codeAutoRetrievalTimeout: (String verificationId) async  { print('codeAutoRetrievalTimeout verificationId ====> ===> $verificationId ') ; },
+    );
 
-  
+  }
+
+
+
+
+
+
+
 
 
   creatUser() async {
     var _result  ;
-    await FirebaseAuth.instance.createUserWithEmailAndPassword(email: user.email, password: user.password).then((value){
+    await FirebaseAuth.instance.createUserWithEmailAndPassword(email: user.email, password: user.password ).then((value){
       _result =  value.user.uid ;
     }).onError((error, stackTrace) {
       print('eruur creatUser  from ceatUser 44 lin ===> $error') ;
