@@ -13,6 +13,7 @@ import 'bloc/manageScreen/home/bloc.dart';
 import 'model/cart/services.dart';
 import 'model/favorite/model.dart';
 import 'model/hiveModel/favorite.dart';
+import 'screens/profile/profile.dart';
 
 
 void main() async   {
@@ -21,7 +22,7 @@ void main() async   {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
 
-  await FirebaseAuth.instance.signOut() ;
+  //await FirebaseAuth.instance.signOut() ;
 
 
   Hive
@@ -35,7 +36,7 @@ void main() async   {
   //print('resutl from getItemFavorite === ===> ${box2.values.toList()}');
   var a = ServisesFavoriteHive() ;
   //print(box2.values.toList().isEmpty);
-  print( await   a.getItemFavorite()) ;
+  //print( await   a.getItemFavorite()) ;
   //box2.deleteFromDisk() ;
   //print('values ==${box.values}') ;
   //box.deleteFromDisk() ;
@@ -77,7 +78,7 @@ class MyApp extends StatelessWidget {
     scaffoldBackgroundColor: kBackgroundColor,
     primarySwatch: Colors.blue,
       ),
-      home:  HomeScreen(),
+      home:   HomeScreen(),
     );
   }
 }

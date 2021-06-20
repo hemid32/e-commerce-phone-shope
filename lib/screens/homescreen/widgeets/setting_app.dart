@@ -7,6 +7,7 @@ import 'package:phoneshop/screens/homescreen/componants/costom_listTile.dart';
 import 'package:phoneshop/screens/homescreen/componants/costom_list_tile_switch.dart';
 import 'package:phoneshop/screens/homescreen/componants/header_setting.dart';
 import 'package:phoneshop/screens/loginorRegester/login_or_regester.dart';
+import 'package:phoneshop/screens/profile/profile.dart';
 
 class SettingAPP extends StatelessWidget {
   const SettingAPP({
@@ -24,8 +25,18 @@ class SettingAPP extends StatelessWidget {
             return CostomListTile(title:  state ? 'Account' : 'Login & register' , icon: Icons.person, onTap: (){
 
               if(!state){
-                Navigator.push(context, MaterialPageRoute(builder: (context)=> LoginOrRegester())) ;
+                Navigator.push(context, MaterialPageRoute(builder: (_)=> BlocProvider.value(
 
+                    value: BlocProvider.of<BlocUserVerifaid>(context),
+                    child: LoginOrRegester()))) ;
+
+
+              }else {
+                Navigator.push(context, MaterialPageRoute(builder: (_)=> BlocProvider.value(
+                  value: BlocProvider.of<BlocUserVerifaid>(context),
+                  child:  Profile()
+
+                ))) ;
 
               }
 

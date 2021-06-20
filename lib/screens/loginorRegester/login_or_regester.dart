@@ -6,10 +6,13 @@ import 'package:phoneshop/bloc/laodingCirceler/events.dart';
 import 'package:phoneshop/bloc/register/bloc.dart';
 import 'package:phoneshop/bloc/userManagze/formerRegister/termAndCondition/bloc.dart';
 import 'package:phoneshop/bloc/userManagze/screenLoginRegister/bloc.dart';
+import 'package:phoneshop/bloc/userManagze/userVirifaid/bloc.dart';
+import 'package:phoneshop/bloc/userManagze/userVirifaid/event.dart';
 import 'package:phoneshop/bloc/validatorTaxtField/bloc.dart';
 import 'package:phoneshop/constant.dart';
 import 'package:phoneshop/screens/homescreen/widgeets/home.dart';
 import 'package:phoneshop/screens/loginorRegester/widget/register_form.dart';
+import 'package:phoneshop/screens/profile/profile.dart';
 import 'package:toast/toast.dart';
 
 import 'componants/body.dart';
@@ -52,14 +55,20 @@ class LoginOrRegester extends StatelessWidget {
           // do stuff here based on BlocA's state
             //print('states === $state')  ;
             if(state == true){
+              print('hemidibenameur') ;
               BlocProvider.of<BlocLoading>(context).add(EventLoadingStop()) ;
               Future.delayed(Duration(seconds: 1)) ;
-              Navigator.pushAndRemoveUntil<void>(
-                context,
-                MaterialPageRoute<void>(builder: (BuildContext context) => const Home()),
-                ModalRoute.withName('/'),
-              );
-            }else {
+              BlocProvider.of<BlocUserVerifaid>(context).add(EventsUserVerified());
+              Navigator.pop(context) ;
+              Navigator.pop(context) ;
+
+              //Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => Profile()));
+              //Navigator.pushReplacement(context, MaterialPageRoute(builder: (BuildContext context) => Profile()));
+
+
+            }else{
+              BlocProvider.of<BlocLoading>(context).add(EventLoadingStop()) ;
+              Future.delayed(Duration(seconds: 1)) ;
               Toast.show( state.toString(),
                 context,
                 duration: Toast.LENGTH_LONG,
@@ -68,7 +77,6 @@ class LoginOrRegester extends StatelessWidget {
                 border: Border.all(color: Colors.white) ,
               );
             }
-
         },
         child: Scaffold(
           body: Body(),

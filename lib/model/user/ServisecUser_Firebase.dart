@@ -33,8 +33,8 @@ class UserFire {
         });
         return true ;
       }catch(e){
-        print('no add user erurr = $e') ;
-        return false ;
+        //print('no add user erurr = $e') ;
+        return e.message ;
       }
     }else {
       return false;
