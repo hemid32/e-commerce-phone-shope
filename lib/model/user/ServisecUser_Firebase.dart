@@ -18,10 +18,10 @@ class UserFire {
 
   creatDataUser() async  {
     var _userCreat =  await  creatUser() ;
-    print('_userCreat =====$_userCreat') ;
-    var t =  await varifaidNombre() ;
-    print('rification nombre == $t') ;
-    if(_userCreat != 'Errur' && _userCreat != null  && t != null  ) {
+    //print('_userCreat =====$_userCreat') ;
+    //var t =  await varifaidNombre() ;
+    //print('rification nombre == $t') ;
+    if(_userCreat != 'Errur' && _userCreat != null    ) {
       CollectionReference _users = FirebaseFirestore.instance.collection(
           'users');
       try {
@@ -42,16 +42,7 @@ class UserFire {
 
   }
 
-  varifaidNombre()async {
-    await FirebaseAuth.instance.verifyPhoneNumber(
-      phoneNumber: '+213665489218',
-      verificationCompleted: (PhoneAuthCredential credential) async  {print('verificationCompleted credential ====> ===> $credential') ; },
-      verificationFailed: (FirebaseAuthException e) async  {print('verificationId feild ===$e') ; },
-      codeSent: (String verificationId, int resendToken) async  {print('cod is send verificationId ========> =====> ====> $verificationId') ; },
-      codeAutoRetrievalTimeout: (String verificationId) async  { print('codeAutoRetrievalTimeout verificationId ====> ===> $verificationId ') ; },
-    );
 
-  }
 
 
 

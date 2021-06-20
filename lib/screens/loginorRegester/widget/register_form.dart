@@ -1,5 +1,8 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:phoneshop/bloc/laodingCirceler/bloc.dart';
+import 'package:phoneshop/bloc/laodingCirceler/events.dart';
 import 'package:phoneshop/bloc/register/bloc.dart';
 import 'package:phoneshop/bloc/register/event.dart';
 import 'package:phoneshop/bloc/userManagze/formerRegister/termAndCondition/bloc.dart';
@@ -14,8 +17,12 @@ import 'package:phoneshop/screens/loginorRegester/componants/button_register.dar
 import 'package:phoneshop/screens/loginorRegester/componants/costom_path.dart';
 import 'package:phoneshop/screens/loginorRegester/componants/register_r_design.dart';
 import 'package:phoneshop/screens/loginorRegester/componants/test_fiald_and_button_verifaid.dart';
+import 'package:phoneshop/screens/loginorRegester/function/verifiedFieldIsComplet.dart';
 import 'package:phoneshop/screens/screen_pay/componants/field_text.dart';
+import 'package:toast/toast.dart';
+import 'package:phoneshop/screens/loginorRegester/function/dialog.dart';
 
+import 'container_background.dart';
 class Register extends StatelessWidget {
    const Register({
     Key key,
@@ -28,7 +35,9 @@ class Register extends StatelessWidget {
     String  _name ;
     String _phone ;
     String _password ;
-    bool allFormIsCompleted ;
+    bool _allFormIsCompleted ;
+    bool _allFormIsNotVide ;
+
     Size size = MediaQuery.of(context).size ;
 
     return Container(
@@ -38,26 +47,8 @@ class Register extends StatelessWidget {
         children: [
 
 
-          ClipPath(
-            clipper: CostomPath10(),
-            child: Container(
-              width: size.width,
-              height: size.height,
-              decoration: BoxDecoration(
-                color: kPrimaryColor.withOpacity(0.6),
-              ),
-            ),
-          ),
-          ClipPath(
-            clipper: CostomPath11(),
-            child: Container(
-              width: size.width,
-              height: size.height,
-              decoration: BoxDecoration(
-                color: kPrimaryColor.withOpacity(0.23),
-              ),
-            ),
-          ),
+          ContainerBackgrounds1(),
+          ContainerBackground2(),
           Positioned(
             top: size.height * 0.15,
             left: 0,
@@ -87,13 +78,13 @@ class Register extends StatelessWidget {
             top: size.height * 0.35 + 60 ,
             child: BlocBuilder<ValidatorTexxtBlocPhoneNombre , dynamic >(
               builder: (context, state) {
-                return FieldTextGetAndVerifeid(title: 'Nombre Phone',onChange: (valur){
+                return FieldTextGet(title: 'Nombre Phone',onChange: (valur){
                   BlocProvider.of<ValidatorTexxtBlocPhoneNombre>(context).add(TextFieldValidatorEventPhoneNombre(
                     valur: valur ,
                     titleErurr:  'wrong number !',
                   )) ;
                   _phone = valur ;
-                },validErurr: state , color: kPrimaryColor, titleButton: 'verifaid', onTapButton: ()=>_showMyDialogSandCod(context, '545454'),);
+                },validErurr: state , );
               }
             ),
           ) ,
@@ -168,26 +159,72 @@ class Register extends StatelessWidget {
             //left: size.width *0.25,
             right: 20  ,
             bottom: 20 ,
-            child: ButtonRegister(
-              onTap: (){
-                _user = UserLocalModel.fromJson({
-                  'name' : _name ,
-                  'email' : _email ,
-                  'password' : _password ,
-                  'nombrePhon' : _phone ,
-                  'image' : 'null'
-                });
-                allFormIsCompleted = true ;
+            child: BlocListener<BlocLoading , bool>(
+              listener: (_, states){
 
-                BlocProvider.of<BlocRegisterUser>(context).add(EventsRegisters(
-                  user: _user ,
-                  allFormIsCompletedTrue: allFormIsCompleted ,
-                )) ;
+                if(states== true  ){
+                  showDialogloding(context) ;
+                }else if(states == false ) {
+                  Navigator.pop(context);
+                  //_showMyDialogSandCod(context , _phone) ;
 
-
+                }
 
 
               },
+              child: ButtonRegister(
+                onTap: ()async {
+
+                  _user = UserLocalModel.fromJson({
+                    'name' : _name ,
+                    'email' : _email ,
+                    'password' : _password ,
+                    'nombrePhon' : _phone ,
+                    'image' : 'null'
+                  });
+                  /*
+                  allFormIsCompleted = true ;
+
+                  BlocProvider.of<BlocRegisterUser>(context).add(EventsRegisters(
+                    user: _user ,
+                    allFormIsCompletedTrue: allFormIsCompleted ,
+                  )) ;
+
+                   */
+                  //virifeidFormRegisterIsCompletIsNoteVide
+                  //BlocProvider.of<BlocLoading>(context).add(EventLoadingStart()) ;
+                  _allFormIsCompleted = virifeidFormRegisterIsCompletallFormIsCompletedTrue(
+                      BlocProvider.of<ValidatorTexxtBlocString>(context).state ,   BlocProvider.of<ValidatorTexxtBlocPhoneNombre>(context).state , BlocProvider.of<ValidatorTexxtBlocPhoneEmail>(context).state , BlocProvider.of<ValidatorTexxtBlocPassword>(context).state , BlocProvider.of<BlocTermaAndConditionChek>(context).state
+                  ) ;
+
+                  _allFormIsNotVide = virifeidFormRegisterIsCompletallFormIsCompletedNotVide(_name, _phone, _email, _password,BlocProvider.of<BlocTermaAndConditionChek>(context).state ) ;
+
+                  if(_allFormIsNotVide && _allFormIsCompleted){
+                     print('all info is true !! ') ;
+                    showMyDialogSandCod(context , _phone , _user) ;
+                  }else {
+                    print('all info is true  false ******* !! ') ;
+                    Toast.show( 'Errur !! ',
+                      context,
+                      duration: 3,
+                      gravity:  Toast.BOTTOM ,
+                      border: Border.all(color: Colors.white) ,
+                    );
+
+                  }
+
+                  //await Future.delayed(const Duration(seconds: 3), () => "1");
+                   //BlocProvider.of<BlocLoading>(context).add(EventLoadingStop()) ;
+
+
+
+
+
+
+
+
+                },
+              ),
             ),
           ) ,
           Positioned(
@@ -208,93 +245,5 @@ class Register extends StatelessWidget {
       ),
     );
   }
-}
-
-
-Future<void> _showMyDialog(contextt , nombre) async {
-  return showDialog<void>(
-    context: contextt,
-    barrierDismissible: false, // user must tap button!
-    builder: (BuildContext context) {
-      return AlertDialog(
-        title: Text('Verify the number'),
-        content: SingleChildScrollView(
-          child: Column(
-            children: <Widget>[
-              //Text('This is a demo alert dialog.'),
-              Text('*Type the code here'),
-
-              TextFormField(
-
-                decoration: InputDecoration(
-                  labelText: 'Type the code here' , 
-                  labelStyle: Theme.of(context).textTheme.button.copyWith(
-                    color: Colors.black.withOpacity(0.4)
-                  )
-                ),
-              )
-
-            ],
-          ),
-        ),
-        actions: <Widget>[
-          TextButton(
-            child: Text('Cencel'),
-            onPressed: () {
-              print('Confirmed');
-              Navigator.of(context).pop();
-            },
-          ),
-          TextButton(
-            child: Text('Confirmed'),
-            onPressed: () {
-              Navigator.of(context).pop();
-            },
-          ),
-        ],
-      );
-    },
-  );
-}
-
-
-Future<void> _showMyDialogSandCod(contextt , nambre ) async {
-  return showDialog<void>(
-    context: contextt,
-    barrierDismissible: false, // user must tap button!
-    builder: (BuildContext context) {
-      return AlertDialog(
-        title: Text('Send verification code'),
-        content: SingleChildScrollView(
-          child: Column(
-            children: <Widget>[
-              //Text('This is a demo alert dialog.'),
-              Text('We will send you a verification code to the number : $nambre'),
-
-
-
-            ],
-          ),
-        ),
-        actions: <Widget>[
-          TextButton(
-            child: Text('sand'),
-            onPressed: () {
-              print('Cencel');
-              Navigator.of(context).pop();
-            },
-          ),
-          TextButton(
-            child: Text('Sand'),
-            onPressed: () {
-              Navigator.of(context).pop();
-              _showMyDialog(contextt, nambre) ;
-
-            },
-          ),
-        ],
-      );
-    },
-  );
 }
 
