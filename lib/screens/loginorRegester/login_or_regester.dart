@@ -55,12 +55,19 @@ class LoginOrRegester extends StatelessWidget {
           // do stuff here based on BlocA's state
             //print('states === $state')  ;
             if(state == true){
-              print('hemidibenameur') ;
+              //print('hemidibenameur') ;
               BlocProvider.of<BlocLoading>(context).add(EventLoadingStop()) ;
               Future.delayed(Duration(seconds: 1)) ;
               BlocProvider.of<BlocUserVerifaid>(context).add(EventsUserVerified());
               Navigator.pop(context) ;
               Navigator.pop(context) ;
+              Toast.show( 'Account successfully created',
+                context,
+                duration: Toast.LENGTH_LONG,
+                gravity:  Toast.BOTTOM ,
+                backgroundColor:  kPrimaryColor ,
+                border: Border.all(color: Colors.white) ,
+              );
 
               //Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => Profile()));
               //Navigator.pushReplacement(context, MaterialPageRoute(builder: (BuildContext context) => Profile()));
@@ -72,7 +79,7 @@ class LoginOrRegester extends StatelessWidget {
               Toast.show( state.toString(),
                 context,
                 duration: Toast.LENGTH_LONG,
-                gravity:  Toast.TOP ,
+                gravity:  Toast.BOTTOM ,
                 backgroundColor:  kPrimaryColor ,
                 border: Border.all(color: Colors.white) ,
               );

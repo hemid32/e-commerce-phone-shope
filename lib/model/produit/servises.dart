@@ -22,7 +22,8 @@ Map<String ,  List<Produit>> produitses =
       'contitu' : 5 ,
       'price' : 144.2 ,
       'priceOriginal' : 150.0 ,
-      'spu' : 'dragon 125'
+      'spu' : 'dragon 125',
+      'id' : 1
 
 
     }),
@@ -36,7 +37,8 @@ Map<String ,  List<Produit>> produitses =
       'contitu' : 20 ,
       'price' : 500.2 ,
       'priceOriginal' : 150.0 ,
-      'spu' : 'dragon 125'
+      'spu' : 'dragon 125' ,
+      'id' : 2
 
     }),
     Produit.formJson({
@@ -49,7 +51,8 @@ Map<String ,  List<Produit>> produitses =
       'contitu' : 25 ,
       'price' : 1500.0 ,
       'priceOriginal' : 150.0 ,
-      'spu' : 'dragon 125'
+      'spu' : 'dragon 125' ,
+      'id': 3
 
     }),
     Produit.formJson({
@@ -62,7 +65,8 @@ Map<String ,  List<Produit>> produitses =
       'contitu' : 60 ,
       'price' : 15000.0,
       'priceOriginal' : 150.0 ,
-      'spu' : 'dragon 125'
+      'spu' : 'dragon 125' ,
+      'id': 4
 
     }),
     Produit.formJson({
@@ -75,7 +79,9 @@ Map<String ,  List<Produit>> produitses =
       'contitu' : 100 ,
       'price' : 20000.0,
       'priceOriginal' : 150.0,
-      'spu' : 'dragon 125'
+      'spu' : 'dragon 125' ,
+      'id': 5
+
 
     }),
 

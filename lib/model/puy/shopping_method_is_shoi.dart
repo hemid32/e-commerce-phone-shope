@@ -20,4 +20,12 @@ class MethodShoppingShoi {
   }
 
 
+  Map<String , dynamic> toMap(){
+    return {
+      'method' : method.toMap() ,
+      'fin' : fin  ,
+    } ;
+  }
+
+
 }

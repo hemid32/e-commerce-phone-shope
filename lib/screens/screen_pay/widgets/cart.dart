@@ -1,16 +1,23 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:phoneshop/bloc/cartCalcul/bloc.dart';
 import 'package:phoneshop/bloc/cartCalcul/events.dart';
 import 'package:phoneshop/bloc/cartScreenManage/bloc.dart';
 import 'package:phoneshop/bloc/cartScreenManage/event.dart';
+import 'package:phoneshop/bloc/damand/bloc.dart';
+import 'package:phoneshop/bloc/damand/event.dart';
+import 'package:phoneshop/bloc/laodingCirceler/bloc.dart';
+import 'package:phoneshop/bloc/laodingCirceler/events.dart';
 import 'package:phoneshop/bloc/manageData/puy/bloc.dart';
 import 'package:phoneshop/bloc/manageScreen/puy_screen/bloc.dart';
 import 'package:phoneshop/bloc/manageScreen/puy_screen/events.dart';
 import 'package:phoneshop/model/cart/cart.dart';
 import 'package:phoneshop/model/cart/cartCalcul.dart';
 import 'package:phoneshop/model/cart/services.dart';
+import 'package:phoneshop/model/domand/model.dart';
 import 'package:phoneshop/model/puy/shopping_method_is_shoi.dart';
+import 'package:phoneshop/model/user/user.dart';
 import 'package:phoneshop/screens/screen_pay/componants/button_costom_wight_infinty.dart';
 import 'package:phoneshop/screens/screen_pay/componants/card_shoping_phone.dart';
 import 'package:phoneshop/screens/screen_pay/componants/expendad_shoping_verefaid.dart';
@@ -82,7 +89,40 @@ class Cart extends StatelessWidget {
         SizedBox(height: 10,) ,
         TitleTextAligns(title:  'Notes',) ,
         FieldNotes(onChanged: (text){print(text) ; }, hintText: 'Write Your Notes',) ,
-        ButtonCostomWithInfiniti(title: 'Contunu Bay', onTap:  ()=> BlocProvider.of<PuyScreenBloc>(context).add(LastPuy()),) ,
+        ButtonCostomWithInfiniti(title: 'Contunu Bay', onTap:  (){
+
+          BlocProvider.of<BlocLoading>(context).add(EventLoadingStart()) ;
+
+
+          DomandProduit  _domand = DomandProduit.fromJson({
+            'nombreDomand' : 5555 ,
+            'listProduitBuy' : ListModelCarte.FormJson({'itemCart' : BlocProvider.of<BlocListDataCart>(context).state  ,
+            }) ,
+            'addres' : BlocProvider.of<AdressDataBloc>(context).state ,
+            'methodSopping' : BlocProvider.of<ShoppingDataBloc>(context).state ,
+            'user' : UserLocalModel.fromJson({
+                           'email' : 'hemidi@gmail.com' ,
+                            'password' : '********' ,
+                            'nombrePhon' : '0265656' ,
+                             'image' : 'image' ,
+                             'uid' : FirebaseAuth.instance.currentUser.uid
+            }) ,
+            'nots' :  'nots user ' ,
+            'stateDomand' : 0 ,
+            'priceShopping' :  BlocProvider.of<CalculCartBloc>(context).state.totalShopping ,
+            'priceTotalProduit' : BlocProvider.of<CalculCartBloc>(context).state.totalProduit ,
+            'total' : BlocProvider.of<CalculCartBloc>(context).state.total
+
+          }) ;
+
+
+          BlocProvider.of<BlocSandDamand>(context).add(EventSandDomand(domandData: _domand)) ;
+
+          //BlocProvider.of<PuyScreenBloc>(context).add(LastPuy());
+
+
+
+          },) ,
         TextBack(text: 'Return Shopping ', onTap: (){},)
 
       ],

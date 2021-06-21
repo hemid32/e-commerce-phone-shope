@@ -41,7 +41,7 @@ class Addres extends StatelessWidget {
             return FieldTextGet(title: 'Prenome',onChange: (valur){
               BlocProvider.of<ValidatorTexxtBlocString>(context).add(TextFieldValidatorEventNome(valur: valur  , titleErurr: 'erurr Nome short')) ;
               prenome = valur;
-              },validErurr: state ,);
+              },);
           }
         ) ,
         BlocBuilder<ValidatorTexxtBlocPhoneNombre , dynamic>(

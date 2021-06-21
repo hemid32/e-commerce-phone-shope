@@ -35,6 +35,29 @@ class ListModelCarte {
   }
 
 
+  Map<String , dynamic> toMap(){
+    return {
+      'itemCart' : convertItemCartToListMap()
+    } ;
+
+  }
+
+  convertItemCartToListMap(){
+    List<Map<String , dynamic>> _listItemCartMap = [] ;
+    itemCart.forEach((element) {
+      _listItemCartMap.add({
+      'produit' : element.produit.toMap()  ,
+        'contituPay' : element.contituPay ,
+
+      }) ;
+
+
+    });
+    return _listItemCartMap ;
+
+  }
+
+
 
 
 

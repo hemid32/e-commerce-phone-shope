@@ -104,6 +104,7 @@ Future<List<ModelCart>> getListModelCart() async {
       'price':element.modelCart['produit']['price'] ,
       'priceOriginal':element.modelCart['produit']['priceOriginal'] ,
       'spu':element.modelCart['produit']['spu'] ,
+      'id' : element.modelCart['produit']['id']
     });
 
     contint = element.modelCart['contituPay'] ;
@@ -144,3 +145,25 @@ deleItemFromCart(int indexItem) async  {
 
 }
 
+
+validerItemProduitIsFromCart(int idProduit  , int contitu)async  {
+  var box = await Hive.openBox('ModelCart');
+  bool _result  = false ;
+  box.values.forEach((element) {
+    //print('element.modelCart[produit][id] == ${element.modelCart['produit']['id']}') ;
+    //print('element.modelCart[contituPay] == ${element.modelCart['contituPay']} )') ;
+    if(element.modelCart['produit']['id'] == idProduit && element.modelCart['contituPay'] == contitu ){
+      //print('produit from cart') ;
+      _result =  true ;
+
+    }
+  });
+  return _result ;
+}
+
+
+
+deletTotalItemFromCatr() async  {
+  var box = await Hive.openBox('ModelCart');
+  box.deleteFromDisk() ;
+}

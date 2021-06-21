@@ -1,5 +1,6 @@
 
 class Produit {
+  final int id  ;
   final String image ;
   final String nomPhone ;
   final String detail ;
@@ -11,7 +12,7 @@ class Produit {
   final double priceOriginal ;
   final String spu ;
   //final String imageColors  ;
-  Produit( {this.spu,this.image, this.nomPhone, this.detail, this.phoneType, this.ram, this.storage, this.contitu, this.price , this.priceOriginal });
+  Produit( {this.spu,this.image, this.nomPhone, this.detail, this.phoneType, this.ram, this.storage, this.contitu, this.price , this.priceOriginal , this.id });
 
   factory Produit.formJson(Map<String , dynamic > jSonData){
     return Produit(
@@ -25,6 +26,7 @@ class Produit {
       price :  jSonData['price'] ,
       priceOriginal: jSonData['priceOriginal'] ,
       spu: jSonData['spu'],
+      id: jSonData['id']
     ) ;
   }
 
@@ -40,6 +42,7 @@ class Produit {
       'price':price ,
       'priceOriginal':priceOriginal ,
       'spu':spu ,
+      'id': id
 
 
     };

@@ -14,7 +14,11 @@ class DomandProduit {
   final MethodShoppingShoi methodSopping ;
   final UserLocalModel user ;
   final String nots ;
-  DomandProduit({this.nombreDomand, this.listProduitBuy, this.addres, this.methodSopping, this.user, this.nots});
+  final int stateDomand ;
+  final double priceShopping ;
+  final  double priceTotalProduit ;
+  final double total ;
+  DomandProduit( {this.nombreDomand, this.listProduitBuy, this.addres, this.methodSopping, this.user, this.nots ,this.stateDomand , this.priceShopping, this.priceTotalProduit, this.total, });
 
   factory DomandProduit.fromJson(Map<String , dynamic>  json){
 
@@ -25,6 +29,11 @@ class DomandProduit {
       methodSopping: json['methodSopping'] ,
       user: json['user'] ,
       nots: json['nots'] ,
+      stateDomand: json['stateDomand'] ,
+      priceShopping: json['priceShopping'] ,
+      priceTotalProduit: json['priceTotalProduit'] ,
+      total: json['total']
+
     ) ;
   }
 
@@ -32,12 +41,15 @@ class DomandProduit {
 
     return {
       'nombreDomand' : nombreDomand ,
-      'listProduitBuy' : listProduitBuy  ,
-      'addres' : addres ,
-      'methodSopping' : methodSopping ,
-      'user' :user ,
+      'listProduitBuy' : listProduitBuy.toMap()  ,
+      'addres' : addres.toMap() ,
+      'methodSopping' : methodSopping.toMap() ,
+      'user' :user.toMap() ,
       'nots' : nots ,
-
+      'stateDomand': stateDomand  ,
+      'priceShopping' :  priceShopping ,
+      'priceTotalProduit': priceTotalProduit ,
+      'total':total ,
     };
   }
 }

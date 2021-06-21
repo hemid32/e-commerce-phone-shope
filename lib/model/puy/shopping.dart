@@ -17,6 +17,15 @@ class ShoppingModelMethod {
   }
 
 
+  Map<String , dynamic> toMap(){
+    return {
+      'titleMethod' : titleMethod ,
+      'price' : price ,
+      'wilayaSupport' : wilayaSupport ,
+    };
+  }
+
+
 }
 
 

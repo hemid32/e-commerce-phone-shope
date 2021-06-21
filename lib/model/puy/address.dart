@@ -28,4 +28,25 @@ class ModelAdress {
 
 
 
+  Map<String , dynamic> toMap(){
+
+    return {
+      'nome' : nome ,
+      'prenome' : prenome ,
+      'nomberPhone' : nomberPhone ,
+      'email' : email  ,
+      'wilaya' : wilaya ,
+      'daira' : daira ,
+      'adress1' : adress1 ,
+      'address2' : address2 ,
+      'codPostal' : codPostal ,
+      'fine' : fine ,
+    } ;
+
+
+
+  }
+
+
+
 }

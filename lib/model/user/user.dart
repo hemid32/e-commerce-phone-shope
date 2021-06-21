@@ -7,8 +7,9 @@ class UserLocalModel {
   final String password ;
   final String nombrePhon ;
   final String image ;
+  final String uid ;
 
-  UserLocalModel({this.name, this.email, this.password, this.nombrePhon , this.image});
+  UserLocalModel( {this.name, this.email, this.password, this.nombrePhon , this.image , this.uid,});
 
 
   factory UserLocalModel.fromJson(Map<String , dynamic> json){
@@ -18,6 +19,7 @@ class UserLocalModel {
       password: json['password'] ,
       nombrePhon: json['nombrePhon'] ,
       image: json['image'] ,
+      uid:  json['uid']
     ) ;
   }
 
@@ -30,6 +32,7 @@ class UserLocalModel {
       'password' : password ,
       'nombrePhon' : nombrePhon ,
       'image' : image ,
+      'uid'  : uid ,
 
     };
 
