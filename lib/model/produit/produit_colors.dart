@@ -28,6 +28,33 @@ class ProduitsColors {
     );
   }
 
+
+  Map<String , dynamic> toMap(){
+
+    return {
+      'nomPhone' : nomPhone ,
+      'imagePosterPhone' : imagePosterPhone ,
+      'listProduits' : listProduitsToMap() ,
+      'contitu' : contitu ,
+      'nombrePay' : nombrePay ,
+      'typePhone' : typePhone ,
+      'isFavorite' : isFavorite ,
+      'id' : id ,
+    } ;
+
+
+  }
+
+
+  listProduitsToMap(){
+    List<Map<String,dynamic>> _listProduiMaps = [];
+    listProduits.forEach((element) {
+      _listProduiMaps.add(element.toMap()) ;
+    }) ;
+    return _listProduiMaps  ;
+
+  }
+
 }
 
 class ListProduitsColors{
@@ -41,5 +68,25 @@ class ListProduitsColors{
 
     );
   }
+
+
+
+  Map<String , dynamic>toMap(){
+    return {
+      'produits' : _ListProduitsColorsToMap() ,
+    };
+  }
+
+
+  _ListProduitsColorsToMap(){
+    List<Map<String,dynamic>> _listMapListProduitsColors = [] ;
+    produits.forEach((element) {
+      _listMapListProduitsColors.add(element.toMap()) ;
+    });
+
+    return _listMapListProduitsColors ;
+  }
+
+
 
 }

@@ -1,6 +1,7 @@
 
 
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:phoneshop/model/produit/produit.dart';
 import 'package:phoneshop/model/produit/produit_colors.dart';
 
@@ -178,5 +179,32 @@ ListProduitsColors getProduitColors(){
 
   //print('============================ ${resul.produits[0].listProduits}');
   return resul ;
+
+}
+
+///delet this function after fine
+
+testCreatModelFromFireBase() async {
+  //Map<String , dynamic> mapData = getProduitColors().toMap() ;
+  //print('mapData === $mapData') ;
+
+
+  try{
+    CollectionReference _produits = FirebaseFirestore.instance.collection(
+        'Produits');
+    Map<String , dynamic> mapData = getProduitColors().toMap() ;
+    print('mapData === $mapData') ;
+    getProduitColors().produits.forEach((element) async {
+      await _produits.add(
+        element.toMap() ,
+      );
+    });
+    
+    return true ;
+  }catch(e){
+    print('errur $e}') ;
+    return e ;
+  }
+
 
 }

@@ -6,6 +6,7 @@ import 'package:phoneshop/bloc/manageScreen/detailProduit/bloc.dart';
 import 'package:phoneshop/bloc/manageScreen/detailProduit/event.dart';
 import 'package:phoneshop/constant.dart';
 import 'package:phoneshop/model/favorite/model.dart';
+import 'package:phoneshop/model/produit/produit_colors.dart';
 import 'package:phoneshop/model/produit/servises.dart';
 import 'package:phoneshop/screens/detailProduit/detail_produit.dart';
 
@@ -15,8 +16,9 @@ import 'package:phoneshop/screens/detailProduit/detail_produit.dart';
 
 class ItemsCardBestSellingPHone extends StatelessWidget {
   const ItemsCardBestSellingPHone({
-    Key key,
+    Key key, this.listData,
   }) : super(key: key);
+  final ListProduitsColors listData ;
   @override
   Widget build(BuildContext context) {
     //BlocProvider.of<BlocFavoriteManage>(context).add(EventFav(idItem: null)) ;
@@ -27,24 +29,24 @@ class ItemsCardBestSellingPHone extends StatelessWidget {
         builder: (context, snapshot) {
           return Row(
             children: [
-              for(var i  = 0 ; i< getProduitColors().produits.length ; i++  )
+              for(var i  = 0 ; i< listData.produits.length ; i++  )
                 FutureBuilder(
-                  future:  FavoriteModelItem(produit: getProduitColors().produits[i]).ifFavorite(),
+                  future:  FavoriteModelItem(produit: listData.produits[i]).ifFavorite(),
                   builder: (_ , data){
                   return  data.hasData ?  CardPhoneItems(
-                    title: getProduitColors().produits[i].listProduits[i].nomPhone , // i deleted
-                    price:  getProduitColors().produits[i].listProduits[i].price,
-                    descreption: getProduitColors().produits[i].listProduits[i].detail ,
-                    image: getProduitColors().produits[i].listProduits[i].image ,
+                    title: listData.produits[i].listProduits[i].nomPhone , // i deleted
+                    price:  listData.produits[i].listProduits[i].price,
+                    descreption: listData.produits[i].listProduits[i].detail ,
+                    image: listData.produits[i].listProduits[i].image ,
                     onTap: (){
-                      BlocProvider.of<BlocScreenDetailProduit>(context).add(EvensGoToProduit(indexProduit: 0 , produisColors: getProduitColors().produits[i] )) ;
+                      BlocProvider.of<BlocScreenDetailProduit>(context).add(EvensGoToProduit(indexProduit: 0 , produisColors: listData.produits[i] )) ;
                       Navigator.push(context, MaterialPageRoute(builder: (_)=> BlocProvider.value(
                         value: BlocProvider.of<BlocScreenDetailProduit>(context),
                         child:  DetailProduit() ,
                       )));},
-                    id: getProduitColors().produits[i].id ,
+                    id: listData.produits[i].id ,
                     fav:  data.data,
-                    onTapFav: ()=> BlocProvider.of<BlocFavoriteIs>(context).add(IsTapOnFavEvent(getProduitColors().produits[i])),
+                    onTapFav: ()=> BlocProvider.of<BlocFavoriteIs>(context).add(IsTapOnFavEvent(listData.produits[i])),
                   ) : Container(); },
                 ),
             ],

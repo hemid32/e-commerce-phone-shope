@@ -3,6 +3,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:phoneshop/bloc/allProduitFilter/bloc.dart';
 import 'package:phoneshop/bloc/cartCalcul/bloc.dart';
 import 'package:phoneshop/bloc/cartScreenManage/bloc.dart';
@@ -14,6 +15,7 @@ import 'package:phoneshop/bloc/userManagze/userVirifaid/bloc.dart';
 
 import 'componants/body.dart';
 import 'componants/buttomNavigationBar.dart';
+import 'componants/costom_listTile.dart';
 
 class HomeScreen extends StatelessWidget {
   @override
@@ -46,6 +48,24 @@ class HomeScreen extends StatelessWidget {
       child: Scaffold(
         body:   Body(),
         //Body(),
+        drawer: Drawer(child: SingleChildScrollView(
+          child: Column(
+            children: [
+              Container(
+                margin: EdgeInsets.only(top: 40 , bottom: 10),
+                child: SvgPicture.asset('assets/icons/icons8-apple-logo.svg'),
+              ), 
+              CostomListTile(title: 'Messages' , icon: Icons.message,onTap: (){},) ,
+              CostomListTile(title: 'Messages' , icon: Icons.message,onTap: (){},) ,
+              CostomListTile(title: 'Messages' , icon: Icons.message,onTap: (){},) ,
+              CostomListTile(title: 'Messages' , icon: Icons.message,onTap: (){},) ,
+              CostomListTile(title: 'Messages' , icon: Icons.message,onTap: (){},) ,
+              CostomListTile(title: 'Messages' , icon: Icons.message,onTap: (){},) ,
+
+            ],
+          ),
+        ),
+        ),
         bottomNavigationBar: BottomNavigationsBars()
         ),
       //BottomNavigationsBars(),

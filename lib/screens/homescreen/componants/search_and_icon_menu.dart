@@ -37,20 +37,18 @@ class SearchAndIconMenu extends StatelessWidget {
         ),
         Expanded(
             child: Container(
-          margin: EdgeInsets.only(top: 50),
-          alignment: Alignment.center,
-          padding: EdgeInsets.all(5),
-          height: 40,
-          width: 40,
-          decoration: BoxDecoration(
-            color: kPrimaryColor.withOpacity(0.7),
-            shape: BoxShape.circle,
-          ),
-          child: Icon(
-            Icons.menu,
-            color: Colors.white,
-          ),
-        )),
+              margin: EdgeInsets.only(top: 50, ),
+
+              height: 40,
+              alignment: Alignment.center,
+              child: GestureDetector(
+                onTap: ()=> Scaffold.of(context).openDrawer(),
+                child: Icon(
+                  Icons.menu,
+                  color: kPrimaryColor.withOpacity(0.4),
+                ),
+              ),
+            )),
       ],
     );
   }

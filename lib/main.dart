@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 import 'package:phoneshop/constant.dart';
 import 'package:phoneshop/model/hiveModel/hive_cart.dart';
+import 'package:phoneshop/model/produit/servises.dart';
 import 'package:phoneshop/screens/homescreen/homescreen.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:phoneshop/screens/loginorRegester/login_or_regester.dart';
@@ -12,6 +13,7 @@ import 'bloc/allProduitFilter/event.dart';
 import 'bloc/manageScreen/home/bloc.dart';
 import 'model/cart/services.dart';
 import 'model/favorite/model.dart';
+import 'model/getModelFirebase/getTotalProduitColors.dart';
 import 'model/hiveModel/favorite.dart';
 import 'screens/profile/profile.dart';
 
@@ -23,6 +25,9 @@ void main() async   {
   await Firebase.initializeApp();
 
   //await FirebaseAuth.instance.signOut() ;
+  //await testCreatModelFromFireBase() ;
+  //var r = GetProduitTotalFromFirebas()  ;
+  //print(await r.getLiistProduitColorsFromFireBase() ) ;
 
 
   Hive
