@@ -2,6 +2,7 @@
 
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:phoneshop/bloc/allProduitFilter/bloc.dart';
@@ -16,6 +17,7 @@ import 'package:phoneshop/bloc/userManagze/userVirifaid/bloc.dart';
 import 'componants/body.dart';
 import 'componants/buttomNavigationBar.dart';
 import 'componants/costom_listTile.dart';
+import 'componants/drawer.dart';
 
 class HomeScreen extends StatelessWidget {
   @override
@@ -43,33 +45,57 @@ class HomeScreen extends StatelessWidget {
         BlocProvider<BlocUserVerifaid>(
                   create: (BuildContext context) => BlocUserVerifaid(),
                 ),
-
       ],
       child: Scaffold(
-        body:   Body(),
-        //Body(),
-        drawer: Drawer(child: SingleChildScrollView(
-          child: Column(
-            children: [
-              Container(
-                margin: EdgeInsets.only(top: 40 , bottom: 10),
-                child: SvgPicture.asset('assets/icons/icons8-apple-logo.svg'),
-              ), 
-              CostomListTile(title: 'Messages' , icon: Icons.message,onTap: (){},) ,
-              CostomListTile(title: 'Messages' , icon: Icons.message,onTap: (){},) ,
-              CostomListTile(title: 'Messages' , icon: Icons.message,onTap: (){},) ,
-              CostomListTile(title: 'Messages' , icon: Icons.message,onTap: (){},) ,
-              CostomListTile(title: 'Messages' , icon: Icons.message,onTap: (){},) ,
-              CostomListTile(title: 'Messages' , icon: Icons.message,onTap: (){},) ,
+        body:   WillPopScope(child: Body() ,
 
-            ],
-          ),
+        onWillPop: () async {
+          _showMyDialogCloseApp(context) ;
+          return false ;
+        },
         ),
-        ),
+        //Body(),
+        drawer: DrawerApps(),
         bottomNavigationBar: BottomNavigationsBars()
         ),
       //BottomNavigationsBars(),
     );
   }
+
 }
 
+Future<void> _showMyDialogCloseApp(context) async {
+  return showDialog<void>(
+    context: context,
+    barrierDismissible: false, // user must tap button!
+    builder: (BuildContext context) {
+      return AlertDialog(
+        title: const Text('Close App'),
+        content: SingleChildScrollView(
+          child: ListBody(
+            children: const <Widget>[
+              //Text('This is a demo alert dialog.'),
+              Text('Do you want to exit the application?'),
+            ],
+          ),
+        ),
+        actions: <Widget>[
+          TextButton(
+            child: const Text('cancel'),
+            onPressed: () {
+              Navigator.of(context).pop();
+            },
+          ),
+          TextButton(
+            child: const Text('OK'),
+            onPressed: () {
+              //Navigator.of(context).pop();
+              SystemChannels.platform.invokeMethod('SystemNavigator.pop');
+
+            },
+          ),
+        ],
+      );
+    },
+  );
+}

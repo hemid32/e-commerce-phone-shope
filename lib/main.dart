@@ -14,6 +14,7 @@ import 'bloc/manageScreen/home/bloc.dart';
 import 'model/cart/services.dart';
 import 'model/favorite/model.dart';
 import 'model/getModelFirebase/getTotalProduitColors.dart';
+import 'model/getModelFirebase/theBestProduit/model.dart';
 import 'model/hiveModel/favorite.dart';
 import 'screens/profile/profile.dart';
 
@@ -39,7 +40,9 @@ void main() async   {
   var box2 = await Hive.openBox('FavoriteHive');
 
   //print('resutl from getItemFavorite === ===> ${box2.values.toList()}');
-  var a = ServisesFavoriteHive() ;
+  var a = GetTheBestProduits() ;
+
+  print(await a.getTheBestProduit()) ;
   //print(box2.values.toList().isEmpty);
   //print( await   a.getItemFavorite()) ;
   //box2.deleteFromDisk() ;

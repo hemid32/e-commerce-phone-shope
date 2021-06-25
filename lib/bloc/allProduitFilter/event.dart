@@ -2,6 +2,7 @@
 
 import 'dart:math';
 
+import 'package:phoneshop/model/getModelFirebase/theBestProduit/model.dart';
 import 'package:phoneshop/model/produit/produit_colors.dart';
 import 'package:phoneshop/model/produit/servises.dart';
 
@@ -32,42 +33,12 @@ class EventAllProduitTypeFhone extends EvenetsAllProduitFilters {
 }
 
 class EventAllProduitTheBest extends EvenetsAllProduitFilters{
+  final  GetTheBestProduits  _getBest = GetTheBestProduits() ;
   List<ProduitsColors> listProduitFilterThebBest  = [] ;
-  ListProduitsColors fiterTheBest(){
-    ListProduitsColors  listProduit = getProduitColors() ;
-    List<int> listNombrePaysProduits = [] ;
-    listProduit.produits.forEach((element) {
-      listNombrePaysProduits.add(element.nombrePay) ;
-    });
-
-    List<int>  listIndexBestProduit = getHigthValue(listNombrePaysProduits);
-
-    List<ProduitsColors> result = []  ;
-
-    listIndexBestProduit.forEach((element) {
-      result.add(listProduit.produits[element]);
-    });
-    ListProduitsColors resultfilter = ListProduitsColors.fronJson({
-      'produits' : result
-    });
-    print('resultfilter the best === ${result.length}') ;
-    return resultfilter ;
-
+  Future<ListProduitsColors> fiterTheBest() async {
+   final _result = await  _getBest.getTheBestProduit() ;
+   return _result ;
   }
-  getHigthValue(List<int> v){
-    List<int> r  = []  ;
-    var  i = 0  ;
-      while (i < v.length  ){
-        int  max = v.reduce((value, element) => value > element ?  value : element )  ;
-        r.add(v.indexOf(max)) ;
-        v.remove(max) ;
-        i++ ;
-      }
-
-      return r ;
-  }
-
-
 
 }
 

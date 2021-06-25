@@ -23,9 +23,9 @@ class GetProduitTotalFromFirebas {
           'phoneType' :elemntsProduit['phoneType'] ,
           'ram' :elemntsProduit['ram'] ,
           'storage' : elemntsProduit['storage'] ,
-          'contitu' :elemntsProduit['contitu'] ,
-          'price' : elemntsProduit['price']  ,
-          'priceOriginal' :elemntsProduit['priceOriginal'] ,
+          'contitu' :elemntsProduit['contitu']  ,
+          'price' : elemntsProduit['price'] + .0  ,
+          'priceOriginal' :elemntsProduit['priceOriginal'] + .0 ,
           'spu' : elemntsProduit['spu'] ,
           'id' :elemntsProduit['id'] ,
         })) ;

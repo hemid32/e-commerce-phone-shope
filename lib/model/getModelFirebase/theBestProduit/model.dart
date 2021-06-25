@@ -4,12 +4,9 @@ import 'package:phoneshop/model/produit/produit_colors.dart';
 
 class GetTheBestProduits {
 
-
-
   final GetProduitTotalFromFirebas _produit = new  GetProduitTotalFromFirebas();
-
   Future<ListProduitsColors> getTheBestProduit() async {
-    List<Produit> _theBest = [];
+    //List<Produit> _theBest = [];
     final ListProduitsColors _totalProduit = await _produit.addDataToObgets();
     List<int> listNombrePaysProduits = [];
 
@@ -26,7 +23,7 @@ class GetTheBestProduits {
     });
     ListProduitsColors resultfilter =
         ListProduitsColors.fronJson({'produits': result});
-    //print('resultfilter the best === ${result.length}');
+    print('resultfilter the best length === ${result.length}');
     return resultfilter;
   }
 
@@ -35,14 +32,14 @@ class GetTheBestProduits {
     //final int _lenth = listNombrePaysProduits.length ;
     var i = 0;
     while (i < listNombrePaysProduits.length ) {
-      print('listNombrePaysProduits ===$listNombrePaysProduits') ;
+      //print('listNombrePaysProduits ===$listNombrePaysProduits') ;
       int max = listNombrePaysProduits.reduce((value, element) => value > element ? value : element);
       r.add(listNombrePaysProduits.indexOf(max));
       //listNombrePaysProduits.remove(max);
       listNombrePaysProduits[listNombrePaysProduits.indexOf(max)] = -1 ;
       i++;
     }
-    //print('r======================$r') ;
+    print('r======================$r') ;
     return r;
   }
 }

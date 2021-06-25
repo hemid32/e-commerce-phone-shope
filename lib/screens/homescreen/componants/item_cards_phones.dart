@@ -68,7 +68,7 @@ class CardPhoneItems extends StatelessWidget {
   final String title ;
   final String descreption ;
   final double price ;
-  final int pricintage ;
+  final double pricintage ;
   final Function onTap ;
   final int id  ;
   final bool fav  ;
@@ -104,7 +104,7 @@ class CardPhoneItems extends StatelessWidget {
                           color:  Colors.red.withOpacity(0.5) ,
                           shape: BoxShape.circle ,
                         ),
-                        child: Text('$pricintage%' , style:  Theme.of(context).textTheme.button.copyWith(color: Colors.white , fontSize: 12),),
+                        child: Text('${pricintage.toStringAsFixed(0)}%' , style:  Theme.of(context).textTheme.button.copyWith(color: Colors.white , fontSize: 12),),
                       ): SizedBox(),
                       Spacer() ,
 

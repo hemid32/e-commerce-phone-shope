@@ -16,8 +16,10 @@ class BlocAllProduitFilter extends Bloc<EvenetsAllProduitFilters ,  ListProduits
       yield  result.filtType() ;
     }
     if(event.runtimeType == EventAllProduitTheBest ){
-      EventAllProduitTheBest result = event  ;
-      yield result.fiterTheBest() ;
+      EventAllProduitTheBest result =  event  ;
+      final _thebest =  await result.fiterTheBest() ;
+      print('_thebest =====================${_thebest.produits.length}') ;
+      yield _thebest ;
     }
   }
 }

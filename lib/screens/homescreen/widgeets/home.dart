@@ -32,7 +32,7 @@ class Home extends StatelessWidget {
             suptitle:  'See all',
             onTap:  (){
           BlocProvider.of<BlocAllProduitFilter>(context).add(EventAllProduitTheBest());
-          Navigator.push(context, MaterialPageRoute(builder: (contex) =>BlocProvider.value(
+          Navigator.push(context, MaterialPageRoute(builder: (_) =>BlocProvider.value(
             value: BlocProvider.of<BlocAllProduitFilter>(context),
             child :  AllProduit()
 
