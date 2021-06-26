@@ -49,9 +49,9 @@ class Home extends StatelessWidget {
 
         }) ,
 
-        ItemsCardBestSellingPHone(listData: getProduitColors(),) ,
-        TextTileCatigori(title: 'Cuts',) ,
-        ItemsCardBestSellingPHone(listData: getProduitColors(),) ,
+        //ItemsCardBestSellingPHone(listData: getProduitColors(),) ,
+        //TextTileCatigori(title: 'Cuts',) ,
+        //ItemsCardBestSellingPHone(listData: getProduitColors(),) ,
 
 
 

@@ -17,8 +17,11 @@ class Header extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Icon(
-            Icons.arrow_back,
+          GestureDetector(
+            onTap: ()=> Navigator.pop(context),
+            child: Icon(
+              Icons.arrow_back,
+            ),
           ),
           SizedBox(width: 30,) ,
           Container(

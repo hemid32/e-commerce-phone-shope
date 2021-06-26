@@ -32,24 +32,3 @@ showDialogloding(BuildContext context){
 
 }
 
-showDialogOuit(BuildContext context){
-  return showDialog(
-    //rootNavigator:true ,
-      useRootNavigator: true ,
-      context: context,
-
-      builder: (context){
-        return Dialog(
-
-          child: new Row(
-              mainAxisSize: MainAxisSize.min,
-              children: <Widget> [
-
-
-
-              ]),
-
-        ); ;
-      }) ;
-
-}

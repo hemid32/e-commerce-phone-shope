@@ -20,7 +20,7 @@ class SlideContainer extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text('$title : $label DZ' , style: Theme.of(context).textTheme.button.copyWith(color: Colors.black.withOpacity(0.4) , fontSize: 15),  ) ,
+          Text('$title : $label ' , style: Theme.of(context).textTheme.button.copyWith(color: Colors.black.withOpacity(0.4) , fontSize: 15),  ) ,
           Slider(
             value: value,
             min: min,

@@ -22,7 +22,15 @@ class ItemsCardBestSellingPHone extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     //BlocProvider.of<BlocFavoriteManage>(context).add(EventFav(idItem: null)) ;
-
+    print('listData.produits[0].listProduits[0].nomPhone === ${listData.produits[0].nomPhone}') ;
+    print('listData.produits[1].listProduits[0].nomPhone === ${listData.produits[1].nomPhone}') ;
+    print('listData.produits[2].listProduits[0].nomPhone === ${listData.produits[2].nomPhone}') ;
+    print('listData.produits[3].listProduits[0].nomPhone === ${listData.produits[3].nomPhone}') ;
+    print('listData.produits[4].listProduits[0].nomPhone === ${listData.produits[4].nomPhone}') ;
+    print('listData.produits[5].listProduits[0].nomPhone === ${listData.produits[5].nomPhone}') ;
+    print('listData.produits[6].listProduits[0].nomPhone === ${listData.produits[6].nomPhone}') ;
+    print('listData.produits[7].listProduits[0].nomPhone === ${listData.produits[7].nomPhone}') ;
+    print('listData.produits[8].listProduits[0].nomPhone === ${listData.produits[8].nomPhone}') ;
     return SingleChildScrollView(
       scrollDirection: Axis.horizontal,
       child: BlocBuilder<BlocFavoriteIs ,  int >(
@@ -34,10 +42,10 @@ class ItemsCardBestSellingPHone extends StatelessWidget {
                   future:  FavoriteModelItem(produit: listData.produits[i]).ifFavorite(),
                   builder: (_ , data){
                   return  data.hasData ?  CardPhoneItems(
-                    title: listData.produits[i].listProduits[i].nomPhone , // i deleted
-                    price:  listData.produits[i].listProduits[i].price,
-                    descreption: listData.produits[i].listProduits[i].detail ,
-                    image: listData.produits[i].listProduits[i].image ,
+                    title: listData.produits[i].listProduits[0].nomPhone , // i deleted
+                    price:  listData.produits[i].listProduits[0].price,
+                    descreption: listData.produits[i].listProduits[0].detail ,
+                    image: listData.produits[i].listProduits[0].image ,
                     onTap: (){
                       BlocProvider.of<BlocScreenDetailProduit>(context).add(EvensGoToProduit(indexProduit: 0 , produisColors: listData.produits[i] )) ;
                       Navigator.push(context, MaterialPageRoute(builder: (_)=> BlocProvider.value(

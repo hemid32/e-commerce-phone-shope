@@ -4,7 +4,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:phoneshop/bloc/favorite/bloc.dart';
 import 'package:phoneshop/bloc/favorite/listFavoite/bloc.dart';
+import 'package:phoneshop/bloc/filterAllProduit/bloc.dart';
+import 'package:phoneshop/bloc/laodingCirceler/bloc.dart';
 import 'package:phoneshop/bloc/manageScreen/detailProduit/bloc.dart';
+import 'package:phoneshop/constant.dart';
 
 import 'componants/body.dart';
 import 'componants/buttomNavigator.dart';
@@ -23,10 +26,29 @@ class AllProduit extends StatelessWidget {
         BlocProvider<BlocFavoriteIs>(
           create: (BuildContext context) => BlocFavoriteIs(),
         ),
+        BlocProvider<BlocFiltersAllProduits>(
+          create: (BuildContext context) => BlocFiltersAllProduits(),
+        ),
 
+        BlocProvider<BlocLoading>(
+          create: (BuildContext context) => BlocLoading(),
+        ),
+        //              BlocProvider.of<BlocLoading>(context).add(EventLoadingStop()) ;
       ],
       child: Scaffold(
-        body: Body(),
+        body: BlocListener<BlocLoading, bool>(
+
+            listener: (context, state) {
+              if(state==true){
+                return showDialogloding(context) ;
+              }else if(state == false){
+                Navigator.pop(context) ;
+
+              }
+
+
+              // do stuff here based on BlocA's state
+            },child: Body()),
         bottomNavigationBar: ButtomNavigatorBars(),
 
 

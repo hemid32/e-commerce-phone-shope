@@ -28,6 +28,7 @@ class GetProduitTotalFromFirebas {
           'priceOriginal' :elemntsProduit['priceOriginal'] + .0 ,
           'spu' : elemntsProduit['spu'] ,
           'id' :elemntsProduit['id'] ,
+          'camera' : elemntsProduit['camera']
         })) ;
       });
 

@@ -38,11 +38,12 @@ void main() async   {
   //print(itemsCart()[0].produit) ;
   var box = await Hive.openBox('ModelCart');
   var box2 = await Hive.openBox('FavoriteHive');
+  //await testCreatModelFromFireBase() ;
 
   //print('resutl from getItemFavorite === ===> ${box2.values.toList()}');
-  var a = GetTheBestProduits() ;
+  //var a = GetTheBestProduits() ;
 
-  print(await a.getTheBestProduit()) ;
+  //print(await a.getTheBestProduit()) ;
   //print(box2.values.toList().isEmpty);
   //print( await   a.getItemFavorite()) ;
   //box2.deleteFromDisk() ;

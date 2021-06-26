@@ -19,12 +19,14 @@ Map<String ,  List<Produit>> produitses =
       'detail': 'details bla bla bla bla bla bla ' ,
       'phoneType' : 'Samsung' ,
       'ram' : 4 ,
-      'storage' : 20 ,
+      'storage' : 120 ,
       'contitu' : 5 ,
-      'price' : 144.2 ,
+      'price' : 50000.0 ,
       'priceOriginal' : 150.0 ,
       'spu' : 'dragon 125',
-      'id' : 1
+      'id' : 1 ,
+      'camera' : 48
+
 
 
     }),
@@ -34,12 +36,14 @@ Map<String ,  List<Produit>> produitses =
       'detail': 'details bla bla bla bla bla bla ',
       'phoneType' : 'ALG' ,
       'ram' : 6 ,
-      'storage' : 120 ,
+      'storage' : 20 ,
       'contitu' : 20 ,
-      'price' : 500.2 ,
+      'price' : 6000.2 ,
       'priceOriginal' : 150.0 ,
       'spu' : 'dragon 125' ,
-      'id' : 2
+      'id' : 2 ,
+      'camera' : 68
+
 
     }),
     Produit.formJson({
@@ -50,10 +54,12 @@ Map<String ,  List<Produit>> produitses =
       'ram' : 6 ,
       'storage' : 80 ,
       'contitu' : 25 ,
-      'price' : 1500.0 ,
+      'price' : 3500.0 ,
       'priceOriginal' : 150.0 ,
       'spu' : 'dragon 125' ,
-      'id': 3
+      'id': 3 ,
+      'camera' : 108
+
 
     }),
     Produit.formJson({
@@ -64,10 +70,11 @@ Map<String ,  List<Produit>> produitses =
       'ram' : 12 ,
       'storage' : 150 ,
       'contitu' : 60 ,
-      'price' : 15000.0,
+      'price' : 55000.0,
       'priceOriginal' : 150.0 ,
       'spu' : 'dragon 125' ,
-      'id': 4
+      'id': 4 ,
+      'camera' : 48
 
     }),
     Produit.formJson({
@@ -76,12 +83,13 @@ Map<String ,  List<Produit>> produitses =
       'detail': 'details bla bla bla bla bla bla' ,
       'phoneType' : 'xiaomi' ,
       'ram' : 16 ,
-      'storage' : 160 ,
+      'storage' : 100 ,
       'contitu' : 100 ,
-      'price' : 20000.0,
+      'price' : 70000.0,
       'priceOriginal' : 150.0,
       'spu' : 'dragon 125' ,
-      'id': 5
+      'id': 5 ,
+      'camera' : 13
 
 
     }),

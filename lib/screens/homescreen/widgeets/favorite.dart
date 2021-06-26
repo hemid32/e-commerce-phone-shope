@@ -6,13 +6,18 @@ import 'package:phoneshop/bloc/favorite/listFavoite/bloc.dart';
 import 'package:phoneshop/bloc/favorite/listFavoite/event.dart';
 import 'package:phoneshop/bloc/manageScreen/detailProduit/bloc.dart';
 import 'package:phoneshop/bloc/manageScreen/detailProduit/event.dart';
+import 'package:phoneshop/bloc/manageScreen/home/bloc.dart';
+import 'package:phoneshop/bloc/manageScreen/home/events.dart';
 import 'package:phoneshop/constant.dart';
 import 'package:phoneshop/model/produit/produit_colors.dart';
 import 'package:phoneshop/model/produit/servises.dart';
 import 'package:phoneshop/screens/detailProduit/detail_produit.dart';
+import 'package:phoneshop/screens/homescreen/componants/button_waith_80.dart';
 import 'package:phoneshop/screens/homescreen/componants/card_phone_favorite.dart';
+import 'package:phoneshop/screens/homescreen/componants/conainer_favorite_is_vide.dart';
 import 'package:phoneshop/screens/homescreen/componants/favorite_header.dart';
 import 'package:phoneshop/screens/homescreen/componants/search_and_icon_menu.dart';
+import 'package:phoneshop/screens/search/search_screen.dart';
 
 class Favorite extends StatelessWidget {
   const Favorite({
@@ -21,6 +26,7 @@ class Favorite extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size ;
     return Container(
       //color: kPrimaryColor.withOpacity(0.23),
       child: BlocBuilder<BlocFavoriteList , ListProduitsColors>(
@@ -29,10 +35,9 @@ class Favorite extends StatelessWidget {
             children: [
               SearchAndIconMenu() ,
               //HeaderFavorite() ,
-              Container(
-                  margin: EdgeInsets.symmetric(horizontal: 20),
-                  child: Divider()) ,
-              for(var i =0 ; i< snapshot.produits.length ; i++)  CardPhoneChopeFavorite(
+              SizedBox(height: 20,) ,
+
+               for(var i =0 ; i< snapshot.produits.length ; i++)  CardPhoneChopeFavorite(
                 onTap: (){
                   BlocProvider.of<BlocScreenDetailProduit>(context).add(EvensGoToProduit(indexProduit: 0 , produisColors: snapshot.produits[i] )) ;
                   Navigator.push(context, MaterialPageRoute(builder: (_)=> BlocProvider.value(
@@ -54,10 +59,9 @@ class Favorite extends StatelessWidget {
                   BlocProvider.of<BlocFavoriteList>(context)
                     .add(EventListItemsFavoriteDeleteItems(produit: snapshot.produits[i]));
 
-
-
                   },
-              )
+              ) ,
+              snapshot.produits.length == 0 ? ContainerFavVide(): SizedBox() ,
 
             ],
 

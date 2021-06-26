@@ -18,8 +18,13 @@ class BlocAllProduitFilter extends Bloc<EvenetsAllProduitFilters ,  ListProduits
     if(event.runtimeType == EventAllProduitTheBest ){
       EventAllProduitTheBest result =  event  ;
       final _thebest =  await result.fiterTheBest() ;
-      print('_thebest =====================${_thebest.produits.length}') ;
+      //print('_thebest =====================${_thebest.produits.length}') ;
       yield _thebest ;
+    }
+    if(event.runtimeType == EventAllProduitAfterFillter ){
+      EventAllProduitAfterFillter _results = event ;
+      yield _results.dataFilter ;
+
     }
   }
 }

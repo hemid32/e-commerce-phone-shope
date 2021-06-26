@@ -23,7 +23,7 @@ class GetTheBestProduits {
     });
     ListProduitsColors resultfilter =
         ListProduitsColors.fronJson({'produits': result});
-    print('resultfilter the best length === ${result.length}');
+    //print('resultfilter the best length === ${result.length}');
     return resultfilter;
   }
 
@@ -39,7 +39,7 @@ class GetTheBestProduits {
       listNombrePaysProduits[listNombrePaysProduits.indexOf(max)] = -1 ;
       i++;
     }
-    print('r======================$r') ;
+    //print('r======================$r') ;
     return r;
   }
 }

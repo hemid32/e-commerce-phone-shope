@@ -43,3 +43,10 @@ class EventAllProduitTheBest extends EvenetsAllProduitFilters{
 }
 
 
+class EventAllProduitAfterFillter extends EvenetsAllProduitFilters{
+  final  ListProduitsColors  dataFilter  ;
+
+  EventAllProduitAfterFillter({this.dataFilter});
+
+
+}
