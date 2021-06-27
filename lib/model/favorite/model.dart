@@ -10,7 +10,7 @@ class FavoriteModelItem {
   // virifaid item is favorite or non
     Future<bool> ifFavorite() async  {
     ServisesFavoriteHive  service = new  ServisesFavoriteHive(id: null) ;
-    List<int> itemFavorite = await service.getItemFavorite() ;
+    List<String> itemFavorite = await service.getItemFavorite() ;
     //print('List <id> == $itemFavorite') ;
     if(itemFavorite.contains(produit.id) ){
       fav = true ;

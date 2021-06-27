@@ -36,8 +36,11 @@ void main() async   {
     ..registerAdapter(CartHiveAdapter()) ;
 
   //print(itemsCart()[0].produit) ;
+  //var box5 = await  Hive.openBox('FavoriteHive') ;
+  //await box5.deleteFromDisk() ;
+
   var box = await Hive.openBox('ModelCart');
-  var box2 = await Hive.openBox('FavoriteHive');
+  //var box2 = await Hive.openBox('FavoriteHive');
   //await testCreatModelFromFireBase() ;
 
   //print('resutl from getItemFavorite === ===> ${box2.values.toList()}');

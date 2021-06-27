@@ -11,7 +11,7 @@ class ProduitsColors {
   final int nombrePay ; // best saller
   final String typePhone;
   final bool isFavorite;
-  final int id ;
+  final String id ;
 
   ProduitsColors({this.nomPhone, this.listProduits, this.contitu, this.imagePosterPhone, this.nombrePay , this.typePhone , this.isFavorite = false , this.id});
 

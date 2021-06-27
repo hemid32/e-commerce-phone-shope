@@ -84,7 +84,8 @@ Future<List<ModelCart>> getListModelCart() async {
   var box = await Hive.openBox('ModelCart');
   //List<ModelCart>  modelCart = box.values.toList() ;
   //return modelCart ;
-  print('comencer getListModelCart ');
+  //print('comencer getListModelCart ');
+  String idProduitColors ;
   ModelCart models ;
   Produit produit ;
   int contint ;
@@ -108,14 +109,16 @@ Future<List<ModelCart>> getListModelCart() async {
     });
 
     contint = element.modelCart['contituPay'] ;
+    idProduitColors = element.modelCart['idProduitColors'] ;
     models = ModelCart.FormJson({
       'produit': produit ,
       'contituPay': contint ,
+      'idProduitColors' : idProduitColors ,
     }) ;
     //print('models ==== $models');
     listModels.add(models) ;
   });
-  print('listModels = $listModels');
+  //print('listModels = $listModels');
   return listModels ;
 }
 
@@ -146,13 +149,13 @@ deleItemFromCart(int indexItem) async  {
 }
 
 
-validerItemProduitIsFromCart(int idProduit  , int contitu)async  {
+validerItemProduitIsFromCart(String idProduitColors , int idProduit  , int contitu)async  {
   var box = await Hive.openBox('ModelCart');
   bool _result  = false ;
   box.values.forEach((element) {
     //print('element.modelCart[produit][id] == ${element.modelCart['produit']['id']}') ;
     //print('element.modelCart[contituPay] == ${element.modelCart['contituPay']} )') ;
-    if(element.modelCart['produit']['id'] == idProduit && element.modelCart['contituPay'] == contitu ){
+    if(element.modelCart['idProduitColors'] ==idProduitColors &&  element.modelCart['produit']['id'] == idProduit && element.modelCart['contituPay'] == contitu ){
       //print('produit from cart') ;
       _result =  true ;
 

@@ -9,7 +9,7 @@ class GetProduitTotalFromFirebas {
 
 
 
-  Future <ListProduitsColors> addDataToObgets() async  {
+  Future <ListProduitsColors> getListProduitsColorsObject() async  {
     List<ProduitsColors> _listProduitsColors= [] ;
     List<Map<String , dynamic>> _data =  await getLiistProduitColorsFromFireBase() ;
 
@@ -62,7 +62,7 @@ class GetProduitTotalFromFirebas {
     _data.docs.forEach((element) {
       _listData.add(Map<String, dynamic>.from(element.data())) ;
     });
-    return  _listData  ; //_listData=[{...} , {....}];
+     return  _listData   ; //_listData=[{...} , {....}];
   }
 
 

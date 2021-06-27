@@ -25,7 +25,7 @@ class CardRow extends StatelessWidget {
     i = claculerIndex() ;
     return Row(
       children: [
-        i[0]==-1 ? Container() :BlocBuilder<BlocFavoriteIs , int >(
+        i[0]==-1 ? Container() :BlocBuilder<BlocFavoriteIs , String >(
           builder: (context, snp) {
             return FutureBuilder(
                 future:  FavoriteModelItem(produit: snapshot.produits[i[0]]).ifFavorite(),
@@ -49,7 +49,7 @@ class CardRow extends StatelessWidget {
             );
           }
         ),
-        i[1]==-1 ? Container() :  BlocBuilder<BlocFavoriteIs , int >(
+        i[1]==-1 ? Container() :  BlocBuilder<BlocFavoriteIs , String >(
           builder: (context, snps) {
             return FutureBuilder(
                 future:  FavoriteModelItem(produit: snapshot.produits[i[1]]).ifFavorite(),

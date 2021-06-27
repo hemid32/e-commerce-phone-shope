@@ -7,19 +7,19 @@ class FavoriteHive {
   // id produit color
   FavoriteHive({ this.id});
   @HiveField(0)
-  List<int> id ;
+  List<String> id ;
 }
 
 
 class ServisesFavoriteHive {
 
-  final int id  ;
+  final String id  ;
 
   ServisesFavoriteHive({this.id});
 
   addItemFavorite() async  {
     var box = await  Hive.openBox('FavoriteHive') ;
-    List<int> oldList = await getItemFavorite() ;
+    List<String> oldList = await getItemFavorite() ;
     oldList.add(id) ;
      FavoriteHive  item = FavoriteHive()
     ..id = oldList  ;
@@ -36,7 +36,7 @@ class ServisesFavoriteHive {
   }
   deletItemFavorite() async  {
     var box = await Hive.openBox('FavoriteHive') ;
-    List<int> oldList = await getItemFavorite() ;
+    List<String> oldList = await getItemFavorite() ;
     oldList.remove(id) ;
     FavoriteHive  item = FavoriteHive()
       ..id = oldList  ;
@@ -44,17 +44,18 @@ class ServisesFavoriteHive {
         .then((value) => print('delet item $id secsecuf'))
         .onError((error, stackTrace) => print('erur not delet item $id == $error')) ;
   }
-  Future<List<int>> getItemFavorite()async {
+  Future<List<String>> getItemFavorite()async {
     try {
       //print('resutl from getItemFavorite === ******');
 
       var box2 = await Hive.openBox('FavoriteHive');
       //print('resutl from getItemFavorite === ===> ${box2.values.toList()}');
 
-      List<int> result = box2.values.toList()[0].id;
+      List<String> result = box2.values.toList()[0].id;
       //print('resutl from getItemFavorite === $result');
       return result ?? [];
     }catch(e){
+      print(' errur getItemFavorite ====$e ') ;
       return [] ;
     }
   }

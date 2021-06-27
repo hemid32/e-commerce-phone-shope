@@ -16,14 +16,16 @@ class EventsAddToCartNew{}
 class EventAddNewProduitToCart extends EventsAddToCartNew {
   final int contitu ;
   final Produit produit ;
-  EventAddNewProduitToCart({this.contitu, this.produit});
+  final String idProduitColors ;
+  EventAddNewProduitToCart({this.contitu, this.produit , this.idProduitColors});
   addToHive() async {
-    bool isProduitFromCart = await validerItemProduitIsFromCart(produit.id, contitu) ;
-    print('isProduitFromCart ====$isProduitFromCart');
+    bool isProduitFromCart = await validerItemProduitIsFromCart(idProduitColors,produit.id, contitu) ;
+    //print('isProduitFromCart ====$isProduitFromCart');
     if (! isProduitFromCart ) {
       Map<String, dynamic> model = {
         'produit': produit.toMap(),
         'contituPay': contitu,
+        'idProduitColors' : idProduitColors ,
       };
       bool resut = await savModelCart(model);
       return resut;

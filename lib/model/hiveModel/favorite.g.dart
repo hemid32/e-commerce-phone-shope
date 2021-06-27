@@ -17,7 +17,7 @@ class FavoriteHiveAdapter extends TypeAdapter<FavoriteHive> {
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
     return FavoriteHive(
-      id: (fields[0] as List)?.cast<int>(),
+      id: (fields[0] as List)?.cast<String>(),
     );
   }
 

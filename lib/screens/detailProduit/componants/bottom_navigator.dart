@@ -25,6 +25,7 @@ class ButtomNavigatorBar extends StatelessWidget {
               BlocProvider.of<BlocAddToCartNewProduit>(context).add(EventAddNewProduitToCart(
                 contitu: BlocProvider.of<BlocMinusAddProduitFromDetail>(context).state ,
                 produit: BlocProvider.of<BlocScreenDetailProduit>(context).state[0] ,
+                idProduitColors : BlocProvider.of<BlocScreenDetailProduit>(context).state[3]
               ));
               Navigator.push(context, MaterialPageRoute(builder: (context)=> Buy()));
               },
@@ -46,6 +47,8 @@ class ButtomNavigatorBar extends StatelessWidget {
               onTap: ()=> BlocProvider.of<BlocAddToCartNewProduit>(context).add(EventAddNewProduitToCart(
                 contitu: BlocProvider.of<BlocMinusAddProduitFromDetail>(context).state ,
                 produit: BlocProvider.of<BlocScreenDetailProduit>(context).state[0] ,
+                idProduitColors : BlocProvider.of<BlocScreenDetailProduit>(context).state[3]
+
               )) ,
               child: Container(
                 alignment: Alignment.center,

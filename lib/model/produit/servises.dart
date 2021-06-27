@@ -4,8 +4,11 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:phoneshop/model/produit/produit.dart';
 import 'package:phoneshop/model/produit/produit_colors.dart';
+import 'package:uuid/uuid.dart';
 
 
+
+var uuid = Uuid();
 
 
 Map<String ,  List<Produit>> produitses =
@@ -116,7 +119,7 @@ ListProduitsColors getProduitColors(){
 
   List<ProduitsColors> list = [
     ProduitsColors.fromJson({
-      'id' : 1 ,
+      'id' : uuid.v1(),
       'nomPhone': 'samsung' ,
       'imagePosterPhone': 'assets/images/RedmiNote10Pro-Bronze.png' ,
       'listProduits':  getProsuits().produits,// produitses['produits'] ,
@@ -127,7 +130,7 @@ ListProduitsColors getProduitColors(){
 
     }),
     ProduitsColors.fromJson({
-      'id' : 2  ,
+      'id' : uuid.v1()  ,
       'nomPhone': 'alge' ,
       'imagePosterPhone': 'assets/images/samsung-galaxy-s8-4g-smartphone-png-favpng-qNm18RuFag7316FekDYk0Pqy4.jpg' ,
       'listProduits' : produitses['produits'] ,
@@ -140,7 +143,7 @@ ListProduitsColors getProduitColors(){
 
     }),
     ProduitsColors.fromJson({
-      'id' : 3 ,
+      'id' : uuid.v1() ,
       'nomPhone': 'alge' ,
       'imagePosterPhone': 'assets/images/iphone-x-samsung-galaxy-s8-iphone-7-smartphone-png-favpng-7ke4DBbj5kLrbQftMD6XuN56h.jpg' ,
       'listProduits' : produitses['produits'] ,
@@ -153,7 +156,7 @@ ListProduitsColors getProduitColors(){
 
     }),
     ProduitsColors.fromJson({
-      'id' : 4  ,
+      'id' : uuid.v1()  ,
       'nomPhone': 'redmi 108' ,
       'imagePosterPhone': 'assets/images/poco.png' ,
       'listProduits' :  produitses['produits'] ,
@@ -166,7 +169,7 @@ ListProduitsColors getProduitColors(){
 
     }),
     ProduitsColors.fromJson({
-      'id' : 5  ,
+      'id' : uuid.v1() ,
       'nomPhone': 'redmi 109' ,
       'imagePosterPhone': 'assets/images/RedmiNote10Pro-Bronze.png' ,
       'listProduits' : produitses['produits'] ,
@@ -201,16 +204,18 @@ testCreatModelFromFireBase() async {
     CollectionReference _produits = FirebaseFirestore.instance.collection(
         'Produits');
     Map<String , dynamic> mapData = getProduitColors().toMap() ;
-    print('mapData === $mapData') ;
+   // print('mapData === $mapData') ;
     getProduitColors().produits.forEach((element) async {
       await _produits.add(
         element.toMap() ,
+
+
       );
     });
     
     return true ;
   }catch(e){
-    print('errur $e}') ;
+    print('errur ===========*==*==*===*====*==============================================  $e}') ;
     return e ;
   }
 

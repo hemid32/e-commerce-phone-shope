@@ -6,11 +6,14 @@ import 'package:phoneshop/model/produit/produit.dart';
 class ModelCart {
   final Produit produit ;
   final int  contituPay ;
-  ModelCart({this.produit, this.contituPay = 1  });
+  final String idProduitColors ;
+
+  ModelCart({this.produit, this.contituPay = 1 , this.idProduitColors  });
   factory ModelCart.FormJson(Map<String  , dynamic > json ){
     return ModelCart(
       produit: json['produit'] ,
-      contituPay: json['contituPay']
+      contituPay: json['contituPay'] ,
+      idProduitColors: json['idProduitColors']
     );
   }
 
@@ -18,6 +21,7 @@ class ModelCart {
     return {
       'produit': produit,
       'contituPay': contituPay,
+      'idProduitColors' : idProduitColors ,
     };
   }
 
@@ -48,6 +52,7 @@ class ListModelCarte {
       _listItemCartMap.add({
       'produit' : element.produit.toMap()  ,
         'contituPay' : element.contituPay ,
+        'idProduitColors' : element.idProduitColors ,
 
       }) ;
 

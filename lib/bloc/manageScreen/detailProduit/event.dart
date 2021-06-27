@@ -44,8 +44,8 @@ class EventAdd extends EventScreenDetails {
   EventAdd({this.courentContitu , this.totalProduit});
 
   int add(){
-    print('totalProduit == $totalProduit');
-    print('courentContitu == $courentContitu');
+    //print('totalProduit == $totalProduit');
+    //print('courentContitu == $courentContitu');
     if(courentContitu == totalProduit){
       return courentContitu ;
     }else {

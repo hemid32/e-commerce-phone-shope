@@ -14,7 +14,7 @@ class BlocScreenDetailProduit extends  Bloc<EventScreenDetails ,List<dynamic>  >
     // TODO: implement mapEventToState
     if(event.runtimeType == EvensGoToProduit ){
       EvensGoToProduit produit = event ;
-      yield [produit.produitResult() , produit.produisColors , produit.indexProduit] ;
+      yield [produit.produitResult() , produit.produisColors , produit.indexProduit,produit.produisColors.id] ;
     }
   }
 }

@@ -31,40 +31,44 @@ class Favorite extends StatelessWidget {
       //color: kPrimaryColor.withOpacity(0.23),
       child: BlocBuilder<BlocFavoriteList , ListProduitsColors>(
         builder: (context, snapshot) {
-          return Column(
-            children: [
-              SearchAndIconMenu() ,
-              //HeaderFavorite() ,
-              SizedBox(height: 20,) ,
+          return  FutureBuilder(
+            builder: (context, data) {
+              return snapshot.produits == null  ? Container() :  Column(
+                children: [
+                  SearchAndIconMenu() ,
+                  //HeaderFavorite() ,
+                  SizedBox(height: 20,) ,
 
-               for(var i =0 ; i< snapshot.produits.length ; i++)  CardPhoneChopeFavorite(
-                onTap: (){
-                  BlocProvider.of<BlocScreenDetailProduit>(context).add(EvensGoToProduit(indexProduit: 0 , produisColors: snapshot.produits[i] )) ;
-                  Navigator.push(context, MaterialPageRoute(builder: (_)=> BlocProvider.value(
-                    value: BlocProvider.of<BlocScreenDetailProduit>(context),
-                    child:  DetailProduit() ,
-                  )));
-                },
-                image: snapshot.produits[i].listProduits[0].image,
-                title: snapshot.produits[i].listProduits[0].nomPhone,
-                detail:snapshot.produits[i].listProduits[0].detail,
-                ram: snapshot.produits[i].listProduits[0].ram,
-                storage: snapshot.produits[i].listProduits[0].storage,
-                contitu: snapshot.produits[i].listProduits[0].contitu,
-                price: snapshot.produits[i].listProduits[0].price,
-                deletCard: (){
-                  BlocProvider.of<BlocFavoriteIs>(context)
-                      .add(IsTapOnFavEvent(snapshot.produits[i] ));
+                   for(var i =0 ; i< snapshot.produits.length ; i++)  CardPhoneChopeFavorite(
+                    onTap: (){
+                      BlocProvider.of<BlocScreenDetailProduit>(context).add(EvensGoToProduit(indexProduit: 0 , produisColors: snapshot.produits[i] )) ;
+                      Navigator.push(context, MaterialPageRoute(builder: (_)=> BlocProvider.value(
+                        value: BlocProvider.of<BlocScreenDetailProduit>(context),
+                        child:  DetailProduit() ,
+                      )));
+                    },
+                    image: snapshot.produits[i].listProduits[0].image,
+                    title: snapshot.produits[i].listProduits[0].nomPhone,
+                    detail:snapshot.produits[i].listProduits[0].detail,
+                    ram: snapshot.produits[i].listProduits[0].ram,
+                    storage: snapshot.produits[i].listProduits[0].storage,
+                    contitu: snapshot.produits[i].listProduits[0].contitu,
+                    price: snapshot.produits[i].listProduits[0].price,
+                    deletCard: (){
+                      BlocProvider.of<BlocFavoriteIs>(context)
+                          .add(IsTapOnFavEvent(snapshot.produits[i] ));
 
-                  BlocProvider.of<BlocFavoriteList>(context)
-                    .add(EventListItemsFavoriteDeleteItems(produit: snapshot.produits[i]));
+                      BlocProvider.of<BlocFavoriteList>(context)
+                        .add(EventListItemsFavoriteDeleteItems(produit: snapshot.produits[i]));
 
-                  },
-              ) ,
-              snapshot.produits.length == 0 ? ContainerFavVide(): SizedBox() ,
+                      },
+                  ) ,
+                  snapshot.produits.length == 0 ? ContainerFavVide(): SizedBox() ,
 
-            ],
+                ],
 
+              );
+            }
           );
         }
       ),

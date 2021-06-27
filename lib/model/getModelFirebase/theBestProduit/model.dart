@@ -7,7 +7,7 @@ class GetTheBestProduits {
   final GetProduitTotalFromFirebas _produit = new  GetProduitTotalFromFirebas();
   Future<ListProduitsColors> getTheBestProduit() async {
     //List<Produit> _theBest = [];
-    final ListProduitsColors _totalProduit = await _produit.addDataToObgets();
+    final ListProduitsColors _totalProduit = await _produit.getListProduitsColorsObject();
     List<int> listNombrePaysProduits = [];
 
     _totalProduit.produits.forEach((element) {

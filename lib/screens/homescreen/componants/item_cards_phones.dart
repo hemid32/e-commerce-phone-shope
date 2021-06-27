@@ -22,18 +22,9 @@ class ItemsCardBestSellingPHone extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     //BlocProvider.of<BlocFavoriteManage>(context).add(EventFav(idItem: null)) ;
-    print('listData.produits[0].listProduits[0].nomPhone === ${listData.produits[0].nomPhone}') ;
-    print('listData.produits[1].listProduits[0].nomPhone === ${listData.produits[1].nomPhone}') ;
-    print('listData.produits[2].listProduits[0].nomPhone === ${listData.produits[2].nomPhone}') ;
-    print('listData.produits[3].listProduits[0].nomPhone === ${listData.produits[3].nomPhone}') ;
-    print('listData.produits[4].listProduits[0].nomPhone === ${listData.produits[4].nomPhone}') ;
-    print('listData.produits[5].listProduits[0].nomPhone === ${listData.produits[5].nomPhone}') ;
-    print('listData.produits[6].listProduits[0].nomPhone === ${listData.produits[6].nomPhone}') ;
-    print('listData.produits[7].listProduits[0].nomPhone === ${listData.produits[7].nomPhone}') ;
-    print('listData.produits[8].listProduits[0].nomPhone === ${listData.produits[8].nomPhone}') ;
     return SingleChildScrollView(
       scrollDirection: Axis.horizontal,
-      child: BlocBuilder<BlocFavoriteIs ,  int >(
+      child: BlocBuilder<BlocFavoriteIs ,  String >(
         builder: (context, snapshot) {
           return Row(
             children: [
@@ -78,7 +69,7 @@ class CardPhoneItems extends StatelessWidget {
   final double price ;
   final double pricintage ;
   final Function onTap ;
-  final int id  ;
+  final String id  ;
   final bool fav  ;
   final Function onTapFav ;
 
