@@ -16,20 +16,23 @@ class GetProduitTotalFromFirebas {
     _data.forEach((element) {
       List<Produit>  _listProduits = [] ;
       element['listProduits'].forEach((elemntsProduit){
-        _listProduits.add(Produit.formJson({
-          'image' : elemntsProduit['image'] ,
-          'nomPhone' : elemntsProduit['nomPhone'] ,
-          'detail': elemntsProduit['detail'] ,
-          'phoneType' :elemntsProduit['phoneType'] ,
-          'ram' :elemntsProduit['ram'] ,
-          'storage' : elemntsProduit['storage'] ,
-          'contitu' :elemntsProduit['contitu']  ,
-          'price' : elemntsProduit['price'] + .0  ,
-          'priceOriginal' :elemntsProduit['priceOriginal'] + .0 ,
-          'spu' : elemntsProduit['spu'] ,
-          'id' :elemntsProduit['id'] ,
-          'camera' : elemntsProduit['camera']
-        })) ;
+        if(elemntsProduit['contitu']>1) {
+          _listProduits.add(
+              Produit.formJson({
+                'image': elemntsProduit['image'],
+                'nomPhone': elemntsProduit['nomPhone'],
+                'detail': elemntsProduit['detail'],
+                'phoneType': elemntsProduit['phoneType'],
+                'ram': elemntsProduit['ram'],
+                'storage': elemntsProduit['storage'],
+                'contitu': elemntsProduit['contitu'],
+                'price': elemntsProduit['price'] + .0,
+                'priceOriginal': elemntsProduit['priceOriginal'] + .0,
+                'spu': elemntsProduit['spu'],
+                'id': elemntsProduit['id'],
+                'camera': elemntsProduit['camera']
+              }));
+        }
       });
 
 
