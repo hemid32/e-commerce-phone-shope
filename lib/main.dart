@@ -4,6 +4,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 import 'package:phoneshop/constant.dart';
+import 'package:phoneshop/model/getModelFirebase/getUser/modelUserGet.dart';
 import 'package:phoneshop/model/hiveModel/hive_cart.dart';
 import 'package:phoneshop/model/produit/servises.dart';
 import 'package:phoneshop/screens/homescreen/homescreen.dart';
@@ -15,6 +16,7 @@ import 'model/cart/services.dart';
 import 'model/favorite/model.dart';
 import 'model/getModelFirebase/getTotalProduitColors.dart';
 import 'model/getModelFirebase/theBestProduit/model.dart';
+import 'model/hiveModel/addres.dart';
 import 'model/hiveModel/favorite.dart';
 import 'screens/profile/profile.dart';
 
@@ -33,7 +35,8 @@ void main() async   {
 
   Hive
     ..registerAdapter(FavoriteHiveAdapter())
-    ..registerAdapter(CartHiveAdapter()) ;
+    ..registerAdapter(CartHiveAdapter())
+    ..registerAdapter(AssressHiveAdapter()) ;
 
   //print(itemsCart()[0].produit) ;
   //var box5 = await  Hive.openBox('FavoriteHive') ;
@@ -42,6 +45,8 @@ void main() async   {
   var box = await Hive.openBox('ModelCart');
   //var box2 = await Hive.openBox('FavoriteHive');
   //await testCreatModelFromFireBase() ;
+  //var y = await userDataFireBase.getUser() ;
+  //print('y.name =============================== ${y.name}' ) ;
 
   //print('resutl from getItemFavorite === ===> ${box2.values.toList()}');
   //var a = GetTheBestProduits() ;

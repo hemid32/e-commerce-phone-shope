@@ -27,9 +27,11 @@ class UserFire {
       try {
         _users.add({
           'name': user.name,
-          'id': _userCreat,
+          'uid': _userCreat,
           'nombrePhon': user.nombrePhon,
           'email': user.email,
+          'image' : user.image ,
+          'password' : 'password' ,
         });
         return true ;
       }catch(e){
