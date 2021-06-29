@@ -28,9 +28,11 @@ import 'package:phoneshop/screens/screen_pay/componants/text_return_back.dart';
 import 'package:phoneshop/screens/screen_pay/componants/title.dart';
 
 class Cart extends StatelessWidget {
-  const Cart({
+   Cart({
     Key key,
   }) : super(key: key);
+
+  String _note ;
 
   @override
   Widget build(BuildContext context) {
@@ -89,7 +91,7 @@ class Cart extends StatelessWidget {
 
         SizedBox(height: 10,) ,
         TitleTextAligns(title:  'Notes',) ,
-        FieldNotes(onChanged: (text){print(text) ; }, hintText: 'Write Your Notes',) ,
+        FieldNotes(onChanged: (text){ _note = text ; }, hintText: 'Write Your Notes',) ,
         BlocListener<BlocLoading , bool>(
           listener:  (_, states){
             if(states== true  ){
@@ -117,7 +119,7 @@ class Cart extends StatelessWidget {
                                'image' : 'image' ,
                                'uid' : FirebaseAuth.instance.currentUser.uid
               }) ,
-              'nots' :  'nots user ' ,
+              'nots' :  _note ,
               'stateDomand' : 0 ,
               'priceShopping' :  BlocProvider.of<CalculCartBloc>(context).state.totalShopping ,
               'priceTotalProduit' : BlocProvider.of<CalculCartBloc>(context).state.totalProduit ,

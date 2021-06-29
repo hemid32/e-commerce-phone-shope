@@ -105,6 +105,7 @@ Future<List<ModelCart>> getListModelCart() async {
       'price':element.modelCart['produit']['price'] ,
       'priceOriginal':element.modelCart['produit']['priceOriginal'] ,
       'spu':element.modelCart['produit']['spu'] ,
+      'camera' : element.modelCart['produit']['camera'] ,
       'id' : element.modelCart['produit']['id']
     });
 

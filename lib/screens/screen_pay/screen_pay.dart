@@ -7,6 +7,7 @@ import 'package:phoneshop/bloc/damand/bloc.dart';
 import 'package:phoneshop/bloc/laodingCirceler/bloc.dart';
 import 'package:phoneshop/bloc/laodingCirceler/events.dart';
 import 'package:phoneshop/bloc/manageData/puy/bloc.dart';
+import 'package:phoneshop/bloc/manageScreen/addressShoiRadio/bloc.dart';
 import 'package:phoneshop/bloc/manageScreen/puy_screen/bloc.dart';
 import 'package:phoneshop/bloc/manageScreen/puy_screen/events.dart';
 import 'package:phoneshop/bloc/manageScreen/shoppingShoiMethods/bloc.dart';
@@ -56,6 +57,7 @@ class Buy extends StatelessWidget {
           BlocProvider<BlocLoading>(
             create: (BuildContext context) => BlocLoading(),
           ),
+
         ],
       child:  BlocListener<BlocSandDamand , dynamic >(
         listener: (context , state){

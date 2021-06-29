@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:phoneshop/bloc/damand/bloc.dart';
 import 'package:phoneshop/bloc/manageData/puy/bloc.dart';
 import 'package:phoneshop/bloc/manageScreen/puy_screen/bloc.dart';
 import 'package:phoneshop/bloc/manageScreen/puy_screen/events.dart';
@@ -45,7 +46,8 @@ class Items_Menuu extends StatelessWidget {
               return ItemTopMenu(
                   title: 'Verefaid',
                   active:  state.runtimeType == Cart ,
-                  onTap: ()=>BlocProvider.of<PuyScreenBloc>(context).add(ContenuVarifeid())
+                  onTap: ()=>BlocProvider.of<PuyScreenBloc>(context).add(ContenuVarifeid()) ,
+                  fin: BlocProvider.of<BlocSandDamand>(context).state == true ? true : false ,
               );
             }
           ),
@@ -54,7 +56,8 @@ class Items_Menuu extends StatelessWidget {
               return ItemTopMenu(
                   title: 'Buy',
                   active: state.runtimeType == SandDomand ,
-                  onTap: ()=>BlocProvider.of<PuyScreenBloc>(context).add(LastPuy())
+                  onTap: ()=>BlocProvider.of<PuyScreenBloc>(context).add(LastPuy()) ,
+                  fin: true ,
               );
             }
           ) ,

@@ -41,8 +41,10 @@ void main() async   {
   //print(itemsCart()[0].produit) ;
   //var box5 = await  Hive.openBox('FavoriteHive') ;
   //await box5.deleteFromDisk() ;
+  //print() ;
 
-  var box = await Hive.openBox('ModelCart');
+
+  //var box = await Hive.openBox('ModelCart');
   //var box2 = await Hive.openBox('FavoriteHive');
   //await testCreatModelFromFireBase() ;
   //var y = await userDataFireBase.getUser() ;

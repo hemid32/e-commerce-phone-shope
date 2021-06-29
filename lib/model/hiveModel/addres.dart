@@ -18,9 +18,16 @@ class ServisesAdressHive {
 
   ServisesAdressHive({this.address});
 
-  getAddress() async  {
+  Future< List<ModelAdress>> getAddress() async  {
     var box = await Hive.openBox('AssressHive');
-    
+    var result = box.values.toList();
+    List<ModelAdress> addrs =[] ;
+    result.forEach((element) {
+      addrs.add(ModelAdress.fromJson(element.address)) ;
+    }) ;
+    //print('address saved ====== ${result}') ;
+    return addrs ;
+
 
   }
   saveNewAddress()async  {

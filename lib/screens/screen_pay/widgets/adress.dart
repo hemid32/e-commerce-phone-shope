@@ -4,18 +4,25 @@ import 'package:phoneshop/bloc/cartScreenManage/bloc.dart';
 import 'package:phoneshop/bloc/cartScreenManage/event.dart';
 import 'package:phoneshop/bloc/manageData/puy/bloc.dart';
 import 'package:phoneshop/bloc/manageData/puy/event.dart';
+import 'package:phoneshop/bloc/manageScreen/addressShoiRadio/bloc.dart';
+import 'package:phoneshop/bloc/manageScreen/addressShoiRadio/event.dart';
 import 'package:phoneshop/bloc/manageScreen/puy_screen/bloc.dart';
 import 'package:phoneshop/bloc/manageScreen/puy_screen/events.dart';
 import 'package:phoneshop/bloc/validatorTaxtField/bloc.dart';
 import 'package:phoneshop/bloc/validatorTaxtField/event.dart';
 import 'package:phoneshop/model/hiveModel/addres.dart';
 import 'package:phoneshop/model/puy/address.dart';
+import 'package:phoneshop/screens/screen_pay/componants/ContainerShoiMethodSHoping.dart';
 import 'package:phoneshop/screens/screen_pay/componants/container_text_And_icon.dart';
 import 'package:phoneshop/screens/screen_pay/componants/drop_dawen.dart';
+import 'package:phoneshop/screens/screen_pay/componants/expanded_address_list.dart';
 import 'package:phoneshop/screens/screen_pay/componants/field_text.dart';
 import 'package:phoneshop/screens/screen_pay/componants/footer_buttons.dart';
+import 'package:phoneshop/screens/screen_pay/componants/radioButton_list_addres.dart';
 import 'package:phoneshop/screens/screen_pay/componants/title.dart';
+import 'package:phoneshop/screens/screen_pay/componants/title_text_address_chois.dart';
 import 'package:phoneshop/screens/screen_pay/functionValid/addressVerification.dart';
+import 'package:phoneshop/screens/screen_pay/functionValid/shoiAddressDialog.dart';
 import 'package:toast/toast.dart';
 
 class Addres extends StatelessWidget {
@@ -25,6 +32,7 @@ class Addres extends StatelessWidget {
   String _nome , _prenom , _nomberPhone , _email , _wilaya , _daira , _adress1 , _address2    ;
   bool _fine  ;
   int _codPostal  ;
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -60,7 +68,14 @@ class Addres extends StatelessWidget {
           }
         ) ,
         //ContainerAndIconAndText_Seach(title: 'Search Your Adress', icon:  Icon(Icons.location_searching_sharp),),
-        ContainerAndIconAndText_Seach(title: 'Shoise Your Adress', icon:  Icon(Icons.account_box),) ,
+        ContainerAndIconAndText_Seach(title: 'Shoise Your Adress', icon:  Icon(Icons.account_box),onTap: (){
+          return showMyDialogShoiAddress(context) ;
+
+        },) ,
+
+
+
+
         TitleTextAligns(title:  'Wilaya',) ,
         DropDawen(valur: 'hemidi', items: ['hemidi' , 'benameur' , 'yyy'], onTap: (valeur){_wilaya = valeur ; },),
         FieldTextGet(title: 'Daira',onChange: (valur){  _daira = valur;}) ,
@@ -115,4 +130,9 @@ class Addres extends StatelessWidget {
     );
   }
 }
+
+
+
+
+
 
