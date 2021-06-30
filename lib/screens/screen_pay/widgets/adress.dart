@@ -8,10 +8,13 @@ import 'package:phoneshop/bloc/manageScreen/addressShoiRadio/bloc.dart';
 import 'package:phoneshop/bloc/manageScreen/addressShoiRadio/event.dart';
 import 'package:phoneshop/bloc/manageScreen/puy_screen/bloc.dart';
 import 'package:phoneshop/bloc/manageScreen/puy_screen/events.dart';
+import 'package:phoneshop/bloc/ropDowenWilayat/bloc.dart';
+import 'package:phoneshop/bloc/ropDowenWilayat/event.dart';
 import 'package:phoneshop/bloc/validatorTaxtField/bloc.dart';
 import 'package:phoneshop/bloc/validatorTaxtField/event.dart';
 import 'package:phoneshop/model/hiveModel/addres.dart';
 import 'package:phoneshop/model/puy/address.dart';
+import 'package:phoneshop/oitil/wilayat.dart';
 import 'package:phoneshop/screens/screen_pay/componants/ContainerShoiMethodSHoping.dart';
 import 'package:phoneshop/screens/screen_pay/componants/container_text_And_icon.dart';
 import 'package:phoneshop/screens/screen_pay/componants/drop_dawen.dart';
@@ -77,7 +80,23 @@ class Addres extends StatelessWidget {
 
 
         TitleTextAligns(title:  'Wilaya',) ,
-        DropDawen(valur: 'hemidi', items: ['hemidi' , 'benameur' , 'yyy'], onTap: (valeur){_wilaya = valeur ; },),
+
+
+        BlocBuilder<BlocDropDowenWilayat , String >(
+          builder: (context, state) {
+            return DropDawen(valur: state, items: getListWilayat(), onTap: (valeur){
+
+              _wilaya = valeur ;
+              BlocProvider.of<BlocDropDowenWilayat>(context).add(EveneDropDowenValue(
+                valeur
+              )) ;
+
+              },);
+          }
+        ),
+
+
+
         FieldTextGet(title: 'Daira',onChange: (valur){  _daira = valur;}) ,
         FieldTextGet(title: 'adress',onChange: (valur){  _adress1 = valur;}) ,
         FieldTextGet(title: 'adress 2 ',onChange: (valur){  _address2 = valur;}) ,

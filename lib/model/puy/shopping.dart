@@ -1,5 +1,8 @@
 
 
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:phoneshop/model/produit/servises.dart';
+
 class ShoppingModelMethod {
 
   final String titleMethod ;
@@ -47,19 +50,19 @@ Map<String ,List<ShoppingModelMethod> >  t = {
     ShoppingModelMethod.fromJson({
       'titleMethod' : 'yaliden' ,
       'price' : 200.0 ,
-      'wilayaSupport' : ['elbayad' , 'elgeria']
+      'wilayaSupport' : ['Tiaret' , 'Djelfa' , 'Sidi Bel Abbes']
 
     } ),
     ShoppingModelMethod.fromJson({
       'titleMethod' : 'frihali' ,
       'price' : 500.0 ,
-      'wilayaSupport' : ['telamsan' , 'tiarrt']
+      'wilayaSupport' : ['Bejaia' , 'Annaba']
 
     } ),
     ShoppingModelMethod.fromJson({
       'titleMethod' : 'bahri' ,
       'price' : 800.0 ,
-      'wilayaSupport' : ['nama' , 'flastin']
+      'wilayaSupport' : ['Ouargla' , 'El Bayadh']
     } ),
 
   ]
@@ -71,3 +74,22 @@ Map<String ,List<ShoppingModelMethod> >  t = {
   return listMethodTest.methods ;
 }
 
+// test save method shopping from firebase  deleted *
+
+
+saveMethodsShoppingFromFireBase(){
+  try{
+    CollectionReference _method = FirebaseFirestore.instance.collection(
+        'MethodsShopping');
+    List<ShoppingModelMethod> mapData = t['methods'] ;
+    // print('mapData === $mapData') ;
+    mapData.forEach((element) async  {
+      await _method.add(element.toMap()) ;
+    });
+
+    return true ;
+  }catch(e){
+    print('errur saveMethodsShoppingFromFireBase ===========*==*==*===*====*==============================================  $e}') ;
+    return e ;
+  }
+}

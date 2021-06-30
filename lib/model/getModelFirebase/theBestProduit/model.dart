@@ -5,6 +5,16 @@ import 'package:phoneshop/model/produit/produit_colors.dart';
 class GetTheBestProduits {
 
   final GetProduitTotalFromFirebas _produit = new  GetProduitTotalFromFirebas();
+
+
+
+
+  Future<ListProduitsColors> getRecentOffers()async{
+    final ListProduitsColors _totalProduit = await _produit.getListProduitsColorsObject();
+    return _totalProduit ;
+
+  }
+
   Future<ListProduitsColors> getTheBestProduit() async {
     //List<Produit> _theBest = [];
     final ListProduitsColors _totalProduit = await _produit.getListProduitsColorsObject();
@@ -26,6 +36,8 @@ class GetTheBestProduits {
     //print('resultfilter the best length === ${result.length}');
     return resultfilter;
   }
+
+
 
   getHigthValue(List<int> listNombrePaysProduits) {
     List<int> r = [];

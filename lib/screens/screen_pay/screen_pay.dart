@@ -11,6 +11,7 @@ import 'package:phoneshop/bloc/manageScreen/addressShoiRadio/bloc.dart';
 import 'package:phoneshop/bloc/manageScreen/puy_screen/bloc.dart';
 import 'package:phoneshop/bloc/manageScreen/puy_screen/events.dart';
 import 'package:phoneshop/bloc/manageScreen/shoppingShoiMethods/bloc.dart';
+import 'package:phoneshop/bloc/ropDowenWilayat/bloc.dart';
 import 'package:phoneshop/bloc/validatorTaxtField/bloc.dart';
 import 'package:toast/toast.dart';
 
@@ -56,6 +57,9 @@ class Buy extends StatelessWidget {
           ),
           BlocProvider<BlocLoading>(
             create: (BuildContext context) => BlocLoading(),
+          ),
+          BlocProvider<BlocDropDowenWilayat>(
+            create: (BuildContext context) => BlocDropDowenWilayat(),
           ),
 
         ],

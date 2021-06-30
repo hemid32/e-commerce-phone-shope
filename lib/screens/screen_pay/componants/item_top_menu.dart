@@ -57,7 +57,7 @@ class Items_Menuu extends StatelessWidget {
                   title: 'Buy',
                   active: state.runtimeType == SandDomand ,
                   onTap: ()=>BlocProvider.of<PuyScreenBloc>(context).add(LastPuy()) ,
-                  fin: true ,
+                  //fin: true ,
               );
             }
           ) ,

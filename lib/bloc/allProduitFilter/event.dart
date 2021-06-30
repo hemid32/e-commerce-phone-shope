@@ -42,6 +42,16 @@ class EventAllProduitTheBest extends EvenetsAllProduitFilters{
 
 }
 
+class EventAllRecentOffers extends EvenetsAllProduitFilters{
+  final  GetTheBestProduits  _getRecentOffers = GetTheBestProduits() ;
+  Future<ListProduitsColors> fiterRecentOffers() async {
+    final _result = await  _getRecentOffers.getRecentOffers() ;
+    return _result ;
+  }
+
+}
+
+
 
 class EventAllProduitAfterFillter extends EvenetsAllProduitFilters{
   final  ListProduitsColors  dataFilter  ;

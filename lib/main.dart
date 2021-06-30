@@ -14,10 +14,12 @@ import 'bloc/allProduitFilter/event.dart';
 import 'bloc/manageScreen/home/bloc.dart';
 import 'model/cart/services.dart';
 import 'model/favorite/model.dart';
+import 'model/getModelFirebase/getMethodShopping/getMethod.dart';
 import 'model/getModelFirebase/getTotalProduitColors.dart';
 import 'model/getModelFirebase/theBestProduit/model.dart';
 import 'model/hiveModel/addres.dart';
 import 'model/hiveModel/favorite.dart';
+import 'model/puy/shopping.dart';
 import 'screens/profile/profile.dart';
 
 
@@ -42,6 +44,8 @@ void main() async   {
   //var box5 = await  Hive.openBox('FavoriteHive') ;
   //await box5.deleteFromDisk() ;
   //print() ;
+  var a = GetMethodShopping() ;
+  print(await a.getListMethodsFromFirebase() )  ;
 
 
   //var box = await Hive.openBox('ModelCart');

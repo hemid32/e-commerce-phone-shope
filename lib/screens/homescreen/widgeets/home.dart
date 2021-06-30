@@ -49,6 +49,28 @@ class Home extends StatelessWidget {
 
         }) ,
 
+        RowTextBestSalingAndSeeAll(
+            title:  'Recent Offers',
+            suptitle:  'See all',
+            onTap:  (){
+              BlocProvider.of<BlocAllProduitFilter>(context).add(EventAllRecentOffers());
+              Navigator.push(context, MaterialPageRoute(builder: (_) =>BlocProvider.value(
+                  value: BlocProvider.of<BlocAllProduitFilter>(context),
+                  child :  AllProduit()
+
+              ) ));
+
+            }) ,
+
+        FutureBuilder(
+            future: _getData.getRecentOffers()  ,
+            builder: (context , snapShot){
+              print('datat home === ${snapShot.data}') ;
+              if(!snapShot.hasData) return CircularProgressIndicator() ; else
+                return ItemsCardBestSellingPHone(listData: snapShot.data,)  ;
+
+            }) ,
+
         //ItemsCardBestSellingPHone(listData: getProduitColors(),) ,
         //TextTileCatigori(title: 'Cuts',) ,
         //ItemsCardBestSellingPHone(listData: getProduitColors(),) ,
