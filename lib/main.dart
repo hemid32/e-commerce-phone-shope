@@ -13,7 +13,9 @@ import 'package:phoneshop/screens/loginorRegester/login_or_regester.dart';
 import 'bloc/allProduitFilter/event.dart';
 import 'bloc/manageScreen/home/bloc.dart';
 import 'model/cart/services.dart';
+import 'model/domand/model.dart';
 import 'model/favorite/model.dart';
+import 'model/getModelFirebase/getMayOrder/my_order.dart';
 import 'model/getModelFirebase/getMethodShopping/getMethod.dart';
 import 'model/getModelFirebase/getTotalProduitColors.dart';
 import 'model/getModelFirebase/theBestProduit/model.dart';
@@ -44,8 +46,9 @@ void main() async   {
   //var box5 = await  Hive.openBox('FavoriteHive') ;
   //await box5.deleteFromDisk() ;
   //print() ;
-  var a = GetMethodShopping() ;
-  print(await a.getListMethodsFromFirebase() )  ;
+  var a = GetMyOrder() ;
+  ListDomands l = await a.getListDomandsSendRequest() ;
+  //print('**********/*/*/*/*/**======${l.domands.length}' )  ;
 
 
   //var box = await Hive.openBox('ModelCart');

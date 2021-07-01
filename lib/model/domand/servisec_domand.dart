@@ -17,7 +17,7 @@ class SandDmndToFireBase {
        CollectionReference _domands = FirebaseFirestore.instance.collection(
            'domands');
        await _domands.add({
-         'uid' : domandMap['user'] ,
+         'uid' : domandMap['user']['uid'] ,
          'domand' : domandMap ,
        });
        await _modificationContituesFronFirebas() ;

@@ -6,6 +6,7 @@ import 'package:phoneshop/bloc/userManagze/userVirifaid/bloc.dart';
 import 'package:phoneshop/bloc/userManagze/userVirifaid/event.dart';
 import 'package:phoneshop/constant.dart';
 import 'package:phoneshop/screens/homescreen/componants/costom_listTile.dart';
+import 'package:phoneshop/screens/myOrder/my_order.dart';
 import 'package:phoneshop/screens/profile/componants/image_user.dart';
 import 'package:phoneshop/screens/profile/componants/name.dart';
 
@@ -53,7 +54,11 @@ class Body extends StatelessWidget {
                           email: FirebaseAuth.instance.currentUser.email,
                         ),
                         Divider() ,
-                        CostomListTile(title: 'May Order' , icon: Icons.shopping_cart, onTap: (){},) ,
+                        CostomListTile(title: 'May Order' , icon: Icons.shopping_cart, onTap: (){
+
+                          Navigator.push(context, MaterialPageRoute(builder: (context) => MyOrder())) ;
+
+                        },) ,
                         CostomListTile(title: 'Address' , icon: Icons.location_on, onTap: (){},) ,
                         CostomListTile(title: 'My favorite' , icon: Icons.favorite, onTap: (){},) ,
                         CostomListTile(title: 'LogOut' , icon: Icons.logout, onTap: ()async {

@@ -29,7 +29,7 @@ class CartHome extends StatelessWidget {
           margin: EdgeInsets.symmetric(horizontal: 20 , vertical: 20),
           child: BlocBuilder<BlocListDataCart , List<ModelCart>> (
             builder: (_, snapShot){
-              print('snapShot.data === $snapShot');
+              //print('snapShot.data === $snapShot');
             return   Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
