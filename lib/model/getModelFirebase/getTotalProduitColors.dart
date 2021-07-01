@@ -58,13 +58,14 @@ class GetProduitTotalFromFirebas {
   }
 
   getLiistProduitColorsFromFireBase() async  {
-    final CollectionReference  document = await  FirebaseFirestore.instance.collection('Produits');
+    final  CollectionReference  document = await  FirebaseFirestore.instance.collection('Produits');
     var _data =  await document.get() ;
     //_InternalLinkedHashMap<String, dynamic> to Map<String,dynamic> == try ==> Map<String, dynamic>.from(yourData)
     List<Map<String , dynamic>> _listData = [] ;
     _data.docs.forEach((element) {
       _listData.add(Map<String, dynamic>.from(element.data())) ;
     });
+    print('data from fire base ===== $_listData');
      return  _listData   ; //_listData=[{...} , {....}];
   }
 

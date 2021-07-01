@@ -9,6 +9,7 @@ import 'package:phoneshop/model/favorite/model.dart';
 import 'package:phoneshop/model/produit/produit_colors.dart';
 import 'package:phoneshop/model/produit/servises.dart';
 import 'package:phoneshop/screens/detailProduit/detail_produit.dart';
+import 'package:shimmer/shimmer.dart';
 
 
 
@@ -46,8 +47,24 @@ class ItemsCardBestSellingPHone extends StatelessWidget {
                     id: listData.produits[i].id ,
                     fav:  data.data,
                     onTapFav: ()=> BlocProvider.of<BlocFavoriteIs>(context).add(IsTapOnFavEvent(listData.produits[i])),
-                  ) : Container(); },
+                  )  : Shimmer.fromColors(
+                      baseColor: Colors.grey[300],
+                      highlightColor: Colors.grey[100],
+                      child: Container(
+                        decoration: BoxDecoration(
+                          color:  Colors.white ,
+                          borderRadius: BorderRadius.circular(20) ,
+                        ),
+                        margin:  EdgeInsets.symmetric(horizontal: 10 , vertical:  20),
+                        width:  MediaQuery.of(context).size.width /  2 -10 ,
+                        height:  310 ,
+
+                      ),
+                  );
+                  },
                 ),
+
+
             ],
           );
         }

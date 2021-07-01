@@ -72,6 +72,7 @@ class BodyDetail extends StatelessWidget {
                 spu: state[0].spu,
                 ram:  state[0].ram,
                 stockag:  state[0].storage,
+                camera: state[0].camera,
               );
             }
           ),

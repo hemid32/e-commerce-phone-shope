@@ -5,6 +5,7 @@ import 'package:phoneshop/bloc/cartScreenManage/event.dart';
 import 'package:phoneshop/model/cart/cart.dart';
 import 'package:phoneshop/model/cart/services.dart';
 import 'package:phoneshop/screens/homescreen/componants/header_setting.dart';
+import 'package:phoneshop/screens/myOrder/componants/when_vide.dart';
 import 'package:phoneshop/screens/screen_pay/componants/button_costom_wight_infinty.dart';
 import 'package:phoneshop/screens/screen_pay/componants/card_shoping_phone.dart';
 import 'package:phoneshop/screens/screen_pay/componants/field_notes.dart';
@@ -30,27 +31,37 @@ class CartHome extends StatelessWidget {
           child: BlocBuilder<BlocListDataCart , List<ModelCart>> (
             builder: (_, snapShot){
               //print('snapShot.data === $snapShot');
-            return   Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                //TitleTextAligns(title: 'Detail de requist',) ,
-                for(var i =0 ; i < snapShot.length ; i++ ) CardPhoneChope(
-                  image: snapShot[i].produit.image ,
-                  title: snapShot[i].produit.nomPhone,
-                  detail:  snapShot[i].produit.detail,
-                  ram: snapShot[i].produit.ram,
-                  storage: snapShot[i].produit.storage,
-                  contitu: snapShot[i].contituPay,
-                  price: snapShot[i].produit.price,
-                  deletCard: ()=> BlocProvider.of<BlocListDataCart>(context).add(EventDeletItemFromCart(i)),
-                ) ,
+            return   FutureBuilder(
+              builder: (context, snp) {
+                return snapShot == null ? Container() :  Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    //TitleTextAligns(title: 'Detail de requist',) ,
+                    for(var i =0 ; i < snapShot.length ; i++ ) CardPhoneChope(
+                      image: snapShot[i].produit.image ,
+                      title: snapShot[i].produit.nomPhone,
+                      detail:  snapShot[i].produit.detail,
+                      ram: snapShot[i].produit.ram,
+                      storage: snapShot[i].produit.storage,
+                      contitu: snapShot[i].contituPay,
+                      price: snapShot[i].produit.price,
+                      deletCard: ()=> BlocProvider.of<BlocListDataCart>(context).add(EventDeletItemFromCart(i)),
+                    ) ,
+                    SizedBox(height: 10,) ,
 
-              ],
+                    snapShot.length == 0 ? WhenVide(
+                      title: 'Shop',
+                      text: 'You have not added any items to the cart ! ',
+                    ) :  ButtonCostomWithInfiniti(title: 'Contunu Bay', onTap: ()=> Navigator.push(context, MaterialPageRoute(builder: (context) => Buy())),) ,
+
+
+                  ],
+                );
+              }
             ) ;
             }
           ),
         ),
-        SizedBox(height: 10,) ,
         /*
         TextPriceShoping(title: 'Total Produit : ', price:  1540,)  ,
         TextPriceShoping(title: 'Shopping : ', price:  0,)  ,
@@ -60,7 +71,6 @@ class CartHome extends StatelessWidget {
         FieldNotes(onChanged: (text){print(text) ; }, hintText: 'Write Your Notes',) ,
 
          */
-        ButtonCostomWithInfiniti(title: 'Contunu Bay', onTap: ()=> Navigator.push(context, MaterialPageRoute(builder: (context) => Buy())),) ,
 
       ],
     );
