@@ -17,6 +17,7 @@ class DomandProduit {
   final double priceTotalProduit;
   final double total;
   final DateTime date ;
+  final String uidDomand ;
   DomandProduit({
     this.nombreDomand,
     this.listProduitBuy,
@@ -28,7 +29,8 @@ class DomandProduit {
     this.priceShopping,
     this.priceTotalProduit,
     this.total,
-    this.date
+    this.date ,
+    this.uidDomand ,
   });
 
 
@@ -45,23 +47,38 @@ class DomandProduit {
         priceShopping: json['priceShopping'] ,
         priceTotalProduit: json['priceTotalProduit'] ,
         total: json['total'] ,
-        date : json['date']
+        date : json['date'] ,
+      uidDomand: json['uidDomand'] ,
 
     ) ;
   }
 
 
+
+
+
   factory DomandProduit.fromJsonGetFireBase(Map<String, dynamic> json) {
+    List<ModelCart>   listP =[] ; // = ghrt(json['listProduitBuy']['itemCart']) ;
+    json['listProduitBuy']['itemCart']
+        .forEach((elements) => listP.add(ModelCart.FormJson({
+      'produit': Produit.formJson(elements['produit']),
+      'contituPay': elements['contituPay'],
+      'idProduitColors': elements['idProduitColors'],
+    })));
+
     return DomandProduit(
         nombreDomand: json['nombreDomand'],
+
+
         listProduitBuy: ListModelCarte.FormJson({
-          'itemCart': json['listProduitBuy']['itemCart']
-              .forEach((elements) => ModelCart.FormJson({
-                    'produit': Produit.formJson(elements['produit']),
-                    'contituPay': elements['contituPay'],
-                    'idProduitColors': elements['idProduitColors'],
-                  })),
+          'itemCart': listP,
         }), //json['listProduitBuy']   ,
+
+
+
+
+
+
         addres: ModelAdress.fromJson(
           json['addres'],
         ), // json['addres'] ,
@@ -80,7 +97,8 @@ class DomandProduit {
         priceShopping: json['priceShopping'],
         priceTotalProduit: json['priceTotalProduit'],
         total: json['total'],
-        date: json['date'].toDate()
+        date: json['date'].toDate() ,
+        uidDomand: json['uidDomand']
 
     );
   }
@@ -98,6 +116,7 @@ class DomandProduit {
       'priceTotalProduit': priceTotalProduit,
       'total': total,
       'date' : DateTime.now() ,
+      'uidDomand' : uidDomand ,
     };
   }
 }

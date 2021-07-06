@@ -20,16 +20,28 @@ class HeaderMyOrder extends StatelessWidget {
     return Column(
       children: [
         Container(
-          alignment: Alignment.center,
+          //alignment: Alignment.center,
+          padding: EdgeInsets.symmetric(horizontal: 20),
           width: size.width,
-          height: size.height * 0.2 ,
+          height: 100 ,
           decoration: BoxDecoration(
-              color: Colors.black.withOpacity(0.05)
+              color: kPrimaryColor
           ),
-          child: Text('My Order' , style: Theme.of(context).textTheme.button.copyWith(
-              color: kPrimaryColor ,
-              fontSize: 18
-          ),),
+          child: Row(
+            children: [
+              GestureDetector(
+                   onTap: ()=> Navigator.pop(context),
+                  child: Icon(Icons.arrow_back , color: Colors.white ,size: 30,)) ,
+              Expanded(
+                child: Center(
+                  child: Text('My Order' , style: Theme.of(context).textTheme.button.copyWith(
+                      color: Colors.white ,
+                      fontSize: 25
+                  ),),
+                ),
+              ),
+            ],
+          ),
         ),
         Container(
           width: size.width,

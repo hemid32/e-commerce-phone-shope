@@ -14,6 +14,7 @@ import 'bloc/allProduitFilter/event.dart';
 import 'bloc/manageScreen/home/bloc.dart';
 import 'model/cart/services.dart';
 import 'model/domand/model.dart';
+import 'model/domand/servisec_domand.dart';
 import 'model/favorite/model.dart';
 import 'model/getModelFirebase/getMayOrder/my_order.dart';
 import 'model/getModelFirebase/getMethodShopping/getMethod.dart';
@@ -46,9 +47,11 @@ void main() async   {
   //var box5 = await  Hive.openBox('FavoriteHive') ;
   //await box5.deleteFromDisk() ;
   //print() ;
-  var a = GetMyOrder() ;
-  ListDomands l = await a.getListDomandsSendRequest() ;
+  //var a = GetMyOrder() ;
+  //ListDomands l = await a.getListDomandsSendRequest() ;
   //print('**********/*/*/*/*/**======${l.domands.length}' )  ;
+  //var l = CancelDomandSanded(uidDomand: '9fe787c0-de46-11eb-aeaa-b52aeaa89fb0') ;
+  //print( await l.getIdDecDomand()) ;
 
 
   //var box = await Hive.openBox('ModelCart');

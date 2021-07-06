@@ -7,6 +7,7 @@ import 'package:phoneshop/bloc/manageScreen/puy_screen/events.dart';
 import 'package:phoneshop/constant.dart';
 import 'package:phoneshop/screens/screen_pay/screen_pay.dart';
 import 'package:phoneshop/screens/screen_pay/widgets/adress.dart';
+import 'package:phoneshop/screens/screen_pay/widgets/buy/buy.dart';
 import 'package:phoneshop/screens/screen_pay/widgets/buy/widgestStateRequst/sand_domand.dart';
 import 'package:phoneshop/screens/screen_pay/widgets/cart.dart';
 import 'package:phoneshop/screens/screen_pay/widgets/shopping.dart';
@@ -55,7 +56,7 @@ class Items_Menuu extends StatelessWidget {
             builder: (_, state) {
               return ItemTopMenu(
                   title: 'Buy',
-                  active: state.runtimeType == SandDomand ,
+                  active: state.runtimeType == DetailOrderaFterBuy ,
                   onTap: ()=>BlocProvider.of<PuyScreenBloc>(context).add(LastPuy()) ,
                   //fin: true ,
               );

@@ -7,6 +7,8 @@ import 'package:phoneshop/bloc/cartScreenManage/bloc.dart';
 import 'package:phoneshop/bloc/cartScreenManage/event.dart';
 import 'package:phoneshop/bloc/damand/bloc.dart';
 import 'package:phoneshop/bloc/damand/event.dart';
+import 'package:phoneshop/bloc/dataDetailsOrder/bloc.dart';
+import 'package:phoneshop/bloc/dataDetailsOrder/event.dart';
 import 'package:phoneshop/bloc/laodingCirceler/bloc.dart';
 import 'package:phoneshop/bloc/laodingCirceler/events.dart';
 import 'package:phoneshop/bloc/manageData/puy/bloc.dart';
@@ -26,6 +28,7 @@ import 'package:phoneshop/screens/screen_pay/componants/field_notes.dart';
 import 'package:phoneshop/screens/screen_pay/componants/text_price_shoping.dart';
 import 'package:phoneshop/screens/screen_pay/componants/text_return_back.dart';
 import 'package:phoneshop/screens/screen_pay/componants/title.dart';
+import 'package:uuid/uuid.dart';
 
 class Cart extends StatelessWidget {
    Cart({
@@ -33,6 +36,8 @@ class Cart extends StatelessWidget {
   }) : super(key: key);
 
   String _note ;
+
+  var uuid = Uuid() ;
 
   @override
   Widget build(BuildContext context) {
@@ -102,8 +107,20 @@ class Cart extends StatelessWidget {
             }
           },
           child: ButtonCostomWithInfiniti(title: 'Contunu Bay', onTap:  (){
-
             BlocProvider.of<BlocLoading>(context).add(EventLoadingStart()) ;
+
+
+            String uidDomandCreat = uuid.v1() ;
+
+            BlocProvider.of<BlocDataOrderShow>(context).add(EventDataOdererShoawData(
+              listMedelCart: BlocProvider.of<BlocListDataCart>(context).state ,
+              calulerBuy:BlocProvider.of<CalculCartBloc>(context).state ,
+              methoShopping: BlocProvider.of<ShoppingDataBloc>(context).state ,
+              state: 0 ,
+              address: BlocProvider.of<AdressDataBloc>(context).state ,
+              uidDomand: uidDomandCreat ,
+            ));
+
 
 
             DomandProduit  _domand = DomandProduit.fromJson({
@@ -123,7 +140,8 @@ class Cart extends StatelessWidget {
               'stateDomand' : 0 ,
               'priceShopping' :  BlocProvider.of<CalculCartBloc>(context).state.totalShopping ,
               'priceTotalProduit' : BlocProvider.of<CalculCartBloc>(context).state.totalProduit ,
-              'total' : BlocProvider.of<CalculCartBloc>(context).state.total
+              'total' : BlocProvider.of<CalculCartBloc>(context).state.total ,
+              'uidDomand' : uidDomandCreat,
 
             }) ;
 

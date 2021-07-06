@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:phoneshop/bloc/cartCalcul/bloc.dart';
 import 'package:phoneshop/bloc/cartScreenManage/bloc.dart';
 import 'package:phoneshop/bloc/damand/bloc.dart';
+import 'package:phoneshop/bloc/dataDetailsOrder/bloc.dart';
 import 'package:phoneshop/bloc/laodingCirceler/bloc.dart';
 import 'package:phoneshop/bloc/laodingCirceler/events.dart';
 import 'package:phoneshop/bloc/manageData/puy/bloc.dart';
@@ -60,6 +61,10 @@ class Buy extends StatelessWidget {
           ),
           BlocProvider<BlocDropDowenWilayat>(
             create: (BuildContext context) => BlocDropDowenWilayat(),
+          ),
+
+          BlocProvider<BlocDataOrderShow>(
+            create: (BuildContext context) => BlocDataOrderShow(),
           ),
 
         ],

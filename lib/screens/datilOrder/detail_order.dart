@@ -9,5 +9,6 @@ class DetailOrder extends StatelessWidget {
     return Scaffold(
       body: Body(),
     );
+
   }
 }
