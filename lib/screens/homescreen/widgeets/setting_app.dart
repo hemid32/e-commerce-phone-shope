@@ -7,6 +7,7 @@ import 'package:phoneshop/screens/homescreen/componants/costom_listTile.dart';
 import 'package:phoneshop/screens/homescreen/componants/costom_list_tile_switch.dart';
 import 'package:phoneshop/screens/homescreen/componants/header_setting.dart';
 import 'package:phoneshop/screens/loginorRegester/login_or_regester.dart';
+import 'package:phoneshop/screens/messages/messages.dart';
 import 'package:phoneshop/screens/profile/profile.dart';
 
 class SettingAPP extends StatelessWidget {
@@ -50,7 +51,9 @@ class SettingAPP extends StatelessWidget {
         ) ,
         CostomListTile(title: 'List Favorite' , icon: Icons.favorite, onTap: (){},) ,
         CostomListTimeSwitch(valur: false,icon: Icons.notifications, title: 'Notification', onChanged: (valuer){},),
-        CostomListTile(title: 'Messages' , icon: Icons.message,onTap: (){},) ,
+        CostomListTile(title: 'Messages' , icon: Icons.message,onTap: (){
+          Navigator.push(context, MaterialPageRoute(builder: (context)=> Messages())) ;
+        },) ,
         CostomListTile(title: 'Languge' , icon: Icons.language,onTap: (){},) ,
         CostomListTimeSwitch(valur: false,icon: Icons.brightness_3, title: 'Dark Mode', onChanged: (valuer){},),
         CostomListTile(title: 'FeedBack' , icon: Icons.star,onTap: (){},) ,

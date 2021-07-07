@@ -2,10 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:phoneshop/bloc/cartCalcul/bloc.dart';
 import 'package:phoneshop/bloc/cartScreenManage/bloc.dart';
+import 'package:phoneshop/bloc/cartScreenManage/event.dart';
 import 'package:phoneshop/bloc/dataDetailsOrder/bloc.dart';
 import 'package:phoneshop/bloc/manageData/puy/bloc.dart';
+import 'package:phoneshop/bloc/myOrder/bloc.dart';
+import 'package:phoneshop/bloc/myOrder/event.dart';
 import 'package:phoneshop/constant.dart';
 import 'package:phoneshop/model/domand/servisec_domand.dart';
+import 'package:phoneshop/screens/homescreen/homescreen.dart';
+import 'package:phoneshop/screens/myOrder/my_order.dart';
 import 'package:phoneshop/screens/screen_pay/componants/card_shoping_phone.dart';
 import 'package:phoneshop/screens/screen_pay/componants/container_buttom_prograss_shopping.dart';
 import 'package:phoneshop/screens/screen_pay/componants/detailed_order.dart';
@@ -55,9 +60,26 @@ class SandDomand extends StatelessWidget {
                 var  objectCancel = CancelDomandSanded(uidDomand: BlocProvider.of<BlocDataOrderShow>(context).state[5]) ;
                 var _resultCancel = await objectCancel.deletFromFireBase() ;
                 if(_resultCancel == true){
-                  Navigator.pop(context );
+                  showDialogloding(context) ;
+
                   Toast.show("the request has been canceled", context, duration: 5, gravity:  Toast.BOTTOM);
+                  await Future.delayed(Duration(seconds: 1)) ;
                   Navigator.pop(context );
+                  Navigator.pop(context );
+                  //Navigator.pop(context );
+                  Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) =>
+                      HomeScreen()), (Route<dynamic> route) => false) ;
+
+
+                  /*
+                  Navigator.pushReplacement<void, void>(
+                    context,
+                    MaterialPageRoute<void>(
+                      builder: (BuildContext context) =>  MyOrder(),
+                    ),
+                  );
+
+                   */
                 }else {
                   Toast.show("${_resultCancel.message}", context, duration: 5, gravity:  Toast.BOTTOM);
                 }
