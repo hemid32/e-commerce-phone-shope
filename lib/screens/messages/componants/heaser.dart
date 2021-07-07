@@ -8,7 +8,7 @@ class Header extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(top: 40 , left: 20 , right: 20),
+      margin: EdgeInsets.only(top: 30 , left: 20 , right: 20),
       child: Row(
         children: [
           Icon(Icons.arrow_back, color: Colors.black,size: 30, ) ,
