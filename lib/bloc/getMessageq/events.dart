@@ -24,3 +24,17 @@ class EventGetMessagesFromFire extends EventGetMessages {
 
 
 }
+
+class EventGetMessagesActiveDate extends EventGetMessages {
+  final  bool value  ;
+  final String id ;
+  EventGetMessagesActiveDate({this.value , this.id});
+
+  List isActive(){
+    bool result = !value ;
+    return [result , id] ;
+
+  }
+
+}
+

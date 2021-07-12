@@ -4,12 +4,13 @@ import 'package:phoneshop/model/puy/shopping.dart';
 
 class Message {
 
-  final String type  ; //user or admin
+  final String type  ; //user or admin or order
   final String text ;  //
   final String uidUser ;
   final DateTime date ;
+  final String uidOrder ;
 
-  Message({this.type, this.text, this.uidUser , this.date});  //
+  Message({this.type, this.text, this.uidUser , this.date , this.uidOrder});  //
 
   factory Message.fromJson(Map<String , dynamic> json ){
     return Message(
@@ -17,6 +18,7 @@ class Message {
       uidUser: json['uidUser'] ,
       type: json['type'] ,
       date:  json['date'] ,
+      uidOrder: json['uidOrder']
     );
   }
 
@@ -25,7 +27,8 @@ class Message {
       text: json['text'] ,
       uidUser: json['uidUser'] ,
       type: json['type'] ,
-      date:  DateTime.fromMicrosecondsSinceEpoch(json['date'].microsecondsSinceEpoch),//DateTime.fromMillisecondsSinceEpoch(json['date'] * 1000) ,
+      date:  DateTime.fromMicrosecondsSinceEpoch(json['date'].microsecondsSinceEpoch), //DateTime.fromMillisecondsSinceEpoch(json['date'] * 1000) ,
+      uidOrder: json['uidOrder']
     );
   }
   Map<String , dynamic> toMap(){
@@ -34,6 +37,7 @@ class Message {
       'uidUser' : uidUser ,
       'type' : type ,
       'date' : date ,
+      'uidOrder' : uidOrder
     };
   }
 

@@ -87,8 +87,14 @@ void main() async   {
         print(' elemene from home === ${box.values.toList()[i]}') ;
         print(box.values.toList()[i].modelCart['produit']);
   }
+var o = GetMyOrder() ;
 
+  DomandProduit r = await o.getItemDOmand('11e55480-e011-11eb-9cd8-e7a3ea99e2dc') ;
+  print(r.date) ;
    */
+
+
+
 
 
 

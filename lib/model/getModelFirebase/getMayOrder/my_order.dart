@@ -75,6 +75,19 @@ class GetMyOrder {
 
 
 
+  Future<DomandProduit> getItemDOmand(uidOrder)async {
+    final _listDoman = await getDomandMineFromFireBase() ;
+    DomandProduit _domand ;
+    _listDoman.forEach((element) {
+      if(element.uidDomand == uidOrder){
+        _domand = element ;
+      }
+    });
+    return _domand ;
+  }
+
+
+
 
 
 

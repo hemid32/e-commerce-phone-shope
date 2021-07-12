@@ -7,16 +7,18 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:phoneshop/bloc/getMessageq/bloc.dart';
 import 'package:phoneshop/bloc/getMessageq/events.dart';
 import 'package:phoneshop/constant.dart';
-import 'package:phoneshop/model/getModelFirebase/getMessages/getMessage.dart';
+import 'package:phoneshop/model/domand/model.dart';
+import 'package:phoneshop/model/getModelFirebase/getMayOrder/my_order.dart';
 import 'package:phoneshop/model/getModelFirebase/getUser/modelUserGet.dart';
 import 'package:phoneshop/model/messages/model_messages.dart';
 import 'package:phoneshop/model/messages/services_messages.dart';
 import 'container_messages.dart';
 import 'heaser.dart';
+import 'package:intl/intl.dart';
 
 class Body extends StatelessWidget {
 
-  GetMessages getMsg =   GetMessages() ;
+  //GetMessages getMsg =   GetMessages() ;
   GetUserFireBase getUser = GetUserFireBase() ;
 
   final TextEditingController _controller = new TextEditingController();
@@ -47,7 +49,7 @@ class Body extends StatelessWidget {
                         return !nan.hasData ? Container() :   StreamBuilder(
                           stream: FirebaseFirestore.instance.collection('users').doc(nan.data).collection('Chats').orderBy('date', descending: true).snapshots(),
                           builder: (context, snapshotEventNew ) {
-                            print('snapshotEventNew.data ==== ${snapshotEventNew.data}')  ;
+                            //print('snapshotEventNew.data ==== ${snapshotEventNew.data}')  ;
                             if(snapshotEventNew.hasData ){
                               BlocProvider.of<BlocMassegersGet>(context).add(EventGetMessagesFromFire(
                                 eventData: snapshotEventNew.data ,
@@ -57,12 +59,12 @@ class Body extends StatelessWidget {
                             //print(snapshotEventNew.data)  ;
                             return BlocBuilder<BlocMassegersGet ,  List<Message>>(
                               builder: (context, snapshot) {
-                                print('getMsg.getMesag() === $snapshot') ;
+                                //print('getMsg.getMesag() === $snapshot') ;
                                 return ListView(
                                   reverse: true,
                                   children: [
                                     for(var i = 0 ; i< snapshot.length ; i++ )
-                                      buildMessages(snapshot[i]) ,
+                                      buildMessages(snapshot[i] , i.toString()) ,
                                       //Container(child: Text(snapshot.data.toString()),)
                                   ],
                                 );
@@ -109,8 +111,9 @@ class Body extends StatelessWidget {
                             //BlocProvider.of<BlocMassegersGet>(context).add(EventGetMessagesFromFire()) ;
 
                             var mesg = Message(
-                                type : 'user' , text : _textMessage , uidUser :  FirebaseAuth.instance.currentUser.uid ,
-                               date: DateTime.now()
+                                type : 'order' , text : _textMessage , uidUser :  FirebaseAuth.instance.currentUser.uid ,
+                               date: DateTime.now() ,
+                               uidOrder: '11e55480-e011-11eb-9cd8-e7a3ea99e2dc'
                             ) ;
                             var save  = ServesicesImage(
                                 mesgae: mesg
@@ -142,18 +145,112 @@ class Body extends StatelessWidget {
 
   }
 
-  Widget buildMessages(Message message){
+  Widget buildMessages(Message message , String id){
     if(message.type == 'admin'){
-      return  MessageAdmin(
-          text:  message.text,
+      return  BlocBuilder<BlocMessagesActiveDate , dynamic >(
+        builder: (context, state) {
+          return MessageAdmin(
+              text:  message.text,
+             date:  DateFormat('yyyy-MM-dd – kk:mm').format(message.date),
+             onTap: (){
+                BlocProvider.of<BlocMessagesActiveDate>(context).add(EventGetMessagesActiveDate(
+                  value: state[0] ,
+                  id: id
+                ));
+             },
+            activeDate: state[0],
+            id: id,
+
+          );
+        }
       );
-    }else {
-      return  MessageUser(
-            text: message.text,
+    }else if(message.type == 'user') {
+      return  BlocBuilder<BlocMessagesActiveDate , dynamic >(
+        builder: (context, state) {
+          return MessageUser(
+                text: message.text,
+               date: DateFormat('yyyy-MM-dd – kk:mm').format(message.date),
+            onTap: (){
+              BlocProvider.of<BlocMessagesActiveDate>(context).add(EventGetMessagesActiveDate(
+                  value: state[0] ,
+                  id: id
+
+              ));
+            },
+            activeDate: state[0],
+            id: id,
+
+          );
+        }
       );
+    }else{
+      return ContainerOrder(
+        idOdere: message.uidOrder,
+      ) ;
     }
 
 
+  }
+}
+
+class ContainerOrder extends StatelessWidget {
+   ContainerOrder({
+    Key key, this.idOdere,
+  }) : super(key: key);
+  final String idOdere ;
+
+  GetMyOrder  _getOrder = GetMyOrder() ;
+
+  @override
+  Widget build(BuildContext context) {
+    return FutureBuilder<DomandProduit>(
+      future: _getOrder.getItemDOmand(idOdere),
+      builder: (context, snapshot) {
+        return !snapshot.hasData ? Container() :  Container(
+          margin: EdgeInsets.symmetric(horizontal: 20 , vertical: 5),
+          height: 80,
+          decoration: BoxDecoration(
+            color: Colors.white ,
+            borderRadius: BorderRadius.circular(15) ,
+
+          ),
+          child: Row(
+            children: [
+              Container(
+                margin: EdgeInsets.all(5),
+                width: 75,
+                height: 75,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(8),
+                  image: DecorationImage(
+                    image: AssetImage(
+                      snapshot.data.listProduitBuy.itemCart[0].produit.image
+                    ),
+                    fit: BoxFit.contain
+                  ),
+                ),
+              ) ,
+              
+              Expanded(
+                child: Container(
+                  margin: EdgeInsets.symmetric(horizontal: 5 , vertical: 5),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Container(
+                        child: Text('number of items  : ${snapshot.data.listProduitBuy.itemCart.length}'),
+                      )
+                    ],
+                  ),
+                ),
+              )
+
+            ],
+          ),
+        );
+      }
+    );
   }
 }
 

@@ -8,10 +8,17 @@ class Messages extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Body(),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider<BlocMessagesActiveDate>(
+            create: (BuildContext context) => BlocMessagesActiveDate()
+        )
+      ],
+      child: Scaffold(
+        body: Body(),
 
 
+      ),
     );
   }
 }
