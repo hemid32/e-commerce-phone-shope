@@ -15,14 +15,18 @@ class ServesicesImage {
 
   saveToFireBase() async {
     GetUserFireBase getUser = GetUserFireBase() ;
-    String uid = await getUser.getDocUserFromFirebase() ;
-    print('mesgae.uidUser ===${mesgae.uidUser}') ;
+    //String uid = await getUser.getDocUserFromFirebase() ;
+    //print('mesgae.uidUser ===${mesgae.uidUser}') ;
 
+    try {
+      var _message = FirebaseFirestore.instance.collection('users').doc(
+          await getUser.getDocUserFromFirebase()).collection('Chats');
 
-    var _message =   FirebaseFirestore.instance.collection('users').doc(await getUser.getDocUserFromFirebase()).collection('Chats') ;
-
-    await _message.add(mesgae.toMap()) ;
-
+      await _message.add(mesgae.toMap());
+      return true ;
+    }catch(e){
+      return false ;
+    }
   }
 
 

@@ -12,20 +12,21 @@ class MessageUser extends StatelessWidget {
     return Align(
       alignment: Alignment.centerRight,
       child: Container(
-        padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-        decoration: BoxDecoration(
-            color: kPrimaryColor.withOpacity(0.23) ,
-            borderRadius: BorderRadius.only(
-              topLeft: Radius.circular(8) ,
-              topRight: Radius.circular(8) ,
-              bottomLeft: Radius.circular(8) ,
-            )
+          padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+          decoration: BoxDecoration(
+              color: kPrimaryColor.withOpacity(0.23) ,
+              borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(8) ,
+                topRight: Radius.circular(8) ,
+                bottomLeft: Radius.circular(8) ,
+              )
 
+          ),
+          child: Text('$text' , style: Theme.of(context).textTheme.button.copyWith(
+              fontSize: 18
+          ),),
         ),
-        child: Text('$text' , style: Theme.of(context).textTheme.button.copyWith(
-            fontSize: 18
-        ),),
-      ),
+
     );
   }
 }
