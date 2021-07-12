@@ -6,6 +6,7 @@ import 'package:hive/hive.dart';
 import 'package:phoneshop/constant.dart';
 import 'package:phoneshop/model/getModelFirebase/getUser/modelUserGet.dart';
 import 'package:phoneshop/model/hiveModel/hive_cart.dart';
+import 'package:phoneshop/model/messages/model_messages.dart';
 import 'package:phoneshop/model/produit/servises.dart';
 import 'package:phoneshop/screens/homescreen/homescreen.dart';
 import 'package:hive_flutter/hive_flutter.dart';
@@ -22,6 +23,7 @@ import 'model/getModelFirebase/getTotalProduitColors.dart';
 import 'model/getModelFirebase/theBestProduit/model.dart';
 import 'model/hiveModel/addres.dart';
 import 'model/hiveModel/favorite.dart';
+import 'model/messages/services_messages.dart';
 import 'model/puy/shopping.dart';
 import 'screens/profile/profile.dart';
 
@@ -52,6 +54,17 @@ void main() async   {
   //print('**********/*/*/*/*/**======${l.domands.length}' )  ;
   //var l = CancelDomandSanded(uidDomand: '9fe787c0-de46-11eb-aeaa-b52aeaa89fb0') ;
   //print( await l.getIdDecDomand()) ;
+   /*
+  var a = Message(
+    type : 'admin' , text : 'hello hemidi' , uidUser :  FirebaseAuth.instance.currentUser.uid
+  ) ;
+  var b  = ServesicesImage(
+    mesgae: a
+  ) ;
+  await b.saveToFireBase() ;
+
+    */
+
 
 
   //var box = await Hive.openBox('ModelCart');

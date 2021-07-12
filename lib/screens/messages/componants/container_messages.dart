@@ -3,8 +3,9 @@ import 'package:phoneshop/constant.dart';
 
 class MessageUser extends StatelessWidget {
   const MessageUser({
-    Key key,
+    Key key, this.text,
   }) : super(key: key);
+  final String text ;
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +22,7 @@ class MessageUser extends StatelessWidget {
             )
 
         ),
-        child: Text('hello hemidi' , style: Theme.of(context).textTheme.button.copyWith(
+        child: Text('$text' , style: Theme.of(context).textTheme.button.copyWith(
             fontSize: 18
         ),),
       ),
@@ -31,8 +32,9 @@ class MessageUser extends StatelessWidget {
 
 class MessageAdmin extends StatelessWidget {
   const MessageAdmin({
-    Key key,
+    Key key, this.text,
   }) : super(key: key);
+  final String text ;
 
   @override
   Widget build(BuildContext context) {
@@ -49,7 +51,7 @@ class MessageAdmin extends StatelessWidget {
             )
 
         ),
-        child: Text('hello hemidi' , style: Theme.of(context).textTheme.button.copyWith(
+        child: Text('$text' , style: Theme.of(context).textTheme.button.copyWith(
             fontSize: 18
         ),),
       ),

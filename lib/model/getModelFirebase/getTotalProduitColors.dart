@@ -65,7 +65,7 @@ class GetProduitTotalFromFirebas {
     _data.docs.forEach((element) {
       _listData.add(Map<String, dynamic>.from(element.data())) ;
     });
-    print('data from fire base ===== $_listData');
+    //print('data from fire base ===== $_listData');
      return  _listData   ; //_listData=[{...} , {....}];
   }
 

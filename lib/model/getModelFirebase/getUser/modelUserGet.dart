@@ -24,6 +24,13 @@ class GetUserFireBase{
     }
   }
 
+  getDocUserFromFirebase()async {
+    String uid = FirebaseAuth.instance.currentUser.uid ;
+    final    document =   FirebaseFirestore.instance.collection('users').where('uid' , isEqualTo: uid);
+    var _data =  await document.get() ;
+    return    _data.docs[0].id  ;
+  }
+
 
 }
 
