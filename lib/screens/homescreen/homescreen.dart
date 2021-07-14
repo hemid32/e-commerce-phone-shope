@@ -46,9 +46,12 @@ class HomeScreen extends StatelessWidget {
         BlocProvider<BlocUserVerifaid>(
                   create: (BuildContext context) => BlocUserVerifaid(),
                 ),
+        /*
         BlocProvider<BlocMassegersGet>(
                   create: (BuildContext context) => BlocMassegersGet(),
                 ),
+
+         */
       ],
       child: Scaffold(
         body:   WillPopScope(child: Body() ,

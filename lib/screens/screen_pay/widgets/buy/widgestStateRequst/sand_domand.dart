@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:phoneshop/bloc/cartCalcul/bloc.dart';
@@ -9,7 +10,10 @@ import 'package:phoneshop/bloc/myOrder/bloc.dart';
 import 'package:phoneshop/bloc/myOrder/event.dart';
 import 'package:phoneshop/constant.dart';
 import 'package:phoneshop/model/domand/servisec_domand.dart';
+import 'package:phoneshop/model/messages/model_messages.dart';
+import 'package:phoneshop/model/messages/services_messages.dart';
 import 'package:phoneshop/screens/homescreen/homescreen.dart';
+import 'package:phoneshop/screens/messages/messages.dart';
 import 'package:phoneshop/screens/myOrder/my_order.dart';
 import 'package:phoneshop/screens/screen_pay/componants/card_shoping_phone.dart';
 import 'package:phoneshop/screens/screen_pay/componants/container_buttom_prograss_shopping.dart';
@@ -52,6 +56,22 @@ class SandDomand extends StatelessWidget {
           DoubleButtonButtom(
             iconBunnGreen: Icons.message, titleBunnGreen: 'Contect Me',
             iconBunnWaith: Icons.close,
+            onTapGreen: ()async  {
+              // go to messages and sand order
+              var mesg = Message(
+                  type : 'order' , text : 'text' , uidUser :  FirebaseAuth.instance.currentUser.uid ,
+                  date: DateTime.now() ,
+                  uidOrder: BlocProvider.of<BlocDataOrderShow>(context).state[5]
+              ) ;
+              var save  = ServesicesImage(
+                  mesgae: mesg
+              ) ;
+              bool _result = await save.saveToFireBase() ;
+              if(_result){
+               // _controller.clear() ;
+                Navigator.push(context, MaterialPageRoute(builder: (context)=> Messages())) ;
+              }
+            },
             titleBunnWaith: 'Cencel Requist',
             onTapWath: () async {
               var  objectCancel = CancelDomandSanded(uidDomand: BlocProvider.of<BlocDataOrderShow>(context).state[5]) ;

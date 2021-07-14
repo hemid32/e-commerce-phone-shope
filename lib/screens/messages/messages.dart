@@ -11,8 +11,11 @@ class Messages extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider<BlocMessagesActiveDate>(
-            create: (BuildContext context) => BlocMessagesActiveDate()
-        )
+            create: (BuildContext context) => BlocMessagesActiveDate() ,
+        ) ,
+        BlocProvider<BlocMassegersGet>(
+          create: (BuildContext context) => BlocMassegersGet(),
+        ),
       ],
       child: Scaffold(
         body: Body(),

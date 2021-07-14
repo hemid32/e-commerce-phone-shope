@@ -13,6 +13,7 @@ import 'package:phoneshop/model/getModelFirebase/getUser/modelUserGet.dart';
 import 'package:phoneshop/model/messages/model_messages.dart';
 import 'package:phoneshop/model/messages/services_messages.dart';
 import 'container_messages.dart';
+import 'container_order.dart';
 import 'heaser.dart';
 import 'package:intl/intl.dart';
 
@@ -111,7 +112,7 @@ class Body extends StatelessWidget {
                             //BlocProvider.of<BlocMassegersGet>(context).add(EventGetMessagesFromFire()) ;
 
                             var mesg = Message(
-                                type : 'order' , text : _textMessage , uidUser :  FirebaseAuth.instance.currentUser.uid ,
+                                type : 'user' , text : _textMessage , uidUser :  FirebaseAuth.instance.currentUser.uid ,
                                date: DateTime.now() ,
                                uidOrder: '11e55480-e011-11eb-9cd8-e7a3ea99e2dc'
                             ) ;
@@ -186,71 +187,13 @@ class Body extends StatelessWidget {
     }else{
       return ContainerOrder(
         idOdere: message.uidOrder,
+        onTap: (){
+
+        },
       ) ;
     }
 
 
-  }
-}
-
-class ContainerOrder extends StatelessWidget {
-   ContainerOrder({
-    Key key, this.idOdere,
-  }) : super(key: key);
-  final String idOdere ;
-
-  GetMyOrder  _getOrder = GetMyOrder() ;
-
-  @override
-  Widget build(BuildContext context) {
-    return FutureBuilder<DomandProduit>(
-      future: _getOrder.getItemDOmand(idOdere),
-      builder: (context, snapshot) {
-        return !snapshot.hasData ? Container() :  Container(
-          margin: EdgeInsets.symmetric(horizontal: 20 , vertical: 5),
-          height: 80,
-          decoration: BoxDecoration(
-            color: Colors.white ,
-            borderRadius: BorderRadius.circular(15) ,
-
-          ),
-          child: Row(
-            children: [
-              Container(
-                margin: EdgeInsets.all(5),
-                width: 75,
-                height: 75,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(8),
-                  image: DecorationImage(
-                    image: AssetImage(
-                      snapshot.data.listProduitBuy.itemCart[0].produit.image
-                    ),
-                    fit: BoxFit.contain
-                  ),
-                ),
-              ) ,
-              
-              Expanded(
-                child: Container(
-                  margin: EdgeInsets.symmetric(horizontal: 5 , vertical: 5),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Container(
-                        child: Text('number of items  : ${snapshot.data.listProduitBuy.itemCart.length}'),
-                      )
-                    ],
-                  ),
-                ),
-              )
-
-            ],
-          ),
-        );
-      }
-    );
   }
 }
 

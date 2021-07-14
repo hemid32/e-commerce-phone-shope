@@ -58,9 +58,7 @@ class SettingAPP extends StatelessWidget {
           showDialogloding(context) ;
           await Future.delayed(Duration(seconds: 2)) ;
           Navigator.pop(context) ;
-          Navigator.push(context, MaterialPageRoute(builder: (_)=> BlocProvider.value(
-              value: BlocProvider.of<BlocMassegersGet>(context),
-              child: Messages()))) ;
+          Navigator.push(context, MaterialPageRoute(builder: (_)=>  Messages())) ;
         },) ,
         CostomListTile(title: 'Languge' , icon: Icons.language,onTap: (){},) ,
         CostomListTimeSwitch(valur: false,icon: Icons.brightness_3, title: 'Dark Mode', onChanged: (valuer){},),
