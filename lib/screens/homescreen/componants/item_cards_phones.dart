@@ -100,7 +100,7 @@ class CardPhoneItems extends StatelessWidget {
             width:  size.width /  2 -10 ,
             height:  310 ,
             decoration:  BoxDecoration(
-              color:  Colors.white ,
+              color:  Theme.of(context).accentColor ,
               borderRadius: BorderRadius.circular(20) ,
 
             ),
@@ -176,10 +176,8 @@ class CardPhoneItems extends StatelessWidget {
                               text:  '$title\n ' , style:  Theme.of(context).textTheme.button
                           ) ,
                           TextSpan(
-                              text: '$descreption ' , style: Theme.of(context).textTheme.button.copyWith(
-                            color: Colors.black.withOpacity(0.23) ,
+                              text:  descreption.length < 15 ?'$descreption' : '${descreption.substring(0,15)} ...' , style: Theme.of(context).textTheme.button
 
-                          )
                           ) ,
                         ]
                     )) ,

@@ -2,7 +2,10 @@ import 'package:bloc/bloc.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hive/hive.dart';
+import 'package:phoneshop/bloc/theme/bloc.dart';
+import 'package:phoneshop/bloc/theme/event.dart';
 import 'package:phoneshop/constant.dart';
 import 'package:phoneshop/model/getModelFirebase/getUser/modelUserGet.dart';
 import 'package:phoneshop/model/hiveModel/hive_cart.dart';
@@ -25,6 +28,7 @@ import 'model/hiveModel/addres.dart';
 import 'model/hiveModel/favorite.dart';
 import 'model/messages/services_messages.dart';
 import 'model/puy/shopping.dart';
+import 'oitil/theme/theme.dart';
 import 'screens/profile/profile.dart';
 
 
@@ -93,6 +97,8 @@ var o = GetMyOrder() ;
   print(r.date) ;
    */
 
+  ThemeMode.dark  ;
+
 
 
 
@@ -109,24 +115,26 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        textTheme: TextTheme(
-      headline5: TextStyle(
-      fontWeight: FontWeight.bold
-      ) ,
-        button: TextStyle(
-            fontWeight: FontWeight.bold
-        )
-
-    ),
-    primaryColor: kPrimaryColor,
-    scaffoldBackgroundColor: kBackgroundColor,
-    primarySwatch: Colors.blue,
-      ),
-      home:   HomeScreen(),
+    return FutureBuilder(
+      builder: (context, snapshot) {
+        return BlocProvider(
+          create : (context) => BlocTheme()..add(EventsThemeChangedInitilis()) ,
+          child: BlocBuilder<BlocTheme , List>(
+            builder: (context, state) {
+              return MaterialApp(
+                debugShowCheckedModeBanner: false,
+                title: 'Flutter Demo',
+                theme: themeLigth,
+                darkTheme: themeDark ,
+                themeMode: state[0] ,
+                home:   BlocProvider.value(
+                    value: BlocProvider.of<BlocTheme>(context),
+                    child: HomeScreen()),
+              );
+            }
+          ),
+        );
+      }
     );
   }
 }

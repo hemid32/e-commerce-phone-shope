@@ -13,18 +13,19 @@ class CostomListTile extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Container(
-        margin: EdgeInsets.symmetric(horizontal:  20),
+        margin: EdgeInsets.symmetric(horizontal:  20 , vertical: 2),
         height:  65,
         width:  double.infinity,
+        decoration: BoxDecoration(
+          color: Theme.of(context).cardColor
+        ),
         child: Row(
           children: [
-            Icon(icon , color: Colors.black.withOpacity(0.5), ) ,
+            Icon(icon ,  color:  Theme.of(context).iconTheme.color, ) ,
             SizedBox(width: 30,) ,
-            Text('$title ' , style: Theme.of(context).textTheme.button.copyWith(
-                color: Colors.black.withOpacity(0.5)
-            ),) ,
+            Text('$title ' , style: Theme.of(context).textTheme.button,) ,
             Spacer() ,
-            Icon(Icons.arrow_forward_ios , color: Colors.black.withOpacity(0.5),)
+            Icon(Icons.arrow_forward_ios , color:  Theme.of(context).iconTheme.color, size: 25,)
 
           ],
         ),

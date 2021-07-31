@@ -22,7 +22,7 @@ class SearchAndIconMenu extends StatelessWidget {
             height: 40,
             width: size.width * 0.75,
             decoration: BoxDecoration(
-                color: Colors.black.withOpacity(0.090),
+                color:  Theme.of(context).buttonColor,// Colors.black.withOpacity(0.090),
                 borderRadius: BorderRadius.circular(20)),
             child: Row(
               children: [
@@ -30,7 +30,7 @@ class SearchAndIconMenu extends StatelessWidget {
                   'assets/icons/search.svg',width: 40,
                 ),
                 SizedBox(width: 5,) ,
-                Text('Search' , style: Theme.of(context).textTheme.button.copyWith(color: Colors.black.withOpacity(0.3)),) ,
+                Text('Search' , style: Theme.of(context).textTheme.bodyText2,) ,
               ],
             ),
           ),

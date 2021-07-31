@@ -95,7 +95,7 @@ class ItemMenu extends StatelessWidget {
               style: Theme.of(context)
                   .textTheme
                   .button
-                  .copyWith(color: Colors.black.withOpacity(0.5)))
+                 )
         ],
       ),
     );

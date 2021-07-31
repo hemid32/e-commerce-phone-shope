@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:phoneshop/bloc/getMessageq/bloc.dart';
 import 'package:phoneshop/bloc/getMessageq/events.dart';
+import 'package:phoneshop/bloc/theme/bloc.dart';
+import 'package:phoneshop/bloc/theme/event.dart';
 import 'package:phoneshop/bloc/userManagze/userVirifaid/bloc.dart';
 import 'package:phoneshop/constant.dart';
 import 'package:phoneshop/screens/homescreen/componants/costom_listTile.dart';
@@ -50,18 +52,27 @@ class SettingAPP extends StatelessWidget {
         Container(
           alignment: Alignment.bottomLeft,
           margin: EdgeInsets.symmetric(horizontal: 20 , vertical:  20),
-          child: Text('Setting General' , style:  Theme.of(context).textTheme.button.copyWith(fontSize: 20 , color: Colors.black.withOpacity(0.5 )),),
+          child: Text('Setting General' , style:  Theme.of(context).textTheme.button.copyWith(fontSize: 20 ),),
         ) ,
         CostomListTile(title: 'List Favorite' , icon: Icons.favorite, onTap: (){},) ,
         CostomListTimeSwitch(valur: false,icon: Icons.notifications, title: 'Notification', onChanged: (valuer){},),
         CostomListTile(title: 'Messages' , icon: Icons.message,onTap: () async  {
-          showDialogloding(context) ;
-          await Future.delayed(Duration(seconds: 2)) ;
-          Navigator.pop(context) ;
+          //showDialogloding(context) ;
+          //await Future.delayed(Duration(seconds: 2)) ;
+          //Navigator.pop(context) ;
           Navigator.push(context, MaterialPageRoute(builder: (_)=>  Messages())) ;
         },) ,
         CostomListTile(title: 'Languge' , icon: Icons.language,onTap: (){},) ,
-        CostomListTimeSwitch(valur: false,icon: Icons.brightness_3, title: 'Dark Mode', onChanged: (valuer){},),
+        BlocBuilder<BlocTheme , List >(
+          builder: (context, state) {
+            print('state[0] === ${state[0]}') ;
+            return CostomListTimeSwitch(valur: state[0] == ThemeMode.dark ,icon: Icons.brightness_3, title: 'Dark Mode', onChanged: (valuer){
+              BlocProvider.of<BlocTheme>(context).add(EventsChangeThemeMode(
+                value: valuer ,
+              )) ;
+            },);
+          }
+        ),
         CostomListTile(title: 'FeedBack' , icon: Icons.star,onTap: (){},) ,
         CostomListTile(title: 'Accept Private' , icon: Icons.security,onTap: (){},) ,
         CostomListTile(title: 'About me' , icon: Icons.info,onTap: (){},) ,
