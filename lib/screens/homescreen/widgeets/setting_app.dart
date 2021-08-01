@@ -27,7 +27,7 @@ class SettingAPP extends StatelessWidget {
         HeaderSetting(titre:  'Setting App',) ,
        BlocBuilder<BlocUserVerifaid , bool >(
           builder: (context, state) {
-            print('state user === $state') ;
+            //print('state user === $state') ;
             return CostomListTile(title:  state ? 'Account' : 'Login & register' , icon: Icons.person, onTap: (){
 
               if(!state){
@@ -56,12 +56,25 @@ class SettingAPP extends StatelessWidget {
         ) ,
         CostomListTile(title: 'List Favorite' , icon: Icons.favorite, onTap: (){},) ,
         CostomListTimeSwitch(valur: false,icon: Icons.notifications, title: 'Notification', onChanged: (valuer){},),
-        CostomListTile(title: 'Messages' , icon: Icons.message,onTap: () async  {
-          //showDialogloding(context) ;
-          //await Future.delayed(Duration(seconds: 2)) ;
-          //Navigator.pop(context) ;
-          Navigator.push(context, MaterialPageRoute(builder: (_)=>  Messages())) ;
-        },) ,
+        BlocBuilder<BlocUserVerifaid , bool >(
+          builder: (context, user) {
+            return CostomListTile(title: 'Messages' , icon: Icons.message,onTap: () async  {
+              //showDialogloding(context) ;
+              //await Future.delayed(Duration(seconds: 2)) ;
+              //Navigator.pop(context) ;
+              if(user)
+              Navigator.push(context, MaterialPageRoute(builder: (_)=>  Messages())) ;
+              else
+                Navigator.push(context, MaterialPageRoute(builder: (_)=> BlocProvider.value(
+
+                    value: BlocProvider.of<BlocUserVerifaid>(context),
+                    child: LoginOrRegester()))) ;
+
+
+            },
+            );
+          }
+        ) ,
         CostomListTile(title: 'Languge' , icon: Icons.language,onTap: (){},) ,
         BlocBuilder<BlocTheme , List >(
           builder: (context, state) {

@@ -2,9 +2,12 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:phoneshop/bloc/user/bloc.dart';
 import 'package:phoneshop/bloc/userManagze/userVirifaid/bloc.dart';
 import 'package:phoneshop/bloc/userManagze/userVirifaid/event.dart';
 import 'package:phoneshop/constant.dart';
+import 'package:phoneshop/model/user/user.dart';
+import 'package:phoneshop/screens/editProfile/editProfile.dart';
 import 'package:phoneshop/screens/homescreen/componants/costom_listTile.dart';
 import 'package:phoneshop/screens/myOrder/my_order.dart';
 import 'package:phoneshop/screens/profile/componants/image_user.dart';
@@ -35,23 +38,31 @@ class Body extends StatelessWidget {
                     width: size.width *0.8,
                     height:size.height * 0.7,
                     decoration: BoxDecoration(
-                      color: Colors.white , 
+                      color: Theme.of(context).accentColor ,
                       borderRadius: BorderRadius.circular(20)
                     ),
                     child: Column(
                       children: [
                         Row(
                           children: [
-                            Icon(Icons.settings , size: 30,) ,
+                            GestureDetector(
+
+                                onTap: ()=> Navigator.push(context, MaterialPageRoute(builder: (context)=> EditProfile())),
+                                child: Icon(Icons.settings , size: 30,)) ,
                             Spacer() ,
                             Icon(Icons.ac_unit_sharp , size: 30,)
                           ],
                         ),
                         SizedBox(height: 20,) ,
 
-                        NomeUser(
-                          name: FirebaseAuth.instance.currentUser.displayName,
-                          email: FirebaseAuth.instance.currentUser.email,
+                        BlocBuilder<BlocUserGetModel , List>(
+                          builder: (context, userList) {
+                            UserLocalModel _user = userList[0] ;
+                            return NomeUser(
+                              name: _user.name??'',
+                              email: _user.email,
+                            );
+                          }
                         ),
                         Divider() ,
                         CostomListTile(title: 'May Order' , icon: Icons.shopping_cart, onTap: (){
@@ -73,13 +84,18 @@ class Body extends StatelessWidget {
                     ),
                   ),
                 ) ,
-                Positioned(
-                  top: size.height * 0.4 - 120,
-                  left: 0,
-                  right: 0,
-                  child: ImageUser(
-                    image: 'assets/images/user.png',
-                  ),
+                BlocBuilder<BlocUserGetModel , List >(
+                  builder: (context, userList ) {
+                    UserLocalModel _user = userList[0] ;
+                    return Positioned(
+                      top: size.height * 0.4 - 120,
+                      left: 0,
+                      right: 0,
+                      child: ImageUser(
+                        image: _user.image == 'null' ? 'assets/images/user.png' : _user.image,
+                      ),
+                    );
+                  }
                 )
                 
               ],

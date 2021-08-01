@@ -2,9 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:phoneshop/bloc/cartScreenManage/bloc.dart';
 import 'package:phoneshop/bloc/cartScreenManage/event.dart';
+import 'package:phoneshop/bloc/userManagze/userVirifaid/bloc.dart';
 import 'package:phoneshop/model/cart/cart.dart';
 import 'package:phoneshop/model/cart/services.dart';
 import 'package:phoneshop/screens/homescreen/componants/header_setting.dart';
+import 'package:phoneshop/screens/loginorRegester/login_or_regester.dart';
 import 'package:phoneshop/screens/myOrder/componants/when_vide.dart';
 import 'package:phoneshop/screens/screen_pay/componants/button_costom_wight_infinty.dart';
 import 'package:phoneshop/screens/screen_pay/componants/card_shoping_phone.dart';
@@ -52,7 +54,23 @@ class CartHome extends StatelessWidget {
                     snapShot.length == 0 ? WhenVide(
                       title: 'Shop',
                       text: 'You have not added any items to the cart ! ',
-                    ) :  ButtonCostomWithInfiniti(title: 'Contunu Bay', onTap: ()=> Navigator.push(context, MaterialPageRoute(builder: (context) => Buy())),) ,
+                    ) :  BlocBuilder<BlocUserVerifaid , bool >(
+                      builder: (context, user) {
+                        return ButtonCostomWithInfiniti(title: 'Contunu Bay', onTap: (){
+
+                          if(user) {
+                            Navigator.push(context,
+                                MaterialPageRoute(builder: (context) => Buy()));
+                          }else {
+                            Navigator.push(context, MaterialPageRoute(builder: (_)=> BlocProvider.value(
+
+                                value: BlocProvider.of<BlocUserVerifaid>(context),
+                                child: LoginOrRegester()))) ;
+                          }
+
+                        });
+                      }
+                    ) ,
 
 
                   ],

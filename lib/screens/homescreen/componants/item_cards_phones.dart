@@ -4,6 +4,7 @@ import 'package:phoneshop/bloc/favorite/bloc.dart';
 import 'package:phoneshop/bloc/favorite/event.dart';
 import 'package:phoneshop/bloc/manageScreen/detailProduit/bloc.dart';
 import 'package:phoneshop/bloc/manageScreen/detailProduit/event.dart';
+import 'package:phoneshop/bloc/userManagze/userVirifaid/bloc.dart';
 import 'package:phoneshop/constant.dart';
 import 'package:phoneshop/model/favorite/model.dart';
 import 'package:phoneshop/model/produit/produit_colors.dart';
@@ -42,7 +43,9 @@ class ItemsCardBestSellingPHone extends StatelessWidget {
                       BlocProvider.of<BlocScreenDetailProduit>(context).add(EvensGoToProduit(indexProduit: 0 , produisColors: listData.produits[i] )) ;
                       Navigator.push(context, MaterialPageRoute(builder: (_)=> BlocProvider.value(
                         value: BlocProvider.of<BlocScreenDetailProduit>(context),
-                        child:  DetailProduit() ,
+                        child:  BlocProvider.value(
+                            value: BlocProvider.of<BlocUserVerifaid>(context),
+                            child: DetailProduit()) ,
                       )));},
                     id: listData.produits[i].id ,
                     fav:  data.data,

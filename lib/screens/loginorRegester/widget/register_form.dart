@@ -145,9 +145,11 @@ class Register extends StatelessWidget {
                       });
                     }
                   ) ,
-                  Text('agree with Terms & conditions', style: Theme.of(context).textTheme.button.copyWith(
-                      color: kPrimaryColor
-                  ),)
+                  Expanded(
+                    child: Text('agree with Terms & conditions', style: Theme.of(context).textTheme.button.copyWith(
+                        color: kPrimaryColor
+                    ),),
+                  )
                 ],
               ),
 

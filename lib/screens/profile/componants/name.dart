@@ -13,12 +13,10 @@ class NomeUser extends StatelessWidget {
     return Container(
       child: Column(
         children: [
-          Text('$name', style: Theme.of(context).textTheme.button.copyWith(
-              color: Colors.black.withOpacity(0.8) ,
-              fontSize: 20
+          Text('$name ', style: Theme.of(context).textTheme.button.copyWith(
+              fontSize: 20 , fontWeight: FontWeight.bold
           ),),
           Text('$email', style:  Theme.of(context).textTheme.button.copyWith(
-              color: Colors.black.withOpacity(0.4) ,
               fontSize: 15
           ),),
         ],
