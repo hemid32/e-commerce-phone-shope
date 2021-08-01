@@ -24,7 +24,7 @@ class BodyDetail extends StatelessWidget {
       padding: EdgeInsets.symmetric(horizontal: kDefaultPadding  , vertical:  kDefaultPadding*2),
       //width: size.width,
       decoration: BoxDecoration(
-          color: Colors.white,
+          color: Theme.of(context).accentColor,
           borderRadius: BorderRadius.only(
             topRight: Radius.circular(20) ,
             topLeft: Radius.circular(20) ,
@@ -40,7 +40,7 @@ class BodyDetail extends StatelessWidget {
               return Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text( '${state[0].nomPhone } ' , style: Theme.of(context).textTheme.button.copyWith(fontSize: 20 , color: Colors.black.withOpacity(0.5) ) ) ,
+                  Text( '${state[0].nomPhone } ' , style: Theme.of(context).textTheme.button.copyWith(fontSize: 20 ) ) ,
                   SizedBox(height: kDefaultPadding/2,) ,
                   RowPriceANDContitus(price: state[0].price, priceOld: state[0].priceOriginal ,contitu: state[0].contitu ,) ,
                 ],
@@ -56,7 +56,7 @@ class BodyDetail extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
 
-              Text( 'Choose a color' , style: Theme.of(context).textTheme.button.copyWith(fontSize: 20 , color: Colors.black.withOpacity(0.5) ) ) ,
+              Text( 'Choose a color' , style: Theme.of(context).textTheme.button.copyWith(fontSize: 20  ) ) ,
               Divider() ,
               SizedBox(height: 15,),
               ItemsColorShoise(),

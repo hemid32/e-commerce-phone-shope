@@ -35,7 +35,7 @@ class BottomNavigationsBars extends StatelessWidget {
       width:  MediaQuery.of(context).size.width,
       height:  60,
       decoration:  BoxDecoration(
-        color: Colors.white ,
+        color: Theme.of(context).buttonColor ,
 
       ),
       child: Row(
@@ -113,7 +113,7 @@ class IconButtonBottom extends StatelessWidget {
       child: Column(
         children: [
 
-          Icon(icon , size:  30, color:  active ? kPrimaryColor : Colors.black.withOpacity(0.4), ) ,
+          Icon(icon , size:  30, color:  active ? kPrimaryColor : Theme.of(context).iconTheme.color, ) ,
           Container(
             height: 2,
             width: 15,

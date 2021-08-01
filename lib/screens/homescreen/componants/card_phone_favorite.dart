@@ -25,7 +25,7 @@ class CardPhoneChopeFavorite extends StatelessWidget {
       child: Container(
         height: 140 ,
         decoration: BoxDecoration(
-          color: Colors.white ,
+          color: Theme.of(context).accentColor ,
           borderRadius: BorderRadius.circular(0) ,
 
         ),
@@ -37,7 +37,7 @@ class CardPhoneChopeFavorite extends StatelessWidget {
               height: 140,
               width: 100,
               decoration: BoxDecoration(
-                  color: Colors.black.withOpacity(0.07) ,
+                  color: Theme.of(context).cardColor ,
                   image:  DecorationImage(
                       image: AssetImage(
                           image
@@ -58,12 +58,12 @@ class CardPhoneChopeFavorite extends StatelessWidget {
                 children: [
                   Row(
                     children: [
-                      Text( title , style: Theme.of(context).textTheme.button.copyWith(color: Colors.black.withOpacity(0.6) , fontSize: 15 ),),
+                      Text( title , style: Theme.of(context).textTheme.button.copyWith( fontSize: 15 ),),
 
                       Spacer()  ,
                       GestureDetector(
                           onTap: deletCard,
-                          child: Icon(Icons.close , color: Colors.black.withOpacity(0.6), size: 20,))
+                          child: Icon(Icons.close , color: Theme.of(context).iconTheme.color, size: 20,))
 
 
                     ],
@@ -73,19 +73,19 @@ class CardPhoneChopeFavorite extends StatelessWidget {
                       maxLines: 3,
                       text: TextSpan(
                           text: detail ,
-                          style: Theme.of(context).textTheme.button.copyWith(color: Colors.black.withOpacity(0.4) , fontSize:  12 )
+                          style: Theme.of(context).textTheme.button.copyWith( fontSize:  12 )
                       )) ,
                   SizedBox(height: 5,) ,
 
                   Row(
                     children: [
-                      Text('RAM :' , style:  Theme.of(context).textTheme.button.copyWith(color: Colors.black.withOpacity(0.4) , fontSize:  12 ),) ,
+                      Text('RAM :' , style:  Theme.of(context).textTheme.button.copyWith( fontSize:  12 ),) ,
                       SizedBox(width: 5,) ,
-                      Text('$ram GB' ,style:  Theme.of(context).textTheme.button.copyWith(color: Colors.black.withOpacity(0.4) , fontSize:  12 ),),
+                      Text('$ram GB' ,style:  Theme.of(context).textTheme.button.copyWith( fontSize:  12 ),),
                       SizedBox(width: 15,) ,
-                      Text('Storage :' , style:  Theme.of(context).textTheme.button.copyWith(color: Colors.black.withOpacity(0.4) , fontSize:  12 ),) ,
+                      Text('Storage :' , style:  Theme.of(context).textTheme.button.copyWith(fontSize:  12 ),) ,
                       SizedBox(width: 5,) ,
-                      Text('$storage GB' ,style:  Theme.of(context).textTheme.button.copyWith(color: Colors.black.withOpacity(0.4) , fontSize:  12 ),) ,
+                      Text('$storage GB' ,style:  Theme.of(context).textTheme.button.copyWith( fontSize:  12 ),) ,
                     ],
                   ),
                   SizedBox(height: 5,) ,

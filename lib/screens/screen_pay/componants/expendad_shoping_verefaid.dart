@@ -54,9 +54,9 @@ class items_shoping_verefaid extends StatelessWidget {
       margin: EdgeInsets.symmetric(vertical: 10 ),
       child: Row(
         children: [
-          Text('$text : ' , style: Theme.of(context).textTheme.button.copyWith(color: Colors.black.withOpacity(0.3)),) ,
+          Text('$text : ' , style: Theme.of(context).textTheme.button,) ,
           SizedBox(width: 40,) ,
-          Text('$reponse' , style: Theme.of(context).textTheme.button.copyWith(color: Colors.black.withOpacity(0.3)),) ,
+          Text('$reponse' , style: Theme.of(context).textTheme.button,) ,
         ],
       ),
     );

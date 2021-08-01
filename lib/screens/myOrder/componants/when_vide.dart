@@ -18,14 +18,13 @@ class WhenVide extends StatelessWidget {
         children: [
           SizedBox(height: 20,) ,
           Text('$text' , style: Theme.of(context).textTheme.button.copyWith(
-            color: Colors.black.withOpacity(0.4) ,
             fontSize: 20  ,
           ),),
           SizedBox(height: 20,) ,
-          Icon(Icons.error_outline , size: 120, color: Colors.black.withOpacity(0.4),) ,
+          Icon(Icons.error_outline , size: 120) ,
           SizedBox(height: 20,) ,
           ButtonSizeWath80(
-            color: Colors.black.withOpacity(0.4),
+            color: Theme.of(context).accentColor,
             title: '$title',
             onTap: (){
               Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) =>

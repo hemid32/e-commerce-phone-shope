@@ -93,7 +93,7 @@ class ItemTopMenu extends StatelessWidget {
         child: Column(
           children: [
             Text('$title' , style: Theme.of(context).textTheme.button.copyWith(
-              color: active || fin ? kPrimaryColor.withOpacity(0.6) : Colors.black.withOpacity(0.4) ,
+              color: active || fin ? kPrimaryColor : Theme.of(context).textTheme.button.color ,
             ),) ,
             Divider( color: active || fin  ? kPrimaryColor.withOpacity(0.6) :  Colors.black.withOpacity(0.23) ),
 

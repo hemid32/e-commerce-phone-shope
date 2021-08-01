@@ -10,7 +10,7 @@ class TitleTextAligns extends StatelessWidget {
     return Container(
       margin: EdgeInsets.symmetric(horizontal: 20 , vertical:  10),
 
-      child: Text('$title' ,style: Theme.of(context).textTheme.button.copyWith(color: Colors.black.withOpacity(0.4)), ),
+      child: Text('$title' ,style: Theme.of(context).textTheme.button, ),
     );
   }
 }

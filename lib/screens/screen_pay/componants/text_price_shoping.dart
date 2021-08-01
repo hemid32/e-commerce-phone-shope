@@ -15,9 +15,9 @@ class TextPriceShoping extends StatelessWidget {
       child: Row(
         children: [
           //TitleTextAligns(title: 'La Some',) ,
-          Text('$title' , style:  Theme.of(context).textTheme.button.copyWith(color: Colors.black.withOpacity(0.7), fontSize:  15),) ,
+          Text('$title' , style:  Theme.of(context).textTheme.button.copyWith( fontSize:  15),) ,
           Spacer() ,
-          Text('$price DZ', style:  Theme.of(context).textTheme.button.copyWith(color: kPrimaryColor.withOpacity(0.7)),)
+          Text('$price DZ', style:  Theme.of(context).textTheme.button,)
         ],
       ),
     );

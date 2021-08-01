@@ -51,7 +51,7 @@ class CircelerChekedIconIsTrue extends StatelessWidget {
               height: 45,
               width:  45,
               decoration: BoxDecoration(
-                  color: confermed ? kPrimaryColor.withOpacity(0.7) : Colors.black.withOpacity(0.1),
+                  color: confermed ? kPrimaryColor.withOpacity(0.7) : Theme.of(context).cardColor,
                   shape: BoxShape.circle ,
                   boxShadow: [
                     BoxShadow(
@@ -93,7 +93,7 @@ class CircelerChekedIconIsTrue extends StatelessWidget {
           child: Container(
             //margin: EdgeInsets.only(top: 10),
             width:45 ,
-            child: Text('$title ' , style: Theme.of(context).textTheme.button.copyWith(fontSize: 12, color: Colors.black.withOpacity(0.5)),),
+            child: Text('$title ' , style: Theme.of(context).textTheme.button.copyWith(fontSize: 10),),
           ),
         )
 

@@ -23,7 +23,6 @@ class ButtonSizeWath80 extends StatelessWidget {
           color: color ,
         ),
         child: Text('$title' , style: Theme.of(context).textTheme.button.copyWith(
-            color: Colors.white ,
             fontSize: 18
         ),),
       ),

@@ -16,11 +16,11 @@ class Header extends StatelessWidget {
         children: [
           GestureDetector(
               onTap: ()=>  Navigator.pop(context),
-              child: Icon(Icons.close , color: Colors.black.withOpacity(0.4),size: 30,)) ,
+              child: Icon(Icons.close , color: Theme.of(context).iconTheme.color,size: 30,)) ,
           Spacer() ,
-          Text('Buy' , style: Theme.of(context).textTheme.button.copyWith(color: Colors.black.withOpacity(0.4) ,fontSize: 20),) ,
+          Text('Buy' , style: Theme.of(context).textTheme.button.copyWith(fontSize: 20),) ,
           SizedBox(width: 20,) ,
-          Icon(Icons.chevron_right ,color: Colors.black.withOpacity(0.4),size: 30,) ,
+          Icon(Icons.chevron_right ,color: Theme.of(context).iconTheme.color,size: 30,) ,
         ],
       ),
     );

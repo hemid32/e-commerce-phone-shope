@@ -84,14 +84,18 @@ class Addres extends StatelessWidget {
 
         BlocBuilder<BlocDropDowenWilayat , String >(
           builder: (context, state) {
-            return DropDawen(valur: state, items: getListWilayat(), onTap: (valeur){
+            return Container(
+              color: Theme.of(context).accentColor,
+              margin: EdgeInsets.symmetric(horizontal: 20),
+              child: DropDawen(valur: state, items: getListWilayat(), onTap: (valeur){
 
-              _wilaya = valeur ;
-              BlocProvider.of<BlocDropDowenWilayat>(context).add(EveneDropDowenValue(
-                valeur
-              )) ;
+                _wilaya = valeur ;
+                BlocProvider.of<BlocDropDowenWilayat>(context).add(EveneDropDowenValue(
+                  valeur
+                )) ;
 
-              },);
+                },),
+            );
           }
         ),
 

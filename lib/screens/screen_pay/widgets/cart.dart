@@ -62,7 +62,7 @@ class Cart extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     //TitleTextAligns(title: 'Detail de requist',) ,
-                    Text('Detail de Requist' , style:  Theme.of(context).textTheme.button.copyWith(color: Colors.black.withOpacity(0.7)),),
+                    Text('Detail de Requist' , style:  Theme.of(context).textTheme.button,),
                     for(var i = 0 ; i< itemsCart.length ; i++)  CardPhoneChope(
                         image: itemsCart[i].produit.image ,
                         title: itemsCart[i].produit.nomPhone,

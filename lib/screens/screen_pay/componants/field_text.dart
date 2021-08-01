@@ -30,7 +30,7 @@ class FieldTextGet extends StatelessWidget {
 
           errorText: validErurr ,
           labelText: '$title' ,
-          labelStyle: Theme.of(context).textTheme.button.copyWith(color: Colors.black.withOpacity(0.4)) ,
+          labelStyle: Theme.of(context).textTheme.button ,
         ),
       ),
     );

@@ -44,8 +44,7 @@ Future<void> showMyDialogShoiAddress(contextOriginal) async {
                                           .textTheme
                                           .button
                                           .copyWith(
-                                              color:
-                                                  Colors.black.withOpacity(0.6),
+
                                               fontSize: 20),
                                     )),
                               ),

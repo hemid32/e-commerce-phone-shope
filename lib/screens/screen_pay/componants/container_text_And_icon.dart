@@ -17,14 +17,14 @@ class ContainerAndIconAndText_Seach extends StatelessWidget {
         height: 50,
         width:  double.infinity ,
         decoration: BoxDecoration(
-            color: Colors.black.withOpacity(0.06)
+            color: Theme.of(context).buttonColor
         ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             icon ,
             SizedBox(width: 10,),
-            Text('$title') ,
+            Text('$title', style: Theme.of(context).textTheme.button,) ,
 
           ],
         ) ,

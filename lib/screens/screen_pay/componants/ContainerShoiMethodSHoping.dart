@@ -26,7 +26,7 @@ class RadioButton extends StatelessWidget {
           height: 70,
           width: double.infinity,
           decoration: BoxDecoration(
-            color:  Colors.black.withOpacity(0.07) ,
+            color:  Theme.of(context).accentColor ,
 
           ),
 
@@ -35,6 +35,7 @@ class RadioButton extends StatelessWidget {
             //mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Radio(
+                activeColor: kPrimaryColor,
                 value: valure ,
                 groupValue: groub,
                 onChanged: onChanged,
@@ -42,8 +43,8 @@ class RadioButton extends StatelessWidget {
               Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text('$title ' ,style: Theme.of(context).textTheme.button.copyWith(color: Colors.black.withOpacity(0.5) , fontSize: 15),),
-                  Text('$price DZ ' ,style: Theme.of(context).textTheme.button.copyWith(color: kPrimaryColor.withOpacity(0.5) , fontSize: 15),),
+                  Text('$title ' ,style: Theme.of(context).textTheme.button.copyWith(fontSize: 15),),
+                  Text('$price DZ ' ,style: Theme.of(context).textTheme.button.copyWith( color: kPrimaryColor, fontSize: 15),),
                 ],
               )
             ],

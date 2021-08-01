@@ -38,7 +38,7 @@ class DetailProduit extends StatelessWidget {
             }
           },
           child: Scaffold(
-            backgroundColor: Colors.white,
+            backgroundColor: Theme.of(context).accentColor,
             body: Body(),
             bottomNavigationBar: ButtomNavigatorBar(),
           ),

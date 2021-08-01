@@ -46,7 +46,7 @@ class RadioButtonListAddress extends StatelessWidget {
                   Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Text('$title ' ,style: Theme.of(context).textTheme.button.copyWith(color: Colors.black.withOpacity(0.5) , fontSize: 15),),
+                      Text( title.length < 15 ? '$title ' : '${title.substring(0,10)} ...' ,style: Theme.of(context).textTheme.button.copyWith( fontSize: 15),),
                     ],
                   )
                 ],

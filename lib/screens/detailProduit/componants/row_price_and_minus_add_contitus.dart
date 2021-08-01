@@ -30,7 +30,7 @@ class RowPriceANDContitus extends StatelessWidget {
                 style: Theme.of(context).textTheme.button.copyWith(
                       fontSize: 15,
                       decoration: TextDecoration.lineThrough,
-                      color: Colors.black.withOpacity(0.23),
+
                     ))
             : SizedBox(),
         Spacer(),
@@ -49,12 +49,12 @@ class RowPriceANDContitus extends StatelessWidget {
             alignment: Alignment.center,
             decoration: BoxDecoration(
               //color: kBackgroundColor ,
-              border: Border.all(color: Colors.black.withOpacity(0.23)),
+              border: Border.all(color: Theme.of(context).iconTheme.color),
             ),
             child: Container(
               height: 2.5,
               width: 7,
-              decoration: BoxDecoration(color: Colors.black.withOpacity(0.5)),
+              decoration: BoxDecoration(color: Theme.of(context).iconTheme.color),
             ),
           ),
         ),
@@ -87,7 +87,7 @@ class RowPriceANDContitus extends StatelessWidget {
             alignment: Alignment.center,
             decoration: BoxDecoration(
               //color: kBackgroundColor ,
-              border: Border.all(color: Colors.black.withOpacity(0.23)),
+              border: Border.all(color: Theme.of(context).iconTheme.color),
             ),
             child: Icon(
               Icons.add,

@@ -14,9 +14,9 @@ class TextRichTitleDetails extends StatelessWidget {
         textAlign: TextAlign.center,
         text: TextSpan(
             children: [
-              TextSpan(text: '$title \n ' , style: Theme.of(context).textTheme.button),
+              TextSpan(text: '$title \n ' , style: Theme.of(context).textTheme.button.copyWith(fontSize: 18 , fontWeight: FontWeight.bold)),
               TextSpan(text: '$detail  ' ,
-                  style: Theme.of(context).textTheme.button.copyWith(color: Colors.black.withOpacity(0.3))
+                  style: Theme.of(context).textTheme.button.copyWith(fontSize: 12)
               ),
             ]
         ),

@@ -44,10 +44,10 @@ class FooterButtons extends StatelessWidget {
               height: double.infinity,
               alignment: Alignment.center,
               decoration: BoxDecoration(
-                color: Colors.black.withOpacity(0.07) ,
+                color: Theme.of(context).accentColor ,
 
               ),
-              child: Text('$titleButton2' , style: Theme.of(context).textTheme.button.copyWith(color: Colors.black , fontSize: 15)),
+              child: Text('$titleButton2' , style: Theme.of(context).textTheme.button.copyWith( fontSize: 15)),
             ),
           ))
         ],

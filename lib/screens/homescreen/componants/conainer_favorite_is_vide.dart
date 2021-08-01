@@ -28,17 +28,11 @@ class ContainerFavVide extends StatelessWidget {
                     children: [
                       TextSpan(
                           text: 'I don\'t have a wishlist \n' ,
-                          style: Theme.of(context).textTheme.button.copyWith(
-                              color: Colors.black ,
-                              fontSize: 20
-                          )
+                          style: Theme.of(context).textTheme.headline1
                       ) ,
                       TextSpan(
                           text: 'Click on the icon next to the product to add it to my favorites list. Save it here!' ,
-                          style: Theme.of(context).textTheme.button.copyWith(
-                              color: Colors.black.withOpacity(0.4) ,
-                              fontSize: 15
-                          )
+                          style: Theme.of(context).textTheme.button
                       ) ,
                     ]
                 )),

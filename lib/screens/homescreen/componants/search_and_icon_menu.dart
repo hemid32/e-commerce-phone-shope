@@ -26,8 +26,11 @@ class SearchAndIconMenu extends StatelessWidget {
                 borderRadius: BorderRadius.circular(20)),
             child: Row(
               children: [
-                SvgPicture.asset(
-                  'assets/icons/search.svg',width: 40,
+                Hero(
+                  tag: 'search',
+                  child: SvgPicture.asset(
+                    'assets/icons/search.svg',width: 40,color: Theme.of(context).canvasColor,
+                  ),
                 ),
                 SizedBox(width: 5,) ,
                 Text('Search' , style: Theme.of(context).textTheme.bodyText2,) ,
@@ -45,7 +48,7 @@ class SearchAndIconMenu extends StatelessWidget {
                 onTap: ()=> Scaffold.of(context).openDrawer(),
                 child: Icon(
                   Icons.menu,
-                  color: kPrimaryColor.withOpacity(0.4),
+                  color:  Theme.of(context).canvasColor,
                 ),
               ),
             )),

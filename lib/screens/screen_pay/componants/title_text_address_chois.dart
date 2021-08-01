@@ -14,12 +14,12 @@ class TextTileAddress extends StatelessWidget {
       child: Row(
         children: [
           Text('$title : ', style: Theme.of(context).textTheme.button.copyWith(
-              color: Colors.black.withOpacity(0.7) ,
+
               fontSize: 17
           ),),
           Expanded(
             child: Text('$details  ', style: Theme.of(context).textTheme.button.copyWith(
-                color: Colors.black.withOpacity(0.5) ,
+
                 fontSize: 15
             ),),
           ),

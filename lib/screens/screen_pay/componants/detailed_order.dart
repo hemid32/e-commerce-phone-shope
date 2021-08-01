@@ -33,7 +33,7 @@ class DetaildedOrder extends StatelessWidget {
         Container(
           margin: EdgeInsets.symmetric(horizontal: 20),
           child: ExpansionTile(
-            backgroundColor: kPrimaryColor.withOpacity(0.23),
+            //backgroundColor: kPrimaryColor.withOpacity(0.23),
             title: Text('Produits'),
             children: [
               for(var i = 0 ; i< BlocProvider.of<BlocDataOrderShow>(context).state[3].length ; i++)  CardPhoneChope(
@@ -52,7 +52,7 @@ class DetaildedOrder extends StatelessWidget {
         Container(
           margin: EdgeInsets.symmetric(horizontal: 20),
           child: ExpansionTile(
-            backgroundColor: kPrimaryColor.withOpacity(0.23),
+            //backgroundColor: kPrimaryColor.withOpacity(0.23),
 
             title: Text('Address'),
             children: [
@@ -73,7 +73,7 @@ class DetaildedOrder extends StatelessWidget {
         Container(
           margin: EdgeInsets.symmetric(horizontal: 20),
           child: ExpansionTile(
-            backgroundColor: kPrimaryColor.withOpacity(0.23),
+            //backgroundColor: kPrimaryColor.withOpacity(0.23),
             title: Text('Buy'),
             children: [
               TextPriceShoping(title: 'Total Produit : ', price:BlocProvider.of<BlocDataOrderShow>(context).state[0].totalProduit ,)  ,// BlocProvider.of<CalculCartBloc>(context).state.totalProduit

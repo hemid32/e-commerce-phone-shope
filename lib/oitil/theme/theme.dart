@@ -14,6 +14,7 @@ ThemeData themeLigth = ThemeData(
   accentColor: Colors.white,
 
   buttonColor: Colors.black.withOpacity(0.090) ,
+  canvasColor: kPrimaryColor,
 
 
 // Define the default font family.
@@ -47,6 +48,8 @@ ThemeData themeDark = ThemeData(
 
   cardColor: Color(0xFF28293D) ,
   buttonColor: Colors.white.withOpacity(0.090) ,
+
+  canvasColor: Colors.white.withOpacity(0.4),
 
 
 

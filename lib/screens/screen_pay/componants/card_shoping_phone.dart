@@ -26,7 +26,7 @@ class CardPhoneChope extends StatelessWidget {
             height: 140,
             width: 100,
             decoration: BoxDecoration(
-                color: Colors.black.withOpacity(0.07) ,
+                color: Theme.of(context).accentColor ,
                 image:  DecorationImage(
                     image: AssetImage(
                         image
@@ -40,8 +40,8 @@ class CardPhoneChope extends StatelessWidget {
             height: 140,
 
             decoration: BoxDecoration(
-                color: Colors.white ,
-                borderRadius: BorderRadius.circular(20)
+                color: Theme.of(context).accentColor ,
+                borderRadius: BorderRadius.only(topRight: Radius.circular(20) , bottomRight: Radius.circular(20))
 
             ),
             padding: EdgeInsets.symmetric(horizontal: 10 ,vertical: 10),
@@ -51,12 +51,12 @@ class CardPhoneChope extends StatelessWidget {
               children: [
                 Row(
                   children: [
-                    Text( title , style: Theme.of(context).textTheme.button.copyWith(color: Colors.black.withOpacity(0.6) , fontSize: 15 ),),
+                    Text( title , style: Theme.of(context).textTheme.button.copyWith(  fontSize: 15 ),),
 
                     Spacer()  ,
                     GestureDetector(
                         onTap: deletCard,
-                        child: Icon(Icons.close , color: Colors.black.withOpacity(0.6), size: 20,))
+                        child: Icon(Icons.close , color:Theme.of(context).iconTheme.color, size: 20,))
 
 
                   ],
@@ -66,28 +66,28 @@ class CardPhoneChope extends StatelessWidget {
                     maxLines: 3,
                     text: TextSpan(
                         text: detail ,
-                        style: Theme.of(context).textTheme.button.copyWith(color: Colors.black.withOpacity(0.4) , fontSize:  12 )
+                        style: Theme.of(context).textTheme.button.copyWith( fontSize:  12 )
                     )) ,
                 SizedBox(height: 5,) ,
 
                 Row(
                   children: [
-                    Text('RAM :' , style:  Theme.of(context).textTheme.button.copyWith(color: Colors.black.withOpacity(0.4) , fontSize:  12 ),) ,
+                    Text('RAM :' , style:  Theme.of(context).textTheme.button.copyWith(fontSize:  12 ),) ,
                     SizedBox(width: 5,) ,
-                    Text('$ram GB' ,style:  Theme.of(context).textTheme.button.copyWith(color: Colors.black.withOpacity(0.4) , fontSize:  12 ),),
+                    Text('$ram GB' ,style:  Theme.of(context).textTheme.button.copyWith(fontSize:  12 ),),
                     SizedBox(width: 15,) ,
-                    Text('Storage :' , style:  Theme.of(context).textTheme.button.copyWith(color: Colors.black.withOpacity(0.4) , fontSize:  12 ),) ,
+                    Text('Storage :' , style:  Theme.of(context).textTheme.button.copyWith( fontSize:  12 ),) ,
                     SizedBox(width: 5,) ,
-                    Text('$storage GB' ,style:  Theme.of(context).textTheme.button.copyWith(color: Colors.black.withOpacity(0.4) , fontSize:  12 ),) ,
+                    Text('$storage GB' ,style:  Theme.of(context).textTheme.button.copyWith( fontSize:  12 ),) ,
                   ],
                 ),
                 SizedBox(height: 5,) ,
 
                 Row(
                   children: [
-                    Text('$price DZ',style:  Theme.of(context).textTheme.button.copyWith(color:kPrimaryColor.withOpacity(0.6) , fontSize:  15 )),
+                    Text('$price DZ',style:  Theme.of(context).textTheme.button.copyWith( fontSize:  15 )),
                     Spacer() ,
-                    Text('X $contitu',style:  Theme.of(context).textTheme.button.copyWith(color:Colors.black.withOpacity(0.6) , fontSize:  15 )),
+                    Text('X $contitu',style:  Theme.of(context).textTheme.button.copyWith( fontSize:  15 )),
                   ],
                 )
 

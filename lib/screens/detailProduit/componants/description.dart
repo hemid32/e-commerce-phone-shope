@@ -13,7 +13,7 @@ class DescriptionProduit extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text( 'Description' , style: Theme.of(context).textTheme.button.copyWith(fontSize: 20 , color: Colors.black.withOpacity(0.5) ) ),
+        Text( 'Description' , style: Theme.of(context).textTheme.button.copyWith(fontSize: 20  ) ),
         Divider() ,
 
         SizedBox(height: 10,) ,

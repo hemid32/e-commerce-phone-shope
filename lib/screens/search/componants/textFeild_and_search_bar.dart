@@ -20,18 +20,21 @@ class FieldTextAndIconSearch extends StatelessWidget {
       margin: EdgeInsets.only(top: 40 , left: 10 , right:  10 ),
       child: Row(
         children: [
-          SvgPicture.asset(
-            'assets/icons/search.svg',width: 25,
+          Hero(
+            tag: 'search',
+            child: SvgPicture.asset(
+              'assets/icons/search.svg',width: 25,
+            ),
           ),
           Expanded(
             flex: 5,
             child: Container(
               margin: EdgeInsets.symmetric(horizontal: 10),
               padding: EdgeInsets.symmetric(horizontal: 10),
-              height: 50,
+              height: 40,
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
-                  color: Colors.black.withOpacity(0.04)
+                  color: Theme.of(context).buttonColor
               ),
               child: TextFormField(
                 onChanged: (text){
@@ -42,8 +45,8 @@ class FieldTextAndIconSearch extends StatelessWidget {
                     hintText: 'Search produit' ,
                     hintStyle:
                     Theme.of(context).textTheme.button.copyWith(
-                        color: Colors.black.withOpacity(0.23)
-                    )
+                    ) ,
+                  border: InputBorder.none
                 ),
               ),
             ),
@@ -51,7 +54,7 @@ class FieldTextAndIconSearch extends StatelessWidget {
           Expanded(
               child: GestureDetector(
                 onTap: ()=> Navigator.pop(context),
-                child: Icon(Icons.arrow_forward_ios , size:  30, color: Colors.black.withOpacity(0.4),
+                child: Icon(Icons.close
                 ),
               )
           )

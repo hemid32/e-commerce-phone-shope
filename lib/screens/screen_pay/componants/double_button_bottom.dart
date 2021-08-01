@@ -51,7 +51,7 @@ class DoubleButtonButtom extends StatelessWidget {
                 //width: (size.width / 2 ) -20,
                 height: double.infinity,
                 decoration: BoxDecoration(
-                  color: Colors.white ,
+                  color: Theme.of(context).accentColor ,
                 ),
 
                 child: Container(
@@ -61,7 +61,7 @@ class DoubleButtonButtom extends StatelessWidget {
                     children: [
                       Text('$titleBunnWaith' ,style: Theme.of(context).textTheme.button,) ,
                       SizedBox(width: 10,) ,
-                      Icon(iconBunnWaith)
+                      Expanded(child: Icon(iconBunnWaith))
                     ],
                   ),
                 ),

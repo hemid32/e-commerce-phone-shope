@@ -12,12 +12,13 @@ class DropDawen extends StatelessWidget {
     return Container(
       margin: EdgeInsets.symmetric(horizontal: 20),
       child: DropdownButton(
+        dropdownColor: Theme.of(context).accentColor,
         value: valur,
         onChanged: onTap ,
         icon: Icon(Icons.arrow_drop_down , size:  30,),
         iconSize: 24,
         elevation: 16,
-        style: Theme.of(context).textTheme.button.copyWith(color: Colors.black.withOpacity(0.23) , fontSize: 20),
+        style: Theme.of(context).textTheme.button.copyWith( fontSize: 20),
         isExpanded: true,
         underline: SizedBox(),
 
