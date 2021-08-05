@@ -69,6 +69,7 @@ class BottomNavigationsBars extends StatelessWidget {
               return IconButtonBottom(
                 icon:Icons.shopping_cart,
                 onTap: (){
+                  BlocProvider.of<BlocUserVerifaid>(context).add(EventsUserVerified());
                   BlocProvider.of<BlocListDataCart>(context).add(EventShowList()) ;
                   BlocProvider.of<BlocHomeButtomBar>(context).add(GoToCart());
                   },

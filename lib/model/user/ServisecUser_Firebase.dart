@@ -4,6 +4,7 @@
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:phoneshop/model/user/user.dart';
 
@@ -12,8 +13,9 @@ class UserFire {
   //final String email ;
   //final String password ;
   final  UserLocalModel user ;
+  final PhoneAuthCredential phonAuth ;
 
-  UserFire({@required this.user });
+  UserFire({@required this.user , this.phonAuth });
 
 
   creatDataUser() async  {
@@ -55,6 +57,7 @@ class UserFire {
 
 
   creatUser() async {
+    /*
     var _result  ;
     await FirebaseAuth.instance.createUserWithEmailAndPassword(email: user.email, password: user.password ).then((value){
       _result =  value.user.uid ;
@@ -63,17 +66,121 @@ class UserFire {
      _result =  'Errur' ;
     });
     return _result ;
+
+     */
+    //AuthCredential credential = EmailAuthProvider.credential(email: user.email, password: user.password);
+
+    //AuthCredential credential = FirebaseAuth.instance.EmailAuthProvider.getCredential(email, password);
+    //AuthCredential credential = AuthCredential(providerId: 'providerId', signInMethod: 'emailLink');
+
+    //var userCard = FirebaseAuth.instance.currentUser.linkWithCredential(credential);
+
+    //userCard.reauthenticateWithCredential(credentials);
+    String  message    ;
+    bool result = false  ;
+    try{
+      await FirebaseAuth.instance.signInWithCredential(phonAuth).then((value) {
+        FirebaseAuth.instance.userChanges()
+            .listen((User userAuit) {
+          if (userAuit == null) {
+            //print('User is currently signed out!');
+            message = 'User is currently signed out!' ;
+          } else {
+            //print('User is signed in!');
+            FirebaseAuth.instance.currentUser.updateEmail(user.email.trim())  ;
+            FirebaseAuth.instance.currentUser.updatePassword(user.password)  ;
+            FirebaseAuth.instance.currentUser.updateDisplayName(user.name)  ;
+            FirebaseAuth.instance.currentUser.updatePhotoURL(user.image)  ;
+            message = 'User is signed in!'  ;
+
+          }
+        });
+      }).then((value) {
+        result = true ;
+        print('regester') ;
+      }).onError((error, stackTrace) {
+        message = error.message  ;
+        result = false ;
+      });
+
+    }catch(e){
+      message = e.message ;
+      result = false ;
+    }
+
+   return {'message': message , 'result': result} ;
+
   }
 
-  login() async {
-   await  FirebaseAuth.instance.signInWithEmailAndPassword(email: user.email, password: user.password).then((value){
+  login(String email , String password) async {
+    try {
+      await FirebaseAuth.instance.signInWithEmailAndPassword(
+          email: email.trim(), password: password);
+      return true;
+    } catch (e) {
+      return e.message;
+    }
+    /*
+   await  FirebaseAuth.instance.signInWithEmailAndPassword(email: email, password: password).then((value){
       return true ;
     }).onError((error, stackTrace) {
       print('eruur login ==> $error') ;
-      return false ;
+      return error.message ;
 
     }) ;
+
+
+     */
   }
+
+  void updateUser() async {
+    /*
+    final user = await FirebaseAuth.instance.currentUser;
+    final cred = EmailAuthProvider.credential(
+        email: user.email, password: currentPassword
+    );
+
+    user.reauthenticateWithCredential(cred).then((value) {
+      user.updatePassword(newPassword).then((_) {
+        //Success, do something
+      }).catchError((error) {
+        //Error, show something
+      });
+    }).catchError((err) {
+
+    });
+
+     */
+    FirebaseAuth.instance
+        .userChanges()
+        .listen((User userAuit) {
+      if (userAuit == null) {
+        print('User is currently signed out!');
+      } else {
+        print('User is signed in!');
+        FirebaseAuth.instance.currentUser.updateEmail(user.email)  ;
+        FirebaseAuth.instance.currentUser.updatePassword(user.password)  ;
+        FirebaseAuth.instance.currentUser.updateDisplayName(user.name)  ;
+        FirebaseAuth.instance.currentUser.updatePhotoURL(user.image)  ;
+        if(FirebaseAuth.instance.currentUser.phoneNumber != user.nombrePhon ){
+          print('you need  update phone');
+        }else{
+          print('note update phone  ') ;
+        }
+
+      }
+    });
+
+
+
+
+  }
+
+
+
+  
+
+
 
 
 }

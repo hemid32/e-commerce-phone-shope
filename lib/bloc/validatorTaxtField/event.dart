@@ -1,3 +1,5 @@
+import 'package:email_validator/email_validator.dart';
+
 abstract class EventsTextFeild{
 
 }
@@ -44,7 +46,7 @@ class TextFieldValidatorEventPhoneEmail extends EventsTextFeild {
   TextFieldValidatorEventPhoneEmail({this.valur , this.titleErurr});
   validator(){
     //print('length ==== ${this.valur.length}') ;
-    if( !this.valur.contains('@') ){
+    if( !this.valur.contains('@')  || !EmailValidator.validate(valur)){
       return this.titleErurr ;
     }
     else

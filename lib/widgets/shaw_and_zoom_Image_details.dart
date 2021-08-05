@@ -25,7 +25,7 @@ class ImageViews extends StatelessWidget {
                 child: InteractiveViewer(
                     minScale: 0.1,
                     maxScale: 3,
-                    child: Image.asset(image)
+                    child: Image.network(image)
                 ),
               ),
             ),

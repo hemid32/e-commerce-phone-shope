@@ -47,6 +47,7 @@ class GetProduitTotalFromFirebas {
         'isFavorite' : false ,
 
       }) ;
+      if(_produit.listProduits.length>0 )
       _listProduitsColors.add(_produit) ;
     });
     ListProduitsColors _resul = ListProduitsColors.fronJson({
@@ -67,6 +68,27 @@ class GetProduitTotalFromFirebas {
     });
     //print('data from fire base ===== $_listData');
      return  _listData   ; //_listData=[{...} , {....}];
+  }
+
+
+  nombreProduitFromFireBase(String idProduitColor ,int  idProduit) async  {
+    final    produitColor =   FirebaseFirestore.instance.collection('Produits').where('id' , isEqualTo: idProduitColor);
+    var _data =  await produitColor.get() ;
+   Map<String , dynamic> _listData =  _data.docs[0].data() ;
+    /*
+    _data.docs.forEach((element) {
+      _listData.add(Map<String, dynamic>.from(element.data())) ;
+    });
+
+     */
+    //ProduitsColors _produit = ProduitsColors()
+
+    Map<String , dynamic> produitWhirId = _listData['listProduits'][idProduit-1] ;
+    int contitu = produitWhirId['contitu'] ;
+    return contitu ;
+
+    //print() ;
+
   }
 
 

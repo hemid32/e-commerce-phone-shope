@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:phoneshop/bloc/manageScreen/detailProduit/bloc.dart';
 import 'package:phoneshop/constant.dart';
 
@@ -68,11 +69,30 @@ class BodyDetail extends StatelessWidget {
 
           BlocBuilder<BlocScreenDetailProduit, List<dynamic>>(
             builder: (context, state) {
-              return ContainerRamStockagColors(
-                spu: state[0].spu,
-                ram:  state[0].ram,
-                stockag:  state[0].storage,
-                camera: state[0].camera,
+              return Column(
+                children: [
+                  ContainerRamStockagColors(
+                    spu: state[0].spu,
+                    ram:  state[0].ram,
+                    stockag:  state[0].storage,
+                    camera: state[0].camera,
+                  ),
+                  Container(
+                    margin: EdgeInsets.symmetric(vertical: 10),
+                    child : Row(
+                      children: [
+                        //Icon(Icons.aspect_ratio, color: Colors.black.withOpacity(0.3),) ,
+                        SvgPicture.asset('assets/icons/processor.svg', width: 30, height: 30, color: Theme.of(context).iconTheme.color,) ,
+                        SizedBox(width: 10,) ,
+                        Text('SPU : ' ,  style: Theme.of(context).textTheme.button.copyWith(
+                            color: Colors.black.withOpacity(0.4)
+                        ),) ,
+                        Expanded(child: Text('${state[0].spu}' , style:  Theme.of(context).textTheme.button.copyWith(color: Colors.black.withOpacity(0.6)),))
+                      ],
+                    ) ,
+
+                  )
+                ],
               );
             }
           ),

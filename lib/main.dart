@@ -30,6 +30,7 @@ import 'model/messages/services_messages.dart';
 import 'model/puy/shopping.dart';
 import 'oitil/theme/theme.dart';
 import 'screens/profile/profile.dart';
+import 'package:email_validator/email_validator.dart';
 
 
 void main() async   {
@@ -48,6 +49,13 @@ void main() async   {
     ..registerAdapter(FavoriteHiveAdapter())
     ..registerAdapter(CartHiveAdapter())
     ..registerAdapter(AssressHiveAdapter()) ;
+
+  //var t = GetProduitTotalFromFirebas() ;
+  //int u = await t.nombreProduitFromFireBase('352bbfb0-f515-11eb-aa94-a7d781b6bab6', 2) ;
+  //print(u) ;
+  //var email = "hemidi@gmail.h";
+
+  //print(EmailValidator.validate(email));
 
   //print(itemsCart()[0].produit) ;
   //var box5 = await  Hive.openBox('FavoriteHive') ;

@@ -8,11 +8,11 @@ class EventRegister {}
 
 class EventsRegisters extends EventRegister {
 
-
+  final PhoneAuthCredential phonAuth ;
   final UserLocalModel user ;
   final bool allFormIsCompletedTrue ;
 
-  EventsRegisters({@required this.user, @required this.allFormIsCompletedTrue});
+  EventsRegisters({@required this.user, @required this.allFormIsCompletedTrue , this.phonAuth});
 
   bool  verifaidFormISnotEmpety(){
 
@@ -26,6 +26,22 @@ class EventsRegisters extends EventRegister {
   }
 
   rgisterUser() async  {
+
+    UserFire _userFire = UserFire(
+      user: user ,
+      phonAuth: phonAuth ,
+    ) ;
+
+    Map<String ,  dynamic>  created = await _userFire.creatUser() ;
+    if(created['result'] == true){
+      return true ;
+    }else{
+      return created['message'] ;
+    }
+
+
+
+    /*
     if(FirebaseAuth.instance.currentUser != null){
       await FirebaseAuth.instance.signOut() ;
     }
@@ -50,7 +66,11 @@ class EventsRegisters extends EventRegister {
       return 'pleas complete the Form' ;
     }
 
+     */
+
   }
+
+
 
 
 

@@ -3,6 +3,7 @@
 
 import 'package:hive/hive.dart';
 import 'package:phoneshop/model/cart/cart.dart';
+import 'package:phoneshop/model/getModelFirebase/getTotalProduitColors.dart';
 import 'package:phoneshop/model/hiveModel/hive_cart.dart';
 import 'package:phoneshop/model/produit/produit.dart';
 
@@ -164,6 +165,46 @@ validerItemProduitIsFromCart(String idProduitColors , int idProduit  , int conti
   });
   return _result ;
 }
+
+validerItemProduitIsDesponibleContitu(String idProduitColors , int idProduit  , int contitu) async  {
+  var box = await Hive.openBox('ModelCart');
+  GetProduitTotalFromFirebas _getFire = GetProduitTotalFromFirebas() ;
+  bool _result  = false ;
+  /*
+  box.values.forEach((element) async   {
+    //print('element.modelCart[produit][id] == ${element.modelCart['produit']['id']}') ;
+    //print('element.modelCart[contituPay] == ${element.modelCart['contituPay']} )') ;
+    if(element.modelCart['idProduitColors'] ==idProduitColors &&  element.modelCart['produit']['id'] == idProduit  ){
+      //print('produit from cart') ;
+      //_result =  true ;
+      int contituFromFireBase = await   _getFire.nombreProduitFromFireBase(idProduitColors, idProduit) ;
+
+      if(contituFromFireBase <  (contitu + element.modelCart['contituPay'] )){
+        _result = true ;
+      }
+
+    }
+  });
+  */
+  //print('begin loop') ;
+  //print('box.values.toList().length ==${box.values.toList().length}') ;
+  for(var i =0  ; i < box.values.toList().length ; i++ ){
+    if(box.values.toList()[i].modelCart['idProduitColors'] ==idProduitColors &&  box.values.toList()[i].modelCart['produit']['id'] == idProduit  ){
+      //print('produit from cart') ;
+      //_result =  true ;
+      int contituFromFireBase = await   _getFire.nombreProduitFromFireBase(idProduitColors, idProduit) ;
+      print('contituFromFireBase ==== $contituFromFireBase');
+      //print('box.values.toList()[i].modelCart['contituPay'] ==== $contituFromFireBase');
+      if(contituFromFireBase <  (contitu + box.values.toList()[i].modelCart['contituPay'] )){
+        _result = true ;
+      }
+
+    }
+
+  }
+  return _result ;
+}
+
 
 
 

@@ -8,10 +8,22 @@ class GetUserFireBase{
 
 
   Future<UserLocalModel> getUser()async  {
+    /*
     final  Map<String , dynamic> _usr = await getDataFromFirebase() ;
     final  UserLocalModel _userDt  = UserLocalModel.fromJson(
       _usr
     );
+    return _userDt ;
+
+     */
+    var _user = FirebaseAuth.instance.currentUser ;
+    final  UserLocalModel _userDt  = UserLocalModel(
+      email: _user.email,
+      image: _user.photoURL ,
+      nombrePhon: _user.phoneNumber ,
+      name: _user.displayName,
+    )  ;
+
     return _userDt ;
   }
   getDataFromFirebase() async  {

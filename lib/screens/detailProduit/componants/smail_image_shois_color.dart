@@ -36,7 +36,7 @@ class SmailImageShoiColor extends StatelessWidget {
                 ],
                 borderRadius: BorderRadius.circular(10),
                 image: DecorationImage(
-                    image: AssetImage(image)
+                    image: NetworkImage(image)
                 )
             ),
 

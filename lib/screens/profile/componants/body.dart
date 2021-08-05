@@ -12,7 +12,6 @@ import 'package:phoneshop/screens/homescreen/componants/costom_listTile.dart';
 import 'package:phoneshop/screens/myOrder/my_order.dart';
 import 'package:phoneshop/screens/profile/componants/image_user.dart';
 import 'package:phoneshop/screens/profile/componants/name.dart';
-
 import 'backgound_header.dart';
 
 class Body extends StatelessWidget {
@@ -47,7 +46,9 @@ class Body extends StatelessWidget {
                           children: [
                             GestureDetector(
 
-                                onTap: ()=> Navigator.push(context, MaterialPageRoute(builder: (context)=> EditProfile())),
+                                onTap: ()=> Navigator.push(context, MaterialPageRoute(builder: (_)=> BlocProvider.value(
+                                    value: BlocProvider.of<BlocUserGetModel>(context),
+                                    child: EditProfile()))),
                                 child: Icon(Icons.settings , size: 30,)) ,
                             Spacer() ,
                             Icon(Icons.ac_unit_sharp , size: 30,)

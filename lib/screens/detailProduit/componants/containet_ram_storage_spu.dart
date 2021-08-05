@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class ContainerRamStockagColors extends StatelessWidget {
   const ContainerRamStockagColors({
@@ -34,6 +35,7 @@ class ContainerRamStockagColors extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
+          /*
           Column(
             children: [
               Icon(Icons.aspect_ratio, color: Colors.black.withOpacity(0.3),) ,
@@ -50,9 +52,13 @@ class ContainerRamStockagColors extends StatelessWidget {
                 color: Colors.black.withOpacity(.2)
             ),
           ),
+
+           */
           Column(
             children: [
-              Icon(Icons.filter_frames_outlined, color: Colors.black.withOpacity(0.3),) ,
+              SvgPicture.asset('assets/icons/ram.svg', width: 30, height: 30, color: Theme.of(context).iconTheme.color,) ,
+
+              //Icon(Icons.filter_frames_outlined, color: Colors.black.withOpacity(0.3),) ,
               Text('RAM' ,  style: Theme.of(context).textTheme.button.copyWith(
                 color: Colors.black.withOpacity(0.4)
               ),) ,
@@ -68,7 +74,9 @@ class ContainerRamStockagColors extends StatelessWidget {
           ),
           Column(
             children: [
-              Icon(Icons.storage, color: Colors.black.withOpacity(0.3),) ,
+              SvgPicture.asset('assets/icons/storage.svg', width: 30, height: 30, color: Theme.of(context).iconTheme.color,) ,
+
+              //Icon(Icons.storage, color: Colors.black.withOpacity(0.3),) ,
               Text('Storage' ,  style: Theme.of(context).textTheme.button.copyWith(
                   color: Colors.black.withOpacity(0.4)
               ),) ,
@@ -84,7 +92,9 @@ class ContainerRamStockagColors extends StatelessWidget {
           ),
           Column(
             children: [
-              Icon(Icons.camera , color: Colors.black.withOpacity(0.3),) ,
+              SvgPicture.asset('assets/icons/camera.svg', width: 30, height: 30, color: Theme.of(context).iconTheme.color,) ,
+
+              //Icon(Icons.camera , color: Colors.black.withOpacity(0.3),) ,
               Text('Camera' ,  style: Theme.of(context).textTheme.button.copyWith(
                   color: Colors.black.withOpacity(0.4)
               ),) ,

@@ -12,6 +12,8 @@ class DetailProduit extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
+    final GlobalKey<ScaffoldState> _scaffoldkey = new GlobalKey<ScaffoldState>();
+
 
     return MultiBlocProvider(
         providers: [
@@ -28,6 +30,7 @@ class DetailProduit extends StatelessWidget {
             // do stuff here based on BlocA's state
             if( await state == true  ){
               //print('states === $state')  ;
+              /*
               Toast.show("Added to favorites",
                   context,
                   duration: Toast.LENGTH_LONG,
@@ -35,9 +38,16 @@ class DetailProduit extends StatelessWidget {
                 backgroundColor:  kPrimaryColor ,
                 border: Border.all(color: Colors.white) ,
               );
+
+               */
+              ScaffoldMessenger.of(_scaffoldkey.currentContext).showSnackBar(SnackBar(content: Text('Added to favorites', style: Theme.of(context).textTheme.button.copyWith(fontSize: 20 , color: Colors.white),) , backgroundColor: kPrimaryColor.withOpacity(0.6),));
+            }else {
+              ScaffoldMessenger.of(_scaffoldkey.currentContext).showSnackBar(SnackBar(content: Text('The item is in the cart !! ', style: Theme.of(context).textTheme.button.copyWith(fontSize: 20 , color: Colors.white),) , backgroundColor: Colors.red.withOpacity(0.6),));
+
             }
           },
           child: Scaffold(
+            key: _scaffoldkey,
             backgroundColor: Theme.of(context).accentColor,
             body: Body(),
             bottomNavigationBar: ButtomNavigatorBar(),

@@ -20,8 +20,9 @@ class EventAddNewProduitToCart extends EventsAddToCartNew {
   EventAddNewProduitToCart({this.contitu, this.produit , this.idProduitColors});
   addToHive() async {
     bool isProduitFromCart = await validerItemProduitIsFromCart(idProduitColors,produit.id, contitu) ;
+    bool isProduitDesponible = await validerItemProduitIsDesponibleContitu(idProduitColors,produit.id, contitu) ;
     //print('isProduitFromCart ====$isProduitFromCart');
-    if (! isProduitFromCart ) {
+    if (! isProduitFromCart && ! isProduitDesponible ) {
       Map<String, dynamic> model = {
         'produit': produit.toMap(),
         'contituPay': contitu,

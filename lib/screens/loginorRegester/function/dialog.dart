@@ -7,6 +7,7 @@ import 'package:phoneshop/bloc/laodingCirceler/bloc.dart';
 import 'package:phoneshop/bloc/laodingCirceler/events.dart';
 import 'package:phoneshop/bloc/register/bloc.dart';
 import 'package:phoneshop/bloc/register/event.dart';
+import 'package:phoneshop/constant.dart';
 import 'package:phoneshop/model/user/user.dart';
 import 'package:toast/toast.dart';
 
@@ -43,40 +44,54 @@ Future<void> showMyDialogSandCod(contextt , nambre  , user) async {
             onPressed: () async   {
               Navigator.of(context).pop();
               BlocProvider.of<BlocLoading>(contextt).add(EventLoadingStart()) ;
+              try {
+                await FirebaseAuth.instance.verifyPhoneNumber(
+                  phoneNumber: nambre,
+                  verificationCompleted: (
+                      PhoneAuthCredential credential) async {
+                    print(
+                        'verificationCompleted credential ====> ===> $credential');
+                  },
+                  verificationFailed: (FirebaseAuthException e) async {
+                    BlocProvider.of<BlocLoading>(contextt).add(
+                        EventLoadingStop());
+                    print('verificationId feild ===$e');
+                    Toast.show(e.message,
+                      context,
+                      duration: 3,
+                      gravity: Toast.BOTTOM,
+                      border: Border.all(color: Colors.white),
+                    );
+                  },
+                  codeSent: (String verificationId, int resendToken) async {
+                    print(
+                        'cod is send resendToken ========> =====> ====> $resendToken');
+                    //BlocProvider.of<BlocLoading>(contextt).add(EventLoadingStop()) ;
+                    //BlocProvider.of<BlocLoading>(contextt).state == false ? showMyDialog(contextt, nambre) : print('null') ;
+                    BlocProvider.of<BlocLoading>(contextt).add(
+                        EventLoadingStop());
+                    //_showMyDialog(contextt, nambre) ;
+                    await Future.delayed(const Duration(seconds: 1), () => "1");
+                    showMyDialog(contextt, verificationId, nambre, user);
+                  },
+                  codeAutoRetrievalTimeout: (String verificationId) async {
+                    print(
+                        'codeAutoRetrievalTimeout verificationId ====> ===> $verificationId ');
+                    //BlocProvider.of<BlocLoading>(contextt).add(EventLoadingStop()) ;
+                    //_showMyDialog(contextt, nambre) ;
+                    //await Future.delayed(const Duration(seconds: 1), () => "1");
+                    //showMyDialog(contextt, nambre) ;
 
-              await FirebaseAuth.instance.verifyPhoneNumber(
-                phoneNumber: nambre,
-                verificationCompleted: (PhoneAuthCredential credential) async  {print('verificationCompleted credential ====> ===> $credential') ; },
-                verificationFailed: (FirebaseAuthException e) async  {
-                  BlocProvider.of<BlocLoading>(contextt).add(EventLoadingStop()) ;
-                  print('verificationId feild ===$e') ;
-                  Toast.show( e.message,
-                    context,
-                    duration: 3,
-                    gravity:  Toast.BOTTOM ,
-                    border: Border.all(color: Colors.white) ,
-                  );
-                },
-                codeSent: (String verificationId, int resendToken) async  {
-                  print('cod is send resendToken ========> =====> ====> $resendToken') ;
-                  //BlocProvider.of<BlocLoading>(contextt).add(EventLoadingStop()) ;
-                  //BlocProvider.of<BlocLoading>(contextt).state == false ? showMyDialog(contextt, nambre) : print('null') ;
-                  BlocProvider.of<BlocLoading>(contextt).add(EventLoadingStop()) ;
-                  //_showMyDialog(contextt, nambre) ;
-                  await Future.delayed(const Duration(seconds: 1), () => "1");
-                  showMyDialog(contextt,verificationId ,  nambre , user) ;
+                  },
 
+                );
+                ScaffoldMessenger.of(Scaffold.of(contextt).context).showSnackBar(SnackBar(content: Text('Code has been sent', style: Theme.of(context).textTheme.button.copyWith(fontSize: 20 , color: Colors.white),) , backgroundColor: kPrimaryColor.withOpacity(0.6),));
 
+              }catch(e){
+                Navigator.of(context).pop();
+                ScaffoldMessenger.of(Scaffold.of(contextt).context).showSnackBar(SnackBar(content: Text('Error ${e.message}', style: Theme.of(context).textTheme.button.copyWith(fontSize: 20 , color: Colors.white),) , backgroundColor: Colors.red.withOpacity(0.6),));
 
-                },
-                codeAutoRetrievalTimeout: (String verificationId) async  {
-                  print('codeAutoRetrievalTimeout verificationId ====> ===> $verificationId ') ;
-                  //BlocProvider.of<BlocLoading>(contextt).add(EventLoadingStop()) ;
-                  //_showMyDialog(contextt, nambre) ;
-                  //await Future.delayed(const Duration(seconds: 1), () => "1");
-                  //showMyDialog(contextt, nambre) ;
-                },
-              ) ;
+              }
 
 
 
@@ -145,10 +160,11 @@ Future<void> showMyDialog(contextt ,verificationId ,  nombre , user ) async {
               //var u = auth.signInWithCustomToken(phonAuth.providerId , ) ;
 
               try {
-                await auth.signInWithCredential(phonAuth);
+                //await auth.signInWithCredential(phonAuth);
                 BlocProvider.of<BlocRegisterUser>(contextt).add(EventsRegisters(
                   user: user ,
                   allFormIsCompletedTrue: true ,
+                  phonAuth: phonAuth ,
                 )) ;
               }catch(e){
                 print(e.message) ;

@@ -26,7 +26,7 @@ class HeaderDetail extends StatelessWidget {
           decoration: BoxDecoration(
             //color: Colors.red ,
             image: DecorationImage(
-                image: AssetImage(
+                image: NetworkImage(
                   image ,
 
                 ),

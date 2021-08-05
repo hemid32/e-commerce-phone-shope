@@ -5,6 +5,7 @@ import 'package:phoneshop/bloc/favorite/event.dart';
 import 'package:phoneshop/bloc/manageScreen/detailProduit/bloc.dart';
 import 'package:phoneshop/bloc/manageScreen/detailProduit/event.dart';
 import 'package:phoneshop/bloc/userManagze/userVirifaid/bloc.dart';
+import 'package:phoneshop/bloc/userManagze/userVirifaid/event.dart';
 import 'package:phoneshop/constant.dart';
 import 'package:phoneshop/model/favorite/model.dart';
 import 'package:phoneshop/model/produit/produit_colors.dart';
@@ -40,6 +41,7 @@ class ItemsCardBestSellingPHone extends StatelessWidget {
                     descreption: listData.produits[i].listProduits[0].detail ,
                     image: listData.produits[i].listProduits[0].image ,
                     onTap: (){
+                      BlocProvider.of<BlocUserVerifaid>(context).add(EventsUserVerified());
                       BlocProvider.of<BlocScreenDetailProduit>(context).add(EvensGoToProduit(indexProduit: 0 , produisColors: listData.produits[i] )) ;
                       Navigator.push(context, MaterialPageRoute(builder: (_)=> BlocProvider.value(
                         value: BlocProvider.of<BlocScreenDetailProduit>(context),
@@ -156,7 +158,7 @@ class CardPhoneItems extends StatelessWidget {
                   height:  150,
                   decoration: BoxDecoration(
                       image: DecorationImage(
-                          image: AssetImage(
+                          image: NetworkImage(
                             image ,
 
                           ) ,
@@ -171,8 +173,9 @@ class CardPhoneItems extends StatelessWidget {
                 RichText(
 
                     textAlign: TextAlign.center,
-                    maxLines: 3,
+                    maxLines: 2,
                     text: TextSpan(
+
 
                         children: [
                           TextSpan(

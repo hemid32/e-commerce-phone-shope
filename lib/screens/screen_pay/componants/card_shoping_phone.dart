@@ -28,7 +28,7 @@ class CardPhoneChope extends StatelessWidget {
             decoration: BoxDecoration(
                 color: Theme.of(context).accentColor ,
                 image:  DecorationImage(
-                    image: AssetImage(
+                    image: NetworkImage(
                         image
                     ) ,
                     fit: BoxFit.cover
@@ -51,7 +51,7 @@ class CardPhoneChope extends StatelessWidget {
               children: [
                 Row(
                   children: [
-                    Text( title , style: Theme.of(context).textTheme.button.copyWith(  fontSize: 15 ),),
+                    Text( title.length  < 18 ?   title  : '${title.substring(0,18)}...', style: Theme.of(context).textTheme.button.copyWith(  fontSize: 15 ),),
 
                     Spacer()  ,
                     GestureDetector(

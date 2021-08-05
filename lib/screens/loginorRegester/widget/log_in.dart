@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:phoneshop/constant.dart';
+import 'package:phoneshop/model/user/ServisecUser_Firebase.dart';
 import 'package:phoneshop/screens/loginorRegester/componants/button_costom_login.dart';
 import 'package:phoneshop/screens/loginorRegester/componants/costom_path.dart';
 import 'package:phoneshop/screens/loginorRegester/componants/header_login.dart';
@@ -7,13 +8,15 @@ import 'package:phoneshop/screens/loginorRegester/componants/logo_text_header.da
 import 'package:phoneshop/screens/screen_pay/componants/field_text.dart';
 
 class Login extends StatelessWidget {
-  const Login({
+   Login({
     Key key,
   }) : super(key: key);
 
-
+  UserFire _user = UserFire() ;
   @override
   Widget build(BuildContext context) {
+    String email ;
+    String password ;
     Size size = MediaQuery.of(context).size ;
 
     return Container(
@@ -82,18 +85,27 @@ class Login extends StatelessWidget {
                   child: Column(
                     children: [
                       FieldTextGet(title: 'Nombre Phone Or Email',onChange: (valur){
-
+                           email = valur ;
                       }, ) ,
                       SizedBox(height: 20,) ,
 
                       FieldTextGet(title: 'Password',onChange: (valur){
-
+                        password = valur ;
                       }, secure: true, ) ,
                       SizedBox(height: 20,) ,
                       ButtonCotomLogIn(
                         title: 'LOGIN',
                         color: kPrimaryColor,
-                        onTap: (){},
+                        onTap: () async {
+                          var logIn = await _user.login(email, password);
+                          if(logIn == true ){
+                            Scaffold.of(context).showSnackBar(SnackBar(content: Text('Logged in'))) ;
+                            Navigator.pop(context);
+                          }else {
+                            Scaffold.of(context).showSnackBar(SnackBar(content: Text('$logIn'))) ;
+
+                          }
+                        },
                       ),
 
                       Spacer() ,

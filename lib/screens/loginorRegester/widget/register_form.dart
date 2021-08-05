@@ -179,7 +179,7 @@ class Register extends StatelessWidget {
 
                   _user = UserLocalModel.fromJson({
                     'name' : _name ,
-                    'email' : _email ,
+                    'email' : _email.trim() ,
                     'password' : _password ,
                     'nombrePhon' : _phone ,
                     'image' : 'null'
@@ -199,7 +199,7 @@ class Register extends StatelessWidget {
                       BlocProvider.of<ValidatorTexxtBlocString>(context).state ,   BlocProvider.of<ValidatorTexxtBlocPhoneNombre>(context).state , BlocProvider.of<ValidatorTexxtBlocPhoneEmail>(context).state , BlocProvider.of<ValidatorTexxtBlocPassword>(context).state , BlocProvider.of<BlocTermaAndConditionChek>(context).state
                   ) ;
 
-                  _allFormIsNotVide = virifeidFormRegisterIsCompletallFormIsCompletedNotVide(_name, _phone, _email, _password,BlocProvider.of<BlocTermaAndConditionChek>(context).state ) ;
+                  _allFormIsNotVide = virifeidFormRegisterIsCompletallFormIsCompletedNotVide(_name, _phone, _email.trim(), _password,BlocProvider.of<BlocTermaAndConditionChek>(context).state ) ;
 
                   if(_allFormIsNotVide && _allFormIsCompleted){
                      print('all info is true !! ') ;
