@@ -93,7 +93,7 @@ class Body extends StatelessWidget {
                       left: 0,
                       right: 0,
                       child: ImageUser(
-                        image: _user.image == 'null' ? 'assets/images/user.png' : _user.image,
+                        image: _user.image == 'null' || _user.image == null ? 'assets/images/user.png' : _user.image,
                       ),
                     );
                   }

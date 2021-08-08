@@ -10,6 +10,7 @@ class EventUserGet extends EventUser {
 
   getUserFromFireBase() async {
     user = await _fireUser.getUser() ;
+    print('user get fire ==== ${user.toMap()}') ;
     return user ;
   }
 

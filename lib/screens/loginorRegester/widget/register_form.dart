@@ -1,8 +1,11 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:page_transition/page_transition.dart';
 import 'package:phoneshop/bloc/laodingCirceler/bloc.dart';
 import 'package:phoneshop/bloc/laodingCirceler/events.dart';
+import 'package:phoneshop/bloc/manageScreenConfermCodSms/bloc.dart';
+import 'package:phoneshop/bloc/manageScreenConfermCodSms/event.dart';
 import 'package:phoneshop/bloc/register/bloc.dart';
 import 'package:phoneshop/bloc/register/event.dart';
 import 'package:phoneshop/bloc/userManagze/formerRegister/termAndCondition/bloc.dart';
@@ -18,28 +21,29 @@ import 'package:phoneshop/screens/loginorRegester/componants/costom_path.dart';
 import 'package:phoneshop/screens/loginorRegester/componants/register_r_design.dart';
 import 'package:phoneshop/screens/loginorRegester/componants/test_fiald_and_button_verifaid.dart';
 import 'package:phoneshop/screens/loginorRegester/function/verifiedFieldIsComplet.dart';
+import 'package:phoneshop/screens/mobilVerification/mobilVerification.dart';
 import 'package:phoneshop/screens/screen_pay/componants/field_text.dart';
 import 'package:toast/toast.dart';
 import 'package:phoneshop/screens/loginorRegester/function/dialog.dart';
 
 import 'container_background.dart';
 class Register extends StatelessWidget {
-   const Register({
+    Register({
     Key key,
   }) : super(key: key);
+   String _email ;
+   String  _name ;
+   String _phone ;
+   String _password ;
+   bool _allFormIsCompleted ;
+   bool _allFormIsNotVide ;
+   UserLocalModel _user ;
 
-  @override
+
+    @override
   Widget build(BuildContext context) {
-    UserLocalModel _user ;
-    String _email ;
-    String  _name ;
-    String _phone ;
-    String _password ;
-    bool _allFormIsCompleted ;
-    bool _allFormIsNotVide ;
-
     Size size = MediaQuery.of(context).size ;
-
+    //print(BlocProvider.of<BlocDataConfermUserCreatedCodSms>(context).state);
     return Container(
       width: size.width,
       height: size.height,
@@ -162,7 +166,7 @@ class Register extends StatelessWidget {
             right: 20  ,
             bottom: 20 ,
             child: BlocListener<BlocLoading , bool>(
-              listener: (_, states){
+              listener: (context, states){
 
                 if(states== true  ){
                   showDialogloding(context) ;
@@ -179,7 +183,7 @@ class Register extends StatelessWidget {
 
                   _user = UserLocalModel.fromJson({
                     'name' : _name ,
-                    'email' : _email.trim() ,
+                    'email' : _email ,
                     'password' : _password ,
                     'nombrePhon' : _phone ,
                     'image' : 'null'
@@ -199,11 +203,22 @@ class Register extends StatelessWidget {
                       BlocProvider.of<ValidatorTexxtBlocString>(context).state ,   BlocProvider.of<ValidatorTexxtBlocPhoneNombre>(context).state , BlocProvider.of<ValidatorTexxtBlocPhoneEmail>(context).state , BlocProvider.of<ValidatorTexxtBlocPassword>(context).state , BlocProvider.of<BlocTermaAndConditionChek>(context).state
                   ) ;
 
-                  _allFormIsNotVide = virifeidFormRegisterIsCompletallFormIsCompletedNotVide(_name, _phone, _email.trim(), _password,BlocProvider.of<BlocTermaAndConditionChek>(context).state ) ;
+                  _allFormIsNotVide = virifeidFormRegisterIsCompletallFormIsCompletedNotVide(_name, _phone, _email, _password,BlocProvider.of<BlocTermaAndConditionChek>(context).state ) ;
 
-                  if(_allFormIsNotVide && _allFormIsCompleted){
+                  if((_allFormIsNotVide && _allFormIsCompleted)){
                      print('all info is true !! ') ;
-                    showMyDialogSandCod(context , _phone , _user) ;
+                    //showMyDialogSandCod(context , _phone , _user) ;
+
+                     BlocProvider.of<BlocScreenManageVerificationCodSms>(context).add(EventManageConfermCodSmsSandCod(user: _user)) ;
+
+                     Navigator.push(context, PageTransition(type: PageTransitionType.rightToLeft, child: BlocProvider.value(
+                         value: BlocProvider.of<BlocScreenManageVerificationCodSms>(context),
+                         child: BlocProvider.value(
+                             value: BlocProvider.of<BlocRegisterUser>(context),
+                             child: MobilVarification()))));
+
+
+
                   }else {
                     print('all info is true  false ******* !! ') ;
                     Toast.show( 'Errur !! ',

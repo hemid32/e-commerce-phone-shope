@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:phoneshop/bloc/laodingCirceler/bloc.dart';
 import 'package:phoneshop/bloc/laodingCirceler/events.dart';
+import 'package:phoneshop/bloc/manageScreenConfermCodSms/bloc.dart';
 import 'package:phoneshop/bloc/register/bloc.dart';
 import 'package:phoneshop/bloc/userManagze/formerRegister/termAndCondition/bloc.dart';
 import 'package:phoneshop/bloc/userManagze/screenLoginRegister/bloc.dart';
@@ -49,45 +50,22 @@ class LoginOrRegester extends StatelessWidget {
           create: (BuildContext context) => BlocLoading(),
         ),
 
-      ],
-      child: BlocListener<BlocRegisterUser, dynamic>(
-        listener: (context, state)    {
-          // do stuff here based on BlocA's state
-            //print('states === $state')  ;
-            if(state == true){
-              //print('hemidibenameur') ;
-              BlocProvider.of<BlocLoading>(context).add(EventLoadingStop()) ;
-              Future.delayed(Duration(seconds: 1)) ;
-              BlocProvider.of<BlocUserVerifaid>(context).add(EventsUserVerified());
-              Navigator.pop(context) ;
-              Navigator.pop(context) ;
-              Toast.show( 'Account successfully created',
-                context,
-                duration: Toast.LENGTH_LONG,
-                gravity:  Toast.BOTTOM ,
-                backgroundColor:  kPrimaryColor ,
-                border: Border.all(color: Colors.white) ,
-              );
-
-              //Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => Profile()));
-              //Navigator.pushReplacement(context, MaterialPageRoute(builder: (BuildContext context) => Profile()));
-
-
-            }else{
-              BlocProvider.of<BlocLoading>(context).add(EventLoadingStop()) ;
-              Future.delayed(Duration(seconds: 1)) ;
-              Toast.show( state.toString(),
-                context,
-                duration: Toast.LENGTH_LONG,
-                gravity:  Toast.BOTTOM ,
-                backgroundColor:  kPrimaryColor ,
-                border: Border.all(color: Colors.white) ,
-              );
-            }
-        },
-        child: Scaffold(
-          body: Body(),
+        BlocProvider<BlocScreenManageVerificationCodSms>(
+          create: (BuildContext context) => BlocScreenManageVerificationCodSms(),
         ),
+        /*
+        BlocProvider<BlocDataConfermUserCreatedCodSms>(
+          create: (BuildContext context) => BlocDataConfermUserCreatedCodSms(),
+        ),
+
+         */
+
+
+
+
+      ],
+      child: Scaffold(
+        body: Body(),
       ),
     );
 

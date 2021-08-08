@@ -78,6 +78,7 @@ class UserFire {
     //userCard.reauthenticateWithCredential(credentials);
     String  message    ;
     bool result = false  ;
+    /*
     try{
       await FirebaseAuth.instance.signInWithCredential(phonAuth).then((value) {
         FirebaseAuth.instance.userChanges()
@@ -108,6 +109,28 @@ class UserFire {
       result = false ;
     }
 
+     */
+    try {
+       await FirebaseAuth.instance.signInWithCredential(phonAuth).then((value){
+         result = true ;
+          try{FirebaseAuth.instance.currentUser.updateEmail(user.email.trim());}catch(e){
+            print('email not regester errur ==== $e') ;
+          }
+         FirebaseAuth.instance.currentUser.updatePassword(user.password)  ;
+         FirebaseAuth.instance.currentUser.updateDisplayName(user.name)  ;
+         FirebaseAuth.instance.currentUser.updatePhotoURL(user.image)  ;
+       }).onError((error, stackTrace) {
+         result = false ;
+         message = error.message ;
+       });
+
+
+    }catch(e){
+      message = e.message ;
+      result = false ;
+
+    }
+
    return {'message': message , 'result': result} ;
 
   }
@@ -133,7 +156,7 @@ class UserFire {
      */
   }
 
-  void updateUser() async {
+   updateUser(String oldPassword , String oldEmail) async {
     /*
     final user = await FirebaseAuth.instance.currentUser;
     final cred = EmailAuthProvider.credential(
@@ -151,25 +174,49 @@ class UserFire {
     });
 
      */
-    FirebaseAuth.instance
-        .userChanges()
-        .listen((User userAuit) {
-      if (userAuit == null) {
-        print('User is currently signed out!');
-      } else {
-        print('User is signed in!');
+    /*
+       if(oldPassword == FirebaseAuth.instance.currentUser )
         FirebaseAuth.instance.currentUser.updateEmail(user.email)  ;
         FirebaseAuth.instance.currentUser.updatePassword(user.password)  ;
         FirebaseAuth.instance.currentUser.updateDisplayName(user.name)  ;
         FirebaseAuth.instance.currentUser.updatePhotoURL(user.image)  ;
         if(FirebaseAuth.instance.currentUser.phoneNumber != user.nombrePhon ){
-          print('you need  update phone');
-        }else{
-          print('note update phone  ') ;
-        }
+
 
       }
-    });
+      
+     */
+    // Prompt the user to enter their email and password
+    //String email = 'barry.allen@example.com';
+    //String password = 'SuperSecretPassword!';
+    bool result = false ;
+    String  message ;
+    print('user ====${user.toMap()}') ;
+    try {
+// Create a credential
+      AuthCredential credential = EmailAuthProvider.credential(
+          email: oldEmail, password: oldPassword);
+
+// Reauthenticate
+      await FirebaseAuth.instance.currentUser.reauthenticateWithCredential(
+          credential).then((value) {
+        try {
+          FirebaseAuth.instance.currentUser.updateEmail(user.email.trim());
+        } catch (e) {
+          print('email not regester errur ==== $e');
+        }
+        FirebaseAuth.instance.currentUser.updatePassword(user.password);
+        FirebaseAuth.instance.currentUser.updateDisplayName(user.name);
+        FirebaseAuth.instance.currentUser.updatePhotoURL(user.image);
+      });
+      result = true ;
+    }catch(e){
+      result = false ;
+      message = e.message ;
+    }
+
+
+    return {'state' : result , 'message' :  message} ;
 
 
 

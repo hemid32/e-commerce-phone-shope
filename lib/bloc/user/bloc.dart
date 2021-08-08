@@ -14,7 +14,8 @@ class BlocUserGetModel extends Bloc<EventUser , List>{
     //throw UnimplementedError();
     if(event.runtimeType == EventUserGet){
       EventUserGet _user  = event ;
-      yield [await _user.getUserFromFireBase()] ;
+      UserLocalModel data = await _user.getUserFromFireBase() ;
+      yield [data] ;
     }
   }
 }
