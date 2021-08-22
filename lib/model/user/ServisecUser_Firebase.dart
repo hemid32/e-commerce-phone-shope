@@ -57,59 +57,10 @@ class UserFire {
 
 
   creatUser() async {
-    /*
-    var _result  ;
-    await FirebaseAuth.instance.createUserWithEmailAndPassword(email: user.email, password: user.password ).then((value){
-      _result =  value.user.uid ;
-    }).onError((error, stackTrace) {
-      print('eruur creatUser  from ceatUser 44 lin ===> $error') ;
-     _result =  'Errur' ;
-    });
-    return _result ;
 
-     */
-    //AuthCredential credential = EmailAuthProvider.credential(email: user.email, password: user.password);
-
-    //AuthCredential credential = FirebaseAuth.instance.EmailAuthProvider.getCredential(email, password);
-    //AuthCredential credential = AuthCredential(providerId: 'providerId', signInMethod: 'emailLink');
-
-    //var userCard = FirebaseAuth.instance.currentUser.linkWithCredential(credential);
-
-    //userCard.reauthenticateWithCredential(credentials);
     String  message    ;
     bool result = false  ;
-    /*
-    try{
-      await FirebaseAuth.instance.signInWithCredential(phonAuth).then((value) {
-        FirebaseAuth.instance.userChanges()
-            .listen((User userAuit) {
-          if (userAuit == null) {
-            //print('User is currently signed out!');
-            message = 'User is currently signed out!' ;
-          } else {
-            //print('User is signed in!');
-            FirebaseAuth.instance.currentUser.updateEmail(user.email.trim())  ;
-            FirebaseAuth.instance.currentUser.updatePassword(user.password)  ;
-            FirebaseAuth.instance.currentUser.updateDisplayName(user.name)  ;
-            FirebaseAuth.instance.currentUser.updatePhotoURL(user.image)  ;
-            message = 'User is signed in!'  ;
 
-          }
-        });
-      }).then((value) {
-        result = true ;
-        print('regester') ;
-      }).onError((error, stackTrace) {
-        message = error.message  ;
-        result = false ;
-      });
-
-    }catch(e){
-      message = e.message ;
-      result = false ;
-    }
-
-     */
     try {
        await FirebaseAuth.instance.signInWithCredential(phonAuth).then((value){
          result = true ;

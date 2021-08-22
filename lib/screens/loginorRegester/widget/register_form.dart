@@ -185,7 +185,7 @@ class Register extends StatelessWidget {
                     'name' : _name ,
                     'email' : _email ,
                     'password' : _password ,
-                    'nombrePhon' : _phone ,
+                    'nombrePhon' : _formatPhoneNambre(_phone) ,
                     'image' : 'null'
                   });
                   /*
@@ -205,7 +205,7 @@ class Register extends StatelessWidget {
 
                   _allFormIsNotVide = virifeidFormRegisterIsCompletallFormIsCompletedNotVide(_name, _phone, _email, _password,BlocProvider.of<BlocTermaAndConditionChek>(context).state ) ;
 
-                  if((_allFormIsNotVide && _allFormIsCompleted)){
+                  if((_allFormIsNotVide && _allFormIsCompleted  )){
                      print('all info is true !! ') ;
                     //showMyDialogSandCod(context , _phone , _user) ;
 
@@ -261,6 +261,18 @@ class Register extends StatelessWidget {
         ],
       ),
     );
+  }
+
+  _formatPhoneNambre(String nombre ){
+      if(nombre.contains('+213')){
+        return nombre ;
+      }else if (nombre.length == 10 ){
+        String supNombre = nombre.substring(1,10) ;
+        String newNombre = '+213' + supNombre ;
+        return newNombre ;
+      }else{
+        return nombre ;
+      }
   }
 }
 

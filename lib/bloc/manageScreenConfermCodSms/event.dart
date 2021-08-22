@@ -39,8 +39,10 @@ class EventSandCodeFromFirBasField extends EventManageConfermCodSms{
 
 class EventSandCodeFromFirBasCodeSand extends EventManageConfermCodSms{
    final  String verificationId ;
+   final int token ;
+   final String nomprePhone ;
 
-  EventSandCodeFromFirBasCodeSand({this.verificationId});
+  EventSandCodeFromFirBasCodeSand({this.verificationId , this.token , this.nomprePhone});
 }
 
 
@@ -48,4 +50,11 @@ class EventSandCodeFromFirBasCodeConfermCodSmS extends EventManageConfermCodSms{
   final  String codSms ;
   final String  verificationId ;
   EventSandCodeFromFirBasCodeConfermCodSmS({this.codSms , this.verificationId});
+}
+
+class EventSandCodeFromFirBasCodeResandCod extends EventManageConfermCodSms{
+  final  int token ;
+  final String nombrePhone  ;
+
+  EventSandCodeFromFirBasCodeResandCod({this.token, this.nombrePhone});
 }

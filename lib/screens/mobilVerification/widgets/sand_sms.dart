@@ -1,6 +1,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:phoneshop/bloc/manageScreenConfermCodSms/bloc.dart';
 import 'package:phoneshop/bloc/manageScreenConfermCodSms/event.dart';
 import 'package:phoneshop/constant.dart';
@@ -33,14 +34,24 @@ class SandSms extends StatelessWidget {
               title: 'Mobil Verification',
               description: 'Please enter your phone number to create an account',
             ) ,
-            SizedBox(height: 50,) ,
+            
+            SizedBox(height: 20,) ,
+            
+            Container(
+              child: Center(
+                child: SvgPicture.asset('assets/icons/sms.svg', width: 120,),
+              ),
+            ) ,
+            SizedBox(height: 20,) ,
+
             Container(
               margin: EdgeInsets.symmetric(horizontal: 20),
               width: double.infinity,
               height: 50,
               decoration: BoxDecoration(
                   color: Theme.of(context).accentColor ,
-                  border: Border.all(color: Theme.of(context).iconTheme.color)
+                  border: Border.all(color: Theme.of(context).iconTheme.color) , 
+                  borderRadius: BorderRadius.circular(10)
               ),
               child: TextFormField(
                 initialValue: nomprePhone,
@@ -96,15 +107,33 @@ class SandSms extends StatelessWidget {
             ),
             SizedBox(height: 20,) ,
             Spacer() ,
-            /*
+
             ButtonBottom(
               onTap: (){
+                if (BlocProvider.of<BlocDataConfermUserCreatedCodSms>(context).state != null ) {
+                  if(BlocProvider.of<BlocDataConfermUserCreatedCodSms>(context).state['state'] == 'Sand'){
+                    userNew = UserLocalModel(
+                      name: user.name ,
+                      password:  user.password ,
+                      email: user.email ,
+                      nombrePhon: nomprePhone ,
+                      image: user.image ,
+                    ) ;
+                    ScaffoldMessenger.of(Scaffold.of(context).context).showSnackBar(SnackBar(content: Text('Code has been sent', style: Theme.of(context).textTheme.button.copyWith(fontSize: 15 , color: Colors.white),) , backgroundColor: kPrimaryColor));
+                    BlocProvider.of<BlocScreenManageVerificationCodSms>(context).add(EventManageConfermCodSmsConfermed(user: userNew)) ;
 
+                  }else {
+                    ScaffoldMessenger.of(Scaffold.of(context).context).showSnackBar(SnackBar(content: Text('Please send the verification code', style: Theme.of(context).textTheme.button.copyWith(fontSize: 15 , color: Colors.white),) , backgroundColor: Colors.red));
+                  }
+                }else {
+                  ScaffoldMessenger.of(Scaffold.of(context).context).showSnackBar(SnackBar(content: Text('Please send the verification code', style: Theme.of(context).textTheme.button.copyWith(fontSize: 15 , color: Colors.white),) , backgroundColor: Colors.red));
+
+                }
               },
               widget: Icon(Icons.arrow_forward , color: Colors.white,),
             ),
 
-             */
+             
 
             SizedBox(height: 30,)
 
