@@ -6,17 +6,18 @@ import 'package:phoneshop/bloc/userManagze/screenLoginRegister/event.dart';
 
 class TextTileHeaderLogin extends StatelessWidget {
   const TextTileHeaderLogin({
-    Key key, this.title, this.details,
+    Key key, this.title, this.details, this.onTapBack,
   }) : super(key: key);
   final String title ;
   final String details ;
+  final Function onTapBack ;
 
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
         GestureDetector(
-          onTap: ()=> BlocProvider.of<BlocScreenLoginRegisterManage>(context).add(EventScreenRegisterOrLogin()),
+          onTap: onTapBack,
           child: Container(
             alignment: Alignment.topLeft,
             margin: EdgeInsets.only(top: 40 , left: 20 , right:  20 ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:phoneshop/constant.dart';
 
 class SmallCardCod extends StatelessWidget {
   const SmallCardCod({
@@ -18,8 +19,8 @@ class SmallCardCod extends StatelessWidget {
       width: 45,
       height: 45,
       decoration: BoxDecoration(
-          color: Colors.white ,
-          border: Border.all(color: Colors.black)
+          color: Theme.of(context).accentColor ,
+          border: Border.all(color: kPrimaryColor)
       ),
       child: TextFormField(
         focusNode: focusNode ,

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class FieldTextGet extends StatelessWidget {
    FieldTextGet({
-    Key key, this.title, this.onChange, this.validator, this.validErurr, this.secure = false, this.initialValue ,
+    Key key, this.title, this.onChange, this.validator, this.validErurr, this.secure = false, this.initialValue, this.textInputeType ,
   }) : super(key: key);
   final String  title ;
   final Function onChange ;
@@ -10,6 +10,8 @@ class FieldTextGet extends StatelessWidget {
   final String  validErurr ;
   final bool secure ;
   final String initialValue ; // user sur edit profile  ;
+
+   final TextInputType textInputeType ;
 
 
    final GlobalKey<FormState> formKey = GlobalKey<FormState>();
@@ -27,6 +29,7 @@ class FieldTextGet extends StatelessWidget {
         validator: validator ,
         onChanged: onChange,
         obscureText: secure,
+        keyboardType: textInputeType,
         decoration: InputDecoration(
 
           errorText: validErurr ,

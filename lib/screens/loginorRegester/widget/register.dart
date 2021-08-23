@@ -41,6 +41,7 @@ class RigesterOrLogin extends StatelessWidget {
                   logo: 'assets/icons/icons8-samsung.svg',
                   title: 'Login Or Register !',
                   details: 'Log in to your account or create a new account on the store ',
+
                 ),
 
 

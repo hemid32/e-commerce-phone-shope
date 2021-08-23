@@ -86,25 +86,33 @@ class UserFire {
 
   }
 
-  login(String email , String password) async {
+  login(String email , String password ) async {
     try {
-      await FirebaseAuth.instance.signInWithEmailAndPassword(
-          email: email.trim(), password: password);
-      return true;
-    } catch (e) {
-      return e.message;
+      print('1') ;
+      if(email.contains('@'))
+      UserCredential userCredential = await FirebaseAuth.instance.signInWithEmailAndPassword(
+          email: email,
+          password: password
+      );
+      else
+        ConfirmationResult confirmationResult = await  FirebaseAuth.instance.signInWithPhoneNumber(email );
+
+      print('logger') ;
+      return {'result' : true , 'message' : 'message'} ;
+    } on FirebaseAuthException catch (e) {
+      print('3 ${e.code}') ;
+      if (e.code == 'user-not-found') {
+        //print('No user found for that email.');
+        return {'result' : false , 'message' :  e.message} ;
+      } else if (e.code == 'wrong-password') {
+        //print('Wrong password provided for that user.');
+        return {'result' : false , 'message' :  e.message} ;
+      } else{
+        return {'result' : false , 'message' :  'Errur'} ;
+      }
     }
-    /*
-   await  FirebaseAuth.instance.signInWithEmailAndPassword(email: email, password: password).then((value){
-      return true ;
-    }).onError((error, stackTrace) {
-      print('eruur login ==> $error') ;
-      return error.message ;
-
-    }) ;
 
 
-     */
   }
 
    updateUser(String oldPassword , String oldEmail) async {
@@ -172,6 +180,20 @@ class UserFire {
 
 
 
+  }
+
+
+
+  restPasswordForget(String email)async {
+    try {
+      await FirebaseAuth.instance.sendPasswordResetEmail(email: email);
+      return true ;
+    }on FirebaseAuthException catch (e){
+      print(e.message) ;
+      return e.message ;
+    }catch(e){
+      return e ;
+    }
   }
 
 
