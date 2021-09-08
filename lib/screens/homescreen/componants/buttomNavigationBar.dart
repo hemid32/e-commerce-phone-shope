@@ -36,7 +36,6 @@ class BottomNavigationsBars extends StatelessWidget {
       height:  60,
       decoration:  BoxDecoration(
         color: Theme.of(context).buttonColor ,
-
       ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -82,10 +81,8 @@ class BottomNavigationsBars extends StatelessWidget {
               return IconButtonBottom(
                 icon:Icons.person,
                 onTap: (){
-
                   BlocProvider.of<BlocHomeButtomBar>(context).add(GoToSetting());
                   BlocProvider.of<BlocUserVerifaid>(context).add(EventsUserVerified());
-
                   },
                 active:  (state.runtimeType) == SettingAPP,
               );

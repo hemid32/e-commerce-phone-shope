@@ -28,7 +28,8 @@ Map<String ,  List<Produit>> docco =
       'priceOriginal' : 56000.0 ,
       'spu' : 'Helio G90Octa Core 2.0GHz 12nm',
       'id' : 1 ,
-      'camera' : 48
+      'camera' : 48 ,
+      'idProduitUique' : uuid.v4() ,
 
 
 
@@ -45,7 +46,9 @@ Map<String ,  List<Produit>> docco =
       'priceOriginal' : 58000.0 ,
       'spu' : 'Helio G90Octa Core 2.0GHz 12nm',
       'id' : 2 ,
-      'camera' : 48
+      'camera' : 48 ,
+      'idProduitUique' : uuid.v4() ,
+
 
 
     }),
@@ -71,7 +74,8 @@ Map<String ,  List<Produit>> redmi10 =
       'priceOriginal' : 65000.0 ,
       'spu' : 'Snapdragon 732G 120Hz',
       'id' : 1 ,
-      'camera' : 108
+      'camera' : 108  ,
+      'idProduitUique' : uuid.v4() ,
 
 
 
@@ -88,7 +92,8 @@ Map<String ,  List<Produit>> redmi10 =
       'priceOriginal' : 62000.0 ,
       'spu' : 'Snapdragon 732G 120Hz',
       'id' : 2 ,
-      'camera' : 108
+      'camera' : 108  ,
+      'idProduitUique' : uuid.v4() ,
 
 
 
@@ -114,7 +119,8 @@ Map<String ,  List<Produit>> galaxyS21 =
       'priceOriginal' : 23000.0 ,
       'spu' : 'MTK6889',
       'id' : 1 ,
-      'camera' : 32
+      'camera' : 32 ,
+      'idProduitUique' : uuid.v4() ,
 
 
 
@@ -131,7 +137,8 @@ Map<String ,  List<Produit>> galaxyS21 =
       'priceOriginal' : 23000.0 ,
       'spu' : 'MTK6889',
       'id' : 1 ,
-      'camera' : 32
+      'camera' : 32 ,
+      'idProduitUique' : uuid.v4() ,
 
 
 
@@ -148,8 +155,10 @@ Map<String ,  List<Produit>> galaxyS21 =
       'priceOriginal' : 23000.0 ,
       'spu' : 'MTK6889',
       'id' : 1 ,
-      'camera' : 32
-    }),
+      'camera' : 32 ,
+     'idProduitUique' : uuid.v4() ,
+
+   }),
 
   ]
 
@@ -172,7 +181,8 @@ Map<String ,  List<Produit>> galaxyS21_2 =
       'priceOriginal' : 24000.0 ,
       'spu' : 'MTK6889',
       'id' : 1 ,
-      'camera' : 32
+      'camera' : 32 ,
+      'idProduitUique' : uuid.v4() ,
 
 
 
@@ -189,8 +199,9 @@ Map<String ,  List<Produit>> galaxyS21_2 =
       'priceOriginal' : 24000.0 ,
       'spu' : 'MTK6889',
       'id' : 2 ,
-      'camera' : 32
+      'camera' : 32 ,
 
+      'idProduitUique' : uuid.v4() ,
 
 
     }),
@@ -206,7 +217,9 @@ Map<String ,  List<Produit>> galaxyS21_2 =
       'priceOriginal' : 24000.0 ,
       'spu' : 'MTK6889',
       'id' : 3 ,
-      'camera' : 32
+      'camera' : 32 ,
+      'idProduitUique' : uuid.v4() ,
+
     }),
 
   ]
@@ -229,7 +242,9 @@ Map<String ,  List<Produit>> iphonx =
       'priceOriginal' : 24000.0 ,
       'spu' : 'Hexa core',
       'id' : 1 ,
-      'camera' : 12
+      'camera' : 12 ,
+      'idProduitUique' : uuid.v4() ,
+
 
 
 

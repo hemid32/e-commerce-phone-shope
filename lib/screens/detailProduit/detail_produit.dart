@@ -40,7 +40,7 @@ class DetailProduit extends StatelessWidget {
               );
 
                */
-              ScaffoldMessenger.of(_scaffoldkey.currentContext).showSnackBar(SnackBar(content: Text('Added to favorites', style: Theme.of(context).textTheme.button.copyWith(fontSize: 20 , color: Colors.white),) , backgroundColor: kPrimaryColor.withOpacity(0.6),));
+              ScaffoldMessenger.of(_scaffoldkey.currentContext).showSnackBar(SnackBar(content: Text('Added to cart', style: Theme.of(context).textTheme.button.copyWith(fontSize: 20 , color: Colors.white),) , backgroundColor: kPrimaryColor.withOpacity(0.6),));
             }else {
               ScaffoldMessenger.of(_scaffoldkey.currentContext).showSnackBar(SnackBar(content: Text('The item is in the cart !! ', style: Theme.of(context).textTheme.button.copyWith(fontSize: 20 , color: Colors.white),) , backgroundColor: Colors.red.withOpacity(0.6),));
 

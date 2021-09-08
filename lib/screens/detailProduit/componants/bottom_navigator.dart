@@ -61,7 +61,6 @@ class ButtomNavigatorBar extends StatelessWidget {
                 contitu: BlocProvider.of<BlocMinusAddProduitFromDetail>(context).state ,
                 produit: BlocProvider.of<BlocScreenDetailProduit>(context).state[0] ,
                 idProduitColors : BlocProvider.of<BlocScreenDetailProduit>(context).state[3]
-
               )) ,
               child: Container(
                 alignment: Alignment.center,

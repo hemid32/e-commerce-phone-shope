@@ -93,7 +93,7 @@ class Login extends StatelessWidget {
 
                     child: Column(
                       children: [
-                        FieldTextGet(title: 'Nombre Phone Or Email',onChange: (valur){
+                        FieldTextGet(title: 'Email',onChange: (valur){
                              email = valur ;
                         }, ) ,
                         SizedBox(height: 20,) ,

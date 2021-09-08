@@ -39,15 +39,27 @@ class CartHome extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     //TitleTextAligns(title: 'Detail de requist',) ,
-                    for(var i =0 ; i < snapShot.length ; i++ ) CardPhoneChope(
-                      image: snapShot[i].produit.image ,
-                      title: snapShot[i].produit.nomPhone,
-                      detail:  snapShot[i].produit.detail,
-                      ram: snapShot[i].produit.ram,
-                      storage: snapShot[i].produit.storage,
-                      contitu: snapShot[i].contituPay,
-                      price: snapShot[i].produit.price,
-                      deletCard: ()=> BlocProvider.of<BlocListDataCart>(context).add(EventDeletItemFromCart(i)),
+                    for(var i =0 ; i < snapShot.length ; i++ ) Dismissible(
+                      key:Key(snapShot[i].id) ,
+                      onDismissed: (derection) {
+                        BlocProvider.of<BlocListDataCart>(context).add(EventDeletItemFromCart(i)) ;
+                        ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Item has been deleted', style: Theme.of(context).textTheme.button.copyWith(fontSize: 18 , color: Colors.white),),));
+                      },
+                      child: CardPhoneChope(
+                        image: snapShot[i].produit.image ,
+                        title:snapShot[i].produit.nomPhone   , //snapShot[i].produit.nomPhone
+                        detail:  snapShot[i].produit.detail,
+                        ram: snapShot[i].produit.ram,
+                        storage: snapShot[i].produit.storage,
+                        contitu: snapShot[i].contituPay,
+                        price: snapShot[i].produit.price,
+                        deletCard: (){
+                          BlocProvider.of<BlocListDataCart>(context).add(EventDeletItemFromCart(i)) ;
+                          ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Item has been deleted', style: Theme.of(context).textTheme.button.copyWith(fontSize: 18 , color: Colors.white),),));
+
+
+                        }
+                      ),
                     ) ,
                     SizedBox(height: 10,) ,
 

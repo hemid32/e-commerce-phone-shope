@@ -89,13 +89,11 @@ class UserFire {
   login(String email , String password ) async {
     try {
       print('1') ;
-      if(email.contains('@'))
+
       UserCredential userCredential = await FirebaseAuth.instance.signInWithEmailAndPassword(
           email: email,
           password: password
       );
-      else
-        ConfirmationResult confirmationResult = await  FirebaseAuth.instance.signInWithPhoneNumber(email );
 
       print('logger') ;
       return {'result' : true , 'message' : 'message'} ;

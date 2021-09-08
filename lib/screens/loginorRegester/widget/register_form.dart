@@ -103,7 +103,7 @@ class Register extends StatelessWidget {
                   return FieldTextGet(title: 'Email',onChange: (valur){
                     //ValidatorTexxtBlocPhoneEmail
                     BlocProvider.of<ValidatorTexxtBlocPhoneEmail>(context).add(TextFieldValidatorEventPhoneEmail(
-                      valur: valur ,
+                      valur: valur.toString().trim() ,
                       titleErurr:  'Email error !',
                     )) ;
                     _email = valur.toString().trim() ;
@@ -134,7 +134,7 @@ class Register extends StatelessWidget {
             Positioned(
               left: size.width *0.25,
               right: 10  ,
-              top: size.height * 0.35 + 250 ,
+              top: size.height * 0.35 + 270 ,
               child: Container(
 
                 child: Row(

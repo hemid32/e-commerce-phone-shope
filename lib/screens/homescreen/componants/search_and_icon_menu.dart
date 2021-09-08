@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:phoneshop/bloc/userManagze/userVirifaid/bloc.dart';
 import 'package:phoneshop/constant.dart';
 import 'package:phoneshop/screens/search/search_screen.dart';
 
@@ -14,7 +16,9 @@ class SearchAndIconMenu extends StatelessWidget {
     return Row(
       children: [
         GestureDetector(
-          onTap: ()=> Navigator.push(context, MaterialPageRoute(builder: (context)=> Search())),
+          onTap: ()=> Navigator.push(context, MaterialPageRoute(builder: (_)=> BlocProvider.value(
+              value: BlocProvider.of<BlocUserVerifaid>(context),
+              child: Search()))),
           child: Container(
             margin: EdgeInsets.only(top: 50, left: kDefaultPadding),
             padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),

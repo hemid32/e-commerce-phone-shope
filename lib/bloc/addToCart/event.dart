@@ -9,6 +9,7 @@
 import 'package:phoneshop/model/cart/cart.dart';
 import 'package:phoneshop/model/cart/services.dart';
 import 'package:phoneshop/model/produit/produit.dart';
+import 'package:phoneshop/model/produit/servises.dart';
 
 class EventsAddToCartNew{}
 
@@ -27,6 +28,7 @@ class EventAddNewProduitToCart extends EventsAddToCartNew {
         'produit': produit.toMap(),
         'contituPay': contitu,
         'idProduitColors' : idProduitColors ,
+         'id' : uuid.v4()
       };
       bool resut = await savModelCart(model);
       return resut;

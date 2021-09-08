@@ -31,7 +31,7 @@ class FieldTextAndIconSearch extends StatelessWidget {
             child: Container(
               margin: EdgeInsets.symmetric(horizontal: 10),
               padding: EdgeInsets.symmetric(horizontal: 10),
-              height: 40,
+              height: 45,
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
                   color: Theme.of(context).buttonColor

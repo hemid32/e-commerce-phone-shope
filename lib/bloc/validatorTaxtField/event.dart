@@ -46,6 +46,8 @@ class TextFieldValidatorEventPhoneEmail extends EventsTextFeild {
   TextFieldValidatorEventPhoneEmail({this.valur , this.titleErurr});
   validator(){
     //print('length ==== ${this.valur.length}') ;
+    print(valur) ;
+    print('EmailValidator.validate(valur) == ${EmailValidator.validate(valur)}') ;
     if( !this.valur.contains('@')  || !EmailValidator.validate(valur)){
       return this.titleErurr ;
     }

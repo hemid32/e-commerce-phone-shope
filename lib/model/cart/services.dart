@@ -107,7 +107,8 @@ Future<List<ModelCart>> getListModelCart() async {
       'priceOriginal':element.modelCart['produit']['priceOriginal'] ,
       'spu':element.modelCart['produit']['spu'] ,
       'camera' : element.modelCart['produit']['camera'] ,
-      'id' : element.modelCart['produit']['id']
+      'id' : element.modelCart['produit']['id'] ,
+      'idProduitUique' : element.modelCart['produit']['idProduitUique'] ,
     });
 
     contint = element.modelCart['contituPay'] ;
@@ -116,6 +117,8 @@ Future<List<ModelCart>> getListModelCart() async {
       'produit': produit ,
       'contituPay': contint ,
       'idProduitColors' : idProduitColors ,
+      'id' : element.modelCart['id']
+
     }) ;
     //print('models ==== $models');
     listModels.add(models) ;

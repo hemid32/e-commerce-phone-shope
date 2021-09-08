@@ -7,13 +7,15 @@ class ModelCart {
   final Produit produit ;
   final int  contituPay ;
   final String idProduitColors ;
+  final String id ;
 
-  ModelCart({this.produit, this.contituPay = 1 , this.idProduitColors  });
+  ModelCart({this.produit, this.contituPay = 1 , this.idProduitColors , this.id });
   factory ModelCart.FormJson(Map<String  , dynamic > json ){
     return ModelCart(
       produit: json['produit'] ,
       contituPay: json['contituPay'] ,
-      idProduitColors: json['idProduitColors']
+      idProduitColors: json['idProduitColors'] ,
+      id: json['id']
     );
   }
 
@@ -22,6 +24,7 @@ class ModelCart {
       'produit': produit,
       'contituPay': contituPay,
       'idProduitColors' : idProduitColors ,
+      'id' : id
     };
   }
 
@@ -53,6 +56,7 @@ class ListModelCarte {
       'produit' : element.produit.toMap()  ,
         'contituPay' : element.contituPay ,
         'idProduitColors' : element.idProduitColors ,
+         'id' : element.id ,
 
       }) ;
 
