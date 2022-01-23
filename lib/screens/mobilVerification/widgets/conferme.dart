@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:page_transition/page_transition.dart';
+import 'package:phoneshop/bloc/editUser/bloc.dart';
+import 'package:phoneshop/bloc/editUser/event.dart';
 import 'package:phoneshop/bloc/manageScreenConfermCodSms/bloc.dart';
 import 'package:phoneshop/bloc/manageScreenConfermCodSms/event.dart';
 import 'package:phoneshop/bloc/register/bloc.dart';
@@ -11,18 +13,17 @@ import 'package:phoneshop/constant.dart';
 import 'package:phoneshop/model/user/user.dart';
 import 'package:phoneshop/screens/homescreen/homescreen.dart';
 import 'package:phoneshop/screens/loginorRegester/componants/costom_path.dart';
-import 'package:phoneshop/screens/loginorRegester/componants/header_login.dart';
-import 'package:phoneshop/screens/loginorRegester/componants/header_verification.dart';
 import 'package:phoneshop/screens/mobilVerification/componants/button.dart';
 import 'package:phoneshop/screens/mobilVerification/componants/card_small_cod.dart';
 
 class ConfermSms extends StatefulWidget {
   ConfermSms({
     Key key,
-    this.user,
+    this.user, this.isUpdate = false ,
   }) : super(key: key);
 
   final UserLocalModel user;
+  final isUpdate  ;
 
   @override
   _ConfermSmsState createState() => _ConfermSmsState();
@@ -291,19 +292,20 @@ class _ConfermSmsState extends State<ConfermSms> {
                             ScaffoldMessenger.of(Scaffold.of(context).context)
                                 .showSnackBar(SnackBar(
                                 content: Text(
-                                  'Account created successfully',
+                                  !widget.isUpdate ? 'Account created successfully' : 'The number has been confirmed',
                                   style: Theme.of(context)
                                       .textTheme
                                       .button
                                       .copyWith(fontSize: 15, color: Colors.white),
                                 ),
                                 backgroundColor: kPrimaryColor));
-                            Navigator.pushAndRemoveUntil(
-                                context,
-                                PageTransition(
-                                    type: PageTransitionType.rightToLeft,
-                                    child: HomeScreen()),
-                                    (Route<dynamic> route) => false);
+                              Navigator.pushAndRemoveUntil(
+                                  context,
+                                  PageTransition(
+                                      type: PageTransitionType.rightToLeft,
+                                      child: HomeScreen()),
+                                      (Route<dynamic> route) => false);
+
                           } else {
                             //BlocProvider.of<BlocLoading>(context).add(EventLoadingStop()) ;
                             ScaffoldMessenger.of(Scaffold.of(context).context)
@@ -322,19 +324,34 @@ class _ConfermSmsState extends State<ConfermSms> {
                           listener: (context, stateListen) {
                             //print('stetListen ===== *** === ${stateListen['state']}') ;
                             if (stateListen['state'] == 'confirmed') {
-                              BlocProvider.of<BlocRegisterUser>(context)
-                                  .add(EventsRegisters(
-                                user: widget.user,
-                                allFormIsCompletedTrue: true,
-                                phonAuth: stateListen['PhoneAuthCredential'],
-                              ));
+
+                              if(!widget.isUpdate) {
+                                BlocProvider.of<BlocRegisterUser>(context)
+                                    .add(EventsRegisters(
+                                  user: widget.user,
+                                  allFormIsCompletedTrue: true,
+                                  phonAuth: stateListen['PhoneAuthCredential'],
+                                ));
+                              }else{
+                                BlocProvider.of<BlocEditUser>(context).add(EventEditProfileWithPhone(
+                                  newUser: widget.user ,
+                                  phonAuth: stateListen['PhoneAuthCredential']
+                                ));
+                                Navigator.pop(context) ;
+
+
+
+                              }
+
+
+
                             }
                           },
                           child: ButtonBottom(
                             onTap: () {
                               codSms =
                               '${cod1.text}${cod2.text}${cod3.text}${cod4.text}${cod5.text}${cod6.text}';
-                              print('sms === $codSms');
+                              //print('sms === $codSms');
                               BlocProvider.of<BlocDataConfermUserCreatedCodSms>(context)
                                   .add(EventSandCodeFromFirBasCodeConfermCodSmS(
                                 codSms: codSms,

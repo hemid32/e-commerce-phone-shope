@@ -2,11 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:phoneshop/bloc/editUser/bloc.dart';
 import 'package:phoneshop/bloc/editUser/event.dart';
+import 'package:phoneshop/bloc/manageScreenConfermCodSms/bloc.dart';
+import 'package:phoneshop/bloc/manageScreenConfermCodSms/event.dart';
+import 'package:phoneshop/bloc/register/bloc.dart';
 import 'package:phoneshop/bloc/user/bloc.dart';
 import 'package:phoneshop/bloc/user/events.dart';
 import 'package:phoneshop/constant.dart';
 import 'package:phoneshop/model/user/user.dart';
-import 'package:phoneshop/screens/editProfile/editProfile.dart';
+//import 'package:phoneshop/screens/editProfile/editProfile.dart';
+import 'package:phoneshop/screens/mobilVerification/mobilVerification.dart';
 import 'package:phoneshop/screens/screen_pay/componants/double_button_bottom.dart';
 import 'package:phoneshop/screens/screen_pay/componants/field_text.dart';
 
@@ -107,9 +111,28 @@ class Body extends StatelessWidget {
                         backgroundColor: kPrimaryColor,));
                   //BlocProvider.of<BlocUserGetModel>(context).add(EventUserGet()) ;
 
-                }else if(stateListen['state'] == false ){
-                  ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('${stateListen['message']}', style: Theme.of(context).textTheme.button.copyWith(fontSize: 15 , color: Colors.white),) , backgroundColor: Colors.red,));
+                }else if(stateListen['state'] == false  && stateListen['target'] == 'change_phone'    ){
+                  UserLocalModel _newUser = UserLocalModel(
+                    name:  newName ,
+                    password: newPassword ,
+                    nombrePhon: newPhone ,
+                    image: newImage ,
+                    email:  newEmail ,
 
+                  ) ;
+                  BlocProvider.of<BlocScreenManageVerificationCodSms>(context).add(EventManageConfermCodSmsSandCod(user: _newUser , isUpdate: true )) ;
+
+                  Navigator.push(context, MaterialPageRoute(builder: (_)=> BlocProvider.value(
+                    value: BlocProvider.of<BlocEditUser>(context),//BlocEditUser
+                    child: BlocProvider.value(
+                        value:  BlocProvider.of<BlocScreenManageVerificationCodSms>(context),
+                        child: BlocProvider.value(
+                            value: BlocProvider.of<BlocRegisterUser>(context),
+                            child: MobilVarification())),
+                  ))) ;
+
+                }else{
+                  ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('${stateListen['message']}', style: Theme.of(context).textTheme.button.copyWith(fontSize: 15 , color: Colors.white),) , backgroundColor: Colors.red,));
                 }
               },
               child: DoubleButtonButtom(
@@ -126,12 +149,15 @@ class Body extends StatelessWidget {
 
                   ) ;
                   BlocProvider.of<BlocEditUser>(context).add(EventEditProfileGet(
+                    oldNombre: _user.nombrePhon,
                     newUser: newUser ,
                     odlPassword: oldPassword ,
                     oldEmeil: _user.email ,
                   )) ;
                 },
-                onTapWath: (){},
+                onTapWath: (){
+                  Navigator.pop(context) ;
+                },
                 iconBunnGreen: Icons.save,
                 iconBunnWaith: Icons.cancel,
               ),

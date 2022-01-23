@@ -24,7 +24,7 @@ import 'package:phoneshop/screens/loginorRegester/function/verifiedFieldIsComple
 import 'package:phoneshop/screens/mobilVerification/mobilVerification.dart';
 import 'package:phoneshop/screens/screen_pay/componants/field_text.dart';
 import 'package:toast/toast.dart';
-import 'package:phoneshop/screens/loginorRegester/function/dialog.dart';
+//import 'package:phoneshop/screens/loginorRegester/function/dialog.dart';
 
 import 'container_background.dart';
 class Register extends StatelessWidget {
@@ -182,12 +182,13 @@ class Register extends StatelessWidget {
                 },
                 child: ButtonRegister(
                   onTap: ()async {
+                    //BlocPhoneAuth.get(context).formatFone(_phone) ;
 
                     _user = UserLocalModel.fromJson({
                       'name' : _name ,
                       'email' : _email ,
                       'password' : _password ,
-                      'nombrePhon' : _formatPhoneNambre(_phone) ,
+                      'nombrePhon' : _phone ,
                       'image' : 'null'
                     });
                     /*
@@ -270,16 +271,7 @@ class Register extends StatelessWidget {
     );
   }
 
-  _formatPhoneNambre(String nombre ){
-      if(nombre.contains('+213')){
-        return nombre ;
-      }else if (nombre.length == 10 ){
-        String supNombre = nombre.substring(1,10) ;
-        String newNombre = '+213' + supNombre ;
-        return newNombre ;
-      }else{
-        return nombre ;
-      }
-  }
+
+
 }
 

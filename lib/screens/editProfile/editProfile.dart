@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:phoneshop/bloc/editUser/bloc.dart';
+import 'package:phoneshop/bloc/manageScreenConfermCodSms/bloc.dart';
+import 'package:phoneshop/bloc/register/bloc.dart';
 import 'package:phoneshop/bloc/user/bloc.dart';
 import 'package:phoneshop/bloc/user/events.dart';
 
@@ -13,6 +15,11 @@ class EditProfile extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider<BlocEditUser>(create: (BuildContext context)=> BlocEditUser()) ,
+        BlocProvider<BlocScreenManageVerificationCodSms>(create: (BuildContext context)=> BlocScreenManageVerificationCodSms()) ,
+        BlocProvider<BlocRegisterUser>(
+          create: (BuildContext context) => BlocRegisterUser(),
+        ),
+
       ],
       child: WillPopScope(
         child: Scaffold(

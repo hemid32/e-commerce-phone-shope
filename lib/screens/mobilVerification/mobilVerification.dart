@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:phoneshop/bloc/manageScreenConfermCodSms/bloc.dart';
-import 'package:phoneshop/bloc/manageScreenConfermCodSms/fieldVerefication/bloc.dart';
 import 'package:phoneshop/bloc/timer/ticker.dart';
 import 'package:phoneshop/bloc/timer/timer_bloc.dart';
 
 import 'componants/body.dart';
 
 class MobilVarification extends StatelessWidget {
+
+
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   Widget build(BuildContext context) {
@@ -18,6 +20,7 @@ class MobilVarification extends StatelessWidget {
 
       ],
       child: Scaffold(
+        key: _scaffoldKey,
         body: Body(),
       ),
     );

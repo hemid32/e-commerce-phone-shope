@@ -59,10 +59,6 @@ class LoginOrRegester extends StatelessWidget {
         ),
 
          */
-
-
-
-
       ],
       child: Scaffold(
         body: Body(),

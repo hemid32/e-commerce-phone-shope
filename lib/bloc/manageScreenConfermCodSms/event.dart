@@ -9,25 +9,29 @@ class EventManageConfermCodSms {}
 class EventManageConfermCodSmsSandCod extends EventManageConfermCodSms {
 
   final UserLocalModel user ;
+  final bool isUpdate ;
 
-  EventManageConfermCodSmsSandCod({@required this.user});
+  EventManageConfermCodSmsSandCod({@required this.user , this.isUpdate = false });
 
 
 }
 
+
+
+
 class EventManageConfermCodSmsConfermed extends EventManageConfermCodSms {
 
   final UserLocalModel user ;
+  final bool isUpdate ;
 
-  EventManageConfermCodSmsConfermed({@required this.user});
+  EventManageConfermCodSmsConfermed({@required this.user , this.isUpdate = false });
 
 
 }
 
 class EventSandCodeFromFirBas extends EventManageConfermCodSms{
-  final String nombrePhone  ;
+   String nombrePhone  ;
   EventSandCodeFromFirBas({@required this.nombrePhone});
-
 }
 
 class EventSandCodeFromFirBasField extends EventManageConfermCodSms{

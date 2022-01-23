@@ -106,12 +106,14 @@ class ButtonBarTob extends StatelessWidget {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size ;
 
-    return GestureDetector(
+    return InkWell(
       onTap: onTap,
       child: Container(
         width: size.width *0.33,
         height: 60,
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.end,
+          crossAxisAlignment: CrossAxisAlignment.end,
           children: [
             Container(
                 margin: EdgeInsets.only(top: 20),
@@ -119,10 +121,10 @@ class ButtonBarTob extends StatelessWidget {
                 child: Text('$title' , style: Theme.of(context).textTheme.button.copyWith(
                     color: active ? kPrimaryColor : Colors.black.withOpacity(0.4),
 
-                    fontSize:  15
+                    fontSize:  12
                 ),)
             ),
-            Spacer() ,
+            SizedBox(height: 10,) ,
             Container(
               width: double.infinity,
               height: 3,
