@@ -19,7 +19,7 @@ class ServisesAdressHive {
   ServisesAdressHive({this.address});
 
   Future< List<ModelAdress>> getAddress() async  {
-    var box = await Hive.openBox('AssressHive');
+    var box = await Hive.openBox('AddressHive');
     var result = box.values.toList();
     List<ModelAdress> addrs =[] ;
     result.forEach((element) {
@@ -32,10 +32,20 @@ class ServisesAdressHive {
   }
   saveNewAddress()async  {
     try{
-      var box = await Hive.openBox('AssressHive');
+      var box = await Hive.openBox('AddressHive');
       AssressHive addresHive = AssressHive()
         ..address = address.toMap();
-      box.add(addresHive);
+      box.put( address.id,addresHive);
+      return true ;
+    }catch(e){
+      return e ;
+    }
+  }
+
+  static deletAddress(String id)async  {
+    try{
+      var box = await Hive.openBox('AddressHive');
+      box.delete(id) ;
       return true ;
     }catch(e){
       return e ;

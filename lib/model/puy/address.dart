@@ -7,9 +7,10 @@ class ModelAdress {
   final String daira ;
   final String adress1 ;
   final String address2 ;
+  final String id ;
   final int codPostal ;
   final bool fine  ;
-  ModelAdress({this.nome, this.prenome, this.nomberPhone, this.email, this.wilaya, this.daira, this.adress1, this.address2, this.codPostal, this.fine = false});
+  ModelAdress({this.nome, this.prenome, this.nomberPhone, this.email, this.wilaya, this.daira, this.adress1, this.address2, this.codPostal, this.fine = false , this.id});
 
   factory ModelAdress.fromJson(Map<String , dynamic> jsnData){
     return ModelAdress(
@@ -23,6 +24,7 @@ class ModelAdress {
         address2: jsnData['address2'] ,
         codPostal: jsnData['codPostal'] ,
         fine: jsnData['fine'] ,
+        id: jsnData['id']
     ) ;
   }
 
@@ -41,6 +43,7 @@ class ModelAdress {
       'address2' : address2 ,
       'codPostal' : codPostal ,
       'fine' : fine ,
+      'id' : id ,
     } ;
 
 

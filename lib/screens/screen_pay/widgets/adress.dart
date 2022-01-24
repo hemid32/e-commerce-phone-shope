@@ -32,7 +32,7 @@ class Addres extends StatelessWidget {
   Addres({
     Key key,
   }) : super(key: key);
-  String _nome , _prenom , _nomberPhone , _email , _wilaya , _daira , _adress1 , _address2    ;
+  String _nome , _prenom , _nomberPhone , _email , _wilaya = 'El Bayadh' , _daira , _adress1 , _address2    ;
   bool _fine  ;
   int _codPostal  ;
 
@@ -64,7 +64,7 @@ class Addres extends StatelessWidget {
         BlocBuilder<ValidatorTexxtBlocPhoneEmail , dynamic>(
           builder: (_, state) {
             return FieldTextGet(title: 'Email Adress',onChange: (valur){
-              BlocProvider.of<ValidatorTexxtBlocPhoneEmail>(context).add(TextFieldValidatorEventPhoneEmail(valur: valur  , titleErurr: 'erurr email')) ;
+              BlocProvider.of<ValidatorTexxtBlocPhoneEmail>(context).add(TextFieldValidatorEventPhoneEmail(valur: valur.toString().trim()  , titleErurr: 'erurr email')) ;
 
               _email = valur;
             },validErurr: state ,);
@@ -111,7 +111,7 @@ class Addres extends StatelessWidget {
               BlocProvider.of<ValidatorTexxtBlocString>(context).state ,
               BlocProvider.of<ValidatorTexxtBlocPhoneNombre>(context).state ,
               BlocProvider.of<ValidatorTexxtBlocPhoneEmail>(context).state ,
-              _nome ,_prenom ,  _nomberPhone , _email
+              _nome ,_prenom ,  _nomberPhone , _email.toString().trim()
               , _wilaya , _adress1 , _address2 , _daira , _codPostal) ;
 
           if(addres != null){

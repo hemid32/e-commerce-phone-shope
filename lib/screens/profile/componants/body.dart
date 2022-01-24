@@ -7,6 +7,7 @@ import 'package:phoneshop/bloc/userManagze/userVirifaid/bloc.dart';
 import 'package:phoneshop/bloc/userManagze/userVirifaid/event.dart';
 import 'package:phoneshop/constant.dart';
 import 'package:phoneshop/model/user/user.dart';
+import 'package:phoneshop/screens/ListAddress/list_address.dart';
 import 'package:phoneshop/screens/editProfile/editProfile.dart';
 import 'package:phoneshop/screens/homescreen/componants/costom_listTile.dart';
 import 'package:phoneshop/screens/myOrder/my_order.dart';
@@ -71,7 +72,11 @@ class Body extends StatelessWidget {
                           Navigator.push(context, MaterialPageRoute(builder: (context) => MyOrder())) ;
 
                         },) ,
-                        CostomListTile(title: 'Address' , icon: Icons.location_on, onTap: (){},) ,
+                        CostomListTile(title: 'Address' , icon: Icons.location_on, onTap: (){
+                          Navigator.push(context, MaterialPageRoute(builder: (context)=> ListAddress())) ;
+
+
+                        },) ,
                         CostomListTile(title: 'My favorite' , icon: Icons.favorite, onTap: (){},) ,
                         CostomListTile(title: 'LogOut' , icon: Icons.logout, onTap: ()async {
                           await FirebaseAuth.instance.signOut() ;
