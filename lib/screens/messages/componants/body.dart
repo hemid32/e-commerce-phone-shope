@@ -120,6 +120,7 @@ class Body extends StatelessWidget {
                                 mesgae: mesg
                             ) ;
                             bool _result = await save.saveToFireBase() ;
+
                             if(_result){
                                   _controller.clear() ;
                             }

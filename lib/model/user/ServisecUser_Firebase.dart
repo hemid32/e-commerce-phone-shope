@@ -12,32 +12,27 @@ class UserFire {
 
   UserFire({@required this.user, this.phonAuth});
 
-  creatDataUser() async {
-    var _userCreat = await creatUser();
-    //print('_userCreat =====$_userCreat') ;
-    //var t =  await varifaidNombre() ;
-    //print('rification nombre == $t') ;
-    if (_userCreat != 'Errur' && _userCreat != null) {
+  creatDataUser(String uid)  {
       CollectionReference _users =
           FirebaseFirestore.instance.collection('users');
       try {
         _users.add({
           'name': user.name,
-          'uid': _userCreat,
+          'uid': uid,
           'nombrePhon': user.nombrePhon,
           'email': user.email,
           'image': user.image,
-          'password': 'password',
+          //'password': 'password',
         });
         return true;
       } catch (e) {
-        //print('no add user erurr = $e') ;
-        return e.message;
+        print('no add user erurr = $e') ;
+        //return e.message;
       }
-    } else {
-      return false;
-    }
+
   }
+
+
 
   creatUser() async {
     String message;
@@ -54,6 +49,7 @@ class UserFire {
         FirebaseAuth.instance.currentUser.updatePassword(user.password);
         FirebaseAuth.instance.currentUser.updateDisplayName(user.name);
         FirebaseAuth.instance.currentUser.updatePhotoURL(user.image);
+        creatDataUser( FirebaseAuth.instance.currentUser.uid ) ;
       }).onError((error, stackTrace) {
         result = false;
         message = error.message;
@@ -63,7 +59,7 @@ class UserFire {
       result = false;
     }
 
-    return {'message': message, 'result': result};
+    return {'message': message, 'result': result , 'uid' : FirebaseAuth.instance.currentUser.uid };
   }
 
   /*
