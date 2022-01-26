@@ -39,7 +39,7 @@ class CardPhoneChopeFavorite extends StatelessWidget {
               decoration: BoxDecoration(
                   color: Theme.of(context).cardColor ,
                   image:  DecorationImage(
-                      image: AssetImage(
+                      image: NetworkImage(
                           image
                       ) ,
                       fit: BoxFit.cover
@@ -58,7 +58,7 @@ class CardPhoneChopeFavorite extends StatelessWidget {
                 children: [
                   Row(
                     children: [
-                      Text( title , style: Theme.of(context).textTheme.button.copyWith( fontSize: 15 ),),
+                      Text( title.length > 23 ? '${title.substring(0,20)}...' : title , style: Theme.of(context).textTheme.button.copyWith( fontSize: 14 ),),
 
                       Spacer()  ,
                       GestureDetector(

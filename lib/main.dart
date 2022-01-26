@@ -4,6 +4,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hive/hive.dart';
+import 'package:phoneshop/bloc/notification/bloc.dart';
 import 'package:phoneshop/bloc/theme/bloc.dart';
 import 'package:phoneshop/bloc/theme/event.dart';
 import 'package:phoneshop/constant.dart';
@@ -125,8 +126,12 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return FutureBuilder(
       builder: (context, snapshot) {
-        return BlocProvider(
-          create : (context) => BlocTheme()..add(EventsThemeChangedInitilis()) ,
+        return MultiBlocProvider(
+          //providers[] : (context) => BlocTheme()..add(EventsThemeChangedInitilis()) ,
+          providers: [
+            BlocProvider(create: (context) => BlocTheme()..add(EventsThemeChangedInitilis())) ,
+            BlocProvider(create: (context) => BlocNotification()) ,
+          ],
           child: BlocBuilder<BlocTheme , List>(
             builder: (context, state) {
               return MaterialApp(

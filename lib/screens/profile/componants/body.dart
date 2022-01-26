@@ -2,6 +2,10 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:phoneshop/bloc/favorite/listFavoite/bloc.dart';
+import 'package:phoneshop/bloc/favorite/listFavoite/event.dart';
+import 'package:phoneshop/bloc/manageScreen/home/bloc.dart';
+import 'package:phoneshop/bloc/manageScreen/home/events.dart';
 import 'package:phoneshop/bloc/user/bloc.dart';
 import 'package:phoneshop/bloc/userManagze/userVirifaid/bloc.dart';
 import 'package:phoneshop/bloc/userManagze/userVirifaid/event.dart';
@@ -77,7 +81,13 @@ class Body extends StatelessWidget {
 
 
                         },) ,
-                        CostomListTile(title: 'My favorite' , icon: Icons.favorite, onTap: (){},) ,
+                        CostomListTile(title: 'My favorite' , icon: Icons.favorite, onTap: (){
+                          BlocProvider.of<BlocFavoriteList>(context)
+                              .add(EventListItemsFavoriteShowList()) ;
+                          BlocProvider.of<BlocHomeButtomBar>(context).add(GoToFavorite());
+                          Navigator.pop(context) ;
+
+                        },) ,
                         CostomListTile(title: 'LogOut' , icon: Icons.logout, onTap: ()async {
                           await FirebaseAuth.instance.signOut() ;
                           Navigator.pop(context) ;

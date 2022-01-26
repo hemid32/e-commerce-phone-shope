@@ -8,6 +8,7 @@ import 'package:phoneshop/bloc/manageScreen/detailProduit/bloc.dart';
 import 'package:phoneshop/bloc/manageScreen/detailProduit/event.dart';
 import 'package:phoneshop/bloc/manageScreen/home/bloc.dart';
 import 'package:phoneshop/bloc/manageScreen/home/events.dart';
+import 'package:phoneshop/bloc/userManagze/userVirifaid/bloc.dart';
 import 'package:phoneshop/constant.dart';
 import 'package:phoneshop/model/produit/produit_colors.dart';
 import 'package:phoneshop/model/produit/servises.dart';
@@ -44,7 +45,9 @@ class Favorite extends StatelessWidget {
                       BlocProvider.of<BlocScreenDetailProduit>(context).add(EvensGoToProduit(indexProduit: 0 , produisColors: snapshot.produits[i] )) ;
                       Navigator.push(context, MaterialPageRoute(builder: (_)=> BlocProvider.value(
                         value: BlocProvider.of<BlocScreenDetailProduit>(context),
-                        child:  DetailProduit() ,
+                        child:  BlocProvider.value(
+                            value: BlocProvider.of<BlocUserVerifaid>(context),
+                            child: DetailProduit()) ,
                       )));
                     },
                     image: snapshot.produits[i].listProduits[0].image,

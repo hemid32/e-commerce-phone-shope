@@ -45,13 +45,13 @@ class EventsChangeThemeMode extends EventThemeMode {
   void setDarkMode() async {
     //_themeData = themeLigth;
     StorageManager.saveData('themeMode', 'dark');
-    print('set theme ==== dark') ;
+    //print('set theme ==== dark') ;
   }
 
   void setLightMode() async {
     //_themeData = themeDark;
     StorageManager.saveData('themeMode', 'light');
-    print('set theme ==== light') ;
+    //print('set theme ==== light') ;
 
   }
 

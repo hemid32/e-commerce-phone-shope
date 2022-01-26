@@ -2,8 +2,14 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:phoneshop/bloc/favorite/listFavoite/bloc.dart';
+import 'package:phoneshop/bloc/favorite/listFavoite/event.dart';
 import 'package:phoneshop/bloc/getMessageq/bloc.dart';
 import 'package:phoneshop/bloc/getMessageq/events.dart';
+import 'package:phoneshop/bloc/manageScreen/home/bloc.dart';
+import 'package:phoneshop/bloc/manageScreen/home/events.dart';
+import 'package:phoneshop/bloc/notification/bloc.dart';
+import 'package:phoneshop/bloc/notification/state.dart';
 import 'package:phoneshop/bloc/theme/bloc.dart';
 import 'package:phoneshop/bloc/theme/event.dart';
 import 'package:phoneshop/bloc/userManagze/userVirifaid/bloc.dart';
@@ -14,6 +20,7 @@ import 'package:phoneshop/screens/homescreen/componants/header_setting.dart';
 import 'package:phoneshop/screens/loginorRegester/login_or_regester.dart';
 import 'package:phoneshop/screens/messages/messages.dart';
 import 'package:phoneshop/screens/profile/profile.dart';
+import 'package:toast/toast.dart';
 
 class SettingAPP extends StatelessWidget {
   const SettingAPP({
@@ -40,7 +47,11 @@ class SettingAPP extends StatelessWidget {
               }else {
                 Navigator.push(context, MaterialPageRoute(builder: (_)=> BlocProvider.value(
                   value: BlocProvider.of<BlocUserVerifaid>(context),
-                  child:  Profile()
+                  child:  BlocProvider.value(
+                      value: BlocProvider.of<BlocFavoriteList>(context),
+                      child:  BlocProvider.value(
+                          value: BlocProvider.of<BlocHomeButtomBar>(context),
+                          child:Profile()))
 
                 ))) ;
 
@@ -54,8 +65,30 @@ class SettingAPP extends StatelessWidget {
           margin: EdgeInsets.symmetric(horizontal: 20 , vertical:  20),
           child: Text('Setting General' , style:  Theme.of(context).textTheme.button.copyWith(fontSize: 20 ),),
         ) ,
-        CostomListTile(title: 'List Favorite' , icon: Icons.favorite, onTap: (){},) ,
-        CostomListTimeSwitch(valur: false,icon: Icons.notifications, title: 'Notification', onChanged: (valuer){},),
+        CostomListTile(title: 'List Favorite' , icon: Icons.favorite, onTap: (){
+          BlocProvider.of<BlocFavoriteList>(context)
+              .add(EventListItemsFavoriteShowList()) ;
+          BlocProvider.of<BlocHomeButtomBar>(context).add(GoToFavorite());
+
+        },) ,
+        BlocConsumer<BlocNotification , StateBlocNotification>(
+          listener: (context , state){
+            if(state is StateBlocNotificationSubscrip ){
+              Toast.show('Notifications enabled', context , duration: 4 );
+            }else if (state is StateBlocNotificationUnsubscrip){
+              Toast.show('Notifications are disabled', context  , duration: 4 );
+            }
+          },
+          builder: (context, snapshot) {
+            return CostomListTimeSwitch(valur: BlocNotification.get(context).notificationIsActive ,icon: Icons.notifications, title: 'Notification', onChanged: (valuer){
+              if(valuer)
+              BlocNotification.get(context).subscribe() ;
+              else
+                BlocNotification.get(context).unSubscribe() ;
+
+            },);
+          }
+        ),
         BlocBuilder<BlocUserVerifaid , bool >(
           builder: (context, user) {
             return CostomListTile(title: 'Messages' , icon: Icons.message,onTap: () async  {
@@ -78,7 +111,7 @@ class SettingAPP extends StatelessWidget {
         CostomListTile(title: 'Languge' , icon: Icons.language,onTap: (){},) ,
         BlocBuilder<BlocTheme , List >(
           builder: (context, state) {
-            print('state[0] === ${state[0]}') ;
+            //print('state[0] === ${state[0]}') ;
             return CostomListTimeSwitch(valur: state[0] == ThemeMode.dark ,icon: Icons.brightness_3, title: 'Dark Mode', onChanged: (valuer){
               BlocProvider.of<BlocTheme>(context).add(EventsChangeThemeMode(
                 value: valuer ,
