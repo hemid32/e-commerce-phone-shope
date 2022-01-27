@@ -31,10 +31,7 @@ class CardRow extends StatelessWidget {
                 future:  FavoriteModelItem(produit: snapshot.produits[i[0]]).ifFavorite(),
               builder: (context, data) {
                 return  data.hasData ?  CardPhoneItems(
-                  title: '${snapshot.produits[i[0]].listProduits[0].nomPhone}',
-                  price: snapshot.produits[i[0]].listProduits[0].price,
-                  descreption: snapshot.produits[i[0]].listProduits[0].detail,
-                  image:snapshot.produits[i[0]].listProduits[0].image ,
+                  produit:snapshot.produits[i[0]].listProduits[0] ,
                   pricintage: ((snapshot.produits[i[0]].listProduits[0].price*100) / snapshot.produits[i[0]].listProduits[0].priceOriginal) ,
                   fav: data.data ,
                   onTap: (){
@@ -55,10 +52,7 @@ class CardRow extends StatelessWidget {
                 future:  FavoriteModelItem(produit: snapshot.produits[i[1]]).ifFavorite(),
                 builder: (context, datas) {
                   return datas.hasData ? CardPhoneItems(
-                  title: '${snapshot.produits[i[1] ].listProduits[0].nomPhone} ',
-                  price:  snapshot.produits[i[1]].listProduits[0].price,
-                  descreption: snapshot.produits[i[1]].listProduits[0].detail,
-                  image:  snapshot.produits[i[1]].listProduits[0].image ,
+                    produit: snapshot.produits[i[1]].listProduits[0] ,
                   pricintage: ((snapshot.produits[i[1]].listProduits[0].price*100) / snapshot.produits[i[1]].listProduits[0].priceOriginal),
                   fav: datas.data ,
                   onTap: (){

@@ -4,6 +4,8 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hive/hive.dart';
+import 'package:phoneshop/bloc/languge/bloc.dart';
+import 'package:phoneshop/bloc/languge/state.dart';
 import 'package:phoneshop/bloc/notification/bloc.dart';
 import 'package:phoneshop/bloc/theme/bloc.dart';
 import 'package:phoneshop/bloc/theme/event.dart';
@@ -15,6 +17,7 @@ import 'package:phoneshop/model/produit/servises.dart';
 import 'package:phoneshop/screens/homescreen/homescreen.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:phoneshop/screens/loginorRegester/login_or_regester.dart';
+import 'package:phoneshop/services/lang/appLocat.dart';
 import 'bloc/allProduitFilter/event.dart';
 import 'bloc/manageScreen/home/bloc.dart';
 import 'model/cart/services.dart';
@@ -32,7 +35,7 @@ import 'model/puy/shopping.dart';
 import 'oitil/theme/theme.dart';
 import 'screens/profile/profile.dart';
 import 'package:email_validator/email_validator.dart';
-
+import 'package:flutter_localizations/flutter_localizations.dart';
 
 void main() async   {
   Bloc.observer = SimpleBlocObserver();
@@ -106,7 +109,7 @@ var o = GetMyOrder() ;
   print(r.date) ;
    */
 
-  ThemeMode.dark  ;
+  //ThemeMode.dark  ;
 
 
 
@@ -122,6 +125,7 @@ var o = GetMyOrder() ;
 
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
+
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(
@@ -131,18 +135,59 @@ class MyApp extends StatelessWidget {
           providers: [
             BlocProvider(create: (context) => BlocTheme()..add(EventsThemeChangedInitilis())) ,
             BlocProvider(create: (context) => BlocNotification()) ,
+            BlocProvider(create: (context) => BlocLanguage()..intialValue()) ,
           ],
           child: BlocBuilder<BlocTheme , List>(
             builder: (context, state) {
-              return MaterialApp(
-                debugShowCheckedModeBanner: false,
-                title: 'Flutter Demo',
-                theme: themeLigth,
-                darkTheme: themeDark ,
-                themeMode: state[0] ,
-                home:   BlocProvider.value(
-                    value: BlocProvider.of<BlocTheme>(context),
-                    child: HomeScreen()),
+              return BlocConsumer<BlocLanguage, StateBlocLanguage>(
+                listener: (context , state){},
+                builder: (context, snapshot) {
+                  return MaterialApp(
+                    debugShowCheckedModeBanner: false,
+                    title: 'Flutter Demo',
+                    theme: themeLigth,
+                    darkTheme: themeDark ,
+                    themeMode: state[0] ,
+                    home:   BlocProvider.value(
+                        value: BlocProvider.of<BlocTheme>(context),
+                        child: HomeScreen()),
+
+                    locale: BlocLanguage.get(context).locale, // _local
+                    localizationsDelegates: [
+                      AppLocale.delegate,
+                      GlobalMaterialLocalizations.delegate,
+                      GlobalWidgetsLocalizations.delegate,
+                      //DefaultCupertinoLocalizations.delegate,
+                      GlobalCupertinoLocalizations.delegate,
+                    ],
+                    supportedLocales: [
+                      Locale("en", ""),
+                      Locale("ar", ""),
+                      Locale("fr", ""),
+                    ],
+                    localeResolutionCallback: (locale, supportedLocales)  {
+                      //print('lang 17 == ${widget.lang}');
+
+                      if('lang' == 'from story')
+                                  return Locale('ar', ""); // from story
+                      for (var supportedLocale in supportedLocales) {
+                        if (supportedLocale.languageCode == locale.languageCode &&
+                            supportedLocale.countryCode == locale.countryCode) {
+
+                          //suportat lang
+
+
+                          return supportedLocale;
+                        }
+                      }
+
+                      return supportedLocales.first;
+                    },
+
+
+
+                  );
+                }
               );
             }
           ),

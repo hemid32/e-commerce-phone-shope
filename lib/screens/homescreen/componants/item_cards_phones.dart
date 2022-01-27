@@ -8,6 +8,7 @@ import 'package:phoneshop/bloc/userManagze/userVirifaid/bloc.dart';
 import 'package:phoneshop/bloc/userManagze/userVirifaid/event.dart';
 import 'package:phoneshop/constant.dart';
 import 'package:phoneshop/model/favorite/model.dart';
+import 'package:phoneshop/model/produit/produit.dart';
 import 'package:phoneshop/model/produit/produit_colors.dart';
 import 'package:phoneshop/model/produit/servises.dart';
 import 'package:phoneshop/screens/detailProduit/detail_produit.dart';
@@ -36,10 +37,8 @@ class ItemsCardBestSellingPHone extends StatelessWidget {
                   future:  FavoriteModelItem(produit: listData.produits[i]).ifFavorite(),
                   builder: (_ , data){
                   return  data.hasData ?  CardPhoneItems(
-                    title: listData.produits[i].listProduits[0].nomPhone , // i deleted
-                    price:  listData.produits[i].listProduits[0].price,
-                    descreption: listData.produits[i].listProduits[0].detail ,
-                    image: listData.produits[i].listProduits[0].image ,
+                    nombrePay: listData.produits[i].nombrePay,
+                    produit: listData.produits[i].listProduits[0],
                     onTap: (){
                       BlocProvider.of<BlocUserVerifaid>(context).add(EventsUserVerified());
                       BlocProvider.of<BlocScreenDetailProduit>(context).add(EvensGoToProduit(indexProduit: 0 , produisColors: listData.produits[i] )) ;
@@ -49,7 +48,7 @@ class ItemsCardBestSellingPHone extends StatelessWidget {
                             value: BlocProvider.of<BlocUserVerifaid>(context),
                             child: DetailProduit()) ,
                       )));},
-                    id: listData.produits[i].id ,
+                    //id: listData.produits[i].id ,
                     fav:  data.data,
                     onTapFav: ()=> BlocProvider.of<BlocFavoriteIs>(context).add(IsTapOnFavEvent(listData.produits[i])),
                   )  : Shimmer.fromColors(
@@ -83,17 +82,14 @@ class ItemsCardBestSellingPHone extends StatelessWidget {
 
 class CardPhoneItems extends StatelessWidget {
   const CardPhoneItems({
-    Key key, this.image, this.title, this.descreption, this.price, this.pricintage, this.onTap, this.id, this.fav, this.onTapFav,
+    Key key,@required this.produit , this.fav , this.onTap , this.onTapFav , this.pricintage, this.nombrePay //this.image, this.title, this.descreption, this.price, this.pricintage, this.onTap, this.id, this.fav, this.onTapFav,
   }) : super(key: key);
-  final String image ;
-  final String title ;
-  final String descreption ;
-  final double price ;
   final double pricintage ;
   final Function onTap ;
-  final String id  ;
   final bool fav  ;
   final Function onTapFav ;
+  final Produit produit ;
+  final int nombrePay ;
 
   @override
   Widget build(BuildContext context) {
@@ -152,14 +148,14 @@ class CardPhoneItems extends StatelessWidget {
                     ],
                   ),
                 ),
-                SizedBox(height: 15,) ,
+                //SizedBox(height: 15,) ,
                 Container(
                   width: size.width / 2 - 40 ,
                   height:  150,
                   decoration: BoxDecoration(
                       image: DecorationImage(
                           image: NetworkImage(
-                            image ,
+                            produit.image ,
 
                           ) ,
                           fit: BoxFit.cover
@@ -179,29 +175,29 @@ class CardPhoneItems extends StatelessWidget {
 
                         children: [
                           TextSpan(
-                              text:  '$title\n ' , style:  Theme.of(context).textTheme.button
+                              text:  '${produit.nomPhone}\n ' , style:  Theme.of(context).textTheme.button
                           ) ,
                           TextSpan(
-                              text:  descreption.length < 15 ?'$descreption' : '${descreption.substring(0,15)} ...' , style: Theme.of(context).textTheme.button
+                              text:  (produit.detail).length < 15 ?'${produit.detail}' : '${produit.detail.substring(0,15)} ...' , style: Theme.of(context).textTheme.button
 
                           ) ,
                         ]
                     )) ,
-                SizedBox(height: 10,) ,
+                //SizedBox(height: 10,) ,
+                 //Text('n pay : $nombrePay'),
+                Spacer() ,
+                Container(
+                  alignment: Alignment.center,
+                  margin: EdgeInsets.symmetric(horizontal: 5 , vertical: 5),
+                  width: double.infinity  ,
+                  height: 30,
+                  //height:  40 ,
+                  decoration: BoxDecoration(
+                    color: kPrimaryColor.withOpacity(0.5),
+                    borderRadius: BorderRadius.circular(20) ,
 
-                Expanded(
-                  child: Container(
-                    alignment: Alignment.center,
-                    margin: EdgeInsets.only(bottom: 5 , right: 5 , left:  5),
-                    width: double.infinity  ,
-                    //height:  40 ,
-                    decoration: BoxDecoration(
-                      color: kPrimaryColor.withOpacity(0.5),
-                      borderRadius: BorderRadius.circular(20) ,
-
-                    ),
-                    child: Text('$price DZ' , style : Theme.of(context).textTheme.button.copyWith(color: Colors.white , fontSize: 20)),
                   ),
+                  child: Text('${produit.price} DZ' , style : Theme.of(context).textTheme.button.copyWith(color: Colors.white , fontSize: 20)),
                 )
               ],
             ),

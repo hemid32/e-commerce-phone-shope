@@ -1,11 +1,14 @@
 
 
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:phoneshop/bloc/favorite/listFavoite/bloc.dart';
 import 'package:phoneshop/bloc/favorite/listFavoite/event.dart';
 import 'package:phoneshop/bloc/getMessageq/bloc.dart';
 import 'package:phoneshop/bloc/getMessageq/events.dart';
+import 'package:phoneshop/bloc/languge/bloc.dart';
+import 'package:phoneshop/bloc/languge/state.dart';
 import 'package:phoneshop/bloc/manageScreen/home/bloc.dart';
 import 'package:phoneshop/bloc/manageScreen/home/events.dart';
 import 'package:phoneshop/bloc/notification/bloc.dart';
@@ -17,9 +20,11 @@ import 'package:phoneshop/constant.dart';
 import 'package:phoneshop/screens/homescreen/componants/costom_listTile.dart';
 import 'package:phoneshop/screens/homescreen/componants/costom_list_tile_switch.dart';
 import 'package:phoneshop/screens/homescreen/componants/header_setting.dart';
+import 'package:phoneshop/screens/homescreen/componants/item_list_language.dart';
 import 'package:phoneshop/screens/loginorRegester/login_or_regester.dart';
 import 'package:phoneshop/screens/messages/messages.dart';
 import 'package:phoneshop/screens/profile/profile.dart';
+import 'package:phoneshop/services/lang/appLocat.dart';
 import 'package:toast/toast.dart';
 
 class SettingAPP extends StatelessWidget {
@@ -108,7 +113,30 @@ class SettingAPP extends StatelessWidget {
             );
           }
         ) ,
-        CostomListTile(title: 'Languge' , icon: Icons.language,onTap: (){},) ,
+        //CostomListTile(title: 'Language' , icon: Icons.language,onTap: (){
+          BlocConsumer<BlocLanguage , StateBlocLanguage>(
+            listener: (context, state){
+              if(state is StateBlocLanguageChangeLanguage){
+                Toast.show('Language has changed', context ) ;
+              }
+            },
+            builder: (context, snapshot) {
+              return PopupMenuButton(
+                color: Theme.of(context).accentColor,
+                onSelected: (newLang)=>BlocLanguage.get(context).changeLocal(newLang),
+                child: CostomListTile(title: getLang(context , 'language') , icon: Icons.language),
+                itemBuilder:(context)=> [
+                PopupMenuItem(  value: 'ar',child: ItemListMenu(title: 'ar', icon:  'assets/icons/ar.svg', valueLang: 'ar',)) ,
+                PopupMenuItem(  value: 'fr',child: ItemListMenu(title: 'fr', icon:  'assets/icons/ar.svg', valueLang: 'fr',)) ,
+                PopupMenuItem(  value: 'en',child: ItemListMenu(title: 'en', icon:  'assets/icons/ar.svg', valueLang: 'en',)) ,
+
+              ]  ,
+              );
+            }
+          ),
+
+        //},) ,
+
         BlocBuilder<BlocTheme , List >(
           builder: (context, state) {
             //print('state[0] === ${state[0]}') ;

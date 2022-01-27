@@ -17,6 +17,7 @@ import 'package:phoneshop/screens/homescreen/componants/button_waith_80.dart';
 import 'package:phoneshop/screens/homescreen/componants/card_phone_favorite.dart';
 import 'package:phoneshop/screens/homescreen/componants/conainer_favorite_is_vide.dart';
 import 'package:phoneshop/screens/homescreen/componants/favorite_header.dart';
+import 'package:phoneshop/screens/homescreen/componants/header_setting.dart';
 import 'package:phoneshop/screens/homescreen/componants/search_and_icon_menu.dart';
 import 'package:phoneshop/screens/search/search_screen.dart';
 
@@ -36,8 +37,10 @@ class Favorite extends StatelessWidget {
             builder: (context, data) {
               return snapshot.produits == null  ? Container() :  Column(
                 children: [
-                  SearchAndIconMenu() ,
+                  //SearchAndIconMenu() ,
                   //HeaderFavorite() ,
+                  HeaderSetting(titre:  'Favorite',) ,
+
                   SizedBox(height: 20,) ,
 
                    for(var i =0 ; i< snapshot.produits.length ; i++)  CardPhoneChopeFavorite(
