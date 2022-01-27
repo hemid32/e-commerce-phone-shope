@@ -130,10 +130,10 @@ class Cart extends StatelessWidget {
               'addres' : BlocProvider.of<AdressDataBloc>(context).state ,
               'methodSopping' : BlocProvider.of<ShoppingDataBloc>(context).state ,
               'user' : UserLocalModel.fromJson({
-                             'email' : 'hemidi@gmail.com' ,
-                              'password' : '********' ,
-                              'nombrePhon' : '0265656' ,
-                               'image' : 'image' ,
+                             'email' : '...' ,
+                              'password' : '...' ,
+                              'nombrePhon' : '...' ,
+                               'image' : '..' ,
                                'uid' : FirebaseAuth.instance.currentUser.uid
               }) ,
               'nots' :  _note ,

@@ -5,13 +5,24 @@ class EventScreenDetails {}
 
 class EvensGoToProduit extends EventScreenDetails{
   final ProduitsColors  produisColors ;
-  final int indexProduit ;
+  final int indexProduit ; // this is id produit
 
   //Produit produit ;
   EvensGoToProduit({this.produisColors , this.indexProduit});
   Produit produitResult(){
-    Produit produit = produisColors.listProduits[indexProduit] ;
+    //Produit produit = produisColors.listProduits[indexProduit] ;
+    Produit produit = findProduit() ;
+    print(produit.id ) ;
     return produit ;
+  }
+
+  findProduit(){
+    Produit targetProduit  ;
+    for(var produit in produisColors.listProduits){
+      if(produit.id == indexProduit )
+        targetProduit = produit ;
+    }
+    return targetProduit ;
   }
 
 

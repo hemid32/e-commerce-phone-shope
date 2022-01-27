@@ -35,7 +35,7 @@ class BottomNavigationsBars extends StatelessWidget {
       width:  MediaQuery.of(context).size.width,
       height:  60,
       decoration:  BoxDecoration(
-        color: Theme.of(context).buttonColor ,
+        color: Theme.of(context).accentColor ,
       ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -106,7 +106,7 @@ class IconButtonBottom extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
+    return InkWell(
       onTap: onTap,
       child: Column(
         children: [

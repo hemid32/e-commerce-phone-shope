@@ -18,7 +18,7 @@ class ContainerRamStockagColors extends StatelessWidget {
       width: double.infinity,
       //height: 60,
       decoration: BoxDecoration(
-          color: Colors.white ,
+          color: Theme.of(context).accentColor,//Colors.white ,
           borderRadius: BorderRadius.circular(20) ,
           border:Border.all(color: Colors.black.withOpacity(0.13)),
           boxShadow: [
@@ -35,34 +35,14 @@ class ContainerRamStockagColors extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          /*
-          Column(
-            children: [
-              Icon(Icons.aspect_ratio, color: Colors.black.withOpacity(0.3),) ,
-              Text('SPU' ,  style: Theme.of(context).textTheme.button.copyWith(
-                  color: Colors.black.withOpacity(0.4)
-              ),) ,
-              Text('$spu' , style:  Theme.of(context).textTheme.button.copyWith(color: Colors.black.withOpacity(0.6)),)
-            ],
-          ) ,
-          Container(
-            height:  40,
-            width:  1,
-            decoration: BoxDecoration(
-                color: Colors.black.withOpacity(.2)
-            ),
-          ),
 
-           */
           Column(
             children: [
               SvgPicture.asset('assets/icons/ram.svg', width: 30, height: 30, color: Theme.of(context).iconTheme.color,) ,
 
               //Icon(Icons.filter_frames_outlined, color: Colors.black.withOpacity(0.3),) ,
-              Text('RAM' ,  style: Theme.of(context).textTheme.button.copyWith(
-                color: Colors.black.withOpacity(0.4)
-              ),) ,
-              Text('$ram GB' , style:  Theme.of(context).textTheme.button.copyWith(color: Colors.black.withOpacity(0.6)),)
+              Text('RAM' ,  style: Theme.of(context).textTheme.button) ,
+              Text('$ram GB' , style:  Theme.of(context).textTheme.button,)
             ],
           ),
           Container(
@@ -77,10 +57,8 @@ class ContainerRamStockagColors extends StatelessWidget {
               SvgPicture.asset('assets/icons/storage.svg', width: 30, height: 30, color: Theme.of(context).iconTheme.color,) ,
 
               //Icon(Icons.storage, color: Colors.black.withOpacity(0.3),) ,
-              Text('Storage' ,  style: Theme.of(context).textTheme.button.copyWith(
-                  color: Colors.black.withOpacity(0.4)
-              ),) ,
-              Text('$stockag GB' , style:  Theme.of(context).textTheme.button.copyWith(color: Colors.black.withOpacity(0.6)),)
+              Text('Storage' ,  style: Theme.of(context).textTheme.button,) ,
+              Text('$stockag GB' , style:  Theme.of(context).textTheme.button,)
             ],
           ),
           Container(
@@ -95,10 +73,8 @@ class ContainerRamStockagColors extends StatelessWidget {
               SvgPicture.asset('assets/icons/camera.svg', width: 30, height: 30, color: Theme.of(context).iconTheme.color,) ,
 
               //Icon(Icons.camera , color: Colors.black.withOpacity(0.3),) ,
-              Text('Camera' ,  style: Theme.of(context).textTheme.button.copyWith(
-                  color: Colors.black.withOpacity(0.4)
-              ),) ,
-              Text('$camera MP' , style:  Theme.of(context).textTheme.button.copyWith(color: Colors.black.withOpacity(0.6)),)
+              Text('Camera' ,  style: Theme.of(context).textTheme.button,) ,
+              Text('$camera MP' , style:  Theme.of(context).textTheme.button,)
             ],
           ),
         ],

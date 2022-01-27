@@ -10,7 +10,7 @@ Future<void> showMyDialogDeletOrder(contextOriginal, Function onTap) async {
         shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.all(Radius.circular(30.0))),
 
-            title: const Text('Cancelling order'),
+            title:  Text('Cancelling order' , style: Theme.of(context).textTheme.button.copyWith(fontSize: 20),),
         content: SingleChildScrollView(
           child: ListBody(
             children: const <Widget>[

@@ -8,6 +8,7 @@ import 'package:phoneshop/bloc/userManagze/userVirifaid/bloc.dart';
 import 'package:phoneshop/bloc/userManagze/userVirifaid/event.dart';
 import 'package:phoneshop/constant.dart';
 import 'package:phoneshop/model/favorite/model.dart';
+import 'package:phoneshop/model/filter/filterProduitFormProduitColor/model.dart';
 import 'package:phoneshop/model/produit/produit.dart';
 import 'package:phoneshop/model/produit/produit_colors.dart';
 import 'package:phoneshop/model/produit/servises.dart';
@@ -32,25 +33,32 @@ class ItemsCardBestSellingPHone extends StatelessWidget {
         builder: (context, snapshot) {
           return Row(
             children: [
-              for(var i  = 0 ; i< listData.produits.length ; i++  )
+              //for(var i  = 0 ; i< listData.produits.length ; i++  )
+              for(var produitsColor  in  listData.produits   )
                 FutureBuilder(
-                  future:  FavoriteModelItem(produit: listData.produits[i]).ifFavorite(),
+                  future:  FavoriteModelItem(produit: produitsColor).ifFavorite(),
                   builder: (_ , data){
-                  return  data.hasData ?  CardPhoneItems(
-                    nombrePay: listData.produits[i].nombrePay,
-                    produit: listData.produits[i].listProduits[0],
-                    onTap: (){
-                      BlocProvider.of<BlocUserVerifaid>(context).add(EventsUserVerified());
-                      BlocProvider.of<BlocScreenDetailProduit>(context).add(EvensGoToProduit(indexProduit: 0 , produisColors: listData.produits[i] )) ;
-                      Navigator.push(context, MaterialPageRoute(builder: (_)=> BlocProvider.value(
-                        value: BlocProvider.of<BlocScreenDetailProduit>(context),
-                        child:  BlocProvider.value(
-                            value: BlocProvider.of<BlocUserVerifaid>(context),
-                            child: DetailProduit()) ,
-                      )));},
-                    //id: listData.produits[i].id ,
-                    fav:  data.data,
-                    onTapFav: ()=> BlocProvider.of<BlocFavoriteIs>(context).add(IsTapOnFavEvent(listData.produits[i])),
+                  return  data.hasData ?  Builder(
+                    builder: (context) {
+                      //print(listData.produits[i].listProduits.length)
+                      Produit productShowing = FilterProduitFromProduitColors.getPriorityProduitFromProduitColors(produitsColor.listProduits) ;
+                      return CardPhoneItems(
+                        nombrePay: produitsColor.nombrePay,
+                        produit: productShowing,
+                        onTap: (){
+                          BlocProvider.of<BlocUserVerifaid>(context).add(EventsUserVerified());
+                          BlocProvider.of<BlocScreenDetailProduit>(context).add(EvensGoToProduit(indexProduit:productShowing.id, produisColors: produitsColor )) ;
+                          Navigator.push(context, MaterialPageRoute(builder: (_)=> BlocProvider.value(
+                            value: BlocProvider.of<BlocScreenDetailProduit>(context),
+                            child:  BlocProvider.value(
+                                value: BlocProvider.of<BlocUserVerifaid>(context),
+                                child: DetailProduit()) ,
+                          )));},
+                        //id: listData.produits[i].id ,
+                        fav:  data.data,
+                        onTapFav: ()=> BlocProvider.of<BlocFavoriteIs>(context).add(IsTapOnFavEvent(produitsColor)),
+                      );
+                    }
                   )  : Shimmer.fromColors(
                       baseColor: Colors.grey[300],
                       highlightColor: Colors.grey[100],

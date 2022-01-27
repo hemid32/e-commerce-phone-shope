@@ -16,16 +16,17 @@ class ItemsColorShoise extends StatelessWidget {
       scrollDirection: Axis.horizontal,
       child: Row(
         children: [
-          for(var i = 0 ; i< BlocProvider.of<BlocScreenDetailProduit>(context).state[1].listProduits.length ; i++ )SmailImageShoiColor(
-            image:  BlocProvider.of<BlocScreenDetailProduit>(context).state[1].listProduits[i].image,
-            index: i,
+          //for(var i = 0 ; i< BlocProvider.of<BlocScreenDetailProduit>(context).state[1].listProduits.length ; i++ ) SmailImageShoiColor(
+          for(var i in  BlocProvider.of<BlocScreenDetailProduit>(context).state[1].listProduits) SmailImageShoiColor(
+            image: i.image ,
+            index: i.id,
             onTap: (){
               BlocProvider.of<BlocScreenDetailProduit>(context).add(EvensGoToProduit(
-                indexProduit: i ,
+                indexProduit: i.id ,
                 produisColors: BlocProvider.of<BlocScreenDetailProduit>(context).state[1] ,
               ));
               BlocProvider.of<BlocMinusAddProduitFromDetail>(context).add(EventMinus(
-                totalProduit: BlocProvider.of<BlocScreenDetailProduit>(context).state[1].listProduits[i].contitu ,
+                totalProduit: i.contitu ,
                 courentContitu: 1
               ));
             },

@@ -13,7 +13,7 @@ class FieldNotes extends StatelessWidget {
       height:  120,
       margin: EdgeInsets.symmetric(horizontal: 20 , vertical:  10),
       decoration: BoxDecoration(
-          color: Colors.white ,
+          color: Theme.of(context).accentColor ,
           border: Border.all(color: Colors.black.withOpacity(0.09))
       ),
       child: TextField(
@@ -31,7 +31,7 @@ class FieldNotes extends StatelessWidget {
             disabledBorder: InputBorder.none,
 
             hintText:  '$hintText' ,
-            hintStyle: Theme.of(context).textTheme.button.copyWith(color: Colors.black.withOpacity(0.15))
+            hintStyle: Theme.of(context).textTheme.button.copyWith(color: Theme.of(context).textTheme.button.color.withOpacity(0.4))
         ),
       ),
     );

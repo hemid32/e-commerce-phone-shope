@@ -93,6 +93,18 @@ class GetProduitTotalFromFirebas {
 
 
 
+   getProduitColorsWithId(String id) async  {
+      ListProduitsColors listProduitColors  =await  getListProduitsColorsObject() ;
+      for(var i in listProduitColors.produits){
+        if(i.id == id)
+          return i ;
+      }
+      return null ;
+
+    }
+
+
+
 
 
 
