@@ -28,9 +28,8 @@ class BlocAllProduitFilter extends Bloc<EvenetsAllProduitFilters ,  ListProduits
       //print('_thebest =====================${_thebest.produits.length}') ;
       yield _thebest ;
     }
-    if(event.runtimeType == EventAllProduitAfterFillter ){
-      EventAllProduitAfterFillter _results = event ;
-      yield _results.dataFilter ;
+    if(event is  EventAllProduitAfterFillter ){
+      yield event.dataFilter ;
 
     }
   }

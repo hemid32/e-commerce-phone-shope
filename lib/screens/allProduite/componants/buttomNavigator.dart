@@ -9,16 +9,14 @@ import 'package:phoneshop/bloc/filterAllProduit/slideFilterManage/events.dart';
 import 'package:phoneshop/bloc/laodingCirceler/bloc.dart';
 import 'package:phoneshop/bloc/laodingCirceler/events.dart';
 import 'package:phoneshop/constant.dart';
-import 'package:phoneshop/model/produit/produit_colors.dart';
+//import 'package:phoneshop/model/produit/produit_colors.dart';
 import 'package:phoneshop/widgets/dialog_container.dart';
 import 'package:phoneshop/widgets/slider_title.dart';
 
 class ButtomNavigatorBars extends StatelessWidget {
   const ButtomNavigatorBars({
-    Key key,
-    this.onTap,
+    Key? key,
   }) : super(key: key);
-  final Function onTap;
 
 
   @override
@@ -47,7 +45,7 @@ class ButtomNavigatorBars extends StatelessWidget {
                 style: Theme.of(context)
                     .textTheme
                     .button
-                    .copyWith(color: Colors.white, fontSize: 20),
+                    ?.copyWith(color: Colors.white, fontSize: 20),
               ),
             ),
           )
@@ -58,10 +56,10 @@ class ButtomNavigatorBars extends StatelessWidget {
 }
 
 Future<void> _showMyDialogFilter(contextOrigin) async {
-  double _ram ;
-  double _strorage ;
-  double _price ;
-  double _camera ;
+  late double _ram ;
+  late double _strorage ;
+  late double _price ;
+  late double _camera ;
   return showDialog<void>(
     context: contextOrigin,
     barrierDismissible: false, // user must tap button!
@@ -82,6 +80,7 @@ Future<void> _showMyDialogFilter(contextOrigin) async {
           ),
         ],
         child: DialogContainer(
+          title: '',
           widgets: [
             BlocBuilder<BlocSliderRam, double>(
                 builder: (context, value) {
@@ -159,10 +158,10 @@ Future<void> _showMyDialogFilter(contextOrigin) async {
                 BlocProvider.of<BlocLoading>(contextOrigin).add(EventLoadingStart()) ;
 
                 BlocProvider.of<BlocFiltersAllProduits>(contextOrigin).add(EventsFilterAllProduitsevnts(
-                  ram: _ram??2.0  ,
-                  storage: _strorage??5.0 ,
-                  camera: _camera??8.0 ,
-                  price: _price??2000.0 ,
+                  ram: _ram ,
+                  storage: _strorage ,
+                  camera: _camera,
+                  price: _price ,
                   produitsColors:  BlocProvider.of<BlocAllProduitFilter>(contextOrigin).state  ,
                 )) ;
                 await Future.delayed(Duration(seconds: 1)) ;

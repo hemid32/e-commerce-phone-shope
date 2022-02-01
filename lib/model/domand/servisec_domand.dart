@@ -10,7 +10,7 @@ import 'package:uuid/uuid.dart';
 
 class SandDmndToFireBase {
   final  DomandProduit  domand  ;
-  Map<String , dynamic> domandMap ;
+  Map<String , dynamic>? domandMap ;
 
   var uuid = Uuid() ;
 
@@ -22,7 +22,7 @@ class SandDmndToFireBase {
        CollectionReference _domands = FirebaseFirestore.instance.collection(
            'domands');
        await _domands.add({
-         'uid' : FirebaseAuth.instance.currentUser.uid ,
+         'uid' : FirebaseAuth.instance.currentUser!.uid ,
          'domand' : domandMap ,
        });
        await _modificationContituesFronFirebas() ;
@@ -30,7 +30,7 @@ class SandDmndToFireBase {
        return true ;
      }catch(e){
        print('errur $e}') ;
-       return e.message ;
+       return e.toString() ;
      }
   }
 
@@ -40,20 +40,20 @@ class SandDmndToFireBase {
       // element.idProduitColors   ;
      //element.produit.id ;
       // element.contituPay ;
-      await _minimusContitu(element.idProduitColors, element.produit.id, element.contituPay) ;
+      await _minimusContitu(element.idProduitColors!, element.produit!.id!, element.contituPay!) ;
     });
     //final CollectionReference  _produits = await  FirebaseFirestore.instance.collection('Produits');
   }
 
   _minimusContitu(String idProduitColors , int idProduit , int contituBuy ) async  {
-    final CollectionReference  produits = await  FirebaseFirestore.instance.collection('Produits');
+    final    produits = await  FirebaseFirestore.instance.collection('Produits');
     var _data =  await produits.get() ;
     int oldContitu ;
     int newContitu ;
     //_InternalLinkedHashMap<String, dynamic> to Map<String,dynamic> == try ==> Map<String, dynamic>.from(yourData)
-    _data.docs.forEach((element)   {
-      print('id docs produits from firebase==== ${element.id}') ;
-      var _data = Map<String, dynamic>.from(element.data()) ;
+    for(var  element in _data.docs){
+      //print('id docs produits from firebase==== ${element.id}') ;
+      Map<String, dynamic> _data = Map<String, dynamic>.from(element.data()) ;
       if(_data['id'] ==   idProduitColors ){
         var listProduits = _data['listProduits'] ;
         _data['listProduits'].forEach((_produit) async  {
@@ -68,8 +68,8 @@ class SandDmndToFireBase {
           }
         });
       }
-      //if(elemet.data())
-    });
+
+    }
   }
 
 }
@@ -79,7 +79,7 @@ class CancelDomandSanded {
 
   final String  uidDomand ;
   //final String idDoc ;
-  CancelDomandSanded({@required this.uidDomand });
+  CancelDomandSanded({required this.uidDomand });
   deletFromFireBase() async  {
     String uidDoc = await  getIdDecDomand() ;
     CollectionReference _domand = FirebaseFirestore.instance.collection('domands');
@@ -92,9 +92,9 @@ class CancelDomandSanded {
     }
   }
   getIdDecDomand() async  {
-    CollectionReference _domand = FirebaseFirestore.instance.collection('domands');
+    final  _domand = FirebaseFirestore.instance.collection('domands');
     var d = await _domand.get() ;
-    String uidDmnd ;
+    late String uidDmnd ;
     d.docs.forEach((element) {
      Map<String, dynamic> _domandItem = Map<String, dynamic>.from(element.data())   ;
      if(_domandItem['domand']['uidDomand'] == uidDomand ){

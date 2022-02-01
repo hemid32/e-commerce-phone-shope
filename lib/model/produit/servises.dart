@@ -358,7 +358,7 @@ testCreatModelFromFireBase() async {
         'Produits');
     Map<String , dynamic> mapData = getProduitColors().toMap() ;
    // print('mapData === $mapData') ;
-    getProduitColors().produits.forEach((element) async {
+    getProduitColors().produits?.forEach((element) async {
       await _produits.add(
         element.toMap() ,
 
@@ -368,7 +368,7 @@ testCreatModelFromFireBase() async {
     
     return true ;
   }catch(e){
-    print('errur ===========*==*==*===*====*==============================================  $e}') ;
+    //print('errur ===========*==*==*===*====*==============================================  $e}') ;
     return e ;
   }
 

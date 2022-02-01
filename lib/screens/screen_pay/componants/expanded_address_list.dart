@@ -5,8 +5,8 @@ import 'package:phoneshop/screens/screen_pay/componants/title_text_address_chois
 
 class ExpandedColumnAddesses extends StatelessWidget {
   const ExpandedColumnAddesses({
-    Key key,
-    this.address, this.valure, this.groub, this.onChanged,
+    Key? key,
+    required this.address,required this.valure,required this.groub,required this.onChanged,
   }) : super(key: key);
 
   final ModelAdress address  ;

@@ -4,7 +4,7 @@ import 'package:phoneshop/model/getModelFirebase/getMayOrder/my_order.dart';
 
 class ContainerOrder extends StatelessWidget {
   ContainerOrder({
-    Key key, this.idOdere, this.onTap,
+    Key? key,required  this.idOdere,required this.onTap,
   }) : super(key: key);
   final String idOdere ;
   final Function onTap ;
@@ -17,7 +17,7 @@ class ContainerOrder extends StatelessWidget {
         future: _getOrder.getItemDOmand(idOdere),
         builder: (context, snapshot) {
           return !snapshot.hasData ? Container() :  GestureDetector(
-            onTap: onTap,
+            onTap: (){onTap();},
             child: Container(
               margin: EdgeInsets.symmetric(horizontal: 20 , vertical: 5),
               height: 80,
@@ -35,8 +35,8 @@ class ContainerOrder extends StatelessWidget {
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(8),
                       image: DecorationImage(
-                          image: AssetImage(
-                              snapshot.data.listProduitBuy.itemCart[0].produit.image
+                          image: NetworkImage(
+                              snapshot.data!.listProduitBuy.itemCart[0].produit!.image!
                           ),
                           fit: BoxFit.contain
                       ),
@@ -51,19 +51,19 @@ class ContainerOrder extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Container(
-                            child: Text('number of items  : ${snapshot.data.listProduitBuy.itemCart.length}' , style: Theme.of(context).textTheme.button.copyWith(
+                            child: Text('number of items  : ${snapshot.data!.listProduitBuy.itemCart.length}' , style: Theme.of(context).textTheme.button?.copyWith(
                                 color: Colors.black.withOpacity(0.4) ,
                                 fontSize: 15
                             ),),
                           ),
                           Container(
-                            child: Text('Shipping Method: ${snapshot.data.methodSopping.method.titleMethod}' , style: Theme.of(context).textTheme.button.copyWith(
+                            child: Text('Shipping Method: ${snapshot.data!.methodSopping.method!.titleMethod}' , style: Theme.of(context).textTheme.button?.copyWith(
                                 color: Colors.black.withOpacity(0.4) ,
                                 fontSize: 15
                             ),),
                           ),
                           Container(
-                            child: Text('Pay total: ${snapshot.data.total}' , style: Theme.of(context).textTheme.button.copyWith(
+                            child: Text('Pay total: ${snapshot.data!.total}' , style: Theme.of(context).textTheme.button?.copyWith(
                                 color: Colors.black.withOpacity(0.4) ,
                                 fontSize: 15
                             ),),

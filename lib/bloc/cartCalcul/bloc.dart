@@ -11,11 +11,10 @@ class CalculCartBloc extends Bloc<EventsCalculCart, ModelCartCalcul> {
   @override
   Stream<ModelCartCalcul> mapEventToState(EventsCalculCart event) async* {
     //print(event.runtimeType) ;
-    if(event.runtimeType == EventCart ){
+    if(event is EventCart ){
       //save Data adress
-      EventCart result = event  ;
       // return data event adress
-      yield result.calcule()   ;
+      yield event.calcule()   ;
     }
 
   }

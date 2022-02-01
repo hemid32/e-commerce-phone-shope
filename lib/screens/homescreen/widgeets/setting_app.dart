@@ -29,7 +29,7 @@ import 'package:toast/toast.dart';
 
 class SettingAPP extends StatelessWidget {
   const SettingAPP({
-    Key key,
+    Key? key,
   }) : super(key: key);
 
   @override
@@ -66,7 +66,7 @@ class SettingAPP extends StatelessWidget {
         Container(
           alignment: Alignment.bottomLeft,
           margin: EdgeInsets.symmetric(horizontal: 20 , vertical:  20),
-          child: Text('Setting General' , style:  Theme.of(context).textTheme.button.copyWith(fontSize: 20 ),),
+          child: Text('Setting General' , style:  Theme.of(context).textTheme.button?.copyWith(fontSize: 20 ),),
         ) ,
         CostomListTile(title: 'List Favorite' , icon: Icons.favorite, onTap: (){
 
@@ -120,8 +120,8 @@ class SettingAPP extends StatelessWidget {
             builder: (context, snapshot) {
               return PopupMenuButton(
                 color: Theme.of(context).accentColor,
-                onSelected: (newLang)=>BlocLanguage.get(context).changeLocal(newLang),
-                child: CostomListTile(title: getLang(context , 'language') , icon: Icons.language),
+                onSelected: (String  newLang)=>BlocLanguage.get(context).changeLocal(newLang),
+                child: CostomListTile(title: getLang(context , 'language') , icon: Icons.language , onTap: (){},),
                 itemBuilder:(context)=> [
                 PopupMenuItem(  value: 'ar',child: ItemListMenu(title: 'ar', icon:  'assets/icons/ar.svg', valueLang: 'ar',)) ,
                 PopupMenuItem(  value: 'fr',child: ItemListMenu(title: 'fr', icon:  'assets/icons/ar.svg', valueLang: 'fr',)) ,

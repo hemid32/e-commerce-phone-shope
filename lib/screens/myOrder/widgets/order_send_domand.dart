@@ -13,7 +13,7 @@ import 'package:phoneshop/screens/myOrder/componants/when_vide.dart';
 
 class OrderSendSomand extends StatelessWidget {
   OrderSendSomand({
-    Key key,
+    Key? key,
   }) :  super(key: key);
 
   GetMyOrder getOrder = new GetMyOrder() ;
@@ -28,26 +28,26 @@ class OrderSendSomand extends StatelessWidget {
         builder: (context, snapshot) {
           return snapshot.hasData ? Column(
             children: [
-              for(var i = 0 ; i< snapshot.data.domands.length ; i++ ) ContainerMayOrder(
+              for(var i = 0 ; i< snapshot.data!.domands.length ; i++ ) ContainerMayOrder(
                 icon: Icons.shopping_cart,
-                date: DateFormat('yyyy-MM-dd – kk:mm').format(snapshot.data.domands[i].date),
-                pay:  snapshot.data.domands[i].total.toString(),//total
+                date: DateFormat('yyyy-MM-dd – kk:mm').format(snapshot.data!.domands[i].date),
+                pay:  snapshot.data!.domands[i].total.toString(),//total
                 smilIcon: Icons.email,
                 onTap: () async {
                   //print('snapshot.data.domands[i].listProduitBuy.itemCart 37 **** == ${snapshot.data.domands[i].total}');
                   
                   BlocProvider.of<BlocDataOrderShow>(context).add(EventDataOdererShoawData(
-                    listMedelCart: snapshot.data.domands[i].listProduitBuy.itemCart ,
+                    listMedelCart: snapshot.data!.domands[i].listProduitBuy.itemCart ,
                     calulerBuy: ModelCartCalcul.FromJson({
-                      'totalProduit' : snapshot.data.domands[i].priceTotalProduit ,
-                      'totalShopping' : snapshot.data.domands[i].priceShopping ,
-                      'total' : snapshot.data.domands[i].total ,
+                      'totalProduit' : snapshot.data!.domands[i].priceTotalProduit ,
+                      'totalShopping' : snapshot.data!.domands[i].priceShopping ,
+                      'total' : snapshot.data!.domands[i].total ,
 
                     }) ,
-                    state: snapshot.data.domands[i].stateDomand ,
-                    address: snapshot.data.domands[i].addres ,
-                    methoShopping: snapshot.data.domands[i].methodSopping ,
-                    uidDomand: snapshot.data.domands[i].uidDomand
+                    state: snapshot.data!.domands[i].stateDomand ,
+                    address: snapshot.data!.domands[i].addres ,
+                    methoShopping: snapshot.data!.domands[i].methodSopping ,
+                    uidDomand: snapshot.data!.domands[i].uidDomand
                   ));
                   showDialogloding(context) ;
                   await Future.delayed(Duration(seconds: 1)) ;
@@ -61,7 +61,7 @@ class OrderSendSomand extends StatelessWidget {
                 },
                 state: 'sand domand',
               ),
-              snapshot.data.domands.length == 0 ? WhenVide(
+              snapshot.data!.domands.length == 0 ? WhenVide(
                 text: 'No request has been sent',
                 title: 'Shop',
               ) : Container()

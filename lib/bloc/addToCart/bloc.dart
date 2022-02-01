@@ -9,9 +9,8 @@ class BlocAddToCartNewProduit extends Bloc<EventsAddToCartNew ,dynamic  >{
   @override
   Stream<dynamic > mapEventToState(EventsAddToCartNew event) async*  {
     // TODO: implement mapEventToState
-    if(event.runtimeType == EventAddNewProduitToCart){
-      EventAddNewProduitToCart  isAddNewCart =  event   ;
-      yield isAddNewCart.addToHive() ;
+    if(event is EventAddNewProduitToCart){
+      yield event.addToHive() ;
     }
 
 

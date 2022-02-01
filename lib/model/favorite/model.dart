@@ -48,7 +48,7 @@ class ModelFaveriote {
   //final String idProduit ;
   final String idProduit ;
   final ProduitsColors produitColors ;
-  ModelFaveriote({@required this.produitColors ,@required this.idProduit});
+  ModelFaveriote({required this.produitColors ,required this.idProduit});
 
   Map<String, dynamic> toMap(){
     return {

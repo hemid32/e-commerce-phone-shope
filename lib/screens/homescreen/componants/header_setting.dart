@@ -3,7 +3,7 @@ import 'package:phoneshop/constant.dart';
 
 class HeaderSetting extends StatelessWidget {
   const HeaderSetting({
-    Key key, this.titre,
+    Key? key, required this.titre,
   }) : super(key: key);
   final String titre ;
 
@@ -15,7 +15,7 @@ class HeaderSetting extends StatelessWidget {
       height: 100,
       width: double.infinity,
       color: kPrimaryColor.withOpacity(0.7),
-      child: Text('$titre' , style :  Theme.of(context).textTheme.button.copyWith(
+      child: Text('$titre' , style :  Theme.of(context).textTheme.button?.copyWith(
           fontSize:  20 ,
           color: Colors.white
       )),

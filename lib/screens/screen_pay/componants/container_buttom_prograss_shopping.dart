@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:phoneshop/constant.dart';
 class ContainetButtomPrograssShopping extends StatelessWidget {
   const ContainetButtomPrograssShopping({
-    Key key, this.icon
+    Key? key,required  this.icon
   }) : super(key: key);
   final IconData icon ;
 

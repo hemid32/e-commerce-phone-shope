@@ -9,7 +9,7 @@ class ServesicesImage {
 
   final Message mesgae ;
 
-  ServesicesImage({this.mesgae});
+  ServesicesImage({required this.mesgae});
 
 
 

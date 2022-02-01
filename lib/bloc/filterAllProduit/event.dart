@@ -6,20 +6,20 @@ class EventFilterAllProduit {}
 
 class EventsFilterAllProduitsevnts extends EventFilterAllProduit {
 
-  final double price ;
-  final double ram ;
-  final double storage ;
-  final  double camera ;
-  final ListProduitsColors produitsColors ;
+  final double? price ;
+  final double? ram ;
+  final double? storage ;
+  final  double? camera ;
+  final ListProduitsColors? produitsColors ;
 
   EventsFilterAllProduitsevnts({this.price = 500, this.ram = 2, this.storage = 0 , this.camera = 8 , this.produitsColors});
 
-  filter(){
+  ListProduitsColors filter(){
     List<ProduitsColors>  _listProduitNew = [] ;
-    List<ProduitsColors>  _listOld = produitsColors.produits ;
+    List<ProduitsColors>  _listOld = produitsColors!.produits! ;
 
-    produitsColors.produits.forEach((element) {
-      if(ram >= element.listProduits[0].ram && storage >= element.listProduits[0].storage && price>= element.listProduits[0].price && camera >= element.listProduits[0].camera  ) {
+    produitsColors!.produits?.forEach((element) {
+      if(ram! >= element.listProduits![0].ram! && storage! >= element.listProduits![0].storage! && price! >= element.listProduits![0].price! && camera! >= element.listProduits![0].camera!  ) {
         _listProduitNew.add(element);
 
 

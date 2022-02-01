@@ -7,12 +7,12 @@ part 'timer_event.dart';
 part 'timer_state.dart';
 
 class TimerBloc extends Bloc<TimerEvent, TimerState> {
-  final Ticker _ticker;
+  final Ticker? _ticker;
   static const int _duration = 30;
 
-  StreamSubscription<int> _tickerSubscription;
+  StreamSubscription<int>? _tickerSubscription;
 
-  TimerBloc({ Ticker ticker})
+  TimerBloc({  Ticker? ticker})
       : _ticker = ticker,
         super(TimerInitial(_duration));
 
@@ -40,9 +40,9 @@ class TimerBloc extends Bloc<TimerEvent, TimerState> {
   }
 
   Stream<TimerState> _mapTimerStartedToState(TimerStarted start) async* {
-    yield TimerRunInProgress(start.duration);
+    yield TimerRunInProgress(start.duration!);
     _tickerSubscription?.cancel();
-    _tickerSubscription = _ticker
+    _tickerSubscription = _ticker!
         .tick(ticks: start.duration)
         .listen((duration) => add(TimerTicked(duration: duration)));
   }

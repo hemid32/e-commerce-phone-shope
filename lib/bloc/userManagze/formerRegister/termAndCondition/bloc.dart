@@ -9,7 +9,9 @@ class BlocTermaAndConditionChek extends Bloc<EventTermAndCondition , bool >{
   @override
   Stream<bool> mapEventToState(EventTermAndCondition event) async* {
     // TODO: implement mapEventToState
-    EventChekTermsItem _result = event ;
-    yield _result.value ;
+    if(event is EventChekTermsItem  ) {
+      EventChekTermsItem _result = event;
+      yield _result.value;
+    }
   }
 }

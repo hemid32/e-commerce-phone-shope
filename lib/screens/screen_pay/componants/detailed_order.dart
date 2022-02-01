@@ -1,29 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:phoneshop/bloc/cartCalcul/bloc.dart';
-import 'package:phoneshop/bloc/cartScreenManage/bloc.dart';
 import 'package:phoneshop/bloc/dataDetailsOrder/bloc.dart';
-import 'package:phoneshop/bloc/manageData/puy/bloc.dart';
-import 'package:phoneshop/constant.dart';
-import 'package:phoneshop/model/cart/cart.dart';
-import 'package:phoneshop/model/cart/cartCalcul.dart';
-import 'package:phoneshop/model/puy/address.dart';
-import 'package:phoneshop/model/puy/shopping_method_is_shoi.dart';
 import 'package:phoneshop/screens/screen_pay/componants/card_shoping_phone.dart';
 import 'package:phoneshop/screens/screen_pay/componants/expendad_shoping_verefaid.dart';
 import 'package:phoneshop/screens/screen_pay/componants/text_price_shoping.dart';
 
 class DetaildedOrder extends StatelessWidget {
   const DetaildedOrder({
-    Key key
+    Key? key
   }) : super(key: key);
-  /*
-   final  List<ModelCart> listMedelCart ;
-   final ModelAdress address ;
-   final ModelCartCalcul calulerBuy ;
-   final MethodShoppingShoi methoShopping ;
 
-   */
 
   @override
   Widget build(BuildContext context) {
@@ -37,6 +23,7 @@ class DetaildedOrder extends StatelessWidget {
             title: Text('Produits'),
             children: [
               for(var i = 0 ; i< BlocProvider.of<BlocDataOrderShow>(context).state[3].length ; i++)  CardPhoneChope(
+                onTap: (){},
                 image:  BlocProvider.of<BlocDataOrderShow>(context).state[3][i].produit.image, //BlocProvider.of<BlocListDataCart>(context).state[i].produit.image ,
                 title: BlocProvider.of<BlocDataOrderShow>(context).state[3][i].produit.nomPhone,//BlocProvider.of<BlocListDataCart>(context).state[i].produit.nomPhone,
                 detail:BlocProvider.of<BlocDataOrderShow>(context).state[3][i].produit.detail ,  //BlocProvider.of<BlocListDataCart>(context).state[i].produit.detail,

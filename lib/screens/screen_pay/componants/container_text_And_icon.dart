@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class ContainerAndIconAndText_Seach extends StatelessWidget {
   const ContainerAndIconAndText_Seach({
-    Key key, this.title, this.icon, this.onTap,
+    Key? key,required this.title,required this.icon,required this.onTap,
   }) : super(key: key);
   final String title ;
   final Widget icon ;
@@ -11,7 +11,7 @@ class ContainerAndIconAndText_Seach extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: onTap,
+      onTap: (){onTap();},
       child: Container(
         margin: EdgeInsets.only(left: 20 , right:  20 , top: 10),
         height: 50,

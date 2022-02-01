@@ -3,7 +3,7 @@ import 'package:phoneshop/constant.dart';
 
 class SmallCardCod extends StatelessWidget {
   const SmallCardCod({
-    Key key, this.codControl, this.autoFecos = false, this.onChnaged, this.focusNode,
+    Key? key,required this.codControl, this.autoFecos = false,required this.onChnaged,required this.focusNode,
   }) : super(key: key);
 
   final TextEditingController codControl  ;
@@ -24,13 +24,13 @@ class SmallCardCod extends StatelessWidget {
       ),
       child: TextFormField(
         focusNode: focusNode ,
-        onChanged: onChnaged,
+        onChanged: (v){onChnaged(v);},
         autofocus: autoFecos,
         textAlign: TextAlign.center,
         controller: codControl,
         keyboardType: TextInputType.number,
         maxLength: 1,
-        style: Theme.of(context).textTheme.button.copyWith(
+        style: Theme.of(context).textTheme.button?.copyWith(
             fontSize: 20 ,
             fontWeight: FontWeight.bold
         ),

@@ -15,14 +15,14 @@ import 'package:phoneshop/screens/screen_pay/componants/field_text.dart';
 
 class Login extends StatelessWidget {
    Login({
-    Key key,
+    Key? key,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    String email ;
-    String password ;
-    Size size = MediaQuery.of(context).size ;
+    late String email ;
+    late String password ;
+    final Size size = MediaQuery.of(context).size ;
     UserFire _user = UserFire(user: null);
 
 
@@ -95,12 +95,12 @@ class Login extends StatelessWidget {
                       children: [
                         FieldTextGet(title: 'Email',onChange: (valur){
                              email = valur ;
-                        }, ) ,
+                        }, textInputeType: TextInputType.emailAddress) ,
                         SizedBox(height: 20,) ,
 
                         FieldTextGet(title: 'Password',onChange: (valur){
                           password = valur ;
-                        }, secure: true, ) ,
+                        }, secure: true, textInputeType: TextInputType.text) ,
                         SizedBox(height: 20,) ,
                         ButtonCotomLogIn(
                           title: 'LOGIN',
@@ -141,7 +141,7 @@ class Login extends StatelessWidget {
                           },
                           child: Container(
                             child: Text('Forget Password ? ' , style:
-                            Theme.of(context).textTheme.button.copyWith(
+                            Theme.of(context).textTheme.button?.copyWith(
                               color: Colors.blueAccent.withOpacity(0.7) ,
                               decoration: TextDecoration.underline,
                             )

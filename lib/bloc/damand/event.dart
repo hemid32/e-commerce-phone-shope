@@ -7,7 +7,7 @@ class EventDomands {
 
 class EventSandDomand extends EventDomands {
   final DomandProduit domandData ;
-  EventSandDomand({this.domandData});
+  EventSandDomand({ required this.domandData});
   sand() async {
     SandDmndToFireBase _sands = SandDmndToFireBase(domandData) ;
     var  _result = await _sands.toFireBase() ;

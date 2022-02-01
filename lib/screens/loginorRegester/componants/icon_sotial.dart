@@ -9,7 +9,7 @@ import 'button_costom_login.dart';
 
 class IconSotialAndButtons extends StatelessWidget {
   const IconSotialAndButtons({
-    Key key,
+    Key? key,
   }) : super(key: key);
 
 

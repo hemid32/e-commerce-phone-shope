@@ -3,14 +3,15 @@ import 'package:phoneshop/constant.dart';
 
 class DoubleButtonButtom extends StatelessWidget {
   const DoubleButtonButtom({
-    Key key, this.iconBunnGreen, this.iconBunnWaith, this.titleBunnGreen, this.titleBunnWaith, this.onTapWath, this.onTapGreen,
+    Key? key, this.iconBunnGreen, this.iconBunnWaith, this.titleBunnGreen,
+     this.titleBunnWaith, this.onTapWath, this.onTapGreen,
   }) : super(key: key);
-  final IconData iconBunnGreen  ;
-  final IconData iconBunnWaith  ;
-  final String titleBunnGreen ;
-  final String titleBunnWaith ;
-  final Function onTapWath ;
-  final Function onTapGreen ;
+  final IconData? iconBunnGreen  ;
+  final IconData? iconBunnWaith  ;
+  final String? titleBunnGreen ;
+  final String? titleBunnWaith ;
+  final Function? onTapWath ;
+  final Function? onTapGreen ;
 
 
   @override
@@ -24,7 +25,7 @@ class DoubleButtonButtom extends StatelessWidget {
       child: Row(
         children: [
           GestureDetector(
-            onTap: onTapGreen,
+            onTap: (){onTapGreen!();},
             child: Container(
               width: (size.width / 2 ) -20,
               height: double.infinity,
@@ -36,7 +37,7 @@ class DoubleButtonButtom extends StatelessWidget {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text('$titleBunnGreen',style: Theme.of(context).textTheme.button.copyWith(color: Colors.white) ) ,
+                    Text('$titleBunnGreen',style: Theme.of(context).textTheme.button?.copyWith(color: Colors.white) ) ,
                     SizedBox(width: 10,) ,
                     Icon(iconBunnGreen, color: Colors.white,)
                   ],
@@ -46,7 +47,7 @@ class DoubleButtonButtom extends StatelessWidget {
           ) ,
           Expanded(
             child: GestureDetector(
-              onTap: onTapWath,
+              onTap: (){onTapWath!();},
               child: Container(
                 //width: (size.width / 2 ) -20,
                 height: double.infinity,

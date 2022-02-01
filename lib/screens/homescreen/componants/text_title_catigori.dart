@@ -3,7 +3,7 @@ import 'package:phoneshop/constant.dart';
 
 class TextTileCatigori extends StatelessWidget {
   const TextTileCatigori({
-    Key key, this.title,
+    Key? key,required this.title,
   }) : super(key: key);
   final String title ;
 
@@ -12,7 +12,7 @@ class TextTileCatigori extends StatelessWidget {
     return Container(
       margin:  EdgeInsets.only(top:  20  , left:  kDefaultPadding),
       alignment: Alignment.centerLeft,
-      child: Text('$title' , style:  Theme.of(context).textTheme.button.copyWith(fontSize:  20 ),),
+      child: Text('$title' , style:  Theme.of(context).textTheme.button?.copyWith(fontSize:  20 ),),
     );
   }
 }

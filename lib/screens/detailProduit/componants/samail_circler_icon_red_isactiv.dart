@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class SmailCardCircleIconRed extends StatelessWidget {
   const SmailCardCircleIconRed({
-    Key key, this.activeRed = true, this.icon,
+    Key? key, this.activeRed = true,required this.icon,
   }) : super(key: key);
   final bool activeRed ;
   final Widget icon ;

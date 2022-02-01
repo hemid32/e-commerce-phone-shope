@@ -10,9 +10,8 @@ class AddressBlocRadio extends Bloc<EventsAddress, dynamic> {
   @override
   Stream<String> mapEventToState(EventsAddress event) async* {
     //print(event.runtimeType) ;
-    if(event.runtimeType == EvenstRadioAddres ){
-      EvenstRadioAddres radio = event ;
-      yield radio.valurRadio  ;
+    if(event is EvenstRadioAddres ){
+      yield event.valurRadio  ;
     }
   }
 }

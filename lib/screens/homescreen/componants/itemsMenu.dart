@@ -7,7 +7,7 @@ import 'package:phoneshop/screens/allProduite/all_produit.dart';
 
 class ItemsMenu extends StatelessWidget {
   const ItemsMenu({
-    Key key,
+    Key? key,
   }) : super(key: key);
 
   @override
@@ -48,9 +48,9 @@ class ItemsMenu extends StatelessWidget {
 
 class ItemMenu extends StatelessWidget {
   const ItemMenu({
-    Key key,
-    this.icon,
-    this.title,
+    Key? key,
+    required this.icon,
+    required this.title,
   }) : super(key: key);
   final String icon;
   final String title;

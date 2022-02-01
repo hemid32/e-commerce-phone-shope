@@ -3,7 +3,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 
 class ContainerRamStockagColors extends StatelessWidget {
   const ContainerRamStockagColors({
-    Key key, this.ram, this.stockag, this.spu, this.camera,
+    Key? key,required this.ram,required this.stockag,required this.spu,required this.camera,
   }) : super(key: key);
   final int ram ;
   final int   stockag ;

@@ -2,14 +2,20 @@ import 'package:flutter/material.dart';
 
 class FieldTextGet extends StatelessWidget {
    FieldTextGet({
-    Key key, this.title, this.onChange, this.validator, this.validErurr, this.secure = false, this.initialValue, this.textInputeType ,
+    Key? key,required this.title,
+     required this.onChange,
+      this.validator,
+      this.validErurr,
+      this.secure = false,
+      this.initialValue,
+     required this.textInputeType ,
   }) : super(key: key);
   final String  title ;
   final Function onChange ;
-  final Function validator ;
-  final String  validErurr ;
+  final Function? validator ;
+  final String?  validErurr ;
   final bool secure ;
-  final String initialValue ; // user sur edit profile  ;
+  final String? initialValue ; // user sur edit profile  ;
 
    final TextInputType textInputeType ;
 
@@ -26,8 +32,8 @@ class FieldTextGet extends StatelessWidget {
       margin: EdgeInsets.symmetric(horizontal: 20),
       child: TextFormField(
         initialValue: initialValue,
-        validator: validator ,
-        onChanged: onChange,
+        validator: (v){validator!(v);} ,
+        onChanged: (v){onChange(v);},
         obscureText: secure,
         keyboardType: textInputeType,
         decoration: InputDecoration(

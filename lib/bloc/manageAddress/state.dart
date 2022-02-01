@@ -18,5 +18,5 @@ class StateManageAdressEditeAddress extends StateManageAddress {}
 class StateManageAdressHundleError extends StateManageAddress {
   final String error ;
 
-  StateManageAdressHundleError({@required this.error});
+  StateManageAdressHundleError({required this.error});
 }

@@ -8,7 +8,7 @@ import 'button_costom_wight_infinty.dart';
 
 class NostatSepurtShopping extends StatelessWidget {
   const NostatSepurtShopping({
-    Key key,
+    Key? key,
   }) : super(key: key);
 
   @override
@@ -23,7 +23,7 @@ class NostatSepurtShopping extends StatelessWidget {
                 text : TextSpan(
                   text: 'There is no state-supported shipping method \n '
                       'Change the shipping address to a supported state' ,
-                  style: Theme.of(context).textTheme.button.copyWith(
+                  style: Theme.of(context).textTheme.button?.copyWith(
                     color: Colors.black.withOpacity(0.4) ,
                     fontSize: 18 ,
 

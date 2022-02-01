@@ -6,7 +6,7 @@ import 'package:phoneshop/screens/loginorRegester/componants/logo_text_header.da
 
 class RigesterOrLogin extends StatelessWidget {
   const RigesterOrLogin({
-    Key key,
+    Key? key,
   }) : super(key: key);
 
 

@@ -20,14 +20,14 @@ import 'image_user.dart';
 class Body extends StatelessWidget {
 
 
-  UserLocalModel _user = UserLocalModel() ;
+  late UserLocalModel _user  ;
 
-  String newName ;
-  String newPassword ;
-  String oldPassword ;
-  String newPhone ;
-  String newEmail ;
-  String newImage ;
+  late String newName ;
+  late String newPassword ;
+  late String oldPassword ;
+  late String newPhone ;
+  late String newEmail ;
+  late String newImage ;
 
   @override
   Widget build(BuildContext context) {
@@ -67,6 +67,7 @@ class Body extends StatelessWidget {
                 //print(text) ;
                 newName = text  ;
               },
+              textInputeType: TextInputType.text,
 
             ) ,
             FieldTextGet(
@@ -75,6 +76,8 @@ class Body extends StatelessWidget {
               onChange: (text){
                 newEmail = text ;
               },
+              textInputeType: TextInputType.emailAddress,
+
 
             ) ,
             FieldTextGet(
@@ -83,18 +86,24 @@ class Body extends StatelessWidget {
               onChange: (text){
                 newPhone = text ;
               },
+              textInputeType: TextInputType.phone,
+
             ) ,
             FieldTextGet(
               title: 'Current Passord',
               onChange: (text){
                 oldPassword = text ;
               },
+              textInputeType: TextInputType.visiblePassword,
+
             ) ,
             FieldTextGet(
               title: 'New Password',
               onChange: (text){
                 newPassword = text;
               },
+              textInputeType: TextInputType.visiblePassword,
+
             ) ,
 
             Spacer() ,
@@ -107,7 +116,7 @@ class Body extends StatelessWidget {
                           .of(context)
                           .textTheme
                           .button
-                          .copyWith(fontSize: 15, color: Colors.white),),
+                          ?.copyWith(fontSize: 15, color: Colors.white),),
                         backgroundColor: kPrimaryColor,));
                   //BlocProvider.of<BlocUserGetModel>(context).add(EventUserGet()) ;
 
@@ -118,7 +127,7 @@ class Body extends StatelessWidget {
                     nombrePhon: newPhone ,
                     image: newImage ,
                     email:  newEmail ,
-
+                    uid: 'not_use' ,
                   ) ;
                   BlocProvider.of<BlocScreenManageVerificationCodSms>(context).add(EventManageConfermCodSmsSandCod(user: _newUser , isUpdate: true )) ;
 
@@ -132,7 +141,7 @@ class Body extends StatelessWidget {
                   ))) ;
 
                 }else{
-                  ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('${stateListen['message']}', style: Theme.of(context).textTheme.button.copyWith(fontSize: 15 , color: Colors.white),) , backgroundColor: Colors.red,));
+                  ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('${stateListen['message']}', style: Theme.of(context).textTheme.button?.copyWith(fontSize: 15 , color: Colors.white),) , backgroundColor: Colors.red,));
                 }
               },
               child: DoubleButtonButtom(
@@ -146,6 +155,7 @@ class Body extends StatelessWidget {
                     nombrePhon: newPhone ,
                     image: newImage ,
                     email:  newEmail ,
+                    uid: 'not_use'
 
                   ) ;
                   BlocProvider.of<BlocEditUser>(context).add(EventEditProfileGet(
@@ -153,6 +163,7 @@ class Body extends StatelessWidget {
                     newUser: newUser ,
                     odlPassword: oldPassword ,
                     oldEmeil: _user.email ,
+
                   )) ;
                 },
                 onTapWath: (){

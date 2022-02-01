@@ -8,7 +8,7 @@ import 'body.dart';
 
 class RadioButtonListAddress extends StatelessWidget {
   const RadioButtonListAddress({
-    Key key, this.title, this.valure, this.groub, this.onChanged,
+    Key? key,required this.title,required this.valure,required this.groub,required this.onChanged,
   }) : super(key: key);
   final String title ;
   final String  valure ;
@@ -41,12 +41,12 @@ class RadioButtonListAddress extends StatelessWidget {
                     activeColor: kPrimaryColor,
                     value: valure ,
                     groupValue: groub,
-                    onChanged: onChanged,
+                    onChanged: (v){onChanged(v);},
                   ),
                   Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Text( title.length < 15 ? '$title ' : '${title.substring(0,10)} ...' ,style: Theme.of(context).textTheme.button.copyWith( fontSize: 15),),
+                      Text( title.length < 15 ? '$title ' : '${title.substring(0,10)} ...' ,style: Theme.of(context).textTheme.button?.copyWith( fontSize: 15),),
                     ],
                   )
                 ],

@@ -11,7 +11,7 @@ import 'package:phoneshop/bloc/search/event.dart';
 
 class FieldTextAndIconSearch extends StatelessWidget {
   const FieldTextAndIconSearch({
-    Key key,
+    Key? key,
   }) : super(key: key);
 
   @override
@@ -44,7 +44,7 @@ class FieldTextAndIconSearch extends StatelessWidget {
                 decoration: InputDecoration(
                     hintText: 'Search produit' ,
                     hintStyle:
-                    Theme.of(context).textTheme.button.copyWith(
+                    Theme.of(context).textTheme.button?.copyWith(
                     ) ,
                   border: InputBorder.none
                 ),

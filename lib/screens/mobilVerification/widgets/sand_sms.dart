@@ -7,25 +7,23 @@ import 'package:phoneshop/bloc/manageScreenConfermCodSms/event.dart';
 import 'package:phoneshop/constant.dart';
 import 'package:phoneshop/model/user/user.dart';
 import 'package:phoneshop/screens/loginorRegester/componants/costom_path.dart';
-import 'package:phoneshop/screens/loginorRegester/componants/header_login.dart';
-import 'package:phoneshop/screens/loginorRegester/componants/header_verification.dart';
 import 'package:phoneshop/screens/mobilVerification/componants/button.dart';
 import 'package:phoneshop/screens/mobilVerification/componants/button_sand_Sms.dart';
 
 class SandSms extends StatelessWidget {
    SandSms({
-    Key key, this.user, this.isUpdate = false ,
+    Key? key, this.user, this.isUpdate = false ,
   }) : super(key: key);
 
-  final UserLocalModel user ;
-   UserLocalModel userNew ;
+  final UserLocalModel? user ;
+   late UserLocalModel userNew ;
 
    final bool isUpdate ;
 
-   String nomprePhone ;
+   late String nomprePhone ;
   @override
   Widget build(BuildContext context) {
-    nomprePhone = user.nombrePhon ;
+    nomprePhone = user!.nombrePhon ;
     Size size = MediaQuery.of(context).size ;
 
     return SizedBox(
@@ -68,7 +66,7 @@ class SandSms extends StatelessWidget {
                       SizedBox(height: 10,) ,
                       Container(
                         margin: EdgeInsets.symmetric(horizontal: 20),
-                        child: Text('Send the verification code to the phone number' , style: Theme.of(context).textTheme.button.copyWith(
+                        child: Text('Send the verification code to the phone number' , style: Theme.of(context).textTheme.button?.copyWith(
                           color: Colors.white  ,
                           fontSize: 15
                         ), textAlign: TextAlign.center,),
@@ -129,7 +127,7 @@ class SandSms extends StatelessWidget {
                           height: 50,
                           decoration: BoxDecoration(
                               color: Theme.of(context).accentColor ,
-                              border: Border.all(color: Theme.of(context).iconTheme.color) ,
+                              border: Border.all(color: Theme.of(context).iconTheme.color!) ,
                               borderRadius: BorderRadius.circular(10)
                           ),
                           child: TextFormField(
@@ -138,7 +136,7 @@ class SandSms extends StatelessWidget {
                               nomprePhone = text ;
                             },
                             //textDirection: TextDirection.rtl,
-                            style: Theme.of(context).textTheme.button.copyWith(
+                            style: Theme.of(context).textTheme.button?.copyWith(
                                 fontSize: 20 ,
                                 fontWeight: FontWeight.bold
                             ),
@@ -156,16 +154,17 @@ class SandSms extends StatelessWidget {
                             if(stateListen != null){
                               if(stateListen['state'] == 'Errur'){
                                 //print('erurr******************************************') ;
-                                ScaffoldMessenger.of(Scaffold.of(context).context).showSnackBar(SnackBar(content: Text('${stateListen['message']}', style: Theme.of(context).textTheme.button.copyWith(fontSize: 15 , color: Colors.white),) , backgroundColor: Colors.red));
+                                ScaffoldMessenger.of(Scaffold.of(context).context).showSnackBar(SnackBar(content: Text('${stateListen['message']}', style: Theme.of(context).textTheme.button?.copyWith(fontSize: 15 , color: Colors.white),) , backgroundColor: Colors.red));
                               }else if(stateListen['state'] == 'Sand'){
                                 userNew = UserLocalModel(
-                                  name: user.name ,
-                                  password:  user.password ,
-                                  email: user.email ,
+                                  name: user!.name ,
+                                  password:  user!.password ,
+                                  email: user!.email ,
                                   nombrePhon: nomprePhone ,
-                                  image: user.image ,
+                                  image: user!.image ,
+                                  uid: 'not_use'
                                 ) ;
-                                ScaffoldMessenger.of(Scaffold.of(context).context).showSnackBar(SnackBar(content: Text('Code has been sent', style: Theme.of(context).textTheme.button.copyWith(fontSize: 15 , color: Colors.white),) , backgroundColor: kPrimaryColor));
+                                ScaffoldMessenger.of(Scaffold.of(context).context).showSnackBar(SnackBar(content: Text('Code has been sent', style: Theme.of(context).textTheme.button?.copyWith(fontSize: 15 , color: Colors.white),) , backgroundColor: kPrimaryColor));
                                 BlocProvider.of<BlocScreenManageVerificationCodSms>(context).add(EventManageConfermCodSmsConfermed(user: userNew , isUpdate: isUpdate)) ;
                               }
                             }
@@ -192,20 +191,21 @@ class SandSms extends StatelessWidget {
                             if (BlocProvider.of<BlocDataConfermUserCreatedCodSms>(context).state != null ) {
                               if(BlocProvider.of<BlocDataConfermUserCreatedCodSms>(context).state['state'] == 'Sand'){
                                 userNew = UserLocalModel(
-                                  name: user.name ,
-                                  password:  user.password ,
-                                  email: user.email ,
+                                  name: user!.name ,
+                                  password:  user!.password ,
+                                  email: user!.email ,
                                   nombrePhon: nomprePhone ,
-                                  image: user.image ,
+                                  image: user!.image ,
+                                  uid: 'not_use'
                                 ) ;
-                                ScaffoldMessenger.of(Scaffold.of(context).context).showSnackBar(SnackBar(content: Text('Code has been sent', style: Theme.of(context).textTheme.button.copyWith(fontSize: 15 , color: Colors.white),) , backgroundColor: kPrimaryColor));
+                                ScaffoldMessenger.of(Scaffold.of(context).context).showSnackBar(SnackBar(content: Text('Code has been sent', style: Theme.of(context).textTheme.button?.copyWith(fontSize: 15 , color: Colors.white),) , backgroundColor: kPrimaryColor));
                                 BlocProvider.of<BlocScreenManageVerificationCodSms>(context).add(EventManageConfermCodSmsConfermed(user: userNew , isUpdate:  isUpdate)) ;
 
                               }else {
-                                ScaffoldMessenger.of(Scaffold.of(context).context).showSnackBar(SnackBar(content: Text('Please send the verification code', style: Theme.of(context).textTheme.button.copyWith(fontSize: 15 , color: Colors.white),) , backgroundColor: Colors.red));
+                                ScaffoldMessenger.of(Scaffold.of(context).context).showSnackBar(SnackBar(content: Text('Please send the verification code', style: Theme.of(context).textTheme.button?.copyWith(fontSize: 15 , color: Colors.white),) , backgroundColor: Colors.red));
                               }
                             }else {
-                              ScaffoldMessenger.of(Scaffold.of(context).context).showSnackBar(SnackBar(content: Text('Please send the verification code', style: Theme.of(context).textTheme.button.copyWith(fontSize: 15 , color: Colors.white),) , backgroundColor: Colors.red));
+                              ScaffoldMessenger.of(Scaffold.of(context).context).showSnackBar(SnackBar(content: Text('Please send the verification code', style: Theme.of(context).textTheme.button?.copyWith(fontSize: 15 , color: Colors.white),) , backgroundColor: Colors.red));
 
                             }
                           },

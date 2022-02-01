@@ -10,7 +10,7 @@ class Message {
   final DateTime date ;
   final String uidOrder ;
 
-  Message({this.type, this.text, this.uidUser , this.date , this.uidOrder});  //
+  Message({required this.type,required this.text,required this.uidUser , required this.date ,required  this.uidOrder});  //
 
   factory Message.fromJson(Map<String , dynamic> json ){
     return Message(
@@ -47,11 +47,11 @@ class Message {
 class ListMessages {
   final List<Message> messages ;
 
-  ListMessages({this.messages}) ;
+  ListMessages({required this.messages}) ;
 
   factory ListMessages.fromJson(Map<String , List<Message>> json){
     return ListMessages(
-      messages : json['messages']
+      messages : json['messages']!
     ) ;
   }
 

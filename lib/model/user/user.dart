@@ -9,7 +9,7 @@ class UserLocalModel {
   final String image ;
   final String uid ;
 
-  UserLocalModel( {this.name, this.email, this.password, this.nombrePhon , this.image , this.uid,});
+  UserLocalModel( {required this.name,required  this.email,required  this.password,required this.nombrePhon ,required  this.image ,required this.uid,});
 
 
   factory UserLocalModel.fromJson(Map<String , dynamic> json){

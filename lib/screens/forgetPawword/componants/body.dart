@@ -12,9 +12,9 @@ class Body extends StatelessWidget {
 
 
 
-   Body({Key key, this.emails }) : super(key: key);
+   Body({Key? key,required this.emails }) : super(key: key);
    final String emails ;
-   String email  ;
+   late String email  ;
    UserFire _user = UserFire(user: null) ;
 
   @override
@@ -56,7 +56,7 @@ class Body extends StatelessWidget {
                   SizedBox(height: 10,) ,
                   Container(
                     margin: EdgeInsets.symmetric(horizontal: 20),
-                    child: Text('A link to change the password has been sent to the email' , style: Theme.of(context).textTheme.button.copyWith(
+                    child: Text('A link to change the password has been sent to the email' , style: Theme.of(context).textTheme.button?.copyWith(
                         color: Colors.white  ,
                         fontSize: 15
                     ), textAlign: TextAlign.center,),
@@ -103,7 +103,8 @@ class Body extends StatelessWidget {
                   children: [
                     FieldTextGet(title: 'Email',onChange: (valur){
                       email = valur.toString().trim() ;
-                    }, initialValue: emails,) ,
+                    }, initialValue: emails,              textInputeType: TextInputType.emailAddress,
+                    ) ,
 
                     Spacer() ,
 

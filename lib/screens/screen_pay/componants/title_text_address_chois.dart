@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class TextTileAddress extends StatelessWidget {
   const TextTileAddress({
-    Key key, this.title, this.details,
+    Key? key,required this.title,required this.details,
   }) : super(key: key);
   final String title ;
   final String details ;
@@ -13,12 +13,12 @@ class TextTileAddress extends StatelessWidget {
       margin: EdgeInsets.symmetric(horizontal: 20 , vertical: 5),
       child: Row(
         children: [
-          Text('$title : ', style: Theme.of(context).textTheme.button.copyWith(
+          Text('$title : ', style: Theme.of(context).textTheme.button?.copyWith(
 
               fontSize: 17
           ),),
           Expanded(
-            child: Text('$details  ', style: Theme.of(context).textTheme.button.copyWith(
+            child: Text('$details  ', style: Theme.of(context).textTheme.button?.copyWith(
 
                 fontSize: 15
             ),),

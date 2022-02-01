@@ -6,7 +6,7 @@ import 'package:phoneshop/model/puy/shopping.dart';
 class GetMethodShopping{
    final String   wilaya ;
 
-  GetMethodShopping({this.wilaya});
+  GetMethodShopping({required this.wilaya});
 
 
 

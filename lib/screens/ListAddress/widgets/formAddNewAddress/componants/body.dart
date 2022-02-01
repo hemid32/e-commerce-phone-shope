@@ -15,13 +15,13 @@ import 'package:phoneshop/screens/screen_pay/functionValid/addressVerification.d
 import 'package:toast/toast.dart';
 
 class Body extends StatelessWidget {
-   Body({Key key}) : super(key: key);
+   Body({Key? key}) : super(key: key);
 
 
 
 
-  String _nome , _prenom , _nomberPhone , _email , _wilaya = 'El Bayadh' , _daira , _adress1 , _address2    ;
-  int _codPostal  ;
+  late String _nome , _prenom , _nomberPhone , _email , _wilaya = 'El Bayadh' , _daira , _adress1 , _address2    ;
+  late int _codPostal  ;
 
 
   @override
@@ -35,11 +35,13 @@ class Body extends StatelessWidget {
                 return FieldTextGet(title: 'Nome', onChange: (valur){
                   BlocProvider.of<ValidatorTexxtBlocString>(context).add(TextFieldValidatorEventNome(valur: valur  , titleErurr: 'erurr Nome short')) ;
                   _nome = valur;
-                },validErurr: state ,  );
+                },validErurr: state , textInputeType: TextInputType.name,
+                );
               }
           ) ,
           FieldTextGet(title: 'Prenome',onChange: (valur){
-            _prenom = valur;},
+            _prenom = valur;},              textInputeType: TextInputType.name,
+
           ) ,
           BlocBuilder<ValidatorTexxtBlocPhoneNombre , dynamic>(
               builder: (_, state) {
@@ -47,7 +49,7 @@ class Body extends StatelessWidget {
                   BlocProvider.of<ValidatorTexxtBlocPhoneNombre>(context).add(TextFieldValidatorEventPhoneNombre(valur: valur  , titleErurr: 'erurr from nombre')) ;
 
                   _nomberPhone = valur;
-                },validErurr: state , );
+                },validErurr: state , textInputeType: TextInputType.phone);
               }
           ) ,
           BlocBuilder<ValidatorTexxtBlocPhoneEmail , dynamic>(
@@ -56,7 +58,8 @@ class Body extends StatelessWidget {
                   BlocProvider.of<ValidatorTexxtBlocPhoneEmail>(context).add(TextFieldValidatorEventPhoneEmail(valur: valur.toString().trim()  , titleErurr: 'erurr email')) ;
 
                   _email = valur;
-                },validErurr: state ,);
+                },validErurr: state ,  textInputeType: TextInputType.emailAddress,
+                );
               }
           ) ,
           TitleTextAligns(title:  'Wilaya',) ,
@@ -81,10 +84,10 @@ class Body extends StatelessWidget {
 
 
 
-          FieldTextGet(title: 'Daira',onChange: (valur){  _daira = valur;}) ,
-          FieldTextGet(title: 'adress',onChange: (valur){  _adress1 = valur;}) ,
-          FieldTextGet(title: 'adress 2 ',onChange: (valur){  _address2 = valur;}) ,
-          FieldTextGet(title: 'Cod Postal',onChange: (valur){  _codPostal = int.parse(valur);}) ,
+          FieldTextGet(title: 'Daira',onChange: (valur){  _daira = valur;}, textInputeType: TextInputType.text) ,
+          FieldTextGet(title: 'adress',onChange: (valur){  _adress1 = valur;},textInputeType: TextInputType.text) ,
+          FieldTextGet(title: 'adress 2 ',onChange: (valur){  _address2 = valur;},textInputeType: TextInputType.text) ,
+          FieldTextGet(title: 'Cod Postal',onChange: (valur){  _codPostal = int.parse(valur);},textInputeType: TextInputType.number) ,
           ButtonCostomWithInfiniti(
             title: 'save',
             onTap: ()async  {

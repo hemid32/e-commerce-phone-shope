@@ -18,8 +18,8 @@ import 'package:phoneshop/screens/mobilVerification/componants/card_small_cod.da
 
 class ConfermSms extends StatefulWidget {
   ConfermSms({
-    Key key,
-    this.user, this.isUpdate = false ,
+    Key? key,
+    required this.user, this.isUpdate = false ,
   }) : super(key: key);
 
   final UserLocalModel user;
@@ -30,9 +30,9 @@ class ConfermSms extends StatefulWidget {
 }
 
 class _ConfermSmsState extends State<ConfermSms> {
-  String codSms;
+  late String codSms;
 
-  String verificationId;
+  late String verificationId;
 
   TextEditingController cod1 = TextEditingController();
 
@@ -46,7 +46,7 @@ class _ConfermSmsState extends State<ConfermSms> {
 
   TextEditingController cod6 = TextEditingController();
 
-  FocusNode text1, text2, text3, text4, text5, text6;
+  late  FocusNode text1, text2, text3, text4, text5, text6;
 
   @override
   void initState() {
@@ -114,7 +114,7 @@ class _ConfermSmsState extends State<ConfermSms> {
                     SizedBox(height: 10,) ,
                     Container(
                       margin: EdgeInsets.symmetric(horizontal: 20),
-                      child: Text('Enter the verification code consisting of i digits' , style: Theme.of(context).textTheme.button.copyWith(
+                      child: Text('Enter the verification code consisting of i digits' , style: Theme.of(context).textTheme.button?.copyWith(
                           color: Colors.white  ,
                           fontSize: 15
                       ), textAlign: TextAlign.center,),
@@ -243,7 +243,7 @@ class _ConfermSmsState extends State<ConfermSms> {
                                     style: Theme.of(context)
                                         .textTheme
                                         .button
-                                        .copyWith(fontSize: 15, color: Colors.white),
+                                        ?.copyWith(fontSize: 15, color: Colors.white),
                                   ),
                                   backgroundColor: Colors.red));
                             } else if (stateListen['state'] == 'Sand') {
@@ -254,7 +254,7 @@ class _ConfermSmsState extends State<ConfermSms> {
                                     style: Theme.of(context)
                                         .textTheme
                                         .button
-                                        .copyWith(fontSize: 15, color: Colors.white),
+                                        ?.copyWith(fontSize: 15, color: Colors.white),
                                   ),
                                   backgroundColor: kPrimaryColor));
                             }
@@ -268,7 +268,7 @@ class _ConfermSmsState extends State<ConfermSms> {
                                   margin: EdgeInsets.symmetric(horizontal: 20),
                                   child: Text(
                                     'Did you not get the code?\n Resend (${snapshot.duration})',
-                                    style: Theme.of(context).textTheme.button.copyWith(
+                                    style: Theme.of(context).textTheme.button?.copyWith(
                                       color: snapshot.duration > 0 ?  Colors.blue.withOpacity(0.3) : Colors.blue,
                                       fontSize: 15,
                                     ),
@@ -296,7 +296,7 @@ class _ConfermSmsState extends State<ConfermSms> {
                                   style: Theme.of(context)
                                       .textTheme
                                       .button
-                                      .copyWith(fontSize: 15, color: Colors.white),
+                                      ?.copyWith(fontSize: 15, color: Colors.white),
                                 ),
                                 backgroundColor: kPrimaryColor));
                               Navigator.pushAndRemoveUntil(
@@ -315,7 +315,7 @@ class _ConfermSmsState extends State<ConfermSms> {
                                   style: Theme.of(context)
                                       .textTheme
                                       .button
-                                      .copyWith(fontSize: 15, color: Colors.white),
+                                      ?.copyWith(fontSize: 15, color: Colors.white),
                                 ),
                                 backgroundColor: Colors.red));
                           }
@@ -363,7 +363,7 @@ class _ConfermSmsState extends State<ConfermSms> {
                               style: Theme.of(context)
                                   .textTheme
                                   .button
-                                  .copyWith(fontSize: 18, color: Colors.white),
+                                  ?.copyWith(fontSize: 18, color: Colors.white),
                             ),
                           ),
                         ),
@@ -404,7 +404,7 @@ class _ConfermSmsState extends State<ConfermSms> {
             style: Theme.of(context)
                 .textTheme
                 .button
-                .copyWith(fontSize: 15, color: Colors.white),
+                ?.copyWith(fontSize: 15, color: Colors.white),
           ),
           backgroundColor: Colors.red));
     }

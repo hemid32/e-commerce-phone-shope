@@ -3,7 +3,7 @@ import 'package:phoneshop/constant.dart';
 
 class ImageUser extends StatelessWidget {
   const ImageUser({
-    Key key, this.image,
+    Key? key,required this.image,
   }) : super(key: key);
   final String image ;
 

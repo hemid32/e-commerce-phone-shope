@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:phoneshop/constant.dart';
 class CostomListTimeSwitch extends StatelessWidget {
   const CostomListTimeSwitch({
-    Key key, this.valur, this.icon,this.title, this.onChanged
+    Key? key,required this.valur,required this.icon,required this.title,required this.onChanged
   }) : super(key: key);
   final bool valur ;
   final IconData  icon ;
@@ -25,7 +25,7 @@ class CostomListTimeSwitch extends StatelessWidget {
           Text('$title ' , style: Theme.of(context).textTheme.button) ,
           Spacer() ,
           //Icon(Icons.arrow_forward_ios , color: Colors.black.withOpacity(0.5),)
-          Switch(value: valur, onChanged: onChanged , activeTrackColor: kPrimaryColor,)
+          Switch(value: valur, onChanged: (v){onChanged(v);} , activeTrackColor: kPrimaryColor,)
 
         ],
       ),

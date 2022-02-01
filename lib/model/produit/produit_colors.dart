@@ -4,14 +4,14 @@
 import 'package:phoneshop/model/produit/produit.dart';
 
 class ProduitsColors {
-  final String   nomPhone  ;
-  final String   imagePosterPhone ;
-  final List<Produit> listProduits ;
-  final int contitu ;
-  final int nombrePay ; // best saller
-  final String typePhone;
-  final bool isFavorite;
-  final String id ;
+  final String?   nomPhone  ;
+  final String?   imagePosterPhone ;
+  final List<Produit>? listProduits ;
+  final int? contitu ;
+  final int? nombrePay ; // best saller
+  final String? typePhone;
+  final bool? isFavorite;
+  final String? id ;
 
   ProduitsColors({this.nomPhone, this.listProduits, this.contitu, this.imagePosterPhone, this.nombrePay , this.typePhone , this.isFavorite = false , this.id});
 
@@ -48,7 +48,7 @@ class ProduitsColors {
 
   listProduitsToMap(){
     List<Map<String,dynamic>> _listProduiMaps = [];
-    listProduits.forEach((element) {
+    listProduits?.forEach((element) {
       _listProduiMaps.add(element.toMap()) ;
     }) ;
     return _listProduiMaps  ;
@@ -58,7 +58,7 @@ class ProduitsColors {
 }
 
 class ListProduitsColors{
-  final  List<ProduitsColors> produits ;
+  final  List<ProduitsColors>? produits ;
   ListProduitsColors({this.produits});
   factory ListProduitsColors.fronJson(
       Map<String ,  List<ProduitsColors>  > json
@@ -80,7 +80,7 @@ class ListProduitsColors{
 
   _ListProduitsColorsToMap(){
     List<Map<String,dynamic>> _listMapListProduitsColors = [] ;
-    produits.forEach((element) {
+    produits?.forEach((element) {
       _listMapListProduitsColors.add(element.toMap()) ;
     });
 

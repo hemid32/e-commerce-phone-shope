@@ -11,7 +11,7 @@ class ServisesFavoriteHive {
 
   final ModelFaveriote favoriteModel  ;
 
-  ServisesFavoriteHive({@required this.favoriteModel});
+  ServisesFavoriteHive({required this.favoriteModel});
 
 
    addItemFavorite() async  {
@@ -20,7 +20,7 @@ class ServisesFavoriteHive {
        //List<String> oldList = await getItemFavorite() ; //
        FavoriteHiveNewModel item = FavoriteHiveNewModel()
          ..favoretModelMap = favoriteModel.toMap();
-       String keyHive = favoriteModel.produitColors.id + favoriteModel.idProduit;
+       String keyHive = favoriteModel.produitColors.id! + favoriteModel.idProduit;
        box.put(keyHive, item);
      }else{
        await deletItemFavorite() ;
@@ -29,7 +29,7 @@ class ServisesFavoriteHive {
   }
    deletItemFavorite() async  {
     var box = await Hive.openBox('FavoriteHive') ;
-    box.delete(favoriteModel.produitColors.id + favoriteModel.idProduit) ;
+    box.delete(favoriteModel.produitColors.id! + favoriteModel.idProduit) ;
   }
 
 
@@ -47,7 +47,7 @@ class ServisesFavoriteHive {
   chekIOtemIsExsit()async {
     var box2 = await Hive.openBox('FavoriteHive');
     for(var key in box2.keys.toList()){
-      if(key == favoriteModel.produitColors.id + favoriteModel.idProduit ){
+      if(key == favoriteModel.produitColors.id! + favoriteModel.idProduit ){
         return true ;
       }
     }
@@ -55,7 +55,7 @@ class ServisesFavoriteHive {
   }
 
   static getProduitFromProduitIndex(ProduitsColors produitsColors , String idProduit ){
-     for(var produit in produitsColors.listProduits ){
+     for(var produit in produitsColors.listProduits! ){
        if (produit.id.toString() == idProduit)
          return produit ;
      }

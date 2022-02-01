@@ -1,21 +1,21 @@
 import 'package:hive/hive.dart';
 import 'package:phoneshop/model/puy/address.dart';
 //import 'package:phoneshop/model/puy/address.dart';
-//part 'addres.g.dart';
+part 'addres.g.dart';
 
 @HiveType(typeId: 3)
 class AssressHive {
   // id produit color
   AssressHive({ this.address});
   @HiveField(0)
-  Map<String, dynamic> address ;
+  Map<String, dynamic>? address ;
 }
 
 
 
 class ServisesAdressHive {
 
-  final ModelAdress address ;
+  final ModelAdress? address ;
 
   ServisesAdressHive({this.address});
 
@@ -35,8 +35,8 @@ class ServisesAdressHive {
     try{
       var box = await Hive.openBox('AddressHive');
       AssressHive addresHive = AssressHive()
-        ..address = address.toMap();
-      box.put( address.id,addresHive);
+        ..address = address!.toMap();
+      box.put( address!.id,addresHive);
       return true ;
     }catch(e){
       return e ;

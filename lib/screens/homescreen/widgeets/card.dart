@@ -15,14 +15,11 @@ import 'package:phoneshop/screens/loginorRegester/login_or_regester.dart';
 import 'package:phoneshop/screens/myOrder/componants/when_vide.dart';
 import 'package:phoneshop/screens/screen_pay/componants/button_costom_wight_infinty.dart';
 import 'package:phoneshop/screens/screen_pay/componants/card_shoping_phone.dart';
-import 'package:phoneshop/screens/screen_pay/componants/field_notes.dart';
-import 'package:phoneshop/screens/screen_pay/componants/text_price_shoping.dart';
-import 'package:phoneshop/screens/screen_pay/componants/title.dart';
 import 'package:phoneshop/screens/screen_pay/screen_pay.dart';
 
 class CartHome extends StatelessWidget {
   const CartHome({
-    Key key,
+    Key? key,
   }) : super(key: key);
 
   @override
@@ -45,16 +42,16 @@ class CartHome extends StatelessWidget {
                   children: [
                     //TitleTextAligns(title: 'Detail de requist',) ,
                     for(var i =0 ; i < snapShot.length ; i++ ) Dismissible(
-                      key:Key(snapShot[i].id) ,
+                      key:Key(snapShot[i].id!) ,
                       onDismissed: (derection) {
                         BlocProvider.of<BlocListDataCart>(context).add(EventDeletItemFromCart(i)) ;
-                        ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Item has been deleted', style: Theme.of(context).textTheme.button.copyWith(fontSize: 18 , color: Colors.white),),));
+                        ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Item has been deleted', style: Theme.of(context).textTheme.button?.copyWith(fontSize: 18 , color: Colors.white),),));
                       },
                       child: CardPhoneChope(
                         onTap: ()async {
                           GetProduitTotalFromFirebas getPoduit = GetProduitTotalFromFirebas() ;
-                          ProduitsColors produitColors = await  getPoduit.getProduitColorsWithId(snapShot[i].idProduitColors) ;
-                          BlocProvider.of<BlocScreenDetailProduit>(context).add(EvensGoToProduit(indexProduit: snapShot[i].produit.id, produisColors:  produitColors)) ;
+                          ProduitsColors produitColors = await  getPoduit.getProduitColorsWithId(snapShot[i].idProduitColors!) ;
+                          BlocProvider.of<BlocScreenDetailProduit>(context).add(EvensGoToProduit(indexProduit: snapShot[i].produit!.id!, produisColors:  produitColors)) ;
                           Navigator.push(context, MaterialPageRoute(builder: (_)=> BlocProvider.value(
                               value: BlocProvider.of<BlocScreenDetailProduit>(context),
                           child:  BlocProvider.value(
@@ -62,16 +59,16 @@ class CartHome extends StatelessWidget {
                           child: DetailProduit()))));
 
                         },
-                        image: snapShot[i].produit.image ,
-                        title:snapShot[i].produit.nomPhone   , //snapShot[i].produit.nomPhone
-                        detail:  snapShot[i].produit.detail,
-                        ram: snapShot[i].produit.ram,
-                        storage: snapShot[i].produit.storage,
-                        contitu: snapShot[i].contituPay,
-                        price: snapShot[i].produit.price,
+                        image: snapShot[i].produit!.image! ,
+                        title:snapShot[i].produit!.nomPhone!   , //snapShot[i].produit.nomPhone
+                        detail:  snapShot[i].produit!.detail!,
+                        ram: snapShot[i].produit!.ram!,
+                        storage: snapShot[i].produit!.storage!,
+                        contitu: snapShot[i].contituPay!,
+                        price: snapShot[i].produit!.price!,
                         deletCard: (){
                           BlocProvider.of<BlocListDataCart>(context).add(EventDeletItemFromCart(i)) ;
-                          ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Item has been deleted', style: Theme.of(context).textTheme.button.copyWith(fontSize: 18 , color: Colors.white),),));
+                          ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Item has been deleted', style: Theme.of(context).textTheme.button?.copyWith(fontSize: 18 , color: Colors.white),),));
 
 
                         }

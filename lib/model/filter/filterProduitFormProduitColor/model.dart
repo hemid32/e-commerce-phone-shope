@@ -20,7 +20,7 @@ class FilterProduitFromProduitColors {
       produitPriority = listProduit[0] ;
     }else{
       // priority 2
-      newList.sort((a, b) => (a.contitu).compareTo(b.contitu));
+      newList.sort((a, b) => (a.contitu)!.compareTo(b.contitu!));
       produitPriority = newList[0] ;
     }
 

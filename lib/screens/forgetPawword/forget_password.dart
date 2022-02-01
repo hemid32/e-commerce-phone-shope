@@ -4,7 +4,7 @@ import 'componants/body.dart';
 
 class ForgetPassword extends StatelessWidget {
   final String email ;
-  const ForgetPassword({Key key, this.email}) : super(key: key);
+  const ForgetPassword({Key? key,required this.email}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Scaffold(

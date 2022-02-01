@@ -12,7 +12,7 @@ class EventsRegisters extends EventRegister {
   final UserLocalModel user ;
   final bool allFormIsCompletedTrue ;
 
-  EventsRegisters({@required this.user, @required this.allFormIsCompletedTrue , this.phonAuth});
+  EventsRegisters({required this.user, required this.allFormIsCompletedTrue ,required this.phonAuth});
 
   bool  verifaidFormISnotEmpety(){
 

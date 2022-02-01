@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:phoneshop/bloc/allProduitFilter/bloc.dart';
 import 'package:phoneshop/bloc/allProduitFilter/event.dart';
-import 'package:phoneshop/model/getModelFirebase/getTotalProduitColors.dart';
 import 'package:phoneshop/model/getModelFirebase/theBestProduit/model.dart';
 import 'package:phoneshop/model/produit/produit_colors.dart';
 import 'package:phoneshop/model/produit/servises.dart';
@@ -17,7 +16,7 @@ import 'package:shimmer/shimmer.dart';
 
 class Home extends StatelessWidget {
   Home({
-    Key key,
+    Key? key,
   }) : super(key: key);
 
   GetTheBestProduits _getData = new GetTheBestProduits();
@@ -54,23 +53,23 @@ class Home extends StatelessWidget {
                           child: AllProduit())));
             }),
 
-        FutureBuilder(
+        FutureBuilder<ListProduitsColors>(
             future: _getData.getTheBestProduit(),
             builder: (context, snapShot) {
               //print('datat home === ${snapShot.data}') ;
               if (snapShot.connectionState == ConnectionState.waiting ||
-                  snapShot.data.produits.isEmpty)
+                  (snapShot.data)!.produits!.isEmpty)
                 return Shimmer.fromColors(
-                    baseColor: Colors.grey[300],
-                    highlightColor: Colors.grey[100],
+                    baseColor: Colors.grey[300]!,
+                    highlightColor: Colors.grey[100]!,
                     child: SingleChildScrollView(
                       scrollDirection: Axis.horizontal,
                       child: Row(
                         children: [
                           for (var i = 0; i < 5; i++)
                             Shimmer.fromColors(
-                              baseColor: Colors.grey[300],
-                              highlightColor: Colors.grey[100],
+                              baseColor: Colors.grey[300]!,
+                              highlightColor: Colors.grey[100]!,
                               child: Container(
                                 decoration: BoxDecoration(
                                   color: Colors.white,
@@ -88,7 +87,7 @@ class Home extends StatelessWidget {
                     ));
               else
                 return ItemsCardBestSellingPHone(
-                  listData: snapShot.data,
+                  listData: snapShot.data!,
                 );
             }),
 
@@ -111,18 +110,18 @@ class Home extends StatelessWidget {
             builder: (context, snapShot) {
               //print('datat home === ${snapShot.data}') ;
               if (snapShot.connectionState == ConnectionState.waiting ||
-                  snapShot.data.produits.isEmpty)
+                  (snapShot.data)!.produits!.isEmpty)
                 return Shimmer.fromColors(
-                    baseColor: Colors.grey[300],
-                    highlightColor: Colors.grey[100],
+                    baseColor: Colors.grey[300]!,
+                    highlightColor: Colors.grey[100]!,
                     child: SingleChildScrollView(
                       scrollDirection: Axis.horizontal,
                       child: Row(
                         children: [
                           for (var i = 0; i < 5; i++)
                             Shimmer.fromColors(
-                              baseColor: Colors.grey[300],
-                              highlightColor: Colors.grey[100],
+                              baseColor: Colors.grey[300]!,
+                              highlightColor: Colors.grey[100]!,
                               child: Container(
                                 decoration: BoxDecoration(
                                   color: Colors.white,
@@ -140,7 +139,7 @@ class Home extends StatelessWidget {
                     ));
               else
                 return ItemsCardBestSellingPHone(
-                  listData: snapShot.data,
+                  listData: snapShot.data!,
                 );
             }),
 

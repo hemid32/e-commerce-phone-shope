@@ -5,7 +5,7 @@ import 'package:phoneshop/constant.dart';
 
 class ItemListMenu extends StatelessWidget {
   const ItemListMenu({
-    Key key, @required this.title, @required this.icon, @required this.valueLang , 
+    Key? key, required this.title, required this.icon, required this.valueLang ,
   }) : super(key: key);
   final String title ;
   final String icon ;

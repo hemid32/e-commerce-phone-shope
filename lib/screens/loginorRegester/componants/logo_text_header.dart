@@ -3,7 +3,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 
 class TextTileHeader extends StatelessWidget {
   const TextTileHeader({
-    Key key, this.logo, this.title, this.details,
+    Key? key,required this.logo,required this.title,required this.details,
   }) : super(key: key);
   final String logo ;
   final String title ;
@@ -24,7 +24,7 @@ class TextTileHeader extends StatelessWidget {
           child: RichText(
               text: TextSpan(
               text: '$title' ,
-              style:  Theme.of(context).textTheme.headline3.copyWith(color: Colors.white,fontWeight: FontWeight.bold)
+              style:  Theme.of(context).textTheme.headline3?.copyWith(color: Colors.white,fontWeight: FontWeight.bold)
           )),
         ),
         Container(
@@ -32,7 +32,7 @@ class TextTileHeader extends StatelessWidget {
 
           child: RichText(text: TextSpan(
               text: '$details' ,
-              style:  Theme.of(context).textTheme.button.copyWith(color: Colors.white,fontWeight: FontWeight.bold)
+              style:  Theme.of(context).textTheme.button?.copyWith(color: Colors.white,fontWeight: FontWeight.bold)
           )),
         )
       ],

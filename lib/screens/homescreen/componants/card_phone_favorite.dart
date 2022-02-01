@@ -5,15 +5,15 @@ import 'package:phoneshop/model/produit/produit.dart';
 
 class CardPhoneChopeFavorite extends StatelessWidget {
   const CardPhoneChopeFavorite({
-    Key key, @required this.produit, @required this.deletCard, this.onTap,
+    Key? key, required this.produit, required this.deletCard, this.onTap,
   }) : super(key: key);
   final Function deletCard ;
-  final Function onTap  ;
+  final Function? onTap  ;
   final Produit produit ;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: onTap,
+      onTap: (){onTap!();},
       child: Container(
         height: 140 ,
         decoration: BoxDecoration(
@@ -32,7 +32,7 @@ class CardPhoneChopeFavorite extends StatelessWidget {
                   color: Theme.of(context).cardColor ,
                   image:  DecorationImage(
                       image: NetworkImage(
-                          produit.image
+                          produit.image!
                       ) ,
                       fit: BoxFit.cover
                   )
@@ -50,11 +50,11 @@ class CardPhoneChopeFavorite extends StatelessWidget {
                 children: [
                   Row(
                     children: [
-                      Text( (produit.nomPhone).length > 23 ? '${(produit.nomPhone).substring(0,20)}...' : (produit.nomPhone) , style: Theme.of(context).textTheme.button.copyWith( fontSize: 14 ),),
+                      Text( (produit.nomPhone!).length > 23 ? '${(produit.nomPhone!).substring(0,20)}...' : (produit.nomPhone!) , style: Theme.of(context).textTheme.button?.copyWith( fontSize: 14 ),),
 
                       Spacer()  ,
                       GestureDetector(
-                          onTap: deletCard,
+                          onTap: (){deletCard();},
                           child: Icon(Icons.close , color: Theme.of(context).iconTheme.color, size: 20,))
 
 
@@ -65,26 +65,26 @@ class CardPhoneChopeFavorite extends StatelessWidget {
                       maxLines: 3,
                       text: TextSpan(
                           text: produit.detail ,
-                          style: Theme.of(context).textTheme.button.copyWith( fontSize:  12 )
+                          style: Theme.of(context).textTheme.button?.copyWith( fontSize:  12 )
                       )) ,
                   SizedBox(height: 5,) ,
 
                   Row(
                     children: [
-                      Text('RAM :' , style:  Theme.of(context).textTheme.button.copyWith( fontSize:  12 ),) ,
+                      Text('RAM :' , style:  Theme.of(context).textTheme.button?.copyWith( fontSize:  12 ),) ,
                       SizedBox(width: 5,) ,
-                      Text('${produit.ram} GB' ,style:  Theme.of(context).textTheme.button.copyWith( fontSize:  12 ),),
+                      Text('${produit.ram} GB' ,style:  Theme.of(context).textTheme.button?.copyWith( fontSize:  12 ),),
                       SizedBox(width: 15,) ,
-                      Text('Storage :' , style:  Theme.of(context).textTheme.button.copyWith(fontSize:  12 ),) ,
+                      Text('Storage :' , style:  Theme.of(context).textTheme.button?.copyWith(fontSize:  12 ),) ,
                       SizedBox(width: 5,) ,
-                      Text('${produit.storage} GB' ,style:  Theme.of(context).textTheme.button.copyWith( fontSize:  12 ),) ,
+                      Text('${produit.storage} GB' ,style:  Theme.of(context).textTheme.button?.copyWith( fontSize:  12 ),) ,
                     ],
                   ),
                   SizedBox(height: 5,) ,
 
                   Row(
                     children: [
-                      Text('${produit.price} DZ',style:  Theme.of(context).textTheme.button.copyWith(color:kPrimaryColor.withOpacity(0.6) , fontSize:  15 )),
+                      Text('${produit.price} DZ',style:  Theme.of(context).textTheme.button?.copyWith(color:kPrimaryColor.withOpacity(0.6) , fontSize:  15 )),
                     ],
                   )
 

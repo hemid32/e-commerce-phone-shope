@@ -3,7 +3,7 @@ import 'package:phoneshop/constant.dart';
 
 class RowTextBestSalingAndSeeAll extends StatelessWidget {
   const RowTextBestSalingAndSeeAll({
-    Key key, this.title, this.suptitle, this.onTap,
+    Key? key,required this.title,required this.suptitle,required this.onTap,
   }) : super(key: key);
   final String title ;
   final String suptitle ;
@@ -18,12 +18,12 @@ class RowTextBestSalingAndSeeAll extends StatelessWidget {
 
         children: [
           //TextTileCatigori(title: 'Best Salling',),
-          Text(title, style:  Theme.of(context).textTheme.button.copyWith(fontSize: 20),) ,
+          Text(title, style:  Theme.of(context).textTheme.button?.copyWith(fontSize: 20),) ,
           Spacer() ,
           GestureDetector(
 
-              onTap: onTap,
-              child: Text(suptitle , style: Theme.of(context).textTheme.button.copyWith(color: Colors.black.withOpacity(0.3), fontSize: 20),))
+              onTap: (){onTap();},
+              child: Text(suptitle , style: Theme.of(context).textTheme.button?.copyWith(color: Colors.black.withOpacity(0.3), fontSize: 20),))
         ],
       ),
     );

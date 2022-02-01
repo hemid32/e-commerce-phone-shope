@@ -9,9 +9,11 @@ class BlocRegisterUser extends Bloc<EventRegister , dynamic >{
   @override
   Stream mapEventToState(EventRegister event)async*  {
     // TODO: implement mapEventToState
-    EventsRegisters _userEvent = event ;
-    var  _result = await  _userEvent.rgisterUser() ;
-    yield  _result ;
+    if(event is EventsRegisters ) {
+      EventsRegisters _userEvent = event;
+      var _result = await _userEvent.rgisterUser();
+      yield _result;
+    }
 
   }
 }

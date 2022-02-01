@@ -2,11 +2,11 @@
 
 class ModelCartCalcul {
 
-  final double totalProduit ;
-  final  double totalShopping ;
+  final double? totalProduit ;
+  final  double? totalShopping ;
   final total ;
 
-  ModelCartCalcul({this.totalProduit, this.totalShopping, this.total});
+  ModelCartCalcul({ this.totalProduit,  this.totalShopping, this.total});
 
   factory ModelCartCalcul.FromJson(Map<String , dynamic> json ){
 

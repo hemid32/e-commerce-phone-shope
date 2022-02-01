@@ -8,7 +8,7 @@ import 'package:phoneshop/screens/search/search_screen.dart';
 
 class ContainerFavVide extends StatelessWidget {
   const ContainerFavVide({
-    Key key,
+    Key? key,
   }) : super(key: key);
 
 

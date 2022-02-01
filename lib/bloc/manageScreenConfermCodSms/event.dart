@@ -11,7 +11,7 @@ class EventManageConfermCodSmsSandCod extends EventManageConfermCodSms {
   final UserLocalModel user ;
   final bool isUpdate ;
 
-  EventManageConfermCodSmsSandCod({@required this.user , this.isUpdate = false });
+  EventManageConfermCodSmsSandCod({required this.user , this.isUpdate = false });
 
 
 }
@@ -24,20 +24,20 @@ class EventManageConfermCodSmsConfermed extends EventManageConfermCodSms {
   final UserLocalModel user ;
   final bool isUpdate ;
 
-  EventManageConfermCodSmsConfermed({@required this.user , this.isUpdate = false });
+  EventManageConfermCodSmsConfermed({required this.user , this.isUpdate = false });
 
 
 }
 
 class EventSandCodeFromFirBas extends EventManageConfermCodSms{
    String nombrePhone  ;
-  EventSandCodeFromFirBas({@required this.nombrePhone});
+  EventSandCodeFromFirBas({required this.nombrePhone});
 }
 
 class EventSandCodeFromFirBasField extends EventManageConfermCodSms{
  final String messageErrur ;
 
-  EventSandCodeFromFirBasField({this.messageErrur});
+  EventSandCodeFromFirBasField({required this.messageErrur});
 }
 
 
@@ -46,19 +46,19 @@ class EventSandCodeFromFirBasCodeSand extends EventManageConfermCodSms{
    final int token ;
    final String nomprePhone ;
 
-  EventSandCodeFromFirBasCodeSand({this.verificationId , this.token , this.nomprePhone});
+  EventSandCodeFromFirBasCodeSand({required this.verificationId ,required this.token ,required this.nomprePhone});
 }
 
 
 class EventSandCodeFromFirBasCodeConfermCodSmS extends EventManageConfermCodSms{
   final  String codSms ;
   final String  verificationId ;
-  EventSandCodeFromFirBasCodeConfermCodSmS({this.codSms , this.verificationId});
+  EventSandCodeFromFirBasCodeConfermCodSmS({required this.codSms ,required  this.verificationId});
 }
 
 class EventSandCodeFromFirBasCodeResandCod extends EventManageConfermCodSms{
   final  int token ;
   final String nombrePhone  ;
 
-  EventSandCodeFromFirBasCodeResandCod({this.token, this.nombrePhone});
+  EventSandCodeFromFirBasCodeResandCod({required this.token,required  this.nombrePhone});
 }

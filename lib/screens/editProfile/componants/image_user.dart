@@ -3,15 +3,15 @@ import 'package:phoneshop/constant.dart';
 
 class ImageUser extends StatelessWidget {
   const ImageUser({
-    Key key, this.imageCurrent, this.onTap,
+    Key? key, this.imageCurrent, this.onTap,
   }) : super(key: key);
-  final String imageCurrent ;
-  final Function onTap ;
+  final String? imageCurrent ;
+  final Function? onTap ;
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: onTap,
+      onTap: (){onTap!();},
       child: Container(
         width: 130,
         height: 130,

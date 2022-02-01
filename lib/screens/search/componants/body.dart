@@ -32,16 +32,16 @@ class Body extends StatelessWidget {
               return Container(
                 child: Column(
                   children: [
-                    for(var i =0 ; i<  (snapshot.produits == null ? 0 :  snapshot.produits.length) ; i++)
+                    for(var i =0 ; i<  (snapshot.produits == null ? 0 :  snapshot.produits!.length) ; i++)
                       //ListTile(title: Text(snapshot.produits == null ? '' : snapshot.produits[i].nomPhone),)
                       CardPhoneSearsh(
-                        storage: snapshot.produits[i].listProduits[0].storage.toString(),
-                        ram: snapshot.produits[i].listProduits[0].ram.toString() ,
-                        image: snapshot.produits[i].listProduits[0].image,
-                        title: snapshot.produits[i].nomPhone,
-                        price: snapshot.produits[i].listProduits[0].price.toString(),
+                        storage: snapshot.produits![i].listProduits![0].storage.toString(),
+                        ram: snapshot.produits![i].listProduits![0].ram.toString() ,
+                        image: snapshot.produits![i].listProduits![0].image!,
+                        title: snapshot.produits![i].nomPhone!,
+                        price: snapshot.produits![i].listProduits![0].price.toString(),
                         onTap: (){
-                          BlocProvider.of<BlocScreenDetailProduit>(context).add(EvensGoToProduit(indexProduit: 0 , produisColors: snapshot.produits[i] )) ;
+                          BlocProvider.of<BlocScreenDetailProduit>(context).add(EvensGoToProduit(indexProduit: 0 , produisColors: snapshot.produits![i] )) ;
                           Navigator.push(context, MaterialPageRoute(builder: (_)=> BlocProvider.value(
                             value: BlocProvider.of<BlocScreenDetailProduit>(context),
                             child:  BlocProvider.value(

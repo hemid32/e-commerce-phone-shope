@@ -11,7 +11,7 @@ class BlocMassegersGet  extends Bloc<EventGetMessages , List<Message>>{
   Stream<List<Message>> mapEventToState(EventGetMessages event) async* {
     // TODO: implement mapEventToState
 
-    if(event.runtimeType == EventGetMessagesFromFire ){
+    if(event is  EventGetMessagesFromFire ){
       EventGetMessagesFromFire _messages = event ;
       yield _messages.getMessages() ;
     }
@@ -24,7 +24,7 @@ class BlocMessagesActiveDate extends Bloc<EventGetMessages , dynamic >{
   @override
   Stream<dynamic> mapEventToState(EventGetMessages event) async* {
     // TODO: implement mapEventToState
-    if(event.runtimeType == EventGetMessagesActiveDate ){
+    if(event is   EventGetMessagesActiveDate ){
       EventGetMessagesActiveDate _result =event ;
       yield _result.isActive() ;
     }

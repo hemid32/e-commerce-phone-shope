@@ -4,7 +4,7 @@ import 'package:phoneshop/model/puy/shopping.dart';
 
 class MethodShoppingShoi {
 
-  final ShoppingModelMethod method ;
+  final ShoppingModelMethod? method ;
   final  bool fin ;
 
   MethodShoppingShoi({this.method, this.fin = false});
@@ -22,7 +22,7 @@ class MethodShoppingShoi {
 
   Map<String , dynamic> toMap(){
     return {
-      'method' : method.toMap() ,
+      'method' : method!.toMap() ,
       'fin' : fin  ,
     } ;
   }

@@ -4,7 +4,7 @@ import 'package:phoneshop/constant.dart';
 class ContainerMayOrder extends StatelessWidget {
 
   const ContainerMayOrder({
-    Key key, this.icon, this.date, this.pay, this.state, this.onTap, this.smilIcon,
+    Key? key,required  this.icon,required this.date,required this.pay,required this.state,required this.onTap,required this.smilIcon,
   }) : super(key: key);
   final IconData icon ;
   final String  date ;
@@ -20,7 +20,7 @@ class ContainerMayOrder extends StatelessWidget {
     Size size = MediaQuery.of(context).size ;
 
     return GestureDetector(
-      onTap: onTap,
+      onTap: (){onTap();},
       child: Container(
         width: size.width *0.9,
         height: 150,
@@ -45,13 +45,13 @@ class ContainerMayOrder extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text('Date : $date', style: Theme.of(context).textTheme.button.copyWith(
+                  Text('Date : $date', style: Theme.of(context).textTheme.button?.copyWith(
                       color: kPrimaryColor ,
                       fontSize: 14
                   ),) ,
                   //SizedBox(height: 20,) ,
                   Spacer() ,
-                  Text('Pay : $pay DZ', style: Theme.of(context).textTheme.button.copyWith(
+                  Text('Pay : $pay DZ', style: Theme.of(context).textTheme.button?.copyWith(
                       color: Colors.black.withOpacity(0.4) ,
                       fontSize: 14
                   ),) ,
@@ -71,7 +71,7 @@ class ContainerMayOrder extends StatelessWidget {
 
                       Spacer() ,
 
-                      Text('$state', style: Theme.of(context).textTheme.button.copyWith(
+                      Text('$state', style: Theme.of(context).textTheme.button?.copyWith(
                           color: Colors.black.withOpacity(0.4) ,
                           fontSize: 14
                       ),),

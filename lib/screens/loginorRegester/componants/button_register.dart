@@ -3,7 +3,7 @@ import 'package:phoneshop/constant.dart';
 
 class ButtonRegister extends StatelessWidget {
   const ButtonRegister({
-    Key key, this.onTap,
+    Key? key, required this.onTap,
   }) : super(key: key);
   final Function onTap ;
 
@@ -13,7 +13,7 @@ class ButtonRegister extends StatelessWidget {
     Size size = MediaQuery.of(context).size ;
 
     return GestureDetector(
-      onTap: onTap,
+      onTap: (){onTap();},
       child: Container(
         alignment: Alignment.center,
         width: size.width *0.3 ,
@@ -34,7 +34,7 @@ class ButtonRegister extends StatelessWidget {
         ),
         child: Text('Register'
           , style:
-          Theme.of(context).textTheme.button.copyWith(
+          Theme.of(context).textTheme.button?.copyWith(
               color: Colors.white ,
               fontSize: 20
           )

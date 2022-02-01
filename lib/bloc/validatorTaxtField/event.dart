@@ -1,3 +1,4 @@
+
 import 'package:email_validator/email_validator.dart';
 
 abstract class EventsTextFeild{
@@ -5,68 +6,74 @@ abstract class EventsTextFeild{
 }
 
 class TextFieldValidatorEventNome extends EventsTextFeild {
-  final String valur ;
-  final String titleErurr ;
+  final String? valur ;
+  final String? titleErurr ;
   TextFieldValidatorEventNome({this.valur , this.titleErurr});
-  validator(){
+  String validator(){
     //print('length ==== ${this.valur.length}') ;
-    if(this.valur.length  < 5 ){
-      return this.titleErurr ;
+    if(this.valur!.length  < 5 ){
+      return this.titleErurr! ;
     }
     else
-      return null ;
+      return '' ;
   }
 }
 
 class TextFieldValidatorEventPhoneNombre extends EventsTextFeild {
-  final String valur ;
-  final String titleErurr ;
+  final String? valur ;
+  final String? titleErurr ;
   TextFieldValidatorEventPhoneNombre({this.valur , this.titleErurr});
-  validator(){
+  String validator(){
     //print('length ==== ${this.valur.length}') ;
-    if(this.valur.length  < 10 || !isNumeric(this.valur) ){
-      return this.titleErurr ;
+    if(this.valur!.length < 10 || !isNumeric(this.valur!) ){
+      return this.titleErurr! ;
     }
     else
-      return null ;
+      return '' ;
   }
 
-  bool isNumeric(String s) {
+  bool isNumeric(String? s) {
     if(s == null) {
       return false;
     }
-    return double.parse(s, (e) => null) != null;
+    try{
+      double nombre = double.parse(s) ;
+      return true ;
+    }catch(e){
+      return false ;
+    }
+    //return double.parse(s, (e) => false) != false;
   }
 }
 
 
 class TextFieldValidatorEventPhoneEmail extends EventsTextFeild {
-  final String valur ;
-  final String titleErurr ;
+  final String? valur ;
+  final String? titleErurr ;
   TextFieldValidatorEventPhoneEmail({this.valur , this.titleErurr});
-  validator(){
+  String validator(){
     //print('length ==== ${this.valur.length}') ;
     print(valur) ;
-    print('EmailValidator.validate(valur) == ${EmailValidator.validate(valur)}') ;
-    if( !this.valur.contains('@')  || !EmailValidator.validate(valur)){
-      return this.titleErurr ;
+    print('EmailValidator.validate(valur) == ${EmailValidator.validate(valur!)}') ;
+    if( !this.valur!.contains('@')  || !EmailValidator.validate(valur!)){
+      return this.titleErurr! ;
     }
     else
-      return null ;
+      return '' ;
   }
 
 }
 class TextFieldValidatorEventPassword extends EventsTextFeild {
-  final String valur ;
-  final String titleErurr ;
+  final String? valur ;
+  final String? titleErurr ;
   TextFieldValidatorEventPassword({this.valur , this.titleErurr});
-  validator(){
+  String  validator(){
     //print('length ==== ${this.valur.length}') ;
-    if( this.valur.length < 8  ){
-      return this.titleErurr ;
+    if( this.valur!.length < 8  ){
+      return this.titleErurr! ;
     }
     else
-      return null ;
+      return '' ;
   }
 
 }

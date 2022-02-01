@@ -47,7 +47,7 @@ class GetProduitTotalFromFirebas {
         'isFavorite' : false ,
 
       }) ;
-      if(_produit.listProduits.length>0 )
+      if(_produit.listProduits!.length>0 )
       _listProduitsColors.add(_produit) ;
     });
     ListProduitsColors _resul = ListProduitsColors.fronJson({
@@ -59,7 +59,7 @@ class GetProduitTotalFromFirebas {
   }
 
   getLiistProduitColorsFromFireBase() async  {
-    final  CollectionReference  document = await  FirebaseFirestore.instance.collection('Produits');
+    final    document = await  FirebaseFirestore.instance.collection('Produits');
     var _data =  await document.get() ;
     //_InternalLinkedHashMap<String, dynamic> to Map<String,dynamic> == try ==> Map<String, dynamic>.from(yourData)
     List<Map<String , dynamic>> _listData = [] ;
@@ -95,7 +95,7 @@ class GetProduitTotalFromFirebas {
 
    getProduitColorsWithId(String id) async  {
       ListProduitsColors listProduitColors  =await  getListProduitsColorsObject() ;
-      for(var i in listProduitColors.produits){
+      for(var i in listProduitColors.produits!){
         if(i.id == id)
           return i ;
       }

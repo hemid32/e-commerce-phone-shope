@@ -7,9 +7,18 @@ class  BlocDataOrderShow extends Bloc<EventDataOrderShow , dynamic>{
   BlocDataOrderShow() : super(0);
 
   @override
-  Stream mapEventToState(EventDataOrderShow event) async*  {
+  Stream mapEventToState(EventDataOrderShow event) async* {
     // TODO: implement mapEventToState
-    EventDataOdererShoawData _result = event ;
-    yield [_result.calulerBuy , _result.methoShopping , _result.address , _result.listMedelCart , _result.state , _result.uidDomand];
+    if (event is EventDataOdererShoawData) {
+      //EventDataOdererShoawData _result = event;
+      yield [
+        event.calulerBuy,
+        event.methoShopping,
+        event.address,
+        event.listMedelCart,
+        event.state,
+        event.uidDomand
+      ];
+    }
   }
 }

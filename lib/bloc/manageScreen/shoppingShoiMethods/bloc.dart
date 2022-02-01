@@ -10,7 +10,7 @@ class ShoppingBlocRadio extends Bloc<EventsShopping, dynamic> {
   @override
   Stream<String> mapEventToState(EventsShopping event) async* {
     //print(event.runtimeType) ;
-    if(event.runtimeType == EvenstRadio ){
+    if(event is   EvenstRadio ){
       EvenstRadio radio = event ;
       yield radio.valurRadio  ;
     }

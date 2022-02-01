@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class NomeUser extends StatelessWidget {
   const NomeUser({
-    Key key, this.name, this.email,
+    Key? key,required this.name,required this.email,
   }) : super(key: key);
   final String name ;
   final String email ;
@@ -13,10 +13,10 @@ class NomeUser extends StatelessWidget {
     return Container(
       child: Column(
         children: [
-          Text('$name ', style: Theme.of(context).textTheme.button.copyWith(
+          Text('$name ', style: Theme.of(context).textTheme.button?.copyWith(
               fontSize: 20 , fontWeight: FontWeight.bold
           ),),
-          Text('$email', style:  Theme.of(context).textTheme.button.copyWith(
+          Text('$email', style:  Theme.of(context).textTheme.button?.copyWith(
               fontSize: 15
           ),),
         ],

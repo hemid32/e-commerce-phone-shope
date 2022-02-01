@@ -11,7 +11,7 @@ abstract class EventsCalculCart{
 class EventCart extends EventsCalculCart {
   final List<ModelCart>  listProduitCart  ;
   final MethodShoppingShoi  methodShopping ;
-  EventCart({this.listProduitCart, this.methodShopping});
+  EventCart({required this.listProduitCart,required this.methodShopping});
   ModelCartCalcul  calcule(){
     print('list produit cart == ${listProduitCart.length}');
     int contituTotalProduit = 0  ;
@@ -19,12 +19,12 @@ class EventCart extends EventsCalculCart {
     double priceShoppingTotal = 0  ;
     double priceTotal ;
     listProduitCart.forEach((element) {
-      priceTotalProduits = ((element.produit.price  ) * element.contituPay ) + priceTotalProduits ;
+      priceTotalProduits = ((element.produit!.price  )! * element.contituPay! ) + priceTotalProduits ;
     });
     listProduitCart.forEach((element) {
-      contituTotalProduit = element.contituPay + contituTotalProduit ;
+      contituTotalProduit = element.contituPay! + contituTotalProduit ;
     });
-    priceShoppingTotal   = contituTotalProduit * methodShopping.method.price ;
+    priceShoppingTotal   = contituTotalProduit * methodShopping.method!.price ;
     priceTotal = priceTotalProduits + priceShoppingTotal ;
     /*
      total: json['total'] ,

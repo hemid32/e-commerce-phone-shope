@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class CostomListTile extends StatelessWidget {
   const CostomListTile({
-    Key key, this.title, this.icon, this.onTap,
+    Key? key,required this.title,required this.icon,required this.onTap,
   }) : super(key: key);
   final String title ;
   final IconData icon ;
@@ -11,7 +11,7 @@ class CostomListTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: onTap,
+      onTap: (){onTap();},
       child: Container(
         margin: EdgeInsets.symmetric(horizontal:  20 , vertical: 2),
         height:  65,

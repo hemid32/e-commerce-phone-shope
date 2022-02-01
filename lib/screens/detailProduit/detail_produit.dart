@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:phoneshop/bloc/addToCart/bloc.dart';
 import 'package:phoneshop/bloc/manageScreen/detailProduit/bloc.dart';
 import 'package:phoneshop/constant.dart';
-import 'package:toast/toast.dart';
 
 import 'componants/body.dart';
 import 'componants/bottom_navigator.dart';
@@ -40,9 +39,9 @@ class DetailProduit extends StatelessWidget {
               );
 
                */
-              ScaffoldMessenger.of(_scaffoldkey.currentContext).showSnackBar(SnackBar(content: Text('Added to cart', style: Theme.of(context).textTheme.button.copyWith(fontSize: 20 , color: Colors.white),) , backgroundColor: kPrimaryColor.withOpacity(0.6),));
+              ScaffoldMessenger.of(_scaffoldkey.currentContext!).showSnackBar(SnackBar(content: Text('Added to cart', style: Theme.of(context).textTheme.button?.copyWith(fontSize: 20 , color: Colors.white),) , backgroundColor: kPrimaryColor.withOpacity(0.6),));
             }else {
-              ScaffoldMessenger.of(_scaffoldkey.currentContext).showSnackBar(SnackBar(content: Text('The item is in the cart !! ', style: Theme.of(context).textTheme.button.copyWith(fontSize: 20 , color: Colors.white),) , backgroundColor: Colors.red.withOpacity(0.6),));
+              ScaffoldMessenger.of(_scaffoldkey.currentContext!).showSnackBar(SnackBar(content: Text('The item is in the cart !! ', style: Theme.of(context).textTheme.button?.copyWith(fontSize: 20 , color: Colors.white),) , backgroundColor: Colors.red.withOpacity(0.6),));
 
             }
           },

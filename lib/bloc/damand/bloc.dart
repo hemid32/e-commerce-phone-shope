@@ -9,8 +9,9 @@ class BlocSandDamand extends Bloc<EventDomands , dynamic >{
   @override
   Stream mapEventToState(EventDomands event) async* {
     // TODO: implement mapEventToState
-    EventSandDomand _sand = event ;
-    var  _result = await _sand.sand() ;
-    yield _result ;
+    if(event is EventSandDomand ) {
+      var _result = await event.sand();
+      yield _result;
+    }
   }
 }

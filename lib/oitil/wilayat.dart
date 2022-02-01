@@ -391,10 +391,10 @@ const wilayat = {
 
 
 List<String>  getListWilayat(){
-  Map<String , Map<String , String >> _wilaya = wilayat['wilaya'] ;
+  Map<String , Map<String , String >> _wilaya = wilayat['wilaya']! ;
   List<String> _wilayatList  = [];
   _wilaya.forEach((key, value) {
-    _wilayatList.add(value['nameEn']) ;
+    _wilayatList.add(value['nameEn']!) ;
   }) ;
   return _wilayatList ;
 }

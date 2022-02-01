@@ -8,7 +8,7 @@ class EventThemeMode {}
 
 class EventsChangeThemeMode extends EventThemeMode {
 
-  final bool value;
+  final bool? value;
   EventsChangeThemeMode({this.value}); // dark or light
 
 

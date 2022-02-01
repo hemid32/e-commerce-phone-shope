@@ -3,7 +3,7 @@ import 'package:phoneshop/constant.dart';
 
 class TextPriceShoping extends StatelessWidget {
   const TextPriceShoping({
-    Key key, this.title, this.price,
+    Key? key,required this.title,required this.price,
   }) : super(key: key);
   final String title ;
   final double price  ;
@@ -15,7 +15,7 @@ class TextPriceShoping extends StatelessWidget {
       child: Row(
         children: [
           //TitleTextAligns(title: 'La Some',) ,
-          Text('$title' , style:  Theme.of(context).textTheme.button.copyWith( fontSize:  15),) ,
+          Text('$title' , style:  Theme.of(context).textTheme.button?.copyWith( fontSize:  15),) ,
           Spacer() ,
           Text('$price DZ', style:  Theme.of(context).textTheme.button,)
         ],

@@ -3,7 +3,7 @@ import 'package:phoneshop/constant.dart';
 
 class logoRdesign extends StatelessWidget {
   const logoRdesign({
-    Key key,
+    Key? key,
   }) : super(key: key);
 
 
@@ -27,7 +27,7 @@ class logoRdesign extends StatelessWidget {
           shape: BoxShape.circle ,
 
         ),
-        child: Text('R' , style: Theme.of(context).textTheme.button.copyWith(
+        child: Text('R' , style: Theme.of(context).textTheme.button?.copyWith(
 
           color: Colors.white.withOpacity(0.23),
           fontSize:  size.width *0.30 ,

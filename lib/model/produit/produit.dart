@@ -1,18 +1,18 @@
 
 class Produit {
-  final int id  ;
-  final String image ;
-  final String nomPhone ;
-  final String detail ;
-  final String phoneType  ;
-  final int ram  ;
-  final int storage ;
-  final int  contitu ;
-  final double price  ;
-  final double priceOriginal ;
-  final String spu ;
-  final int camera ;
-  final String idProduitUique ;
+  final int? id  ;
+  final String? image ;
+  final String? nomPhone ;
+  final String? detail ;
+  final String? phoneType  ;
+  final int? ram  ;
+  final int? storage ;
+  final int?  contitu ;
+  final double? price  ;
+  final double? priceOriginal ;
+  final String? spu ;
+  final int? camera ;
+  final String? idProduitUique ;
   //final String imageColors  ;
   Produit( {this.camera ,this.spu,this.image, this.nomPhone, this.detail, this.phoneType, this.ram, this.storage, this.contitu, this.price , this.priceOriginal , this.id , this.idProduitUique });
 
@@ -58,7 +58,7 @@ class Produit {
 
 
 class TotalProduits {
-  final  List<Produit> produits  ;
+  final  List<Produit>? produits  ;
   TotalProduits({this.produits});
   factory TotalProduits.fromJson(Map<String, dynamic> jsnData){
 

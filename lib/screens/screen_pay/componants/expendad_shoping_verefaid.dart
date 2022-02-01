@@ -4,7 +4,7 @@ import 'package:phoneshop/bloc/manageData/puy/bloc.dart';
 import 'package:phoneshop/screens/screen_pay/componants/title.dart';
 class ExpendedShoppingVerefaid extends StatelessWidget {
   const ExpendedShoppingVerefaid({
-    Key key,
+    Key? key,
   }) : super(key: key);
 
   @override
@@ -29,7 +29,7 @@ class ExpendedShoppingVerefaid extends StatelessWidget {
                   items_shoping_verefaid(text: 'Adress1', reponse:  BlocProvider.of<AdressDataBloc>(context).state.adress1,),
                   items_shoping_verefaid(text: 'Adress2', reponse:  BlocProvider.of<AdressDataBloc>(context).state.address2,),
                   items_shoping_verefaid(text: 'cod Postal', reponse:  BlocProvider.of<AdressDataBloc>(context).state.codPostal.toString(),),
-                  items_shoping_verefaid(text: 'Method shopping', reponse:  BlocProvider.of<ShoppingDataBloc>(context).state.method.titleMethod,),
+                  items_shoping_verefaid(text: 'Method shopping', reponse:  BlocProvider.of<ShoppingDataBloc>(context).state.method!.titleMethod,),
                 ],
               ),
             )
@@ -42,7 +42,7 @@ class ExpendedShoppingVerefaid extends StatelessWidget {
 
 class items_shoping_verefaid extends StatelessWidget {
   const items_shoping_verefaid({
-    Key key, this.text, this.reponse,
+    Key? key,required this.text,required this.reponse,
   }) : super(key: key);
   final String text ;
   final String reponse ;

@@ -9,7 +9,7 @@ class EventGetMessagesFromFire extends EventGetMessages {
   EventGetMessagesFromFire({this.eventData});
 
 
-  getMessages(){
+  List<Message> getMessages(){
     print('eventData==== $eventData}') ;
     List<Message> _msg  = [] ;
     eventData.docs.forEach((element) {
@@ -28,7 +28,7 @@ class EventGetMessagesFromFire extends EventGetMessages {
 class EventGetMessagesActiveDate extends EventGetMessages {
   final  bool value  ;
   final String id ;
-  EventGetMessagesActiveDate({this.value , this.id});
+  EventGetMessagesActiveDate({required this.value ,required this.id});
 
   List isActive(){
     bool result = !value ;

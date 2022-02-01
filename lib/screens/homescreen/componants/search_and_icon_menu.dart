@@ -7,7 +7,7 @@ import 'package:phoneshop/screens/search/search_screen.dart';
 
 class SearchAndIconMenu extends StatelessWidget {
   const SearchAndIconMenu({
-    Key key,
+    Key? key,
   }) : super(key: key);
 
   @override

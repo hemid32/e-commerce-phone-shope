@@ -8,7 +8,7 @@ class EvensGoToProduit extends EventScreenDetails{
   final int indexProduit ; // this is id produit
 
   //Produit produit ;
-  EvensGoToProduit({this.produisColors , this.indexProduit});
+  EvensGoToProduit({required this.produisColors ,required  this.indexProduit});
   Produit produitResult(){
     //Produit produit = produisColors.listProduits[indexProduit] ;
     Produit produit = findProduit() ;
@@ -17,8 +17,8 @@ class EvensGoToProduit extends EventScreenDetails{
   }
 
   findProduit(){
-    Produit targetProduit  ;
-    for(var produit in produisColors.listProduits){
+    late Produit targetProduit ;
+    for(var produit in produisColors.listProduits!){
       if(produit.id == indexProduit )
         targetProduit = produit ;
     }
@@ -33,7 +33,7 @@ class EventMinus extends EventScreenDetails {
 
    int  courentContitu ;
 
-  EventMinus({this.totalProduit, this.courentContitu});
+  EventMinus({required this.totalProduit,required this.courentContitu});
 
   int minus(){
     if(courentContitu == 1){
@@ -52,7 +52,7 @@ class EventAdd extends EventScreenDetails {
 
   int  courentContitu ;
 
-  EventAdd({this.courentContitu , this.totalProduit});
+  EventAdd({required this.courentContitu ,required this.totalProduit});
 
   int add(){
     //print('totalProduit == $totalProduit');

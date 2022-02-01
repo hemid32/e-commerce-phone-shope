@@ -9,7 +9,7 @@ class   AppLocale {
 
   AppLocale(this.locale) ;
 
-  Map<String , String> _loadedLocalizedValues ;
+  late Map<String , String> _loadedLocalizedValues ;
 
   static AppLocale of (BuildContext context) {
     return Localizations.of(context, AppLocale) ;
@@ -22,7 +22,7 @@ class   AppLocale {
   }
 
   String getTranslated (String key) {
-    return _loadedLocalizedValues[key] ;
+    return _loadedLocalizedValues[key]! ;
   }
 
   static const LocalizationsDelegate<AppLocale> delegate  = _AppLocalDelegate() ;

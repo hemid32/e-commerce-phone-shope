@@ -20,8 +20,8 @@ class GetTheBestProduits {
     final ListProduitsColors _totalProduit = await _produit.getListProduitsColorsObject();
     List<int> listNombrePaysProduits = [];
 
-    _totalProduit.produits.forEach((element) {
-      listNombrePaysProduits.add(element.nombrePay);
+    _totalProduit.produits?.forEach((element) {
+      listNombrePaysProduits.add(element.nombrePay!);
     });
 
     List<int> listIndexBestProduit = getHigthValue(listNombrePaysProduits);
@@ -29,7 +29,7 @@ class GetTheBestProduits {
     List<ProduitsColors> result = [];
 
     listIndexBestProduit.forEach((element) {
-      result.add(_totalProduit.produits[element]);
+      result.add(_totalProduit.produits![element]);
     });
     ListProduitsColors resultfilter =
         ListProduitsColors.fronJson({'produits': result});

@@ -5,7 +5,7 @@ import 'package:phoneshop/constant.dart';
 
 class MessageUser extends StatelessWidget {
   const MessageUser({
-    Key key, this.text, this.date, this.activeDate = false, this.onTap, this.id ,
+    Key? key,required this.text,required this.date, this.activeDate = false,required this.onTap, required this.id ,
   }) : super(key: key);
   final String text ;
   final String date ;
@@ -18,7 +18,7 @@ class MessageUser extends StatelessWidget {
     return Align(
       alignment: Alignment.centerRight,
       child: GestureDetector(
-        onTap: onTap,
+        onTap: (){onTap();},
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [
@@ -33,7 +33,7 @@ class MessageUser extends StatelessWidget {
                     )
 
                 ),
-                child: Text('$text' , style: Theme.of(context).textTheme.button.copyWith(
+                child: Text('$text' , style: Theme.of(context).textTheme.button?.copyWith(
                     fontSize: 18
                 ),),
               ),
@@ -51,7 +51,7 @@ class MessageUser extends StatelessWidget {
 
 class MessageAdmin extends StatelessWidget {
   const MessageAdmin({
-    Key key, this.text, this.date, this.activeDate = false, this.onTap, this.id ,
+    Key? key,required  this.text,required  this.date, this.activeDate = false,required this.onTap,required this.id ,
   }) : super(key: key);
   final String text ;
   final String date ;
@@ -69,7 +69,7 @@ class MessageAdmin extends StatelessWidget {
 
         children: [
           GestureDetector(
-            onTap: onTap,
+            onTap: (){onTap();},
             child: Container(
               padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
               decoration: BoxDecoration(
@@ -81,7 +81,7 @@ class MessageAdmin extends StatelessWidget {
                   )
 
               ),
-              child: Text('$text' , style: Theme.of(context).textTheme.button.copyWith(
+              child: Text('$text' , style: Theme.of(context).textTheme.button?.copyWith(
                   fontSize: 18
               ),),
             ),

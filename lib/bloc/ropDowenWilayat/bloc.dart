@@ -10,7 +10,9 @@ class BlocDropDowenWilayat extends Bloc<EveneDropDowen , String >{
   @override
   Stream<String> mapEventToState(EveneDropDowen event) async* {
     // TODO: implement mapEventToState
-    EveneDropDowenValue _result = event ;
-    yield _result.value ;
+    if(event is EveneDropDowenValue ) {
+      EveneDropDowenValue _result = event;
+      yield _result.value;
+    }
   }
 }

@@ -10,7 +10,7 @@ class BlocEditUser extends Bloc<EventEditProfile , dynamic>{
     //throw UnimplementedError();
     if(event is  EventEditProfileGet){
       UserFire userFire = UserFire(user: event.newUser) ;
-      var result = await  userFire.updateUser(event.odlPassword, event.oldEmeil, event.oldNombre) ;
+      var result = await  userFire.updateUser(event.odlPassword, event.oldEmeil!, event.oldNombre) ;
       yield result ;
     }
     if(event is EventEditProfileWithPhone){

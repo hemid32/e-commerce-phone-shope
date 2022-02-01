@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:phoneshop/bloc/cartScreenManage/bloc.dart';
@@ -30,11 +31,11 @@ import 'package:toast/toast.dart';
 
 class Addres extends StatelessWidget {
   Addres({
-    Key key,
+    Key? key,
   }) : super(key: key);
-  String _nome , _prenom , _nomberPhone , _email , _wilaya = 'El Bayadh' , _daira , _adress1 , _address2    ;
-  bool _fine  ;
-  int _codPostal  ;
+  late String _nome , _prenom , _nomberPhone , _email , _wilaya = 'El Bayadh' , _daira , _adress1 , _address2    ;
+  //bool _fine  ;
+  late int _codPostal  ;
 
   @override
   Widget build(BuildContext context) {
@@ -46,11 +47,11 @@ class Addres extends StatelessWidget {
             return FieldTextGet(title: 'Nome', onChange: (valur){
               BlocProvider.of<ValidatorTexxtBlocString>(context).add(TextFieldValidatorEventNome(valur: valur  , titleErurr: 'erurr Nome short')) ;
               _nome = valur;
-              },validErurr: state ,  );
+              },validErurr: state ,textInputeType: TextInputType.text,  );
           }
         ) ,
          FieldTextGet(title: 'Prenome',onChange: (valur){
-              _prenom = valur;},
+              _prenom = valur;},textInputeType: TextInputType.text,
         ) ,
         BlocBuilder<ValidatorTexxtBlocPhoneNombre , dynamic>(
           builder: (_, state) {
@@ -58,7 +59,7 @@ class Addres extends StatelessWidget {
               BlocProvider.of<ValidatorTexxtBlocPhoneNombre>(context).add(TextFieldValidatorEventPhoneNombre(valur: valur  , titleErurr: 'erurr from nombre')) ;
 
               _nomberPhone = valur;
-              },validErurr: state , );
+              },validErurr: state ,textInputeType: TextInputType.phone, );
           }
         ) ,
         BlocBuilder<ValidatorTexxtBlocPhoneEmail , dynamic>(
@@ -67,7 +68,7 @@ class Addres extends StatelessWidget {
               BlocProvider.of<ValidatorTexxtBlocPhoneEmail>(context).add(TextFieldValidatorEventPhoneEmail(valur: valur.toString().trim()  , titleErurr: 'erurr email')) ;
 
               _email = valur;
-            },validErurr: state ,);
+            },validErurr: state ,textInputeType: TextInputType.emailAddress);
           }
         ) ,
         //ContainerAndIconAndText_Seach(title: 'Search Your Adress', icon:  Icon(Icons.location_searching_sharp),),
@@ -101,10 +102,10 @@ class Addres extends StatelessWidget {
 
 
 
-        FieldTextGet(title: 'Daira',onChange: (valur){  _daira = valur;}) ,
-        FieldTextGet(title: 'adress',onChange: (valur){  _adress1 = valur;}) ,
-        FieldTextGet(title: 'adress 2 ',onChange: (valur){  _address2 = valur;}) ,
-        FieldTextGet(title: 'Cod Postal',onChange: (valur){  _codPostal = int.parse(valur);}) ,
+        FieldTextGet(title: 'Daira',onChange: (valur){  _daira = valur;} , textInputeType: TextInputType.text) ,
+        FieldTextGet(title: 'adress',onChange: (valur){  _adress1 = valur;}, textInputeType: TextInputType.text) ,
+        FieldTextGet(title: 'adress 2 ',onChange: (valur){  _address2 = valur;}, textInputeType: TextInputType.text) ,
+        FieldTextGet(title: 'Cod Postal',onChange: (valur){  _codPostal = int.parse(valur);}, textInputeType: TextInputType.number) ,
         FooterButtons(titleButton1: 'Continu Shoping', titleButton2: 'Save Address', onTapButton1: () async  {
 
           var  addres = verificationFormAddressIsCompleted(

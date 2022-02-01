@@ -3,7 +3,9 @@ import 'package:phoneshop/constant.dart';
 
 class FooterButton extends StatelessWidget {
   const FooterButton({
-    Key key, this.back, this.backText, this.textButton, this.buttonTap,
+    Key? key,required this.back,
+    required this.backText,
+    required this.textButton,required  this.buttonTap,
   }) : super(key: key);
   final Function back ;
   final String backText  ;
@@ -16,7 +18,7 @@ class FooterButton extends StatelessWidget {
     return Column(
       children: [
         GestureDetector(
-          onTap:buttonTap,
+          onTap:(){buttonTap();},
           child: Container(
             alignment: Alignment.center,
             margin: EdgeInsets.symmetric(horizontal: 20 , vertical:  20),
@@ -25,16 +27,16 @@ class FooterButton extends StatelessWidget {
             decoration: BoxDecoration(
                 color: kPrimaryColor.withOpacity(0.8)
             ),
-            child: Text('$textButton' , style: Theme.of(context).textTheme.button.copyWith(
+            child: Text('$textButton' , style: Theme.of(context).textTheme.button?.copyWith(
                 color: Colors.white , fontSize: 15
             ),),
           ),
         ),
         GestureDetector(
-          onTap: back,
+          onTap: (){back();},
           child: Container(
 
-            child: Text('$backText' , style:  Theme.of(context).textTheme.button.copyWith(
+            child: Text('$backText' , style:  Theme.of(context).textTheme.button?.copyWith(
                 decoration: TextDecoration.underline, color: Colors.black.withOpacity(0.4)
             ),),
           ),

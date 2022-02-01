@@ -10,7 +10,17 @@ class ModelAdress {
   final String id ;
   final int codPostal ;
   final bool fine  ;
-  ModelAdress({this.nome, this.prenome, this.nomberPhone, this.email, this.wilaya, this.daira, this.adress1, this.address2, this.codPostal, this.fine = false , this.id});
+  ModelAdress({required this.nome,
+    required this.prenome,
+    required this.nomberPhone,
+    required this.email,
+    required this.wilaya,
+    required this.daira,
+    required this.adress1,
+  required  this.address2,
+    required this.codPostal,
+    this.fine = false ,
+    required this.id});
 
   factory ModelAdress.fromJson(Map<String , dynamic> jsnData){
     return ModelAdress(

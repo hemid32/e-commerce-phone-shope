@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class Header extends StatelessWidget {
   const Header({
-    Key key,
+    Key? key,
   }) : super(key: key);
 
   @override
@@ -16,7 +16,7 @@ class Header extends StatelessWidget {
           Expanded(
             child: Center(
               child: Text('Messages with story' ,  style:
-              Theme.of(context).textTheme.button.copyWith(
+              Theme.of(context).textTheme.button?.copyWith(
                 color: Colors.black.withOpacity(0.5)  ,
                 fontSize: 17 ,
               ),),

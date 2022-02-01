@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:phoneshop/bloc/favorite/bloc.dart';
 import 'package:phoneshop/bloc/favorite/bloc/bloc.dart';
 import 'package:phoneshop/bloc/favorite/bloc/state.dart';
-import 'package:phoneshop/bloc/favorite/event.dart';
 import 'package:phoneshop/bloc/manageScreen/detailProduit/bloc.dart';
 import 'package:phoneshop/bloc/manageScreen/detailProduit/event.dart';
 import 'package:phoneshop/bloc/userManagze/userVirifaid/bloc.dart';
@@ -13,7 +11,6 @@ import 'package:phoneshop/model/favorite/model.dart';
 import 'package:phoneshop/model/filter/filterProduitFormProduitColor/model.dart';
 import 'package:phoneshop/model/produit/produit.dart';
 import 'package:phoneshop/model/produit/produit_colors.dart';
-import 'package:phoneshop/model/produit/servises.dart';
 import 'package:phoneshop/screens/detailProduit/detail_produit.dart';
 import 'package:shimmer/shimmer.dart';
 
@@ -23,7 +20,7 @@ import 'package:shimmer/shimmer.dart';
 
 class ItemsCardBestSellingPHone extends StatelessWidget {
   const ItemsCardBestSellingPHone({
-    Key key, this.listData,
+    Key? key, required this.listData,
   }) : super(key: key);
   final ListProduitsColors listData ;
   @override
@@ -37,20 +34,21 @@ class ItemsCardBestSellingPHone extends StatelessWidget {
           return Row(
             children: [
               //for(var i  = 0 ; i< listData.produits.length ; i++  )
-              for(var produitsColor  in  listData.produits   )
+              for(var produitsColor  in  listData.produits!   )
                 FutureBuilder(
                   future: null ,//FavoriteModelItem(produit: produitsColor).ifFavorite(),
                   builder: (_ , data){
                   return  data.hasData ?  Builder(
                     builder: (context) {
                       //print(listData.produits[i].listProduits.length)
-                      Produit productShowing = FilterProduitFromProduitColors.getPriorityProduitFromProduitColors(produitsColor.listProduits) ;
+                      Produit productShowing = FilterProduitFromProduitColors.getPriorityProduitFromProduitColors(produitsColor.listProduits!) ;
                       return CardPhoneItems(
-                        nombrePay: produitsColor.nombrePay,
+                        pricintage: 0.0,
+                        nombrePay: produitsColor.nombrePay!,
                         produit: productShowing,
                         onTap: (){
                           BlocProvider.of<BlocUserVerifaid>(context).add(EventsUserVerified());
-                          BlocProvider.of<BlocScreenDetailProduit>(context).add(EvensGoToProduit(indexProduit:productShowing.id, produisColors: produitsColor )) ;
+                          BlocProvider.of<BlocScreenDetailProduit>(context).add(EvensGoToProduit(indexProduit:productShowing.id!, produisColors: produitsColor )) ;
                           Navigator.push(context, MaterialPageRoute(builder: (_)=> BlocProvider.value(
                             value: BlocProvider.of<BlocScreenDetailProduit>(context),
                             child:  BlocProvider.value(
@@ -63,8 +61,8 @@ class ItemsCardBestSellingPHone extends StatelessWidget {
                       );
                     }
                   )  : Shimmer.fromColors(
-                      baseColor: Colors.grey[300],
-                      highlightColor: Colors.grey[100],
+                      baseColor: Colors.grey[300]!,
+                      highlightColor: Colors.grey[100]!,
                       child: Container(
                         decoration: BoxDecoration(
                           color:  Colors.white ,
@@ -93,7 +91,12 @@ class ItemsCardBestSellingPHone extends StatelessWidget {
 
 class CardPhoneItems extends StatelessWidget {
   const CardPhoneItems({
-    Key key,@required this.produit , this.fav , this.onTap , this.onTapFav , this.pricintage, this.nombrePay //this.image, this.title, this.descreption, this.price, this.pricintage, this.onTap, this.id, this.fav, this.onTapFav,
+    Key? key,required this.produit ,
+    required this.fav ,
+    required this.onTap ,
+    required this.onTapFav ,
+    required this.pricintage,
+    required this.nombrePay //this.image, this.title, this.descreption, this.price, this.pricintage, this.onTap, this.id, this.fav, this.onTapFav,
   }) : super(key: key);
   final double pricintage ;
   final Function onTap ;
@@ -106,7 +109,7 @@ class CardPhoneItems extends StatelessWidget {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size ;
     return GestureDetector(
-      onTap: onTap,
+      onTap: (){onTap();},
            child: Container(
             margin:  EdgeInsets.symmetric(horizontal: 10 , vertical:  20),
             width:  size.width /  2 -10 ,
@@ -132,12 +135,12 @@ class CardPhoneItems extends StatelessWidget {
                           color:  Colors.red.withOpacity(0.5) ,
                           shape: BoxShape.circle ,
                         ),
-                        child: Text('${pricintage.toStringAsFixed(0)}%' , style:  Theme.of(context).textTheme.button.copyWith(color: Colors.white , fontSize: 12),),
+                        child: Text('${pricintage.toStringAsFixed(0)}%' , style:  Theme.of(context).textTheme.button?.copyWith(color: Colors.white , fontSize: 12),),
                       ): SizedBox(),
                       Spacer() ,
 
                       GestureDetector(
-                        onTap: onTapFav,
+                        onTap: (){onTapFav();},
                         child: Container(
                           alignment: Alignment.center,
                           height:  35,
@@ -166,7 +169,7 @@ class CardPhoneItems extends StatelessWidget {
                   decoration: BoxDecoration(
                       image: DecorationImage(
                           image: NetworkImage(
-                            produit.image ,
+                            produit.image! ,
 
                           ) ,
                           fit: BoxFit.cover
@@ -189,7 +192,7 @@ class CardPhoneItems extends StatelessWidget {
                               text:  '${produit.nomPhone}\n ' , style:  Theme.of(context).textTheme.button
                           ) ,
                           TextSpan(
-                              text:  (produit.detail).length < 15 ?'${produit.detail}' : '${produit.detail.substring(0,15)} ...' , style: Theme.of(context).textTheme.button
+                              text:  (produit.detail)!.length< 15 ?'${produit.detail}' : '${produit.detail!.substring(0,15)} ...' , style: Theme.of(context).textTheme.button
 
                           ) ,
                         ]
@@ -208,7 +211,7 @@ class CardPhoneItems extends StatelessWidget {
                     borderRadius: BorderRadius.circular(20) ,
 
                   ),
-                  child: Text('${produit.price} DZ' , style : Theme.of(context).textTheme.button.copyWith(color: Colors.white , fontSize: 20)),
+                  child: Text('${produit.price} DZ' , style : Theme.of(context).textTheme.button?.copyWith(color: Colors.white , fontSize: 20)),
                 )
               ],
             ),

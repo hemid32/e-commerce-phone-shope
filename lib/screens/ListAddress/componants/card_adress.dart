@@ -4,8 +4,8 @@ import 'package:phoneshop/model/puy/address.dart';
 
 class CardAdress extends StatelessWidget {
   const CardAdress({
-    Key key,
-    @required this.adress, this.onDelet, this.onTap,
+    Key? key,
+    required this.adress,required this.onDelet,required this.onTap,
   }) : super(key: key);
 
   final ModelAdress adress;
@@ -16,7 +16,7 @@ class CardAdress extends StatelessWidget {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size ;
     return InkWell(
-      onTap: onTap,
+      onTap: (){onTap();},
       child: Container(
         padding: EdgeInsets.all(10),
         margin: EdgeInsets.symmetric(horizontal: 10 , vertical: 5),
@@ -49,7 +49,7 @@ class CardAdress extends StatelessWidget {
             Container(
                 child: Column(
                   children: [
-                    InkWell( onTap: onDelet,child: Icon(Icons.close , size: 30,)),
+                    InkWell( onTap: (){onDelet();},child: Icon(Icons.close , size: 30,)),
                     Spacer() ,
                     //Icon(Icons.mode_edit_outline , size: 25,),
                   ],

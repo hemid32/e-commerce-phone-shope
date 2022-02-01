@@ -6,7 +6,7 @@ import 'body.dart';
 
 class RadioButton extends StatelessWidget {
   const RadioButton({
-    Key key, this.title, this.valure, this.price, this.groub, this.onChanged,
+    Key? key,required this.title,required this.valure,required this.price,required this.groub,required this.onChanged,
   }) : super(key: key);
   final String title ;
   final String  valure ;
@@ -38,13 +38,13 @@ class RadioButton extends StatelessWidget {
                 activeColor: kPrimaryColor,
                 value: valure ,
                 groupValue: groub,
-                onChanged: onChanged,
+                onChanged: (v){onChanged(v);},
               ),
               Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text('$title ' ,style: Theme.of(context).textTheme.button.copyWith(fontSize: 15),),
-                  Text('$price DZ ' ,style: Theme.of(context).textTheme.button.copyWith( color: kPrimaryColor, fontSize: 15),),
+                  Text('$title ' ,style: Theme.of(context).textTheme.button?.copyWith(fontSize: 15),),
+                  Text('$price DZ ' ,style: Theme.of(context).textTheme.button?.copyWith( color: kPrimaryColor, fontSize: 15),),
                 ],
               )
             ],

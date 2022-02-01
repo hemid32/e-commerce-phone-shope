@@ -3,7 +3,7 @@ import 'package:phoneshop/constant.dart';
 
 class Header extends StatelessWidget {
   const Header({
-    Key key, this.title, this.description,
+    Key? key,required this.title,required this.description,
   }) : super(key: key);
 
   final String title ;
@@ -27,12 +27,12 @@ class Header extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text('$title',style  :  Theme.of(context).textTheme.headline2.copyWith(
+          Text('$title',style  :  Theme.of(context).textTheme.headline2?.copyWith(
               fontSize: 25 ,
             color: Colors.white
           )),
           SizedBox(height: 15,) ,
-          Text('$description ', style: Theme.of(context).textTheme.button.copyWith(
+          Text('$description ', style: Theme.of(context).textTheme.button?.copyWith(
             color: Colors.white.withOpacity(0.6)
           ),)
         ],

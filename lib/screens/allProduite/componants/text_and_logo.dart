@@ -4,7 +4,7 @@ import 'package:phoneshop/constant.dart';
 
 class TextAndLogo extends StatelessWidget {
   const TextAndLogo({
-    Key key, this.title, this.logo,
+    Key? key,required this.title,required this.logo,
   }) : super(key: key);
   final String title ;
   final String logo ;
@@ -20,7 +20,7 @@ class TextAndLogo extends StatelessWidget {
 
 
               alignment: Alignment.centerLeft,
-              child: Text('$title ' , style:  Theme.of(context).textTheme.button.copyWith(fontSize: 20),)),
+              child: Text('$title ' , style:  Theme.of(context).textTheme.button?.copyWith(fontSize: 20),)),
           Spacer() ,
 
           Container(

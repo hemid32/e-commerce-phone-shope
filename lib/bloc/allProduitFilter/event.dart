@@ -11,14 +11,14 @@ class EvenetsAllProduitFilters {}
 
 
 class EventAllProduitTypeFhone extends EvenetsAllProduitFilters {
-  final String phoneType   ;
+  final String? phoneType   ;
   EventAllProduitTypeFhone({this.phoneType});
 
   ListProduitsColors filtType(){
     List<ProduitsColors> listProduitFilter  = [] ;
     ListProduitsColors  listProduit = getProduitColors() ;
 
-    listProduit.produits.forEach((element) {
+    listProduit.produits?.forEach((element) {
       if(element.typePhone == phoneType){
         listProduitFilter.add(element) ;
       }
@@ -56,7 +56,7 @@ class EventAllRecentOffers extends EvenetsAllProduitFilters{
 class EventAllProduitAfterFillter extends EvenetsAllProduitFilters{
   final  ListProduitsColors  dataFilter  ;
 
-  EventAllProduitAfterFillter({this.dataFilter});
+  EventAllProduitAfterFillter({ required this.dataFilter});
 
 
 }

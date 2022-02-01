@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class ImagePoster extends StatelessWidget {
   const ImagePoster({
-    Key key, this.image, this.onTap,
+    Key? key,required this.image,required this.onTap,
   }) : super(key: key);
   final String image  ;
   final Function onTap ;
@@ -10,7 +10,7 @@ class ImagePoster extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: onTap,
+      onTap: (){onTap();},
       child: Container(
         margin: EdgeInsets.symmetric(horizontal: 10),
         height: MediaQuery.of(context).size.height *0.25,

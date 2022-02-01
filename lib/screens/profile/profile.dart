@@ -17,7 +17,7 @@ class Profile extends StatelessWidget {
       builder: (context, snapshot) {
         return snapshot.hasData ? MultiBlocProvider(
           providers: [
-            BlocProvider<BlocUserGetModel>(create: (BuildContext context)=> BlocUserGetModel(initialState: snapshot.data)) ,
+            BlocProvider<BlocUserGetModel>(create: (BuildContext context)=> BlocUserGetModel(initialState: snapshot.data!)) ,
           ],
           child: Scaffold(
             body: Body(),

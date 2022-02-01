@@ -9,7 +9,7 @@ class ShoppingModelMethod {
   final double price ;
   final List<String> wilayaSupport  ;
 
-  ShoppingModelMethod({this.titleMethod, this.price, this.wilayaSupport});
+  ShoppingModelMethod({required this.titleMethod,required this.price,required this.wilayaSupport});
 
   factory ShoppingModelMethod.fromJson(Map<String , dynamic> jsnData){
     return ShoppingModelMethod(
@@ -33,7 +33,7 @@ class ShoppingModelMethod {
 
 
 class TotalShoppingMethod {
-  final  List<ShoppingModelMethod> methods ;
+  final  List<ShoppingModelMethod>? methods ;
   TotalShoppingMethod({this.methods});
   factory TotalShoppingMethod.fromJson(Map<String , List<ShoppingModelMethod> > jsnData){
     return TotalShoppingMethod(
@@ -71,7 +71,7 @@ Map<String ,List<ShoppingModelMethod> >  t = {
  List testMetod(){
   TotalShoppingMethod  listMethodTest = TotalShoppingMethod.fromJson(t) ;
   //print('metods == ${listMethodTest.methods}') ;
-  return listMethodTest.methods ;
+  return listMethodTest.methods! ;
 }
 
 // test save method shopping from firebase  deleted *
@@ -81,7 +81,7 @@ saveMethodsShoppingFromFireBase(){
   try{
     CollectionReference _method = FirebaseFirestore.instance.collection(
         'MethodsShopping');
-    List<ShoppingModelMethod> mapData = t['methods'] ;
+    List<ShoppingModelMethod> mapData = t['methods']! ;
     // print('mapData === $mapData') ;
     mapData.forEach((element) async  {
       await _method.add(element.toMap()) ;

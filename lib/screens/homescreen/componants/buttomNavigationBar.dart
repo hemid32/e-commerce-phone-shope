@@ -18,7 +18,7 @@ import 'package:phoneshop/screens/screen_pay/widgets/cart.dart';
 class BottomNavigationsBars extends StatelessWidget {
 
    BottomNavigationsBars({
-    Key key,
+    Key? key,
   }) : super(key: key);
 
 
@@ -101,7 +101,7 @@ class BottomNavigationsBars extends StatelessWidget {
 
 class IconButtonBottom extends StatelessWidget {
   const IconButtonBottom({
-    Key key, this.icon, this.onTap, this.active = false ,
+    Key? key,required this.icon,required this.onTap, this.active = false ,
   }) : super(key: key);
   final IconData icon ;
   final Function onTap ;
@@ -110,7 +110,7 @@ class IconButtonBottom extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: onTap,
+      onTap: (){onTap();},
       child: Column(
         children: [
 

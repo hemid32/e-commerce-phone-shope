@@ -6,7 +6,7 @@ import 'package:phoneshop/screens/screen_pay/componants/progress_shopping.dart';
 import 'package:phoneshop/screens/screen_pay/componants/text_rich_buttom_deatils.dart';
 class ConfermArrived extends StatelessWidget {
   const ConfermArrived({
-    Key key,
+    Key? key,
   }) : super(key: key);
 
   @override

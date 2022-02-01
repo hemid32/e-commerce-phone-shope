@@ -1,13 +1,10 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:phoneshop/bloc/laodingCirceler/bloc.dart';
-import 'package:phoneshop/bloc/laodingCirceler/events.dart';
 import 'package:phoneshop/bloc/manageScreenConfermCodSms/bloc.dart';
 import 'package:phoneshop/bloc/manageScreenConfermCodSms/event.dart';
 import 'package:phoneshop/bloc/register/bloc.dart';
-import 'package:phoneshop/bloc/register/event.dart';
 import 'package:phoneshop/bloc/userManagze/formerRegister/termAndCondition/bloc.dart';
 import 'package:phoneshop/bloc/userManagze/formerRegister/termAndCondition/event.dart';
 import 'package:phoneshop/bloc/userManagze/screenLoginRegister/bloc.dart';
@@ -17,27 +14,24 @@ import 'package:phoneshop/bloc/validatorTaxtField/event.dart';
 import 'package:phoneshop/constant.dart';
 import 'package:phoneshop/model/user/user.dart';
 import 'package:phoneshop/screens/loginorRegester/componants/button_register.dart';
-import 'package:phoneshop/screens/loginorRegester/componants/costom_path.dart';
 import 'package:phoneshop/screens/loginorRegester/componants/register_r_design.dart';
-import 'package:phoneshop/screens/loginorRegester/componants/test_fiald_and_button_verifaid.dart';
 import 'package:phoneshop/screens/loginorRegester/function/verifiedFieldIsComplet.dart';
 import 'package:phoneshop/screens/mobilVerification/mobilVerification.dart';
 import 'package:phoneshop/screens/screen_pay/componants/field_text.dart';
 import 'package:toast/toast.dart';
-//import 'package:phoneshop/screens/loginorRegester/function/dialog.dart';
 
 import 'container_background.dart';
 class Register extends StatelessWidget {
     Register({
-    Key key,
+    Key? key,
   }) : super(key: key);
-   String _email ;
-   String  _name ;
-   String _phone ;
-   String _password ;
-   bool _allFormIsCompleted ;
-   bool _allFormIsNotVide ;
-   UserLocalModel _user ;
+   late String _email ;
+   late String  _name ;
+   late String _phone ;
+   late String _password ;
+   late bool _allFormIsCompleted ;
+   late bool _allFormIsNotVide ;
+   late UserLocalModel _user ;
 
 
     @override
@@ -73,7 +67,7 @@ class Register extends StatelessWidget {
                       titleErurr: 'a very short name ! '
                     )) ;
                     _name = valur ;
-                  }, validErurr: state, );
+                  }, validErurr: state, textInputeType: TextInputType.text);
                 }
               ),
             ) ,
@@ -108,7 +102,7 @@ class Register extends StatelessWidget {
                     )) ;
                     _email = valur.toString().trim() ;
 
-                  }, validErurr: state, );
+                  }, validErurr: state,textInputeType: TextInputType.emailAddress );
                 }
               ),
             ) ,
@@ -126,7 +120,7 @@ class Register extends StatelessWidget {
                       titleErurr:  'At least 8 characters !',
                     )) ;
                     _password = valur ;
-                  }, secure: true, validErurr: state, );
+                  }, secure: true, validErurr: state,textInputeType: TextInputType.text );
                 }
               ),
             ) ,
@@ -146,13 +140,13 @@ class Register extends StatelessWidget {
                           activeColor: kPrimaryColor,
                             value: state, onChanged: (value){
                           BlocProvider.of<BlocTermaAndConditionChek>(context).add(EventChekTermsItem(
-                            value
+                            value!
                           )) ;
                         });
                       }
                     ) ,
                     Expanded(
-                      child: Text('agree with Terms & conditions', style: Theme.of(context).textTheme.button.copyWith(
+                      child: Text('agree with Terms & conditions', style: Theme.of(context).textTheme.button?.copyWith(
                           color: kPrimaryColor
                       ),),
                     )

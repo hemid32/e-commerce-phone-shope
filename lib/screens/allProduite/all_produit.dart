@@ -20,12 +20,7 @@ class AllProduit extends StatelessWidget {
         BlocProvider<BlocScreenDetailProduit>(
           create: (BuildContext context) => BlocScreenDetailProduit(),
         ),
-        BlocProvider<BlocFavoriteList>(
-          create: (BuildContext context) => BlocFavoriteList(),
-        ),
-        BlocProvider<BlocFavoriteIs>(
-          create: (BuildContext context) => BlocFavoriteIs(),
-        ),
+
         BlocProvider<BlocFiltersAllProduits>(
           create: (BuildContext context) => BlocFiltersAllProduits(),
         ),

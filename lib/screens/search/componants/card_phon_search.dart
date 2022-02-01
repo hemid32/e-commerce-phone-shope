@@ -6,7 +6,7 @@ import 'package:phoneshop/constant.dart';
 
 class CardPhoneSearsh extends StatelessWidget {
   const CardPhoneSearsh({
-    Key key, this.title, this.price, this.image, this.onTap, this.ram, this.storage,
+    Key? key,required  this.title,required this.price,required this.image,required this.onTap,required this.ram,required this.storage,
   }) : super(key: key);
 
   final String title ;
@@ -21,7 +21,7 @@ class CardPhoneSearsh extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: onTap,
+      onTap: (){onTap();},
       child: Container(
         margin: EdgeInsets.symmetric(horizontal: 5 , vertical: 5),
         height: 80,
@@ -59,7 +59,7 @@ class CardPhoneSearsh extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(title ,
-                    style: Theme.of(context).textTheme.button.copyWith(
+                    style: Theme.of(context).textTheme.button?.copyWith(
                         fontSize: 18 ,
                         fontWeight: FontWeight.bold
 
@@ -70,7 +70,7 @@ class CardPhoneSearsh extends StatelessWidget {
                     children: [
                       Text('$price DZ' ,
 
-                        style: Theme.of(context).textTheme.button.copyWith(
+                        style: Theme.of(context).textTheme.button?.copyWith(
                             color: kPrimaryColor ,
                             fontSize: 16 ,
                             fontWeight: FontWeight.bold
@@ -84,7 +84,7 @@ class CardPhoneSearsh extends StatelessWidget {
                         children: [
                           SvgPicture.asset('assets/icons/ram.svg' , width: 20, height: 20,) ,
                           SizedBox(width: 5,) ,
-                          Text('$ram GB' , style: Theme.of(context).textTheme.button.copyWith(
+                          Text('$ram GB' , style: Theme.of(context).textTheme.button?.copyWith(
                             fontSize: 12
                           ),)
                         ],
@@ -95,7 +95,7 @@ class CardPhoneSearsh extends StatelessWidget {
                         children: [
                           SvgPicture.asset('assets/icons/storage.svg' , width: 15, height: 15,) ,
                           SizedBox(width: 5,) ,
-                          Text('$storage GB',style: Theme.of(context).textTheme.button.copyWith(
+                          Text('$storage GB',style: Theme.of(context).textTheme.button?.copyWith(
                               fontSize: 12
                           ),)
                         ],

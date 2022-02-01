@@ -8,7 +8,7 @@ import 'package:phoneshop/constant.dart';
 import 'componants/body.dart';
 
 class FormAddNewAddress extends StatelessWidget {
-  const FormAddNewAddress({Key key}) : super(key: key);
+  const FormAddNewAddress({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

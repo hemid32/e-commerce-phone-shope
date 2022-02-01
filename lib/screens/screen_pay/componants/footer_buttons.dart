@@ -2,12 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:phoneshop/constant.dart';
 class FooterButtons extends StatelessWidget {
   const FooterButtons({
-    Key key, this.titleButton1, this.titleButton2, this.onTapButton1, this.onTapButton2,
+    Key? key,required  this.titleButton1,
+     this.titleButton2,
+     this.onTapButton1,
+     this.onTapButton2,
   }) : super(key: key);
-  final String titleButton1 ;
-  final String titleButton2 ;
-  final Function onTapButton1 ;
-  final Function onTapButton2 ;
+  final String? titleButton1 ;
+  final String? titleButton2 ;
+  final Function? onTapButton1 ;
+  final Function? onTapButton2 ;
 
 
 
@@ -23,7 +26,7 @@ class FooterButtons extends StatelessWidget {
       child: Row(
         children: [
           GestureDetector(
-            onTap: onTapButton1,
+            onTap: (){onTapButton1!();},
             child: Container(
               alignment: Alignment.center,
               height: double.infinity,
@@ -32,13 +35,13 @@ class FooterButtons extends StatelessWidget {
                   color: kPrimaryColor.withOpacity(0.8)
               ),
 
-              child: Text('$titleButton1' , style: Theme.of(context).textTheme.button.copyWith(color: Colors.white , fontSize: 15),),
+              child: Text('$titleButton1' , style: Theme.of(context).textTheme.button?.copyWith(color: Colors.white , fontSize: 15),),
 
             ),
           ),
           SizedBox(width: 10,) ,
           Expanded(child: GestureDetector(
-            onTap: onTapButton2,
+            onTap: (){onTapButton2!();},
             child: Container(
               width: double.infinity,
               height: double.infinity,
@@ -47,7 +50,7 @@ class FooterButtons extends StatelessWidget {
                 color: Theme.of(context).accentColor ,
 
               ),
-              child: Text('$titleButton2' , style: Theme.of(context).textTheme.button.copyWith( fontSize: 15)),
+              child: Text('$titleButton2' , style: Theme.of(context).textTheme.button?.copyWith( fontSize: 15)),
             ),
           ))
         ],

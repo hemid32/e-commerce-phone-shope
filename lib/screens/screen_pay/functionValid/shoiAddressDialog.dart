@@ -16,7 +16,7 @@ import 'package:phoneshop/screens/screen_pay/componants/expanded_address_list.da
 Future<void> showMyDialogShoiAddress(contextOriginal) async {
   ServisesAdressHive _addressServises = ServisesAdressHive();
 
-  String _index;
+  late String _index;
 
   return showDialog(
       //rootNavigator:true ,
@@ -43,16 +43,16 @@ Future<void> showMyDialogShoiAddress(contextOriginal) async {
                                       style: Theme.of(contextOriginal)
                                           .textTheme
                                           .button
-                                          .copyWith(
+                                          ?.copyWith(
 
                                               fontSize: 20),
                                     )),
                               ),
-                              for (var i = 0; i < snapshot.data.length; i++)
+                              for (var i = 0; i < snapshot.data!.length; i++)
                                 BlocBuilder<AddressBlocRadio, dynamic>(
                                     builder: (context, state) {
                                   return ExpandedColumnAddesses(
-                                    address: snapshot.data[i],
+                                    address: snapshot.data![i],
                                     valure: i.toString(),
                                     groub: state,
                                     onChanged: (value) {
@@ -70,7 +70,7 @@ Future<void> showMyDialogShoiAddress(contextOriginal) async {
                                         onPressed: () {
                                           Navigator.pop(contextOriginal) ;
                                           ModelAdress addres =
-                                          snapshot.data[int.parse(_index)];
+                                          snapshot.data![int.parse(_index)];
                                           BlocProvider.of<BlocListDataCart>(contextOriginal).add(EventShowList()) ;
                                           BlocProvider.of<AdressDataBloc>(contextOriginal).add(AddAdressData(addres)) ;
                                           BlocProvider.of<PuyScreenBloc>(contextOriginal).add(ContinuShopping()) ;
@@ -82,7 +82,7 @@ Future<void> showMyDialogShoiAddress(contextOriginal) async {
                                           style: Theme.of(contextOriginal)
                                               .textTheme
                                               .button
-                                              .copyWith(
+                                              ?.copyWith(
                                                 color: kPrimaryColor,
                                                 fontSize: 18,
                                                 fontWeight: FontWeight.bold,
@@ -97,7 +97,7 @@ Future<void> showMyDialogShoiAddress(contextOriginal) async {
                                             style: Theme.of(contextOriginal)
                                                 .textTheme
                                                 .button
-                                                .copyWith(
+                                                ?.copyWith(
                                                   color: kPrimaryColor,
                                                   fontSize: 18,
                                                   fontWeight: FontWeight.bold,

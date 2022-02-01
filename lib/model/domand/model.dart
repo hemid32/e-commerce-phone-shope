@@ -19,18 +19,18 @@ class DomandProduit {
   final DateTime date ;
   final String uidDomand ;
   DomandProduit({
-    this.nombreDomand,
-    this.listProduitBuy,
-    this.addres,
-    this.methodSopping,
-    this.user,
-    this.nots,
-    this.stateDomand,
-    this.priceShopping,
-    this.priceTotalProduit,
-    this.total,
-    this.date ,
-    this.uidDomand ,
+   required this.nombreDomand,
+    required  this.listProduitBuy,
+    required this.addres,
+    required this.methodSopping,
+    required this.user,
+    required  this.nots,
+    required this.stateDomand,
+    required  this.priceShopping,
+    required   this.priceTotalProduit,
+    required    this.total,
+    required   this.date ,
+    required this.uidDomand ,
   });
 
 
@@ -123,7 +123,7 @@ class DomandProduit {
 
 class ListDomands {
   final List<DomandProduit> domands;
-  ListDomands({this.domands});
+  ListDomands({required this.domands});
   factory ListDomands.fromJson(Map<String, dynamic> json) {
     return ListDomands(domands: json['domands']);
   }

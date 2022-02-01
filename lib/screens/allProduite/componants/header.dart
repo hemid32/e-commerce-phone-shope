@@ -4,10 +4,10 @@ import 'package:phoneshop/constant.dart';
 
 class Header extends StatelessWidget {
   const Header({
-    Key key, this.title, this.logo,
+    Key? key, this.title, this.logo,
   }) : super(key: key);
-  final String title ;
-  final String logo ;
+  final String? title ;
+  final String? logo ;
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +28,7 @@ class Header extends StatelessWidget {
 
 
               alignment: Alignment.centerLeft,
-              child: Text('$title ' , style:  Theme.of(context).textTheme.button.copyWith(fontSize: 20),)),
+              child: Text('$title ' , style:  Theme.of(context).textTheme.button?.copyWith(fontSize: 20),)),
           Spacer() ,
 
           Container(
@@ -41,7 +41,7 @@ class Header extends StatelessWidget {
               shape: BoxShape.circle ,
             ),
 
-            child: SvgPicture.asset(logo ,),
+            child: SvgPicture.asset(logo! ,),
           ),
           /*
           Container(

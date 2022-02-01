@@ -15,7 +15,9 @@ class EventDataOdererShoawData extends EventDataOrderShow {
   final MethodShoppingShoi methoShopping ;
   final String uidDomand ;
   final int state ;
-  EventDataOdererShoawData({this.listMedelCart, this.address, this.calulerBuy, this.methoShopping, this.state , this.uidDomand});
+  EventDataOdererShoawData({required this.listMedelCart,required this.address,
+    required this.calulerBuy,
+    required this.methoShopping,required this.state ,required this.uidDomand});
 
 
 

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class HeaderFavorite extends StatelessWidget {
   const HeaderFavorite({
-    Key key,
+    Key? key,
   }) : super(key: key);
 
   @override
@@ -13,7 +13,7 @@ class HeaderFavorite extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           //TextTileCatigori(title: 'Favorite List',),
-          Text('List Favorite ' ,style: Theme.of(context).textTheme.button.copyWith(fontSize: 20 , color: Colors.black.withOpacity(0.6)),) ,
+          Text('List Favorite ' ,style: Theme.of(context).textTheme.button?.copyWith(fontSize: 20 , color: Colors.black.withOpacity(0.6)),) ,
           Spacer() ,
           Icon(Icons.favorite , color: Colors.red.withOpacity(0.4),size: 40,)
         ],

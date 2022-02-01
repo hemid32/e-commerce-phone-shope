@@ -63,7 +63,7 @@ class GetMyOrder {
 
 
   Future<List<DomandProduit>> getDomandMineFromFireBase()async  {
-    String uid = FirebaseAuth.instance.currentUser.uid ;
+    String uid = FirebaseAuth.instance.currentUser!.uid ;
     final    document =   FirebaseFirestore.instance.collection('domands').where('uid' , isEqualTo: uid);
     final  _data =  await document.get() ;
     List<DomandProduit> _listDomands = [] ; 
@@ -77,7 +77,7 @@ class GetMyOrder {
 
   Future<DomandProduit> getItemDOmand(uidOrder)async {
     final _listDoman = await getDomandMineFromFireBase() ;
-    DomandProduit _domand ;
+    late DomandProduit _domand ;
     _listDoman.forEach((element) {
       if(element.uidDomand == uidOrder){
         _domand = element ;

@@ -9,9 +9,11 @@ class BlocEventSearch extends Bloc<EventSearch , ListProduitsColors> {
   @override
   Stream<ListProduitsColors> mapEventToState(EventSearch event) async*{
     // TODO: implement mapEventToState
-    EventListSearch  _result =  event ;
+    if(event is EventListSearch) {
+      EventListSearch _result = event;
 
-    yield _result.search() ;
+      yield _result.search();
+    }
 
   }
 }

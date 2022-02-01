@@ -3,7 +3,7 @@ import 'package:phoneshop/constant.dart';
 
 class ButtonBottom extends StatelessWidget {
   const ButtonBottom({
-    Key key, this.onTap, this.widget,
+    Key? key,required this.onTap,required this.widget,
   }) : super(key: key);
   final Function onTap;
   final Widget widget ;
@@ -11,7 +11,7 @@ class ButtonBottom extends StatelessWidget {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size ;
     return GestureDetector(
-      onTap: onTap,
+      onTap: (){onTap();},
       child: Container(
         alignment: Alignment.center,
         margin: EdgeInsets.symmetric(horizontal: 20),

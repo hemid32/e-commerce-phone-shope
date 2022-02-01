@@ -6,7 +6,7 @@ import 'package:phoneshop/model/getModelFirebase/getUser/modelUserGet.dart';
 import 'package:phoneshop/model/puy/address.dart';
 import 'package:uuid/uuid.dart';
 
-ModelAdress verificationFormAddressIsCompleted(stateNome , statePhone , stateEmain , nome ,prenom ,  phone , email
+ verificationFormAddressIsCompleted(stateNome , statePhone , stateEmain , nome ,prenom ,  phone , email
     , wilaya , address1 , address2 , daira , codPost    ){
   ModelAdress  addresComplete ;
 

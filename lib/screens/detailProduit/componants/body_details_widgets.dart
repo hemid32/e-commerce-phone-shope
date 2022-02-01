@@ -11,11 +11,11 @@ import 'row_price_and_minus_add_contitus.dart';
 
 class BodyDetail extends StatelessWidget {
   const BodyDetail({
-    Key key, @required this.price, @required this.title, this.priceOld,
+    Key? key, required this.price, required this.title, this.priceOld,
   }) : super(key: key);
   final double price ;
   final String title ;
-  final double priceOld ;
+  final double? priceOld ;
 
 
   @override
@@ -41,7 +41,7 @@ class BodyDetail extends StatelessWidget {
               return Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text( '${state[0].nomPhone } ' , style: Theme.of(context).textTheme.button.copyWith(fontSize: 20 ) ) ,
+                  Text( '${state[0].nomPhone } ' , style: Theme.of(context).textTheme.button?.copyWith(fontSize: 20 ) ) ,
                   SizedBox(height: kDefaultPadding/2,) ,
                   RowPriceANDContitus(price: state[0].price, priceOld: state[0].priceOriginal ,contitu: state[0].contitu ,) ,
                 ],
@@ -57,7 +57,7 @@ class BodyDetail extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
 
-              Text( 'Choose a color' , style: Theme.of(context).textTheme.button.copyWith(fontSize: 20  ) ) ,
+              Text( 'Choose a color' , style: Theme.of(context).textTheme.button?.copyWith(fontSize: 20  ) ) ,
               Divider() ,
               SizedBox(height: 15,),
               ItemsColorShoise(),

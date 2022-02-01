@@ -13,7 +13,7 @@ import 'package:phoneshop/screens/profile/profile.dart';
 
 class DrawerApps extends StatelessWidget {
   const DrawerApps({
-    Key key,
+    Key? key,
   }) : super(key: key);
 
   @override

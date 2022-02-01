@@ -4,7 +4,7 @@ import 'package:phoneshop/screens/homescreen/homescreen.dart';
 
 class WhenVide extends StatelessWidget {
   const WhenVide({
-    Key key, this.text = "There is no order shop now", this.title,
+    Key? key, this.text = "There is no order shop now",required this.title,
   }) : super(key: key);
   final String text ;
   final String title ;
@@ -17,7 +17,7 @@ class WhenVide extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           SizedBox(height: 20,) ,
-          Text('$text' , style: Theme.of(context).textTheme.button.copyWith(
+          Text('$text' , style: Theme.of(context).textTheme.button?.copyWith(
             fontSize: 20  ,
           ),),
           SizedBox(height: 20,) ,

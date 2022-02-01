@@ -43,13 +43,13 @@ class BlocDataConfermUserCreatedCodSms
           },
           verificationFailed: (FirebaseAuthException e) async {
             //print('verificationId feild ===${e.message}');
-            add(EventSandCodeFromFirBasField(messageErrur: e.message));
+            add(EventSandCodeFromFirBasField(messageErrur: e.message! ));
           },
-          codeSent: (String verificationId, int resendToken) async {
+          codeSent: (String verificationId, int? resendToken) async {
             //print('cod is send resendToken ========> =====> ====> $resendToken');
             add(EventSandCodeFromFirBasCodeSand(
                 verificationId: verificationId ,
-                token: resendToken ,
+                token: resendToken! ,
                  nomprePhone:  event.nombrePhone ,
             ));
           },
@@ -74,14 +74,14 @@ class BlocDataConfermUserCreatedCodSms
         verificationFailed: (FirebaseAuthException e) async {
           print('verificationId feild ===${e.message}');
 
-          add(EventSandCodeFromFirBasField(messageErrur: e.message));
+          add(EventSandCodeFromFirBasField(messageErrur: e.message!));
         },
-        codeSent: (String verificationId, int resendToken) async {
+        codeSent: (String verificationId, int? resendToken) async {
           //print('cod is send resendToken ========> =====> ====> $resendToken');
 
           add(EventSandCodeFromFirBasCodeSand(
             verificationId: verificationId ,
-            token: resendToken ,
+            token: resendToken! ,
             nomprePhone:  event.nombrePhone
           ));
         },

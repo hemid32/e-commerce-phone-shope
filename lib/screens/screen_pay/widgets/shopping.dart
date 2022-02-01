@@ -22,7 +22,7 @@ enum valueRadio { javatpoint, w3schools, tutorialandexample }
 
 class Shopping extends StatelessWidget {
   const Shopping({
-    Key key,
+    Key? key,
   }) : super(key: key);
 
 
@@ -35,22 +35,22 @@ class Shopping extends StatelessWidget {
     return FutureBuilder<TotalShoppingMethod>(
       future: getMethodListShoppin.getTotalShoppingMethod(),
       builder: (context, snapshot) {
-        return snapshot.hasData ? snapshot.data.methods.length ==  0 ? NostatSepurtShopping() :  Column(
+        return snapshot.hasData ? snapshot.data!.methods!.length ==  0 ? NostatSepurtShopping() :  Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             TitleTextAligns(title: 'Methode Shoppin',) ,
             //Text('f')
-            for(var i=0 ; i<  snapshot.data.methods.length   ; i++ )
+            for(var i=0 ; i<  snapshot.data!.methods!.length   ; i++ )
               BlocBuilder<ShoppingBlocRadio, dynamic>(
                 builder: (_, state) {
                   return RadioButton(
-                    valure: snapshot.data.methods[i].titleMethod ,
-                    title: snapshot.data.methods[i].titleMethod,
-                    price: snapshot.data.methods[i].price,
-                    groub: state??snapshot.data.methods[0].titleMethod,
+                    valure: snapshot.data!.methods![i].titleMethod ,
+                    title: snapshot.data!.methods![i].titleMethod,
+                    price: snapshot.data!.methods![i].price,
+                    groub: state??snapshot.data!.methods![0].titleMethod,
                     onChanged: (valur){
                       MethodShoppingShoi methodShop = MethodShoppingShoi.froJson({
-                        'method'  : snapshot.data.methods[i]  ,
+                        'method'  : snapshot.data!.methods![i]  ,
                         'fin' : true ,
                       });
                       BlocProvider.of<ShoppingDataBloc>(context).add(AddShoppingData(methodShop))  ;
@@ -70,7 +70,7 @@ class Shopping extends StatelessWidget {
               //print(' =============****================  ${BlocProvider.of<ShoppingDataBloc>(context).state.fin}') ;
               if( BlocProvider.of<ShoppingDataBloc>(context).state.fin == false ){
                 MethodShoppingShoi methodShopResq = MethodShoppingShoi.froJson({
-                  'method'  : snapshot.data.methods[0]  ,
+                  'method'  : snapshot.data!.methods![0]  ,
                   'fin' : true ,
                 });
                  BlocProvider.of<ShoppingDataBloc>(context).add(AddShoppingData(methodShopResq)) ;
@@ -81,7 +81,7 @@ class Shopping extends StatelessWidget {
                 listProduitCart: BlocProvider.of<BlocListDataCart>(context).state ,
 
                 methodShopping: BlocProvider.of<ShoppingDataBloc>(context).state.fin == false ? MethodShoppingShoi.froJson({
-                  'method': snapshot.data.methods[0] ,
+                  'method': snapshot.data!.methods![0] ,
                   'fin': true
                 }):BlocProvider.of<ShoppingDataBloc>(context).state )
 

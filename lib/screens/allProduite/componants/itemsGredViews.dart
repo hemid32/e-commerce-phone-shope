@@ -7,7 +7,7 @@ import 'package:phoneshop/screens/homescreen/componants/item_cards_phones.dart';
 
 class ItemsGredViews extends StatelessWidget {
   const ItemsGredViews({
-    Key key,
+    Key? key,
   }) : super(key: key);
 
 
@@ -22,13 +22,13 @@ class ItemsGredViews extends StatelessWidget {
           if(snapshot.produits == null ) return CircularProgressIndicator() ; else
           return Column(
             children: [
-              for (var i = 0; i <= (snapshot.produits.length /2 ).truncate().toInt(); i++)
+              for (var i = 0; i <= (snapshot.produits!.length /2 ).truncate().toInt(); i++)
                 SingleChildScrollView(
                 scrollDirection: Axis.horizontal,
                   child: CardRow(
                     snapshot: snapshot,
                     index: i,
-                    length: snapshot.produits.length,
+                    length: snapshot.produits!.length,
                   ),
                 ),
             ],

@@ -1,33 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:phoneshop/bloc/favorite/bloc.dart';
 import 'package:phoneshop/bloc/favorite/bloc/bloc.dart';
 import 'package:phoneshop/bloc/favorite/bloc/state.dart';
-import 'package:phoneshop/bloc/favorite/event.dart';
-import 'package:phoneshop/bloc/favorite/listFavoite/bloc.dart';
-import 'package:phoneshop/bloc/favorite/listFavoite/event.dart';
 import 'package:phoneshop/bloc/manageScreen/detailProduit/bloc.dart';
 import 'package:phoneshop/bloc/manageScreen/detailProduit/event.dart';
-import 'package:phoneshop/bloc/manageScreen/home/bloc.dart';
-import 'package:phoneshop/bloc/manageScreen/home/events.dart';
 import 'package:phoneshop/bloc/userManagze/userVirifaid/bloc.dart';
-import 'package:phoneshop/constant.dart';
 import 'package:phoneshop/model/favorite/servises.dart';
 import 'package:phoneshop/model/produit/produit.dart';
-import 'package:phoneshop/model/produit/produit_colors.dart';
-import 'package:phoneshop/model/produit/servises.dart';
 import 'package:phoneshop/screens/detailProduit/detail_produit.dart';
-import 'package:phoneshop/screens/homescreen/componants/button_waith_80.dart';
 import 'package:phoneshop/screens/homescreen/componants/card_phone_favorite.dart';
 import 'package:phoneshop/screens/homescreen/componants/conainer_favorite_is_vide.dart';
-import 'package:phoneshop/screens/homescreen/componants/favorite_header.dart';
 import 'package:phoneshop/screens/homescreen/componants/header_setting.dart';
-import 'package:phoneshop/screens/homescreen/componants/search_and_icon_menu.dart';
-import 'package:phoneshop/screens/search/search_screen.dart';
 
 class Favorite extends StatelessWidget {
   const Favorite({
-    Key key,
+    Key? key,
   }) : super(key: key);
 
   @override

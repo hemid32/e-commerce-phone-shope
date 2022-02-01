@@ -6,7 +6,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'events.dart';
 
 class BlocLoading extends Bloc<EventLoading ,  bool>{
-  BlocLoading() : super(null);
+  BlocLoading() : super(false);
 
   @override
   Stream<bool> mapEventToState(EventLoading event) async* {

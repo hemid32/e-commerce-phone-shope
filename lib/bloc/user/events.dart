@@ -5,9 +5,8 @@ class EventUser {}
 
 
 class EventUserGet extends EventUser {
-  UserLocalModel user = UserLocalModel() ;
+  late UserLocalModel user  ;
   GetUserFireBase _fireUser = GetUserFireBase() ;
-
   getUserFromFireBase() async {
     user = await _fireUser.getUser() ;
     print('user get fire ==== ${user.toMap()}') ;

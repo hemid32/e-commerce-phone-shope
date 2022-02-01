@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 class DropDawen extends StatelessWidget {
   const DropDawen({
-    Key key, this.valur, this.onTap, this.items,
+    Key? key,required this.valur,required this.onTap,required this.items,
   }) : super(key: key);
   final  String valur ;
   final Function onTap ;
@@ -14,11 +14,11 @@ class DropDawen extends StatelessWidget {
       child: DropdownButton(
         dropdownColor: Theme.of(context).accentColor,
         value: valur,
-        onChanged: onTap ,
+        onChanged: (v){onTap(v);} ,
         icon: Icon(Icons.arrow_drop_down , size:  30,),
         iconSize: 24,
         elevation: 16,
-        style: Theme.of(context).textTheme.button.copyWith( fontSize: 20),
+        style: Theme.of(context).textTheme.button?.copyWith( fontSize: 20),
         isExpanded: true,
         underline: SizedBox(),
 

@@ -3,9 +3,9 @@ import 'package:phoneshop/constant.dart';
 
 class Header extends StatelessWidget {
   const Header({
-    Key key, this.back,
+    Key? key, this.back,
   }) : super(key: key);
-  final Function back ;
+  final Function? back ;
 
 
   @override
@@ -18,7 +18,7 @@ class Header extends StatelessWidget {
       child: Row(
         children: [
           BackButton(
-            onPressed: back,
+            onPressed: (){back!();},
             color: kPrimaryColor,
           ),
           Spacer() ,

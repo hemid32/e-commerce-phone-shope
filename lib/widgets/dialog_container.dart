@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class DialogContainer extends StatelessWidget {
   const DialogContainer({
-    Key key, this.title, this.widgets, this.actions,
+    Key? key,required this.title,required this.widgets,required this.actions,
   }) : super(key: key);
   final String  title ;
   final List<Widget> widgets ;
@@ -14,7 +14,7 @@ class DialogContainer extends StatelessWidget {
     return AlertDialog(
       scrollable: true,
       backgroundColor:Colors.white,
-      title: Text('Filter' , style: Theme.of(context).textTheme.button.copyWith(color: Colors.black.withOpacity(0.4) , fontSize: 20),),
+      title: Text('Filter' , style: Theme.of(context).textTheme.button?.copyWith(color: Colors.black.withOpacity(0.4) , fontSize: 20),),
       content: SingleChildScrollView(
         child: ListBody(
           children: widgets ,

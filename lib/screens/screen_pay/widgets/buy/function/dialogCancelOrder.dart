@@ -10,7 +10,7 @@ Future<void> showMyDialogDeletOrder(contextOriginal, Function onTap) async {
         shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.all(Radius.circular(30.0))),
 
-            title:  Text('Cancelling order' , style: Theme.of(context).textTheme.button.copyWith(fontSize: 20),),
+            title:  Text('Cancelling order' , style: Theme.of(context).textTheme.button?.copyWith(fontSize: 20),),
         content: SingleChildScrollView(
           child: ListBody(
             children: const <Widget>[
@@ -35,14 +35,14 @@ Future<void> showMyDialogDeletOrder(contextOriginal, Function onTap) async {
                       color: kPrimaryColor ,
                       borderRadius: BorderRadius.circular(20) ,
                     ),
-                    child: Text('No', style: Theme.of(context).textTheme.button.copyWith(
+                    child: Text('No', style: Theme.of(context).textTheme.button?.copyWith(
                       color: Colors.white ,
                       fontSize:  15 ,
                     ),),
                   ),
                 ) ,
                 GestureDetector(
-                  onTap: onTap,
+                  onTap: (){onTap();},
                   child: Container(
                     alignment: Alignment.center,
                     width: 120,
@@ -52,7 +52,7 @@ Future<void> showMyDialogDeletOrder(contextOriginal, Function onTap) async {
 
 
                     ),
-                    child: Text('cancel odrer', style: Theme.of(context).textTheme.button.copyWith(
+                    child: Text('cancel odrer', style: Theme.of(context).textTheme.button?.copyWith(
                       color: Colors.white ,
                       fontSize:  15 ,
                     ),),

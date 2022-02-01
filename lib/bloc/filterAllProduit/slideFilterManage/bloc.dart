@@ -10,8 +10,10 @@ class BlocSliderRam extends Bloc<EventSliderFilterAll , double >{
   @override
   Stream<double> mapEventToState(EventSliderFilterAll event) async* {
     // TODO: implement mapEventToState
-    EventSliderFilterRam _result = event ;
-    yield _result.value ;
+    if(event is EventSliderFilterRam ) {
+      EventSliderFilterRam _result = event;
+      yield _result.value;
+    }
   }
 }
 class BlocSliderStorage extends Bloc<EventSliderFilterAll , double >{
@@ -20,8 +22,10 @@ class BlocSliderStorage extends Bloc<EventSliderFilterAll , double >{
   @override
   Stream<double> mapEventToState(EventSliderFilterAll event) async* {
     // TODO: implement mapEventToState
-    EventSliderFilterStorage _result = event ;
-    yield _result.value ;
+    if(event is EventSliderFilterStorage) {
+      EventSliderFilterStorage _result = event;
+      yield _result.value;
+    }
   }
 }
 class BlocSliderCamera extends Bloc<EventSliderFilterAll , double >{
@@ -30,8 +34,10 @@ class BlocSliderCamera extends Bloc<EventSliderFilterAll , double >{
   @override
   Stream<double> mapEventToState(EventSliderFilterAll event) async* {
     // TODO: implement mapEventToState
-    EventSliderFilterCamera _result = event ;
-    yield _result.value ;
+    if(event is EventSliderFilterCamera ) {
+      EventSliderFilterCamera _result = event;
+      yield _result.value;
+    }
   }
 }
 
@@ -41,7 +47,9 @@ class BlocSliderPrice extends Bloc<EventSliderFilterAll , double >{
   @override
   Stream<double> mapEventToState(EventSliderFilterAll event) async* {
     // TODO: implement mapEventToState
-    EventSliderFilterPrice _result = event ;
-    yield _result.value ;
+    if(event is EventSliderFilterPrice ) {
+      EventSliderFilterPrice _result = event;
+      yield _result.value;
+    }
   }
 }

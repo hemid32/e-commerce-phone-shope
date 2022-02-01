@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 class TextRichTitleDetails extends StatelessWidget {
   const TextRichTitleDetails({
-    Key key, this.title, this.detail,
+    Key? key,required this.title,required this.detail,
   }) : super(key: key);
   final String title  ;
   final String detail ;
@@ -14,9 +14,9 @@ class TextRichTitleDetails extends StatelessWidget {
         textAlign: TextAlign.center,
         text: TextSpan(
             children: [
-              TextSpan(text: '$title \n ' , style: Theme.of(context).textTheme.button.copyWith(fontSize: 18 , fontWeight: FontWeight.bold)),
+              TextSpan(text: '$title \n ' , style: Theme.of(context).textTheme.button?.copyWith(fontSize: 18 , fontWeight: FontWeight.bold)),
               TextSpan(text: '$detail  ' ,
-                  style: Theme.of(context).textTheme.button.copyWith(fontSize: 12)
+                  style: Theme.of(context).textTheme.button?.copyWith(fontSize: 12)
               ),
             ]
         ),

@@ -32,10 +32,10 @@ import 'package:uuid/uuid.dart';
 
 class Cart extends StatelessWidget {
    Cart({
-    Key key,
+    Key? key,
   }) : super(key: key);
 
-  String _note ;
+  late String _note ;
 
   var uuid = Uuid() ;
 
@@ -64,13 +64,14 @@ class Cart extends StatelessWidget {
                     //TitleTextAligns(title: 'Detail de requist',) ,
                     Text('Detail de Requist' , style:  Theme.of(context).textTheme.button,),
                     for(var i = 0 ; i< itemsCart.length ; i++)  CardPhoneChope(
-                        image: itemsCart[i].produit.image ,
-                        title: itemsCart[i].produit.nomPhone,
-                        detail: itemsCart[i].produit.detail,
-                        ram: itemsCart[i].produit.ram,
-                        storage: itemsCart[i].produit.storage ,
-                        contitu: itemsCart[i].contituPay,
-                        price: itemsCart[i].produit.price,
+                        onTap: (){},
+                        image: itemsCart[i].produit!.image! ,
+                        title: itemsCart[i].produit!.nomPhone!,
+                        detail: itemsCart[i].produit!.detail!,
+                        ram: itemsCart[i].produit!.ram!,
+                        storage: itemsCart[i].produit!.storage! ,
+                        contitu: itemsCart[i].contituPay!,
+                        price: itemsCart[i].produit!.price!,
                         deletCard:  ()=> BlocProvider.of<BlocListDataCart>(context).add(EventDeletItemFromCart(i)) ,
                       ),
 
@@ -86,8 +87,8 @@ class Cart extends StatelessWidget {
           builder: (context, state) {
             return Column(
               children: [
-                TextPriceShoping(title: 'Total Produit : ', price:  state.totalProduit,)  ,
-                TextPriceShoping(title: 'Shopping : ', price:  state.totalShopping ,)  ,
+                TextPriceShoping(title: 'Total Produit : ', price:  state.totalProduit!,)  ,
+                TextPriceShoping(title: 'Shopping : ', price:  state.totalShopping! ,)  ,
                 TextPriceShoping(title: 'Total : ', price:  state.total,)  ,
               ],
             );
@@ -134,7 +135,7 @@ class Cart extends StatelessWidget {
                               'password' : '...' ,
                               'nombrePhon' : '...' ,
                                'image' : '..' ,
-                               'uid' : FirebaseAuth.instance.currentUser.uid
+                               'uid' : FirebaseAuth.instance.currentUser!.uid
               }) ,
               'nots' :  _note ,
               'stateDomand' : 0 ,

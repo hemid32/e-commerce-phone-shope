@@ -12,7 +12,7 @@ class BlocScreenDetailProduit extends  Bloc<EventScreenDetails ,List<dynamic>  >
   @override
   Stream<List<dynamic>> mapEventToState(EventScreenDetails event) async* {
     // TODO: implement mapEventToState
-    if(event.runtimeType == EvensGoToProduit ){
+    if(event is  EvensGoToProduit ){
       EvensGoToProduit produit = event ;
       yield [produit.produitResult() , produit.produisColors , produit.indexProduit,produit.produisColors.id] ;
     }
@@ -26,10 +26,10 @@ class BlocMinusAddProduitFromDetail extends Bloc <EventScreenDetails , int >{
   @override
   Stream<int> mapEventToState(EventScreenDetails event) async* {
     // TODO: implement mapEventToState
-    if(event.runtimeType == EventMinus){
+    if(event is EventMinus){
       EventMinus results = event ;
       yield results.minus() ;
-    }else if(event.runtimeType == EventAdd){
+    }else if(event is  EventAdd){
       EventAdd results = event ;
       yield results.add() ;
 

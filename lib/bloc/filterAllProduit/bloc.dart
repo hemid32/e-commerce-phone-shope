@@ -10,7 +10,7 @@ class BlocFiltersAllProduits extends Bloc<EventFilterAllProduit , ListProduitsCo
   @override
   Stream<ListProduitsColors> mapEventToState(event) async* {
     // TODO: implement mapEventToState
-    if(event.runtimeType == EventsFilterAllProduitsevnts){
+    if(event is EventsFilterAllProduitsevnts){
       EventsFilterAllProduitsevnts _result = event ;
       yield _result.filter() ;
     }

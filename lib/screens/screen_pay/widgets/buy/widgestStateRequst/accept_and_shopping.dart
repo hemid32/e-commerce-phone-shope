@@ -7,7 +7,7 @@ import 'package:phoneshop/screens/screen_pay/componants/text_rich_buttom_deatils
 
 class AcceptAndChopping extends StatelessWidget {
   const AcceptAndChopping({
-    Key key,
+    Key? key,
   }) : super(key: key);
 
   @override

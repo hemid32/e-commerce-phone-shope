@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class ImageViews extends StatelessWidget {
   final image ;
-  const ImageViews({Key key, this.image}) : super(key: key);
+  const ImageViews({Key? key, this.image}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Scaffold(

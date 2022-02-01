@@ -7,8 +7,8 @@ import 'package:phoneshop/model/user/user.dart';
 class UserFire {
   //final String email ;
   //final String password ;
-  final UserLocalModel user;
-  final PhoneAuthCredential phonAuth;
+  final UserLocalModel? user;
+  final PhoneAuthCredential? phonAuth;
 
   UserFire({@required this.user, this.phonAuth});
 
@@ -17,11 +17,11 @@ class UserFire {
           FirebaseFirestore.instance.collection('users');
       try {
         _users.add({
-          'name': user.name,
+          'name': user!.name,
           'uid': uid,
-          'nombrePhon': user.nombrePhon,
-          'email': user.email,
-          'image': user.image,
+          'nombrePhon': user!.nombrePhon,
+          'email': user!.email,
+          'image': user!.image,
           //'password': 'password',
         });
         return true;
@@ -35,31 +35,31 @@ class UserFire {
 
 
   creatUser() async {
-    String message;
+    late String message;
     bool result = false;
 
     try {
-      await FirebaseAuth.instance.signInWithCredential(phonAuth).then((value) {
+      await FirebaseAuth.instance.signInWithCredential(phonAuth!).then((value) {
         result = true;
         try {
-          FirebaseAuth.instance.currentUser.updateEmail(user.email.trim());
+          FirebaseAuth.instance.currentUser!.updateEmail(user!.email.trim());
         } catch (e) {
           print('email not regester errur ==== $e');
         }
-        FirebaseAuth.instance.currentUser.updatePassword(user.password);
-        FirebaseAuth.instance.currentUser.updateDisplayName(user.name);
-        FirebaseAuth.instance.currentUser.updatePhotoURL(user.image);
-        creatDataUser( FirebaseAuth.instance.currentUser.uid ) ;
+        FirebaseAuth.instance.currentUser!.updatePassword(user!.password);
+        FirebaseAuth.instance.currentUser!.updateDisplayName(user!.name);
+        FirebaseAuth.instance.currentUser!.updatePhotoURL(user!.image);
+        creatDataUser( FirebaseAuth.instance.currentUser!.uid ) ;
       }).onError((error, stackTrace) {
         result = false;
-        message = error.message;
+        message = error.toString();
       });
     } catch (e) {
-      message = e.message;
+      message = e.toString();
       result = false;
     }
 
-    return {'message': message, 'result': result , 'uid' : FirebaseAuth.instance.currentUser.uid };
+    return {'message': message, 'result': result , 'uid' : FirebaseAuth.instance.currentUser!.uid };
   }
 
   /*
@@ -105,7 +105,7 @@ class UserFire {
      */
     bool result = false;
     String message = 'Error';
-    print('user ====${user.toMap()}');
+    print('user ====${user!.toMap()}');
     String target = 'non' ;
     try {
 // Create a credential
@@ -113,25 +113,25 @@ class UserFire {
           EmailAuthProvider.credential(email: oldEmail, password: oldPassword);
 
 // Reauthenticate
-      await FirebaseAuth.instance.currentUser
+      await FirebaseAuth.instance.currentUser!
           .reauthenticateWithCredential(credential)
           .then((value) {
 
-            if(oldNombre != user.nombrePhon){
+            if(oldNombre != user!.nombrePhon){
               print('change nombre phone ') ;
               target = 'change_phone' ;
 
             }else {
               try {
-                FirebaseAuth.instance.currentUser.updateEmail(user.email.trim());
-                FirebaseAuth.instance.currentUser.updatePassword(user.password);
-                FirebaseAuth.instance.currentUser.updateDisplayName(user.name);
-                FirebaseAuth.instance.currentUser.updatePhotoURL(user.image);
+                FirebaseAuth.instance.currentUser!.updateEmail(user!.email.trim());
+                FirebaseAuth.instance.currentUser!.updatePassword(user!.password);
+                FirebaseAuth.instance.currentUser!.updateDisplayName(user!.name);
+                FirebaseAuth.instance.currentUser!.updatePhotoURL(user!.image);
                 //FirebaseAuth.instance.currentUser.updatePhoneNumber(phonAuth);
                 result = true;
               } catch (e) {
                 print('email not regester errur ==== $e');
-                message = 'Error this email ${user.email} not correct' ;
+                message = 'Error this email ${user!.email} not correct' ;
                 result = false;
               }
 
@@ -150,11 +150,11 @@ class UserFire {
 
   updateUseWithNewPhone(UserLocalModel newUser , PhoneAuthCredential phonAuth ){
     try {
-      FirebaseAuth.instance.currentUser.updateEmail(newUser.email.trim());
-      FirebaseAuth.instance.currentUser.updatePassword(newUser.password);
-      FirebaseAuth.instance.currentUser.updateDisplayName(newUser.name);
-      FirebaseAuth.instance.currentUser.updatePhotoURL(newUser.image);
-      FirebaseAuth.instance.currentUser.updatePhoneNumber(phonAuth);
+      FirebaseAuth.instance.currentUser!.updateEmail(newUser.email.trim());
+      FirebaseAuth.instance.currentUser!.updatePassword(newUser.password);
+      FirebaseAuth.instance.currentUser!.updateDisplayName(newUser.name);
+      FirebaseAuth.instance.currentUser!.updatePhotoURL(newUser.image);
+      FirebaseAuth.instance.currentUser!.updatePhoneNumber(phonAuth);
       return {'state': true, 'message': 'no' , 'target' : 'non'};
 
     }catch(e){

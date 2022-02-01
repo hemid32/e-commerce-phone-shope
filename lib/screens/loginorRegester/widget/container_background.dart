@@ -4,7 +4,7 @@ import 'package:phoneshop/screens/loginorRegester/componants/costom_path.dart';
 
 class ContainerBackground2 extends StatelessWidget {
   const ContainerBackground2({
-    Key key,
+    Key? key,
   }) : super(key: key);
 
 
@@ -27,7 +27,7 @@ class ContainerBackground2 extends StatelessWidget {
 
 class ContainerBackgrounds1 extends StatelessWidget {
   const ContainerBackgrounds1({
-    Key key,
+    Key? key,
   }) : super(key: key);
 
 

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class FieldNotes extends StatelessWidget {
   const FieldNotes({
-    Key key, this.onChanged, this.hintText,
+    Key? key,required this.onChanged,required this.hintText,
   }) : super(key: key);
   final Function onChanged ;
   final String hintText ;
@@ -18,7 +18,7 @@ class FieldNotes extends StatelessWidget {
       ),
       child: TextField(
 
-        onChanged: onChanged,
+        onChanged: (v){onChanged(v);},
         maxLines: 5,
 
 
@@ -31,7 +31,7 @@ class FieldNotes extends StatelessWidget {
             disabledBorder: InputBorder.none,
 
             hintText:  '$hintText' ,
-            hintStyle: Theme.of(context).textTheme.button.copyWith(color: Theme.of(context).textTheme.button.color.withOpacity(0.4))
+            hintStyle: Theme.of(context).textTheme.button?.copyWith(color: Theme.of(context).textTheme.button!.color!.withOpacity(0.4))
         ),
       ),
     );

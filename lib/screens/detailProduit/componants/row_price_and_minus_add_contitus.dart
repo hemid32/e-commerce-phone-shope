@@ -6,10 +6,10 @@ import 'package:phoneshop/constant.dart';
 
 class RowPriceANDContitus extends StatelessWidget {
   const RowPriceANDContitus(
-      {Key key,
-      @required this.price,
-      @required this.priceOld,
-      @required this.contitu})
+      {Key? key,
+      required this.price,
+      required this.priceOld,
+      required this.contitu})
       : super(key: key);
 
   final double price;
@@ -24,10 +24,10 @@ class RowPriceANDContitus extends StatelessWidget {
             style: Theme.of(context)
                 .textTheme
                 .button
-                .copyWith(fontSize: 20, color: kPrimaryColor)),
+                ?.copyWith(fontSize: 20, color: kPrimaryColor)),
         priceOld != null
             ? Text('$priceOld DZ ',
-                style: Theme.of(context).textTheme.button.copyWith(
+                style: Theme.of(context).textTheme.button?.copyWith(
                       fontSize: 15,
                       decoration: TextDecoration.lineThrough,
 
@@ -49,7 +49,7 @@ class RowPriceANDContitus extends StatelessWidget {
             alignment: Alignment.center,
             decoration: BoxDecoration(
               //color: kBackgroundColor ,
-              border: Border.all(color: Theme.of(context).iconTheme.color),
+              border: Border.all(color: Theme.of(context).iconTheme.color!),
             ),
             child: Container(
               height: 2.5,
@@ -65,7 +65,7 @@ class RowPriceANDContitus extends StatelessWidget {
           builder: (context, state) {
             return Text(
               '$state',
-              style: Theme.of(context).textTheme.button.copyWith(fontSize: 20),
+              style: Theme.of(context).textTheme.button?.copyWith(fontSize: 20),
             );
           }
         ),
@@ -87,7 +87,7 @@ class RowPriceANDContitus extends StatelessWidget {
             alignment: Alignment.center,
             decoration: BoxDecoration(
               //color: kBackgroundColor ,
-              border: Border.all(color: Theme.of(context).iconTheme.color),
+              border: Border.all(color: Theme.of(context).iconTheme.color!),
             ),
             child: Icon(
               Icons.add,

@@ -7,7 +7,7 @@ import 'smail_image_shois_color.dart';
 
 class ItemsColorShoise extends StatelessWidget {
   const ItemsColorShoise({
-    Key key,
+    Key? key,
   }) : super(key: key);
 
   @override

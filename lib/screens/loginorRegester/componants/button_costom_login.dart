@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 class ButtonCotomLogIn extends StatelessWidget {
   const ButtonCotomLogIn({
-    Key key, this.onTap, this.title, this.color,
+    Key? key,required this.onTap,required this.title,required this.color,
   }) : super(key: key);
   final Function onTap ;
   final String title  ;
@@ -15,7 +15,7 @@ class ButtonCotomLogIn extends StatelessWidget {
     Size size = MediaQuery.of(context).size ;
 
     return GestureDetector(
-      onTap: onTap,
+      onTap: () {onTap();},
       child: Container(
         alignment: Alignment.center,
         width: size.width *0.7,
@@ -24,7 +24,7 @@ class ButtonCotomLogIn extends StatelessWidget {
             color: color,
             borderRadius: BorderRadius.all(Radius.circular(20))
         ),
-        child: Text('$title' , style: Theme.of(context).textTheme.button.copyWith(color: Colors.white , fontSize: 20),),
+        child: Text('$title' , style: Theme.of(context).textTheme.button?.copyWith(color: Colors.white , fontSize: 20),),
 
       ),
     );

@@ -9,7 +9,7 @@ import 'package:phoneshop/screens/myOrder/widgets/shopping_order.dart';
 
 class HeaderMyOrder extends StatelessWidget {
   const HeaderMyOrder({
-    Key key,
+    Key? key,
   }) : super(key: key);
 
 
@@ -34,7 +34,7 @@ class HeaderMyOrder extends StatelessWidget {
                   child: Icon(Icons.arrow_back , color: Colors.white ,size: 30,)) ,
               Expanded(
                 child: Center(
-                  child: Text('My Order' , style: Theme.of(context).textTheme.button.copyWith(
+                  child: Text('My Order' , style: Theme.of(context).textTheme.button?.copyWith(
                       color: Colors.white ,
                       fontSize: 25
                   ),),
@@ -94,8 +94,8 @@ class HeaderMyOrder extends StatelessWidget {
 
 class ButtonBarTob extends StatelessWidget {
   const ButtonBarTob({
-    Key key,
-    this.title, this.active, this.onTap,
+    Key? key,
+   required this.title,required this.active,required this.onTap,
   }) : super(key: key);
   final String title ;
   final bool active ;
@@ -107,7 +107,7 @@ class ButtonBarTob extends StatelessWidget {
     Size size = MediaQuery.of(context).size ;
 
     return InkWell(
-      onTap: onTap,
+      onTap: (){onTap();},
       child: Container(
         width: size.width *0.33,
         height: 60,
@@ -118,7 +118,7 @@ class ButtonBarTob extends StatelessWidget {
             Container(
                 margin: EdgeInsets.only(top: 20),
                 alignment: Alignment.center,
-                child: Text('$title' , style: Theme.of(context).textTheme.button.copyWith(
+                child: Text('$title' , style: Theme.of(context).textTheme.button?.copyWith(
                     color: active ? kPrimaryColor : Colors.black.withOpacity(0.4),
 
                     fontSize:  12

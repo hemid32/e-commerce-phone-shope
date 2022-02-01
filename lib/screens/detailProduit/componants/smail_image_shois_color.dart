@@ -5,7 +5,7 @@ import 'package:phoneshop/constant.dart';
 
 class SmailImageShoiColor extends StatelessWidget {
   const SmailImageShoiColor({
-    Key key, this.image, this.onTap, this.index = 0 ,
+    Key? key,required this.image,required this.onTap, this.index = 0 ,
   }) : super(key: key);
   final String image ;
   final Function onTap ;
@@ -14,7 +14,7 @@ class SmailImageShoiColor extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: onTap,
+      onTap:  (){onTap() ; },
       child: BlocBuilder<BlocScreenDetailProduit, List<dynamic>>(
         builder: (context, state) {
           return Container(

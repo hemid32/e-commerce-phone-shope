@@ -3,12 +3,18 @@ import 'package:phoneshop/constant.dart';
 
 class FieldTextGetAndVerifeid extends StatelessWidget {
   FieldTextGetAndVerifeid({
-    Key key, this.title, this.onChange, this.validator, this.validErurr, this.secure = false, this.onTapButton, this.titleButton, this.color ,
+    Key? key,required  this.title, required this.onChange,
+    required this.validator,
+     this.validErurr,
+    this.secure = false,
+    required this.onTapButton,
+    required this.titleButton,
+    required this.color ,
   }) : super(key: key);
   final String  title ;
   final Function onChange ;
   final Function validator ;
-  final String  validErurr ;
+  final String?  validErurr ;
   final bool secure ;
   final Function onTapButton ;
   final String titleButton ;
@@ -33,21 +39,21 @@ class FieldTextGetAndVerifeid extends StatelessWidget {
               width: size.width - (size.width *0.2 + 130 )  ,
               child: TextFormField(
 
-                validator: validator ,
-                onChanged: onChange,
+                validator: (v){validator(v);} ,
+                onChanged: (v){onChange(v);},
                 obscureText: secure,
                 decoration: InputDecoration(
 
                   errorText: validErurr ,
                   labelText: '$title' ,
-                  labelStyle: Theme.of(context).textTheme.button.copyWith(color: Colors.black.withOpacity(0.4)) ,
+                  labelStyle: Theme.of(context).textTheme.button?.copyWith(color: Colors.black.withOpacity(0.4)) ,
                 ),
               ),
             ),
 
             Expanded(
               child: GestureDetector(
-                onTap: onTapButton,
+                onTap: (){onTapButton();},
                 child: SizedBox(
                   width: 130,
                   height: 30,
@@ -57,7 +63,7 @@ class FieldTextGetAndVerifeid extends StatelessWidget {
                       color: color,
                       borderRadius: BorderRadius.circular(10) ,
                     ),
-                    child: Text('$titleButton' , style: Theme.of(context).textTheme.button.copyWith(
+                    child: Text('$titleButton' , style: Theme.of(context).textTheme.button?.copyWith(
                       color: Colors.white ,
                     ),),
                   ),

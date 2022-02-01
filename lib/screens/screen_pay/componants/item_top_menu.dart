@@ -13,7 +13,7 @@ import 'package:phoneshop/screens/screen_pay/widgets/cart.dart';
 import 'package:phoneshop/screens/screen_pay/widgets/shopping.dart';
 class Items_Menuu extends StatelessWidget {
   const Items_Menuu({
-    Key key,
+    Key? key,
   }) : super(key: key);
 
   @override
@@ -74,7 +74,7 @@ class Items_Menuu extends StatelessWidget {
 class ItemTopMenu extends StatelessWidget {
 
   const ItemTopMenu({
-    Key key, this.title ,this.active = false, this.fin = false, this.onTap
+    Key? key,required this.title ,this.active = false, this.fin = false,required this.onTap
   }) : super(key: key);
   final bool active ;
   final bool fin  ;
@@ -87,13 +87,13 @@ class ItemTopMenu extends StatelessWidget {
     Size size = MediaQuery.of(context).size ;
 
     return GestureDetector(
-      onTap: fin ?  onTap : (){} ,
+      onTap: fin ?  (){onTap();} : (){} ,
       child: Container(
         width:  size.width / 4  - kDefaultPadding/2,
         child: Column(
           children: [
-            Text('$title' , style: Theme.of(context).textTheme.button.copyWith(
-              color: active || fin ? kPrimaryColor : Theme.of(context).textTheme.button.color ,
+            Text('$title' , style: Theme.of(context).textTheme.button?.copyWith(
+              color: active || fin ? kPrimaryColor : Theme.of(context).textTheme.button?.color ,
             ),) ,
             Divider( color: active || fin  ? kPrimaryColor.withOpacity(0.6) :  Colors.black.withOpacity(0.23) ),
 

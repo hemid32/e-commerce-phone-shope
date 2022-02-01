@@ -10,7 +10,7 @@ import 'package:phoneshop/screens/screen_pay/screen_pay.dart';
 
 class ButtomNavigatorBar extends StatelessWidget {
   const ButtomNavigatorBar({
-    Key key,
+    Key? key,
   }) : super(key: key);
 
   @override
@@ -50,7 +50,7 @@ class ButtomNavigatorBar extends StatelessWidget {
                           topRight: Radius.circular(20)
                       )
                   ),
-                  child: Text('BUY NOW' , style:  Theme.of(context).textTheme.button.copyWith(color: Colors.white , fontSize:  20),),
+                  child: Text('BUY NOW' , style:  Theme.of(context).textTheme.button?.copyWith(color: Colors.white , fontSize:  20),),
                 ),
               );
             }
@@ -64,7 +64,7 @@ class ButtomNavigatorBar extends StatelessWidget {
               )) ,
               child: Container(
                 alignment: Alignment.center,
-                child: Text('ADD TO CART' , style:  Theme.of(context).textTheme.button.copyWith(color: kPrimaryColor , fontSize:  20),),
+                child: Text('ADD TO CART' , style:  Theme.of(context).textTheme.button?.copyWith(color: kPrimaryColor , fontSize:  20),),
               ),
             ),
           )

@@ -30,7 +30,7 @@ class Body extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    String _textMessage ;
+    late String _textMessage ;
     Size size = MediaQuery.of(context).size ;
     return SingleChildScrollView(
       child: Column(
@@ -43,10 +43,10 @@ class Body extends StatelessWidget {
                   height: size.height *0.8,
                   child: Padding(
                     padding: const EdgeInsets.all(20),
-                    child: FutureBuilder(
+                    child: FutureBuilder<String>(
                       future: getUser.getDocUserFromFirebase() ,
                       builder: (context, nan) {
-                        print('uid ==== ${nan.data}') ;
+                        //print('uid ==== ${nan.data}') ;
                         return !nan.hasData ? Container() :   StreamBuilder(
                           stream: FirebaseFirestore.instance.collection('users').doc(nan.data).collection('Chats').orderBy('date', descending: true).snapshots(),
                           builder: (context, snapshotEventNew ) {
@@ -112,7 +112,7 @@ class Body extends StatelessWidget {
                             //BlocProvider.of<BlocMassegersGet>(context).add(EventGetMessagesFromFire()) ;
 
                             var mesg = Message(
-                                type : 'user' , text : _textMessage , uidUser :  FirebaseAuth.instance.currentUser.uid ,
+                                type : 'user' , text : _textMessage , uidUser :  FirebaseAuth.instance.currentUser!.uid ,
                                date: DateTime.now() ,
                                uidOrder: '11e55480-e011-11eb-9cd8-e7a3ea99e2dc'
                             ) ;

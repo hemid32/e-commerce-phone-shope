@@ -1,12 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:phoneshop/bloc/userManagze/screenLoginRegister/bloc.dart';
-import 'package:phoneshop/bloc/userManagze/screenLoginRegister/event.dart';
 
 class TextTileHeaderLogin extends StatelessWidget {
   const TextTileHeaderLogin({
-    Key key, this.title, this.details, this.onTapBack,
+    Key? key,required this.title,required this.details,required this.onTapBack,
   }) : super(key: key);
   final String title ;
   final String details ;
@@ -17,7 +13,7 @@ class TextTileHeaderLogin extends StatelessWidget {
     return Column(
       children: [
         GestureDetector(
-          onTap: onTapBack,
+          onTap: (){onTapBack();},
           child: Container(
             alignment: Alignment.topLeft,
             margin: EdgeInsets.only(top: 40 , left: 20 , right:  20 ),
@@ -30,7 +26,7 @@ class TextTileHeaderLogin extends StatelessWidget {
           child: RichText(
               text: TextSpan(
                   text: '$title' ,
-                  style:  Theme.of(context).textTheme.headline3.copyWith(color: Colors.white,fontWeight: FontWeight.bold)
+                  style:  Theme.of(context).textTheme.headline3?.copyWith(color: Colors.white,fontWeight: FontWeight.bold)
               )),
         ),
         Container(
@@ -38,7 +34,7 @@ class TextTileHeaderLogin extends StatelessWidget {
 
           child: RichText(text: TextSpan(
               text: '$details' ,
-              style:  Theme.of(context).textTheme.button.copyWith(color: Colors.white,fontWeight: FontWeight.bold)
+              style:  Theme.of(context).textTheme.button?.copyWith(color: Colors.white,fontWeight: FontWeight.bold)
           )),
         )
       ],

@@ -6,10 +6,10 @@ import 'samail_circler_icon_red_isactiv.dart';
 class HeaderDetail extends StatelessWidget {
 
   const HeaderDetail({
-    Key key, this.image,
+    Key? key, required  this.image,
   }) : super(key: key);
 
-  final String image ;
+  final  String image ;
 
 
   @override

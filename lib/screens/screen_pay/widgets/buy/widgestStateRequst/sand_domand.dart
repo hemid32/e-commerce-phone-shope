@@ -1,34 +1,24 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:phoneshop/bloc/cartCalcul/bloc.dart';
-import 'package:phoneshop/bloc/cartScreenManage/bloc.dart';
-import 'package:phoneshop/bloc/cartScreenManage/event.dart';
 import 'package:phoneshop/bloc/dataDetailsOrder/bloc.dart';
-import 'package:phoneshop/bloc/manageData/puy/bloc.dart';
-import 'package:phoneshop/bloc/myOrder/bloc.dart';
-import 'package:phoneshop/bloc/myOrder/event.dart';
 import 'package:phoneshop/constant.dart';
 import 'package:phoneshop/model/domand/servisec_domand.dart';
 import 'package:phoneshop/model/messages/model_messages.dart';
 import 'package:phoneshop/model/messages/services_messages.dart';
 import 'package:phoneshop/screens/homescreen/homescreen.dart';
 import 'package:phoneshop/screens/messages/messages.dart';
-import 'package:phoneshop/screens/myOrder/my_order.dart';
-import 'package:phoneshop/screens/screen_pay/componants/card_shoping_phone.dart';
 import 'package:phoneshop/screens/screen_pay/componants/container_buttom_prograss_shopping.dart';
 import 'package:phoneshop/screens/screen_pay/componants/detailed_order.dart';
 import 'package:phoneshop/screens/screen_pay/componants/double_button_bottom.dart';
-import 'package:phoneshop/screens/screen_pay/componants/expendad_shoping_verefaid.dart';
 import 'package:phoneshop/screens/screen_pay/componants/progress_shopping.dart';
-import 'package:phoneshop/screens/screen_pay/componants/text_price_shoping.dart';
 import 'package:phoneshop/screens/screen_pay/componants/text_rich_buttom_deatils.dart';
 import 'package:phoneshop/screens/screen_pay/widgets/buy/function/dialogCancelOrder.dart';
 import 'package:toast/toast.dart';
 
 class SandDomand extends StatelessWidget {
   const SandDomand({
-    Key key,
+    Key? key,
   }) : super(key: key);
 
   @override
@@ -59,7 +49,7 @@ class SandDomand extends StatelessWidget {
             onTapGreen: ()async  {
               // go to messages and sand order
               var mesg = Message(
-                  type : 'order' , text : 'text' , uidUser :  FirebaseAuth.instance.currentUser.uid ,
+                  type : 'order' , text : 'text' , uidUser :  FirebaseAuth.instance.currentUser!.uid ,
                   date: DateTime.now() ,
                   uidOrder: BlocProvider.of<BlocDataOrderShow>(context).state[5]
               ) ;
