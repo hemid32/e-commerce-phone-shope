@@ -1,6 +1,7 @@
 import 'package:hive/hive.dart';
 import 'package:phoneshop/model/puy/address.dart';
-part 'addres.g.dart';
+//import 'package:phoneshop/model/puy/address.dart';
+//part 'addres.g.dart';
 
 @HiveType(typeId: 3)
 class AssressHive {
@@ -53,3 +54,4 @@ class ServisesAdressHive {
   }
 
 }
+

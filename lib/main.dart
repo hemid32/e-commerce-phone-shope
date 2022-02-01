@@ -19,6 +19,7 @@ import 'package:hive_flutter/hive_flutter.dart';
 import 'package:phoneshop/screens/loginorRegester/login_or_regester.dart';
 import 'package:phoneshop/services/lang/appLocat.dart';
 import 'bloc/allProduitFilter/event.dart';
+import 'bloc/favorite/bloc/bloc.dart';
 import 'bloc/manageScreen/home/bloc.dart';
 import 'model/cart/services.dart';
 import 'model/domand/model.dart';
@@ -50,7 +51,7 @@ void main() async   {
 
 
   Hive
-    ..registerAdapter(FavoriteHiveAdapter())
+    ..registerAdapter(FavoriteHiveNewModelAdapter())
     ..registerAdapter(CartHiveAdapter())
     ..registerAdapter(AssressHiveAdapter()) ;
 
@@ -135,6 +136,7 @@ class MyApp extends StatelessWidget {
           providers: [
             BlocProvider(create: (context) => BlocTheme()..add(EventsThemeChangedInitilis())) ,
             BlocProvider(create: (context) => BlocNotification()) ,
+            BlocProvider(create: (context) => BlocFavorite()..intiStateData()) ,
             BlocProvider(create: (context) => BlocLanguage()..intialValue()) ,
           ],
           child: BlocBuilder<BlocTheme , List>(

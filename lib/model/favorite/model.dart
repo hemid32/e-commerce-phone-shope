@@ -1,9 +1,10 @@
-
-import 'package:phoneshop/model/hiveModel/favorite.dart';
+/*
+import 'package:phoneshop/model/favorite/servises.dart';
+//import 'package:phoneshop/model/hiveModel/favorite.dart';
 import 'package:phoneshop/model/produit/produit_colors.dart';
 
 class FavoriteModelItem {
-  final  ProduitsColors produit ;
+  //final  ProduitsColors produit ;
   bool  fav ;
 
   FavoriteModelItem({this.produit ,  this.fav = false  });
@@ -33,4 +34,26 @@ class FavoriteModelItem {
     return fav ;
   }
 
+}
+
+ */
+
+
+
+import 'package:flutter/cupertino.dart';
+import 'package:phoneshop/model/produit/produit.dart';
+import 'package:phoneshop/model/produit/produit_colors.dart';
+
+class ModelFaveriote {
+  //final String idProduit ;
+  final String idProduit ;
+  final ProduitsColors produitColors ;
+  ModelFaveriote({@required this.produitColors ,@required this.idProduit});
+
+  Map<String, dynamic> toMap(){
+    return {
+      'produit' : idProduit ,
+      'produitColors' : produitColors.toMap() ,
+    };
+  }
 }

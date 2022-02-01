@@ -52,11 +52,9 @@ class SettingAPP extends StatelessWidget {
               }else {
                 Navigator.push(context, MaterialPageRoute(builder: (_)=> BlocProvider.value(
                   value: BlocProvider.of<BlocUserVerifaid>(context),
-                  child:  BlocProvider.value(
-                      value: BlocProvider.of<BlocFavoriteList>(context),
-                      child:  BlocProvider.value(
+                  child:   BlocProvider.value(
                           value: BlocProvider.of<BlocHomeButtomBar>(context),
-                          child:Profile()))
+                          child:Profile())
 
                 ))) ;
 
@@ -71,8 +69,7 @@ class SettingAPP extends StatelessWidget {
           child: Text('Setting General' , style:  Theme.of(context).textTheme.button.copyWith(fontSize: 20 ),),
         ) ,
         CostomListTile(title: 'List Favorite' , icon: Icons.favorite, onTap: (){
-          BlocProvider.of<BlocFavoriteList>(context)
-              .add(EventListItemsFavoriteShowList()) ;
+
           BlocProvider.of<BlocHomeButtomBar>(context).add(GoToFavorite());
 
         },) ,

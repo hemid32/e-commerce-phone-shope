@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:phoneshop/bloc/favorite/bloc.dart';
+import 'package:phoneshop/bloc/favorite/bloc/bloc.dart';
+import 'package:phoneshop/bloc/favorite/bloc/state.dart';
 import 'package:phoneshop/bloc/favorite/event.dart';
 import 'package:phoneshop/bloc/manageScreen/detailProduit/bloc.dart';
 import 'package:phoneshop/bloc/manageScreen/detailProduit/event.dart';
@@ -29,14 +31,15 @@ class ItemsCardBestSellingPHone extends StatelessWidget {
     //BlocProvider.of<BlocFavoriteManage>(context).add(EventFav(idItem: null)) ;
     return SingleChildScrollView(
       scrollDirection: Axis.horizontal,
-      child: BlocBuilder<BlocFavoriteIs ,  String >(
-        builder: (context, snapshot) {
+      child: BlocConsumer< BlocFavorite,  StateFavorite >(
+        listener: (context , state){},
+        builder: (context, state) {
           return Row(
             children: [
               //for(var i  = 0 ; i< listData.produits.length ; i++  )
               for(var produitsColor  in  listData.produits   )
                 FutureBuilder(
-                  future:  FavoriteModelItem(produit: produitsColor).ifFavorite(),
+                  future: null ,//FavoriteModelItem(produit: produitsColor).ifFavorite(),
                   builder: (_ , data){
                   return  data.hasData ?  Builder(
                     builder: (context) {
@@ -55,8 +58,8 @@ class ItemsCardBestSellingPHone extends StatelessWidget {
                                 child: DetailProduit()) ,
                           )));},
                         //id: listData.produits[i].id ,
-                        fav:  data.data,
-                        onTapFav: ()=> BlocProvider.of<BlocFavoriteIs>(context).add(IsTapOnFavEvent(produitsColor)),
+                        fav:  BlocFavorite.get(context).listFav.contains(ModelFaveriote(produitColors: produitsColor, idProduit: productShowing.id.toString())),
+                        onTapFav: ()=> BlocFavorite.get(context).whenClickFavIcon(produitsColor, productShowing.id.toString()),//BlocProvider.of<BlocFavoriteIs>(context).add(IsTapOnFavEvent(produitsColor)),
                       );
                     }
                   )  : Shimmer.fromColors(

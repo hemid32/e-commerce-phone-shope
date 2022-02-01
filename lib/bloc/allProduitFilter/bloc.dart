@@ -1,9 +1,10 @@
 
 
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:phoneshop/bloc/allProduitFilter/event.dart';
 import 'package:phoneshop/model/produit/produit_colors.dart';
 
-import 'event.dart';
+//import 'event.dart';
 
 class BlocAllProduitFilter extends Bloc<EvenetsAllProduitFilters ,  ListProduitsColors> {
   BlocAllProduitFilter() : super(ListProduitsColors());

@@ -82,8 +82,7 @@ class Body extends StatelessWidget {
 
                         },) ,
                         CostomListTile(title: 'My favorite' , icon: Icons.favorite, onTap: (){
-                          BlocProvider.of<BlocFavoriteList>(context)
-                              .add(EventListItemsFavoriteShowList()) ;
+
                           BlocProvider.of<BlocHomeButtomBar>(context).add(GoToFavorite());
                           Navigator.pop(context) ;
 

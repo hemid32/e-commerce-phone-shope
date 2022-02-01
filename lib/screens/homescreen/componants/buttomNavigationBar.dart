@@ -55,8 +55,11 @@ class BottomNavigationsBars extends StatelessWidget {
               return IconButtonBottom(
                 icon:Icons.favorite,
                 onTap: (){
+                  /*
                   BlocProvider.of<BlocFavoriteList>(context)
                       .add(EventListItemsFavoriteShowList()) ;
+
+                   */
                   BlocProvider.of<BlocHomeButtomBar>(context).add(GoToFavorite());
                   },
                 active:   (state.runtimeType) == Favorite ,

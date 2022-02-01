@@ -37,12 +37,15 @@ class HomeScreen extends StatelessWidget {
         BlocProvider<BlocAllProduitFilter>(
           create: (BuildContext context) => BlocAllProduitFilter(),
         ),
+        /*
         BlocProvider<BlocFavoriteIs>(
           create: (BuildContext context) => BlocFavoriteIs(),
         ),
         BlocProvider<BlocFavoriteList>(
                   create: (BuildContext context) => BlocFavoriteList(),
                 ),
+
+         */
         BlocProvider<BlocUserVerifaid>(
                   create: (BuildContext context) => BlocUserVerifaid(),
                 ),

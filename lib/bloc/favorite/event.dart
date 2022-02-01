@@ -1,3 +1,4 @@
+/*
 import 'package:phoneshop/model/favorite/model.dart';
 import 'package:phoneshop/model/produit/produit_colors.dart';
 
@@ -12,8 +13,8 @@ class IsTapOnFavEvent extends EventFavoriteBloc {
 
 
   Future<void>  isTap() async  {
-      FavoriteModelItem _servises = new FavoriteModelItem(produit: produit);
-       await _servises.onTapFav();
+      //FavoriteModelItem _servises = new FavoriteModelItem(produit: produit);
+       //await _servises.onTapFav();
   }
 
 
@@ -21,3 +22,6 @@ class IsTapOnFavEvent extends EventFavoriteBloc {
 
 
 }
+
+ */
+

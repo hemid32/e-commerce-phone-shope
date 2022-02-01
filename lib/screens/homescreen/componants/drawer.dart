@@ -46,10 +46,8 @@ class DrawerApps extends StatelessWidget {
                     Navigator.push(context, MaterialPageRoute(builder: (_)=> BlocProvider.value(
                         value: BlocProvider.of<BlocUserVerifaid>(context),
                         child:  BlocProvider.value(
-                            value: BlocProvider.of<BlocFavoriteList>(context),
-                            child:  BlocProvider.value(
                                 value: BlocProvider.of<BlocHomeButtomBar>(context),
-                                child:Profile()))
+                                child:Profile())
 
                     ))) ;
 

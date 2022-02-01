@@ -1,6 +1,6 @@
 
 
-
+/*
 
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:phoneshop/bloc/favorite/listFavoite/event.dart';
@@ -24,3 +24,5 @@ class BlocFavoriteList extends Bloc<EvsentListFavorite ,ListProduitsColors>{
 
   }
 }
+
+ */
