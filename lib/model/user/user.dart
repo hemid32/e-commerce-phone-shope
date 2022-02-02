@@ -13,6 +13,7 @@ class UserLocalModel {
 
 
   factory UserLocalModel.fromJson(Map<String , dynamic> json){
+    //print('UserLocalModel') ;
     return  UserLocalModel(
     name: json['name'] ,
       email: json['email'] ,

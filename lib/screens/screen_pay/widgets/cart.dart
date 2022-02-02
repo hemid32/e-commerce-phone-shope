@@ -12,14 +12,10 @@ import 'package:phoneshop/bloc/dataDetailsOrder/event.dart';
 import 'package:phoneshop/bloc/laodingCirceler/bloc.dart';
 import 'package:phoneshop/bloc/laodingCirceler/events.dart';
 import 'package:phoneshop/bloc/manageData/puy/bloc.dart';
-import 'package:phoneshop/bloc/manageScreen/puy_screen/bloc.dart';
-import 'package:phoneshop/bloc/manageScreen/puy_screen/events.dart';
 import 'package:phoneshop/constant.dart';
 import 'package:phoneshop/model/cart/cart.dart';
 import 'package:phoneshop/model/cart/cartCalcul.dart';
-import 'package:phoneshop/model/cart/services.dart';
 import 'package:phoneshop/model/domand/model.dart';
-import 'package:phoneshop/model/puy/shopping_method_is_shoi.dart';
 import 'package:phoneshop/model/user/user.dart';
 import 'package:phoneshop/screens/screen_pay/componants/button_costom_wight_infinty.dart';
 import 'package:phoneshop/screens/screen_pay/componants/card_shoping_phone.dart';
@@ -35,7 +31,7 @@ class Cart extends StatelessWidget {
     Key? key,
   }) : super(key: key);
 
-  late String _note ;
+   String? _note ;
 
   var uuid = Uuid() ;
 
@@ -125,20 +121,22 @@ class Cart extends StatelessWidget {
 
 
             DomandProduit  _domand = DomandProduit.fromJson({
+              'date' : DateTime.now()  ,
+              'stateDomand' : 0 ,
               'nombreDomand' : 5555 ,
               'listProduitBuy' : ListModelCarte.FormJson({'itemCart' : BlocProvider.of<BlocListDataCart>(context).state  ,
               }) ,
               'addres' : BlocProvider.of<AdressDataBloc>(context).state ,
               'methodSopping' : BlocProvider.of<ShoppingDataBloc>(context).state ,
               'user' : UserLocalModel.fromJson({
-                             'email' : '...' ,
-                              'password' : '...' ,
-                              'nombrePhon' : '...' ,
+                              'name': '...'  ,
+                               'email' : '...' ,
+                               'password' : '...' ,
+                               'nombrePhon' : '...' ,
                                'image' : '..' ,
                                'uid' : FirebaseAuth.instance.currentUser!.uid
               }) ,
-              'nots' :  _note ,
-              'stateDomand' : 0 ,
+              'nots' :  _note??'' ,
               'priceShopping' :  BlocProvider.of<CalculCartBloc>(context).state.totalShopping ,
               'priceTotalProduit' : BlocProvider.of<CalculCartBloc>(context).state.totalProduit ,
               'total' : BlocProvider.of<CalculCartBloc>(context).state.total ,

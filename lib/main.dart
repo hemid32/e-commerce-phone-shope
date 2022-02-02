@@ -12,6 +12,7 @@ import 'package:phoneshop/screens/homescreen/homescreen.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:phoneshop/services/lang/appLocat.dart';
 import 'bloc/favorite/bloc/bloc.dart';
+import 'model/getModelFirebase/getMayOrder/my_order.dart';
 import 'model/hiveModel/addres.dart';
 import 'model/hiveModel/favorite.dart';
 import 'oitil/theme/theme.dart';
@@ -96,6 +97,8 @@ var o = GetMyOrder() ;
 
 
 
+  GetMyOrder getOrder = new GetMyOrder() ;
+  getOrder.getListDomandsSendRequest();
 
 
 

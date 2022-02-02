@@ -47,6 +47,7 @@ class GetMyOrder {
     ListDomands _result = ListDomands.fromJson({
       'domands' : _domandSentRequest ,
     });
+    //print(_result)  ;
     return _result ;
   }
 
@@ -66,10 +67,13 @@ class GetMyOrder {
     String uid = FirebaseAuth.instance.currentUser!.uid ;
     final    document =   FirebaseFirestore.instance.collection('domands').where('uid' , isEqualTo: uid);
     final  _data =  await document.get() ;
-    List<DomandProduit> _listDomands = [] ; 
-    _data.docs.forEach((element) { 
+    List<DomandProduit> _listDomands = [] ;
+    print('number domend  === ${_data.docs.length}') ;
+    _data.docs.forEach((element) {
+      //print('${element.data()['domand']}');
       _listDomands.add(DomandProduit.fromJsonGetFireBase(Map<String, dynamic>.from(element.data()['domand']))) ;
     });
+    print(_listDomands.length) ;
     return _listDomands ;
   }
 

@@ -16,7 +16,7 @@ import 'package:phoneshop/screens/screen_pay/componants/expanded_address_list.da
 Future<void> showMyDialogShoiAddress(contextOriginal) async {
   ServisesAdressHive _addressServises = ServisesAdressHive();
 
-  late String _index;
+   String? _index;
 
   return showDialog(
       //rootNavigator:true ,
@@ -51,12 +51,13 @@ Future<void> showMyDialogShoiAddress(contextOriginal) async {
                               for (var i = 0; i < snapshot.data!.length; i++)
                                 BlocBuilder<AddressBlocRadio, dynamic>(
                                     builder: (context, state) {
+                                     // print('state =$state') ;
                                   return ExpandedColumnAddesses(
                                     address: snapshot.data![i],
                                     valure: i.toString(),
                                     groub: state,
                                     onChanged: (value) {
-                                      _index = value;
+                                      _index = value ;
                                       BlocProvider.of<AddressBlocRadio>(context)
                                           .add(EvenstRadioAddres(value));
                                     },
@@ -69,12 +70,19 @@ Future<void> showMyDialogShoiAddress(contextOriginal) async {
                                     TextButton(
                                         onPressed: () {
                                           Navigator.pop(contextOriginal) ;
-                                          ModelAdress addres =
-                                          snapshot.data![int.parse(_index)];
-                                          BlocProvider.of<BlocListDataCart>(contextOriginal).add(EventShowList()) ;
-                                          BlocProvider.of<AdressDataBloc>(contextOriginal).add(AddAdressData(addres)) ;
-                                          BlocProvider.of<PuyScreenBloc>(contextOriginal).add(ContinuShopping()) ;
-
+                                          if(_index != null ) {
+                                            ModelAdress addres =
+                                            snapshot.data![int.parse(_index!)];
+                                            BlocProvider.of<BlocListDataCart>(
+                                                contextOriginal).add(
+                                                EventShowList());
+                                            BlocProvider.of<AdressDataBloc>(
+                                                contextOriginal).add(
+                                                AddAdressData(addres));
+                                            BlocProvider.of<PuyScreenBloc>(
+                                                contextOriginal).add(
+                                                ContinuShopping());
+                                          }
                                           //print(addres.codPostal);
                                         },
                                         child: Text(

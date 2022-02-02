@@ -26,6 +26,7 @@ class OrderSendSomand extends StatelessWidget {
     return FutureBuilder<ListDomands>(
         future: getOrder.getListDomandsSendRequest(),
         builder: (context, snapshot) {
+          //print(snapshot.data!.domands) ;
           return snapshot.hasData ? Column(
             children: [
               for(var i = 0 ; i< snapshot.data!.domands.length ; i++ ) ContainerMayOrder(

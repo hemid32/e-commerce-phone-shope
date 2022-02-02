@@ -23,6 +23,7 @@ class ModelAdress {
     required this.id});
 
   factory ModelAdress.fromJson(Map<String , dynamic> jsnData){
+    //print('ModelAdress') ;
     return ModelAdress(
         nome : jsnData['nome'],
         prenome : jsnData['prenome'],

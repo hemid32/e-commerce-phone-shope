@@ -12,6 +12,7 @@ class MethodShoppingShoi {
   factory MethodShoppingShoi.froJson(
       Map<String , dynamic> jsnData
        ){
+    //print('MethodShoppingShoi') ;
     return MethodShoppingShoi(
         method : jsnData['method'] ,
         fin: jsnData['fin']

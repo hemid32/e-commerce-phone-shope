@@ -9,13 +9,13 @@ class TextFieldValidatorEventNome extends EventsTextFeild {
   final String? valur ;
   final String? titleErurr ;
   TextFieldValidatorEventNome({this.valur , this.titleErurr});
-  String validator(){
+   validator(){
     //print('length ==== ${this.valur.length}') ;
     if(this.valur!.length  < 5 ){
       return this.titleErurr! ;
     }
     else
-      return '' ;
+      return null  ;
   }
 }
 
@@ -23,13 +23,13 @@ class TextFieldValidatorEventPhoneNombre extends EventsTextFeild {
   final String? valur ;
   final String? titleErurr ;
   TextFieldValidatorEventPhoneNombre({this.valur , this.titleErurr});
-  String validator(){
+   validator(){
     //print('length ==== ${this.valur.length}') ;
     if(this.valur!.length < 10 || !isNumeric(this.valur!) ){
       return this.titleErurr! ;
     }
     else
-      return '' ;
+      return null  ;
   }
 
   bool isNumeric(String? s) {
@@ -51,15 +51,15 @@ class TextFieldValidatorEventPhoneEmail extends EventsTextFeild {
   final String? valur ;
   final String? titleErurr ;
   TextFieldValidatorEventPhoneEmail({this.valur , this.titleErurr});
-  String validator(){
+   validator(){
     //print('length ==== ${this.valur.length}') ;
-    print(valur) ;
-    print('EmailValidator.validate(valur) == ${EmailValidator.validate(valur!)}') ;
+    //print(valur) ;
+    //print('EmailValidator.validate(valur) == ${EmailValidator.validate(valur!)}') ;
     if( !this.valur!.contains('@')  || !EmailValidator.validate(valur!)){
       return this.titleErurr! ;
     }
     else
-      return '' ;
+      return null ;
   }
 
 }
@@ -67,13 +67,13 @@ class TextFieldValidatorEventPassword extends EventsTextFeild {
   final String? valur ;
   final String? titleErurr ;
   TextFieldValidatorEventPassword({this.valur , this.titleErurr});
-  String  validator(){
+    validator(){
     //print('length ==== ${this.valur.length}') ;
     if( this.valur!.length < 8  ){
       return this.titleErurr! ;
     }
     else
-      return '' ;
+      return  null ;
   }
 
 }

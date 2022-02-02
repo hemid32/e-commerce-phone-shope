@@ -9,8 +9,10 @@ class ValidatorTexxtBlocString extends Bloc<EventsTextFeild, dynamic> {
   /// {@macro counter_bloc}
   ValidatorTexxtBlocString() : super(null){
     on((event, emit) {
-      if(event is TextFieldValidatorEventNome )
-       emit( event.validator().trim()) ;
+      if(event is TextFieldValidatorEventNome ) {
+
+          emit(event.validator());
+      }
     });
   }
 
@@ -20,9 +22,11 @@ class ValidatorTexxtBlocPhoneNombre extends Bloc<EventsTextFeild, dynamic> {
   /// {@macro counter_bloc}
   ValidatorTexxtBlocPhoneNombre() : super(null){
     on((event, emit) {
-      if(event is TextFieldValidatorEventPhoneNombre )
-        emit( event.validator().trim()) ;
-    });
+      if(event is TextFieldValidatorEventPhoneNombre ) {
+        emit(event.validator());
+      }
+
+      });
   }
 
 }
@@ -31,8 +35,9 @@ class ValidatorTexxtBlocPhoneEmail extends Bloc<EventsTextFeild, dynamic> {
   /// {@macro counter_bloc}
   ValidatorTexxtBlocPhoneEmail() : super(null){
     on((event, emit) {
-      if(event is TextFieldValidatorEventPhoneEmail )
-        emit( event.validator().trim()) ;
+      if(event is TextFieldValidatorEventPhoneEmail ) {
+          emit(event.validator());
+      }
     });
   }
 
@@ -44,8 +49,8 @@ class ValidatorTexxtBlocPassword  extends Bloc<EventsTextFeild, dynamic> {
   ValidatorTexxtBlocPassword() : super(null){
     on((event, emit) {
       if(event is TextFieldValidatorEventPassword )
-        emit( event.validator().trim()) ;
-    });
+
+          emit( event.validator()) ;    });
   }
 
 }

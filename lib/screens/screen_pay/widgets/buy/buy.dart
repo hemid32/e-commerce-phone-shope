@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:phoneshop/bloc/dataDetailsOrder/bloc.dart';
 import 'package:phoneshop/screens/homescreen/homescreen.dart';
-import 'package:phoneshop/screens/homescreen/widgeets/home.dart';
 import 'package:phoneshop/screens/screen_pay/widgets/buy/widgestStateRequst/accept_and_shopping.dart';
 import 'package:phoneshop/screens/screen_pay/widgets/buy/widgestStateRequst/conferm_arreved.dart';
 import 'package:phoneshop/screens/screen_pay/widgets/buy/widgestStateRequst/sand_domand.dart';

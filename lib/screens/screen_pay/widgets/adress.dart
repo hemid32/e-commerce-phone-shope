@@ -62,7 +62,7 @@ class Addres extends StatelessWidget {
               BlocProvider.of<ValidatorTexxtBlocPhoneEmail>(context).add(TextFieldValidatorEventPhoneEmail(valur: valur.toString().trim()  , titleErurr: 'erurr email')) ;
 
               _email = valur;
-            },validErurr: state ,textInputeType: TextInputType.emailAddress);
+            },validErurr: state  ,textInputeType: TextInputType.emailAddress);
           }
         ) ,
         //ContainerAndIconAndText_Seach(title: 'Search Your Adress', icon:  Icon(Icons.location_searching_sharp),),

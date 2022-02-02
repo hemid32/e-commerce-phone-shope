@@ -6,7 +6,7 @@ import 'event.dart';
 
 class AddressBlocRadio extends Bloc<EventsAddress, dynamic> {
   /// {@macro counter_bloc}
-  AddressBlocRadio() : super(null){
+  AddressBlocRadio() : super('null'){
     on<EvenstRadioAddres>(_adress) ;
   }
 

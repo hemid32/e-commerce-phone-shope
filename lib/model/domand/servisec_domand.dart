@@ -3,7 +3,6 @@
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:phoneshop/model/cart/services.dart';
 import 'package:phoneshop/model/domand/model.dart';
 import 'package:uuid/uuid.dart';
@@ -46,7 +45,7 @@ class SandDmndToFireBase {
   }
 
   _minimusContitu(String idProduitColors , int idProduit , int contituBuy ) async  {
-    final    produits = await  FirebaseFirestore.instance.collection('Produits');
+    final    produits =   FirebaseFirestore.instance.collection('Produits');
     var _data =  await produits.get() ;
     int oldContitu ;
     int newContitu ;

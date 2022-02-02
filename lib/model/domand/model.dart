@@ -16,91 +16,76 @@ class DomandProduit {
   final double priceShopping;
   final double priceTotalProduit;
   final double total;
-  final DateTime date ;
-  final String uidDomand ;
+  final DateTime date;
+  final String uidDomand;
   DomandProduit({
-   required this.nombreDomand,
-    required  this.listProduitBuy,
+    required this.nombreDomand,
+    required this.listProduitBuy,
     required this.addres,
     required this.methodSopping,
     required this.user,
-    required  this.nots,
+    required this.nots,
     required this.stateDomand,
-    required  this.priceShopping,
-    required   this.priceTotalProduit,
-    required    this.total,
-    required   this.date ,
-    required this.uidDomand ,
+    required this.priceShopping,
+    required this.priceTotalProduit,
+    required this.total,
+    required this.date,
+    required this.uidDomand,
   });
 
-
-  factory DomandProduit.fromJson(Map<String , dynamic>  json){
-
+  factory DomandProduit.fromJson(Map<String, dynamic> json) {
     return DomandProduit(
-        nombreDomand: json['nombreDomand']  ,
-        listProduitBuy: json['listProduitBuy'] ,
-        addres: json['addres'] ,
-        methodSopping: json['methodSopping'] ,
-        user: json['user'] ,
-        nots: json['nots'] ,
-        stateDomand: json['stateDomand'] ,
-        priceShopping: json['priceShopping'] ,
-        priceTotalProduit: json['priceTotalProduit'] ,
-        total: json['total'] ,
-        date : json['date'] ,
-      uidDomand: json['uidDomand'] ,
-
-    ) ;
+      nombreDomand: json['nombreDomand'],
+      listProduitBuy: json['listProduitBuy'],
+      addres: json['addres'],
+      methodSopping: json['methodSopping'],
+      user: json['user'],
+      nots: json['nots'],
+      stateDomand: json['stateDomand'],
+      priceShopping: json['priceShopping'],
+      priceTotalProduit: json['priceTotalProduit'],
+      total: json['total'],
+      date: json['date'],
+      uidDomand: json['uidDomand'],
+    );
   }
 
-
-
-
-
   factory DomandProduit.fromJsonGetFireBase(Map<String, dynamic> json) {
-    List<ModelCart>   listP =[] ; // = ghrt(json['listProduitBuy']['itemCart']) ;
+    List<ModelCart> listP = []; // = ghrt(json['listProduitBuy']['itemCart']) ;
     json['listProduitBuy']['itemCart']
         .forEach((elements) => listP.add(ModelCart.FormJson({
-      'produit': Produit.formJson(elements['produit']),
-      'contituPay': elements['contituPay'],
-      'idProduitColors': elements['idProduitColors'],
-    })));
-
-    return DomandProduit(
-        nombreDomand: json['nombreDomand'],
-
-
-        listProduitBuy: ListModelCarte.FormJson({
-          'itemCart': listP,
-        }), //json['listProduitBuy']   ,
-
-
-
-
-
-
-        addres: ModelAdress.fromJson(
-          json['addres'],
-        ), // json['addres'] ,
-        methodSopping: MethodShoppingShoi.froJson({
-          'fin': json['methodSopping']['fin'],
-          'method': ShoppingModelMethod.fromJson({
-            'titleMethod': json['methodSopping']['method']['titleMethod'],
-            'price': json['methodSopping']['method']['price'],
-            'wilayaSupport': List<String>.from(
-                json['methodSopping']['method']['wilayaSupport'])
-          }),
-        }), //json['methodSopping'] ,
-        user: UserLocalModel.fromJson(json['user']), //json['user'] ,
-        nots: json['nots'],
-        stateDomand: json['stateDomand'],
-        priceShopping: json['priceShopping'],
-        priceTotalProduit: json['priceTotalProduit'],
-        total: json['total'],
-        date: json['date'].toDate() ,
-        uidDomand: json['uidDomand']
-
+              'produit': Produit.formJson(elements['produit']),
+              'contituPay': elements['contituPay'],
+              'idProduitColors': elements['idProduitColors'],
+            })));
+    print('${json['user']}');
+    DomandProduit domand = DomandProduit(
+      nombreDomand: json['nombreDomand'],
+      listProduitBuy: ListModelCarte.FormJson({
+        'itemCart': listP,
+      }), //json['listProduitBuy']   ,
+      addres: ModelAdress.fromJson(
+        json['addres'],
+      ), // json['addres'] ,
+      methodSopping: MethodShoppingShoi.froJson({
+        'fin': json['methodSopping']['fin'],
+        'method': ShoppingModelMethod.fromJson({
+          'titleMethod': json['methodSopping']['method']['titleMethod'],
+          'price': json['methodSopping']['method']['price'],
+          'wilayaSupport': List<String>.from(
+              json['methodSopping']['method']['wilayaSupport'])
+        }),
+      }), //json['methodSopping'] ,
+      user: UserLocalModel.fromJson(json['user']), //json['user'] ,
+      nots: json['nots'],
+      stateDomand: json['stateDomand'],
+      priceShopping: json['priceShopping'],
+      priceTotalProduit: json['priceTotalProduit'],
+      total: json['total'],
+      date: json['date'].toDate(),
+      uidDomand: json['uidDomand'],
     );
+    return domand;
   }
 
   Map<String, dynamic> toMap() {
@@ -115,8 +100,8 @@ class DomandProduit {
       'priceShopping': priceShopping,
       'priceTotalProduit': priceTotalProduit,
       'total': total,
-      'date' : DateTime.now() ,
-      'uidDomand' : uidDomand ,
+      'date': DateTime.now(),
+      'uidDomand': uidDomand,
     };
   }
 }

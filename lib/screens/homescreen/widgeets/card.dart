@@ -6,7 +6,6 @@ import 'package:phoneshop/bloc/manageScreen/detailProduit/bloc.dart';
 import 'package:phoneshop/bloc/manageScreen/detailProduit/event.dart';
 import 'package:phoneshop/bloc/userManagze/userVirifaid/bloc.dart';
 import 'package:phoneshop/model/cart/cart.dart';
-import 'package:phoneshop/model/cart/services.dart';
 import 'package:phoneshop/model/getModelFirebase/getTotalProduitColors.dart';
 import 'package:phoneshop/model/produit/produit_colors.dart';
 import 'package:phoneshop/screens/detailProduit/detail_produit.dart';
@@ -37,7 +36,7 @@ class CartHome extends StatelessWidget {
               //print('snapShot.data === $snapShot');
             return   FutureBuilder(
               builder: (context, snp) {
-                return snapShot == null ? Container() :  Column(
+                return snapShot.isEmpty ? Container() :  Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     //TitleTextAligns(title: 'Detail de requist',) ,
