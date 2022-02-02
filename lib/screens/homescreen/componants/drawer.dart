@@ -8,6 +8,7 @@ import 'package:phoneshop/bloc/userManagze/userVirifaid/event.dart';
 import 'package:phoneshop/screens/homescreen/componants/costom_listTile.dart';
 import 'package:phoneshop/screens/loginorRegester/login_or_regester.dart';
 import 'package:phoneshop/screens/messages/messages.dart';
+import 'package:phoneshop/screens/myOrder/my_order.dart';
 import 'package:phoneshop/screens/profile/profile.dart';
 
 class DrawerApps extends StatelessWidget {
@@ -80,6 +81,11 @@ class DrawerApps extends StatelessWidget {
             Scaffold.of(context).openEndDrawer() ;
             BlocProvider.of<BlocHomeButtomBar>(context).add(GoToSetting());
             BlocProvider.of<BlocUserVerifaid>(context).add(EventsUserVerified());
+
+          },) ,
+          CostomListTile(title: 'My orders' , icon: Icons.shopping_cart_rounded,onTap: (){
+            Scaffold.of(context).openEndDrawer() ;
+            Navigator.push(context, MaterialPageRoute(builder: (context) => MyOrder())) ;
 
           },) ,
           CostomListTile(title: 'feedback' , icon: Icons.feedback,onTap: (){},) ,

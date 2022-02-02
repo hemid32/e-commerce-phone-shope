@@ -10,11 +10,11 @@ class CostomListTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: (){onTap();},
+    return TextButton(
+      onPressed: (){onTap();},
       child: Container(
         margin: EdgeInsets.symmetric(horizontal:  20 , vertical: 2),
-        height:  65,
+        height: 50,
         width:  double.infinity,
         decoration: BoxDecoration(
           color: Theme.of(context).cardColor
