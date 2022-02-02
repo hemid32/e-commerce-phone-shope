@@ -13,12 +13,12 @@ import 'package:phoneshop/bloc/validatorTaxtField/bloc.dart';
 import 'package:phoneshop/bloc/validatorTaxtField/event.dart';
 import 'package:phoneshop/constant.dart';
 import 'package:phoneshop/model/user/user.dart';
+import 'package:phoneshop/oitil/snack_bar.dart';
 import 'package:phoneshop/screens/loginorRegester/componants/button_register.dart';
 import 'package:phoneshop/screens/loginorRegester/componants/register_r_design.dart';
 import 'package:phoneshop/screens/loginorRegester/function/verifiedFieldIsComplet.dart';
 import 'package:phoneshop/screens/mobilVerification/mobilVerification.dart';
 import 'package:phoneshop/screens/screen_pay/componants/field_text.dart';
-import 'package:toast/toast.dart';
 
 import 'container_background.dart';
 class Register extends StatelessWidget {
@@ -218,12 +218,17 @@ class Register extends StatelessWidget {
 
                     }else {
                       print('all info is true  false ******* !! ') ;
+                      /*
                       Toast.show( 'Errur !! ',
                         context,
                         duration: 3,
                         gravity:  Toast.BOTTOM ,
                         border: Border.all(color: Colors.white) ,
                       );
+
+                       */
+                      showInSnackBar(context ,'Errur !! ') ;
+
 
                     }
 

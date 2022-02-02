@@ -3,10 +3,6 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:phoneshop/bloc/favorite/listFavoite/bloc.dart';
-import 'package:phoneshop/bloc/favorite/listFavoite/event.dart';
-import 'package:phoneshop/bloc/getMessageq/bloc.dart';
-import 'package:phoneshop/bloc/getMessageq/events.dart';
 import 'package:phoneshop/bloc/languge/bloc.dart';
 import 'package:phoneshop/bloc/languge/state.dart';
 import 'package:phoneshop/bloc/manageScreen/home/bloc.dart';
@@ -17,6 +13,7 @@ import 'package:phoneshop/bloc/theme/bloc.dart';
 import 'package:phoneshop/bloc/theme/event.dart';
 import 'package:phoneshop/bloc/userManagze/userVirifaid/bloc.dart';
 import 'package:phoneshop/constant.dart';
+import 'package:phoneshop/oitil/snack_bar.dart';
 import 'package:phoneshop/screens/homescreen/componants/costom_listTile.dart';
 import 'package:phoneshop/screens/homescreen/componants/costom_list_tile_switch.dart';
 import 'package:phoneshop/screens/homescreen/componants/header_setting.dart';
@@ -25,7 +22,6 @@ import 'package:phoneshop/screens/loginorRegester/login_or_regester.dart';
 import 'package:phoneshop/screens/messages/messages.dart';
 import 'package:phoneshop/screens/profile/profile.dart';
 import 'package:phoneshop/services/lang/appLocat.dart';
-import 'package:toast/toast.dart';
 
 class SettingAPP extends StatelessWidget {
   const SettingAPP({
@@ -76,9 +72,9 @@ class SettingAPP extends StatelessWidget {
         BlocConsumer<BlocNotification , StateBlocNotification>(
           listener: (context , state){
             if(state is StateBlocNotificationSubscrip ){
-              Toast.show('Notifications enabled', context , duration: 4 );
+              showInSnackBar(context ,'Notifications enabled', color: kPrimaryColor ) ;
             }else if (state is StateBlocNotificationUnsubscrip){
-              Toast.show('Notifications are disabled', context  , duration: 4 );
+              showInSnackBar(context ,'Notifications are disabled', color: kPrimaryColor ) ;
             }
           },
           builder: (context, snapshot) {
@@ -114,7 +110,10 @@ class SettingAPP extends StatelessWidget {
           BlocConsumer<BlocLanguage , StateBlocLanguage>(
             listener: (context, state){
               if(state is StateBlocLanguageChangeLanguage){
-                Toast.show('Language has changed', context ) ;
+                //Toast.show('Language has changed', context ) ;
+                showInSnackBar(context ,'Language has changed', color: kPrimaryColor ) ;
+
+
               }
             },
             builder: (context, snapshot) {

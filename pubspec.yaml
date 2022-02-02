@@ -36,7 +36,6 @@ dependencies:
   bloc:
   hive:
   hive_flutter:
-  toast:
   firebase_core:
   firebase_auth:
   cloud_firestore:

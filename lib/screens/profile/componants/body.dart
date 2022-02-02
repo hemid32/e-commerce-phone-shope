@@ -1,15 +1,11 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:phoneshop/bloc/favorite/listFavoite/bloc.dart';
-import 'package:phoneshop/bloc/favorite/listFavoite/event.dart';
 import 'package:phoneshop/bloc/manageScreen/home/bloc.dart';
 import 'package:phoneshop/bloc/manageScreen/home/events.dart';
 import 'package:phoneshop/bloc/user/bloc.dart';
 import 'package:phoneshop/bloc/userManagze/userVirifaid/bloc.dart';
 import 'package:phoneshop/bloc/userManagze/userVirifaid/event.dart';
-import 'package:phoneshop/constant.dart';
 import 'package:phoneshop/model/user/user.dart';
 import 'package:phoneshop/screens/ListAddress/list_address.dart';
 import 'package:phoneshop/screens/editProfile/editProfile.dart';
@@ -65,7 +61,7 @@ class Body extends StatelessWidget {
                           builder: (context, userList) {
                             UserLocalModel _user = userList[0] ;
                             return NomeUser(
-                              name: _user.name??'',
+                              name: _user.name,
                               email: _user.email,
                             );
                           }

@@ -2,19 +2,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:phoneshop/bloc/laodingCirceler/bloc.dart';
-import 'package:phoneshop/bloc/laodingCirceler/events.dart';
 import 'package:phoneshop/bloc/manageScreenConfermCodSms/bloc.dart';
 import 'package:phoneshop/bloc/register/bloc.dart';
 import 'package:phoneshop/bloc/userManagze/formerRegister/termAndCondition/bloc.dart';
 import 'package:phoneshop/bloc/userManagze/screenLoginRegister/bloc.dart';
-import 'package:phoneshop/bloc/userManagze/userVirifaid/bloc.dart';
-import 'package:phoneshop/bloc/userManagze/userVirifaid/event.dart';
 import 'package:phoneshop/bloc/validatorTaxtField/bloc.dart';
-import 'package:phoneshop/constant.dart';
-import 'package:phoneshop/screens/homescreen/widgeets/home.dart';
-import 'package:phoneshop/screens/loginorRegester/widget/register_form.dart';
-import 'package:phoneshop/screens/profile/profile.dart';
-import 'package:toast/toast.dart';
 
 import 'componants/body.dart';
 

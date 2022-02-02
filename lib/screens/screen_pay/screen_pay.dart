@@ -8,13 +8,12 @@ import 'package:phoneshop/bloc/dataDetailsOrder/bloc.dart';
 import 'package:phoneshop/bloc/laodingCirceler/bloc.dart';
 import 'package:phoneshop/bloc/laodingCirceler/events.dart';
 import 'package:phoneshop/bloc/manageData/puy/bloc.dart';
-import 'package:phoneshop/bloc/manageScreen/addressShoiRadio/bloc.dart';
 import 'package:phoneshop/bloc/manageScreen/puy_screen/bloc.dart';
 import 'package:phoneshop/bloc/manageScreen/puy_screen/events.dart';
 import 'package:phoneshop/bloc/manageScreen/shoppingShoiMethods/bloc.dart';
 import 'package:phoneshop/bloc/ropDowenWilayat/bloc.dart';
 import 'package:phoneshop/bloc/validatorTaxtField/bloc.dart';
-import 'package:toast/toast.dart';
+import 'package:phoneshop/oitil/snack_bar.dart';
 
 import 'componants/body.dart';
 
@@ -76,12 +75,16 @@ class Buy extends StatelessWidget {
 
           }else {
             BlocProvider.of<BlocLoading>(context).add(EventLoadingStop()) ;
+            /*
             Toast.show( state.toString(),
               context,
               duration: 5,
               gravity:  Toast.BOTTOM ,
               border: Border.all(color: Colors.white) ,
             );
+
+             */
+            showInSnackBar(context, state.toString()) ;
           }
         },
         child: Scaffold(

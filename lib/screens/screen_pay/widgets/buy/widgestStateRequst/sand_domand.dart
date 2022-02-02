@@ -6,6 +6,7 @@ import 'package:phoneshop/constant.dart';
 import 'package:phoneshop/model/domand/servisec_domand.dart';
 import 'package:phoneshop/model/messages/model_messages.dart';
 import 'package:phoneshop/model/messages/services_messages.dart';
+import 'package:phoneshop/oitil/snack_bar.dart';
 import 'package:phoneshop/screens/homescreen/homescreen.dart';
 import 'package:phoneshop/screens/messages/messages.dart';
 import 'package:phoneshop/screens/screen_pay/componants/container_buttom_prograss_shopping.dart';
@@ -14,7 +15,6 @@ import 'package:phoneshop/screens/screen_pay/componants/double_button_bottom.dar
 import 'package:phoneshop/screens/screen_pay/componants/progress_shopping.dart';
 import 'package:phoneshop/screens/screen_pay/componants/text_rich_buttom_deatils.dart';
 import 'package:phoneshop/screens/screen_pay/widgets/buy/function/dialogCancelOrder.dart';
-import 'package:toast/toast.dart';
 
 class SandDomand extends StatelessWidget {
   const SandDomand({
@@ -72,7 +72,9 @@ class SandDomand extends StatelessWidget {
                 if(_resultCancel == true){
                   showDialogloding(context) ;
 
-                  Toast.show("the request has been canceled", context, duration: 5, gravity:  Toast.BOTTOM);
+                  //Toast.show("the request has been canceled", context, duration: 5, gravity:  Toast.BOTTOM);
+                  showInSnackBar(context ,'the request has been canceled') ;
+
                   await Future.delayed(Duration(seconds: 1)) ;
                   Navigator.pop(context );
                   Navigator.pop(context );
@@ -91,7 +93,9 @@ class SandDomand extends StatelessWidget {
 
                    */
                 }else {
-                  Toast.show("${_resultCancel.message}", context, duration: 5, gravity:  Toast.BOTTOM);
+                  //Toast.show("${_resultCancel.message}", context, duration: 5, gravity:  Toast.BOTTOM);
+                  showInSnackBar(context ,'${_resultCancel.message}') ;
+
                 }
 
               }) ;

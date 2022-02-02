@@ -5,29 +5,23 @@ import 'package:phoneshop/bloc/cartScreenManage/bloc.dart';
 import 'package:phoneshop/bloc/cartScreenManage/event.dart';
 import 'package:phoneshop/bloc/manageData/puy/bloc.dart';
 import 'package:phoneshop/bloc/manageData/puy/event.dart';
-import 'package:phoneshop/bloc/manageScreen/addressShoiRadio/bloc.dart';
-import 'package:phoneshop/bloc/manageScreen/addressShoiRadio/event.dart';
 import 'package:phoneshop/bloc/manageScreen/puy_screen/bloc.dart';
 import 'package:phoneshop/bloc/manageScreen/puy_screen/events.dart';
 import 'package:phoneshop/bloc/ropDowenWilayat/bloc.dart';
 import 'package:phoneshop/bloc/ropDowenWilayat/event.dart';
 import 'package:phoneshop/bloc/validatorTaxtField/bloc.dart';
 import 'package:phoneshop/bloc/validatorTaxtField/event.dart';
+import 'package:phoneshop/constant.dart';
 import 'package:phoneshop/model/hiveModel/addres.dart';
-import 'package:phoneshop/model/puy/address.dart';
+import 'package:phoneshop/oitil/snack_bar.dart';
 import 'package:phoneshop/oitil/wilayat.dart';
-import 'package:phoneshop/screens/screen_pay/componants/ContainerShoiMethodSHoping.dart';
 import 'package:phoneshop/screens/screen_pay/componants/container_text_And_icon.dart';
 import 'package:phoneshop/screens/screen_pay/componants/drop_dawen.dart';
-import 'package:phoneshop/screens/screen_pay/componants/expanded_address_list.dart';
 import 'package:phoneshop/screens/screen_pay/componants/field_text.dart';
 import 'package:phoneshop/screens/screen_pay/componants/footer_buttons.dart';
-import 'package:phoneshop/screens/screen_pay/componants/radioButton_list_addres.dart';
 import 'package:phoneshop/screens/screen_pay/componants/title.dart';
-import 'package:phoneshop/screens/screen_pay/componants/title_text_address_chois.dart';
 import 'package:phoneshop/screens/screen_pay/functionValid/addressVerification.dart';
 import 'package:phoneshop/screens/screen_pay/functionValid/shoiAddressDialog.dart';
-import 'package:toast/toast.dart';
 
 class Addres extends StatelessWidget {
   Addres({
@@ -122,7 +116,8 @@ class Addres extends StatelessWidget {
               BlocProvider.of<PuyScreenBloc>(context).add(ContinuShopping()) ;
           }else {
             //print('nooot cpmleted ############################') ;
-            Toast.show("Error . Incomplete fields", context, duration: 5, gravity:  Toast.BOTTOM);
+            //Toast.show("Error . Incomplete fields", context, duration: 5, gravity:  Toast.BOTTOM);
+            showInSnackBar(context, 'Error . Incomplete fields') ;
 
           }
 
@@ -137,14 +132,20 @@ class Addres extends StatelessWidget {
             ServisesAdressHive adress = ServisesAdressHive(address: addresSaved) ;
             var _save =await adress.saveNewAddress() ;
             if(_save == true){
-              Toast.show("Saved address successful", context, duration: 5, gravity:  Toast.BOTTOM);
+              //Toast.show("Saved address successful", context, duration: 5, gravity:  Toast.BOTTOM);
+              showInSnackBar(context, 'Saved address successful') ;
+
             }else {
-              Toast.show("${_save.message}", context, duration: 5, gravity:  Toast.BOTTOM);
+              //Toast.show("${_save.message}", context, duration: 5, gravity:  Toast.BOTTOM);
+              showInSnackBar(context, '${_save.message}' , color: kPrimaryColor) ;
+
 
             }
 
           }else {
-            Toast.show("Error . Incomplete fields", context, duration: 5, gravity:  Toast.BOTTOM);
+            //Toast.show("Error . Incomplete fields", context, duration: 5, gravity:  Toast.BOTTOM);
+            showInSnackBar(context, 'Error . Incomplete fields') ;
+
           }
 
 

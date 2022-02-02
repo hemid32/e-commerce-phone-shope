@@ -5,14 +5,16 @@ import 'package:phoneshop/bloc/ropDowenWilayat/bloc.dart';
 import 'package:phoneshop/bloc/ropDowenWilayat/event.dart';
 import 'package:phoneshop/bloc/validatorTaxtField/bloc.dart';
 import 'package:phoneshop/bloc/validatorTaxtField/event.dart';
+import 'package:phoneshop/constant.dart';
 import 'package:phoneshop/model/hiveModel/addres.dart';
+import 'package:phoneshop/oitil/snack_bar.dart';
 import 'package:phoneshop/oitil/wilayat.dart';
 import 'package:phoneshop/screens/screen_pay/componants/button_costom_wight_infinty.dart';
 import 'package:phoneshop/screens/screen_pay/componants/drop_dawen.dart';
 import 'package:phoneshop/screens/screen_pay/componants/field_text.dart';
 import 'package:phoneshop/screens/screen_pay/componants/title.dart';
 import 'package:phoneshop/screens/screen_pay/functionValid/addressVerification.dart';
-import 'package:toast/toast.dart';
+//import 'package:toast/toast.dart';
 
 class Body extends StatelessWidget {
    Body({Key? key}) : super(key: key);
@@ -104,14 +106,17 @@ class Body extends StatelessWidget {
                   BlocManageAddress.get(context).getAllAdress() ;
                   Navigator.pop(context) ;
 
-                  Toast.show("Saved address successful", context, duration: 5, gravity:  Toast.BOTTOM);
+                  showInSnackBar(context ,'Saved address successful', color: kPrimaryColor ) ;
+
                 }else {
-                  Toast.show("${_save.message}", context, duration: 5, gravity:  Toast.BOTTOM);
+                  showInSnackBar(context ,'${_save.message}' ) ;
+
 
                 }
 
               }else {
-                Toast.show("Error . Incomplete fields", context, duration: 5, gravity:  Toast.BOTTOM);
+                showInSnackBar(context ,'Error . Incomplete fields' ) ;
+
               }
 
             }
