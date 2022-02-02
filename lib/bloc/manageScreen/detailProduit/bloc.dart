@@ -7,33 +7,30 @@ import 'event.dart';
 class BlocScreenDetailProduit extends  Bloc<EventScreenDetails ,List<dynamic>  >{
 
 
-  BlocScreenDetailProduit() : super([Produit() ,ProduitsColors() ]);
+  BlocScreenDetailProduit() : super([Produit() ,ProduitsColors() ]){
+    on<EvensGoToProduit>(_goToPoduct) ;
+  }
 
-  @override
-  Stream<List<dynamic>> mapEventToState(EventScreenDetails event) async* {
-    // TODO: implement mapEventToState
-    if(event is  EvensGoToProduit ){
-      EvensGoToProduit produit = event ;
-      yield [produit.produitResult() , produit.produisColors , produit.indexProduit,produit.produisColors.id] ;
-    }
+  void _goToPoduct(EvensGoToProduit event , Emitter<List<dynamic> > emit ){
+    emit(
+        [event.produitResult() , event.produisColors ,
+          event.indexProduit,event.produisColors.id]
+    );
   }
 }
 
 
 class BlocMinusAddProduitFromDetail extends Bloc <EventScreenDetails , int >{
-  BlocMinusAddProduitFromDetail() : super(1);
+  BlocMinusAddProduitFromDetail() : super(1){
+    on<EventMinus>(_minus);
+    on<EventAdd>(_add);
+  }
 
-  @override
-  Stream<int> mapEventToState(EventScreenDetails event) async* {
-    // TODO: implement mapEventToState
-    if(event is EventMinus){
-      EventMinus results = event ;
-      yield results.minus() ;
-    }else if(event is  EventAdd){
-      EventAdd results = event ;
-      yield results.add() ;
-
-    }
+  void _minus(EventMinus event , Emitter<int> emit ){
+    emit(event.minus()) ;
+  }
+  void _add(EventAdd event , Emitter<int> emit ){
+    emit(event.add()) ;
   }
 }
 

@@ -6,13 +6,12 @@ import 'event.dart';
 
 class ShoppingBlocRadio extends Bloc<EventsShopping, dynamic> {
   /// {@macro counter_bloc}
-  ShoppingBlocRadio() : super(null);
-  @override
-  Stream<String> mapEventToState(EventsShopping event) async* {
-    //print(event.runtimeType) ;
-    if(event is   EvenstRadio ){
-      EvenstRadio radio = event ;
-      yield radio.valurRadio  ;
-    }
+  ShoppingBlocRadio() : super(null){
+    on((event, emit) {
+      if(event is EvenstRadio ){
+        emit(event.valurRadio) ;
+      }
+    });
   }
+
 }

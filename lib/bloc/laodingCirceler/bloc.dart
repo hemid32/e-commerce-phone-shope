@@ -6,17 +6,19 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'events.dart';
 
 class BlocLoading extends Bloc<EventLoading ,  bool>{
-  BlocLoading() : super(false);
-
-  @override
-  Stream<bool> mapEventToState(EventLoading event) async* {
-    // TODO: implement mapEventToState
-    if(event.runtimeType == EventLoadingStart){
-      yield true ;
-    }else if( event.runtimeType == EventLoadingStop){
-      yield false ;
-    }
+  BlocLoading() : super(false){
+    on<EventLoadingStart>(_start) ;
+    on<EventLoadingStop>(_end) ;
   }
+
+  void  _start(EventLoadingStart event , Emitter<bool> emit ){
+    emit(true) ;
+  }
+  void  _end(EventLoadingStop event , Emitter<bool> emit ){
+    emit(false) ;
+  }
+
+
 
 
 

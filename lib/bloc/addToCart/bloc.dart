@@ -4,14 +4,12 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'event.dart';
 
 class BlocAddToCartNewProduit extends Bloc<EventsAddToCartNew ,dynamic  >{
-  BlocAddToCartNewProduit() : super(false);
-  @override
-  Stream<dynamic > mapEventToState(EventsAddToCartNew event) async*  {
-    // TODO: implement mapEventToState
-    if(event is EventAddNewProduitToCart){
-      yield event.addToHive() ;
-    }
-
-
+  BlocAddToCartNewProduit() : super(false){
+    on<EventAddNewProduitToCart>(_addProduitToCard) ;
   }
+
+  void _addProduitToCard(EventAddNewProduitToCart event , Emitter<dynamic> emit ){
+    emit(event.addToHive()) ;
+  }
+
 }

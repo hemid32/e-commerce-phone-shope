@@ -9,26 +9,25 @@ import 'package:phoneshop/screens/screen_pay/widgets/shopping.dart';
 
 class PuyScreenBloc extends Bloc<EventsPuy, Widget> {
   /// {@macro counter_bloc}
-  PuyScreenBloc() : super(Addres());
-
-  @override
-  Stream<Widget> mapEventToState(EventsPuy event) async* {
-    //print(event.runtimeType) ;
-    switch (event.runtimeType) {
-      case FirstAddAdress:
+  PuyScreenBloc() : super(Addres()){
+    on((event,Emitter<Widget> emit) {
+      switch (event.runtimeType) {
+        case FirstAddAdress:
         //print('go to fav from event  ');
-        yield Addres();
-        break;
-      case ContinuShopping:
-        yield Shopping();
-        break;
-      case ContenuVarifeid:
-        yield Cart();
-        break;
-      case LastPuy:
-        yield DetailOrderaFterBuy();
-        break;
-        addError(Exception('unsupported event'));
-    }
+          emit( Addres());
+          break;
+        case ContinuShopping:
+          emit( Shopping());
+          break;
+        case ContenuVarifeid:
+          emit( Cart());
+          break;
+        case LastPuy:
+          emit( DetailOrderaFterBuy());
+          break;
+      }
+    });
   }
+
+
 }

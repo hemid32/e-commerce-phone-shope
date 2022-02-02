@@ -7,57 +7,45 @@ import 'package:phoneshop/bloc/validatorTaxtField/event.dart';
 
 class ValidatorTexxtBlocString extends Bloc<EventsTextFeild, dynamic> {
   /// {@macro counter_bloc}
-  ValidatorTexxtBlocString() : super(null);
-  @override
-  Stream<String> mapEventToState(EventsTextFeild event) async* {
-    //print(event.runtimeType) ;
-    if(event is  TextFieldValidatorEventNome ){
-      TextFieldValidatorEventNome valid =event ;
-      //print(event) ;
-      yield valid.validator().trim() ;
-    }
+  ValidatorTexxtBlocString() : super(null){
+    on((event, emit) {
+      if(event is TextFieldValidatorEventNome )
+       emit( event.validator().trim()) ;
+    });
   }
+
 }
 
 class ValidatorTexxtBlocPhoneNombre extends Bloc<EventsTextFeild, dynamic> {
   /// {@macro counter_bloc}
-  ValidatorTexxtBlocPhoneNombre() : super(null);
-  @override
-  Stream<String> mapEventToState(EventsTextFeild event) async* {
-    //print(event.runtimeType) ;
-    if(event is  TextFieldValidatorEventPhoneNombre ){
-      TextFieldValidatorEventPhoneNombre valid =event ;
-      //print(event) ;
-      yield valid.validator().trim() ;
-    }
+  ValidatorTexxtBlocPhoneNombre() : super(null){
+    on((event, emit) {
+      if(event is TextFieldValidatorEventPhoneNombre )
+        emit( event.validator().trim()) ;
+    });
   }
+
 }
 
 class ValidatorTexxtBlocPhoneEmail extends Bloc<EventsTextFeild, dynamic> {
   /// {@macro counter_bloc}
-  ValidatorTexxtBlocPhoneEmail() : super(null);
-  @override
-  Stream<String> mapEventToState(EventsTextFeild event) async* {
-    //print(event.runtimeType) ;
-    if(event is  TextFieldValidatorEventPhoneEmail ){
-      TextFieldValidatorEventPhoneEmail valid =event ;
-      //print(event) ;
-      yield valid.validator().trim() ;
-    }
+  ValidatorTexxtBlocPhoneEmail() : super(null){
+    on((event, emit) {
+      if(event is TextFieldValidatorEventPhoneEmail )
+        emit( event.validator().trim()) ;
+    });
   }
+
 }
 
 
 class ValidatorTexxtBlocPassword  extends Bloc<EventsTextFeild, dynamic> {
   /// {@macro counter_bloc}
-  ValidatorTexxtBlocPassword() : super(null);
-  @override
-  Stream<String> mapEventToState(EventsTextFeild event) async* {
-    //print(event.runtimeType) ;
-    if(event is  TextFieldValidatorEventPassword ){
-      TextFieldValidatorEventPassword valid =event ;
-      //print(event) ;
-      yield valid.validator().trim() ;
-    }
+  ValidatorTexxtBlocPassword() : super(null){
+    on((event, emit) {
+      if(event is TextFieldValidatorEventPassword )
+        emit( event.validator().trim()) ;
+    });
   }
+
 }

@@ -5,28 +5,21 @@ import 'package:phoneshop/model/getModelFirebase/getUser/modelUserGet.dart';
 import 'package:phoneshop/model/messages/model_messages.dart';
 
 class BlocMassegersGet  extends Bloc<EventGetMessages , List<Message>>{
-  BlocMassegersGet() : super([]);
-
-  @override
-  Stream<List<Message>> mapEventToState(EventGetMessages event) async* {
-    // TODO: implement mapEventToState
-
-    if(event is  EventGetMessagesFromFire ){
-      EventGetMessagesFromFire _messages = event ;
-      yield _messages.getMessages() ;
-    }
+  BlocMassegersGet() : super([]){
+    on<EventGetMessagesFromFire>(_getMessages) ;
+  }
+  void  _getMessages(EventGetMessagesFromFire event , Emitter emit ){
+    emit(event.getMessages()) ;
   }
 }
 
 class BlocMessagesActiveDate extends Bloc<EventGetMessages , dynamic >{
-  BlocMessagesActiveDate() : super([false , 1000000]);
-
-  @override
-  Stream<dynamic> mapEventToState(EventGetMessages event) async* {
-    // TODO: implement mapEventToState
-    if(event is   EventGetMessagesActiveDate ){
-      EventGetMessagesActiveDate _result =event ;
-      yield _result.isActive() ;
-    }
+  BlocMessagesActiveDate() : super([false , 1000000]){
+    on<EventGetMessagesActiveDate>(_getMessagesActiveData) ;
   }
+
+  _getMessagesActiveData(EventGetMessagesActiveDate  event , Emitter emit){
+    emit(event.isActive()) ;
+  }
+
 }

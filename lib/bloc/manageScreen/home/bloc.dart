@@ -11,28 +11,28 @@ import 'events.dart';
 
 class BlocHomeButtomBar extends Bloc<EventsHome, Widget> {
   /// {@macro counter_bloc}
-  BlocHomeButtomBar() : super(Home());
-
-  @override
-  Stream<Widget> mapEventToState(EventsHome event) async* {
-    //print(event.runtimeType) ;
-    switch (event.runtimeType) {
-      case GoToFavorite:
+  BlocHomeButtomBar() : super(Home()){
+    on((event,Emitter<Widget> emit) {
+      switch (event.runtimeType) {
+        case GoToFavorite:
         //print('go to fav from event  ');
-        yield Favorite();
-        break;
-      case GoToCart:
-        yield CartHome();
-        break;
-      case GoToHome:
-        yield Home();
-        break;
-      case GoToSetting:
-        yield SettingAPP();
-        break;
-        addError(Exception('unsupported event'));
-    }
+          emit(Favorite()) ;
+          break;
+        case GoToCart:
+          emit(CartHome()) ;
+          break;
+        case GoToHome:
+          emit( Home()) ;
+          break;
+        case GoToSetting:
+          emit(SettingAPP()) ;
+          break;
+          addError(Exception('unsupported event'));
+      }
+    });
   }
+
+
 }
 
 

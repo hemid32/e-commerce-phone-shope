@@ -6,12 +6,12 @@ import 'event.dart';
 
 class AddressBlocRadio extends Bloc<EventsAddress, dynamic> {
   /// {@macro counter_bloc}
-  AddressBlocRadio() : super(null);
-  @override
-  Stream<String> mapEventToState(EventsAddress event) async* {
-    //print(event.runtimeType) ;
-    if(event is EvenstRadioAddres ){
-      yield event.valurRadio  ;
-    }
+  AddressBlocRadio() : super(null){
+    on<EvenstRadioAddres>(_adress) ;
   }
+
+  _adress(EvenstRadioAddres event  , Emitter emit){
+    emit(event.valurRadio) ;
+  }
+
 }

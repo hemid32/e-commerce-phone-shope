@@ -9,7 +9,24 @@ import 'package:phoneshop/screens/myOrder/widgets/shopping_order.dart';
 import 'event.dart';
 
 class BlocMyOrder extends Bloc<EventMyOrder , Widget>{
-  BlocMyOrder() : super(OrderSendSomand());
+  BlocMyOrder() : super(OrderSendSomand()){
+    on((event,Emitter<Widget> emit) {
+      switch (event.runtimeType) {
+        case EventScreenMyOrderSandDomand:
+        //print('go to fav from event  ');
+          emit( OrderSendSomand());
+          break;
+        case EventScreenMyOrderSoppingDomand:
+          emit( ShoppingOrder());
+          break;
+        case EventScreenMyOrderRecovredDomand:
+          emit( ReceivedOrder());
+          break;
+
+      }
+    });
+
+  }
 
 
 

@@ -6,16 +6,14 @@ import 'package:phoneshop/model/cart/cartCalcul.dart';
 
 class CalculCartBloc extends Bloc<EventsCalculCart, ModelCartCalcul> {
   /// {@macro counter_bloc}
-  CalculCartBloc() : super(ModelCartCalcul());
-
-  @override
-  Stream<ModelCartCalcul> mapEventToState(EventsCalculCart event) async* {
-    //print(event.runtimeType) ;
-    if(event is EventCart ){
-      //save Data adress
-      // return data event adress
-      yield event.calcule()   ;
-    }
-
+  CalculCartBloc() : super(ModelCartCalcul()){
+    on<EventCart>(_calcul) ;
   }
+
+
+  void _calcul(EventCart event , Emitter<ModelCartCalcul> emit ){
+    emit(event.calcule()) ;
+  }
+
+
 }
