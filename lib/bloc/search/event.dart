@@ -13,13 +13,16 @@ class EventListSearch extends EventSearch {
 
 
   ListProduitsColors search()   {
-    ListProduitsColors _listTotal = getProduitColors() ;
+    //ListProduitsColors _listTotal = getProduitColors() ;
     List<ProduitsColors> _newList  = [] ;
+    /*
     _listTotal.produits?.forEach((element) {
       if(element.nomPhone!.contains(nmaePhone)) {
         _newList.add(element) ;
       }
     });
+
+     */
     ListProduitsColors _resultFinal = ListProduitsColors.fronJson({
       'produits' : _newList ,
     }) ;

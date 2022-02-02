@@ -16,18 +16,20 @@ class EventAllProduitTypeFhone extends EvenetsAllProduitFilters {
 
   ListProduitsColors filtType(){
     List<ProduitsColors> listProduitFilter  = [] ;
-    ListProduitsColors  listProduit = getProduitColors() ;
-
+    //ListProduitsColors  listProduit = getProduitColors() ;
+    /*
     listProduit.produits?.forEach((element) {
       if(element.typePhone == phoneType){
         listProduitFilter.add(element) ;
       }
 
     });
+
+     */
     ListProduitsColors result = ListProduitsColors.fronJson({
       'produits' : listProduitFilter
     });
-    //print('result filter ==== ${result.produits.length} ') ;
+    print('result filter ==== ${result.produits!.length} ') ;
     return result ;
   }
 }

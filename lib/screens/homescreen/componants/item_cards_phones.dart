@@ -38,7 +38,7 @@ class ItemsCardBestSellingPHone extends StatelessWidget {
                 FutureBuilder(
                   future: null ,//FavoriteModelItem(produit: produitsColor).ifFavorite(),
                   builder: (_ , data){
-                  return  data.hasData ?  Builder(
+                  return  true ?  Builder(
                     builder: (context) {
                       //print(listData.produits[i].listProduits.length)
                       Produit productShowing = FilterProduitFromProduitColors.getPriorityProduitFromProduitColors(produitsColor.listProduits!) ;
@@ -56,7 +56,7 @@ class ItemsCardBestSellingPHone extends StatelessWidget {
                                 child: DetailProduit()) ,
                           )));},
                         //id: listData.produits[i].id ,
-                        fav:  BlocFavorite.get(context).listFav.contains(ModelFaveriote(produitColors: produitsColor, idProduit: productShowing.id.toString())),
+                        fav: BlocFavorite.get(context).listIdProduitColor.contains(produitsColor.id) ,//BlocFavorite.get(context).listIdFav.contains(ModelFaveriote(produitColors: produitsColor, idProduit: productShowing.id.toString())),
                         onTapFav: ()=> BlocFavorite.get(context).whenClickFavIcon(produitsColor, productShowing.id.toString()),//BlocProvider.of<BlocFavoriteIs>(context).add(IsTapOnFavEvent(produitsColor)),
                       );
                     }

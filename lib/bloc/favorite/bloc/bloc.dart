@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:phoneshop/bloc/favorite/bloc/state.dart';
 import 'package:phoneshop/model/favorite/model.dart';
 import 'package:phoneshop/model/favorite/servises.dart';
-import 'package:phoneshop/model/produit/produit.dart';
 import 'package:phoneshop/model/produit/produit_colors.dart';
 
 class BlocFavorite extends Cubit<StateFavorite>{
@@ -14,10 +13,27 @@ class BlocFavorite extends Cubit<StateFavorite>{
 
 
   List<ModelFaveriote> listFav = [] ;
+  List<String> listIdProduitColor = [] ;
+  List<String> listIdProduit = [] ;
 
   intiStateData() async {
     listFav = await ServisesFavoriteHive.getItemFavorite() ;
+    lsiIdFav() ;
     emit(StateFavoriteInitState()) ;
+  }
+
+  lsiIdFav(){
+    listIdProduitColor.clear();
+    listIdProduit.clear();
+    listFav.forEach((element) {
+      listIdProduit.add(
+        element.idProduit
+      ) ;
+      listIdProduitColor.add(
+        element.produitColors.id!
+      );
+    });
+
   }
 
   whenClickFavIcon(ProduitsColors produitsColors , String idProduit ) async  {
@@ -39,3 +55,4 @@ class BlocFavorite extends Cubit<StateFavorite>{
   }
 
 }
+

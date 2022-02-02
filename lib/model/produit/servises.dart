@@ -7,7 +7,7 @@ import 'package:phoneshop/model/produit/produit_colors.dart';
 import 'package:uuid/uuid.dart';
 
 
-
+/*
 var uuid = Uuid();
 
 
@@ -374,3 +374,5 @@ testCreatModelFromFireBase() async {
 
 
 }
+
+ */

@@ -37,8 +37,10 @@ class ServisesFavoriteHive {
   static Future<List<ModelFaveriote>> getItemFavorite()async {
     var box2 = await Hive.openBox('FavoriteHive');
     List<ModelFaveriote> listFav = [] ;
+    //box2.deleteFromDisk();
     for(var i in box2.values.toList()){
-      listFav.add(ModelFaveriote(produitColors: ProduitsColors.fromJson(Map<String, dynamic>.from(i['produitColors'])) , idProduit: i['idProduit']));
+      //print('i ===== ${i}') ;
+      listFav.add(ModelFaveriote(produitColors: ProduitsColors.fromJsonHive(Map<String, dynamic>.from(i.favoretModelMap['produitColors'])) , idProduit: i.favoretModelMap['idProduit']));
     }
     return listFav ;
   }

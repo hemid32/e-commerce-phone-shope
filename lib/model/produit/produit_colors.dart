@@ -14,12 +14,27 @@ class ProduitsColors {
   final String? id ;
 
   ProduitsColors({this.nomPhone, this.listProduits, this.contitu, this.imagePosterPhone, this.nombrePay , this.typePhone , this.isFavorite = false , this.id});
-
+  /*
   factory ProduitsColors.fromJson(Map<String , dynamic> json){
     return ProduitsColors(
         nomPhone: json['nomPhone'] ,
         imagePosterPhone: json['imagePosterPhone'] ,
         listProduits: json['listProduits'] ,
+        contitu : json['contitu'] ,
+        nombrePay :json['nombrePay'] ,
+        typePhone :json['typePhone'] ,
+        isFavorite:  json['isFavorite'] ,
+        id: json['id']
+    );
+  }
+
+   */
+
+  factory ProduitsColors.fromJsonHive(Map<String , dynamic> json){
+    return ProduitsColors(
+        nomPhone: json['nomPhone'] ,
+        imagePosterPhone: json['imagePosterPhone'] ,
+        listProduits: _convertListToProductList(json['listProduits']) ,
         contitu : json['contitu'] ,
         nombrePay :json['nombrePay'] ,
         typePhone :json['typePhone'] ,
@@ -43,7 +58,21 @@ class ProduitsColors {
     } ;
 
 
+
+
+
   }
+
+
+  //convert list<dynamic> to list<Product>
+  static List<Produit> _convertListToProductList(List<dynamic> listProduct ){
+    List<Produit> newList = [] ;
+   for(var productMap in listProduct){
+     newList.add(Produit.formJson(Map<String , dynamic>.from(productMap))) ;
+   }
+   return newList ;
+  }
+
 
 
   listProduitsToMap(){

@@ -19,7 +19,7 @@ class Body extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    email = emails??' ' ;
+    email = emails ;
     Size size = MediaQuery.of(context).size ;
     return Stack(
       children: [

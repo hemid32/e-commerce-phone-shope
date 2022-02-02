@@ -21,7 +21,7 @@ class Home extends StatelessWidget {
 
   GetTheBestProduits _getData = new GetTheBestProduits();
 
-  ListProduitsColors _listShimmer = getProduitColors();
+  //ListProduitsColors _listShimmer = getProduitColors();
 
   @override
   Widget build(BuildContext context) {
@@ -56,7 +56,6 @@ class Home extends StatelessWidget {
         FutureBuilder<ListProduitsColors>(
             future: _getData.getTheBestProduit(),
             builder: (context, snapShot) {
-              //print('datat home === ${snapShot.data}') ;
               if (snapShot.connectionState == ConnectionState.waiting ||
                   (snapShot.data)!.produits!.isEmpty)
                 return Shimmer.fromColors(

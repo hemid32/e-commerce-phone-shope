@@ -4,20 +4,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:phoneshop/bloc/allProduitFilter/bloc.dart';
-import 'package:phoneshop/bloc/cartCalcul/bloc.dart';
+import 'package:phoneshop/bloc/allProduitFilter/event.dart';
 import 'package:phoneshop/bloc/cartScreenManage/bloc.dart';
-import 'package:phoneshop/bloc/favorite/bloc.dart';
-import 'package:phoneshop/bloc/favorite/listFavoite/bloc.dart';
-import 'package:phoneshop/bloc/getMessageq/bloc.dart';
 import 'package:phoneshop/bloc/manageScreen/detailProduit/bloc.dart';
 import 'package:phoneshop/bloc/manageScreen/home/bloc.dart';
 import 'package:phoneshop/bloc/userManagze/userVirifaid/bloc.dart';
 
 import 'componants/body.dart';
 import 'componants/buttomNavigationBar.dart';
-import 'componants/costom_listTile.dart';
 import 'componants/drawer.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -35,7 +30,7 @@ class HomeScreen extends StatelessWidget {
           create: (BuildContext context) => BlocListDataCart(),
         ),
         BlocProvider<BlocAllProduitFilter>(
-          create: (BuildContext context) => BlocAllProduitFilter(),
+          create: (BuildContext context) => BlocAllProduitFilter()..add(EventAllProduitTypeFhone()),
         ),
         /*
         BlocProvider<BlocFavoriteIs>(

@@ -16,7 +16,7 @@ class EventsChangeThemeMode extends EventThemeMode {
 
 
 
-  changeMode() async {
+   changeMode() async {
     if (value == true) {
       setDarkMode();
       return ThemeMode.dark;
@@ -65,7 +65,7 @@ class EventsThemeChangedInitilis extends EventThemeMode {
 
 
   getTheme()async {
-    String currentMode =  await StorageManager.readData('themeMode') ;
+    var currentMode =  await StorageManager.readData('themeMode') ;
     if(currentMode == 'dark'){
       return ThemeMode.dark ;
     }else {

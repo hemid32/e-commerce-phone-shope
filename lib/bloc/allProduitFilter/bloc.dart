@@ -7,30 +7,28 @@ import 'package:phoneshop/model/produit/produit_colors.dart';
 //import 'event.dart';
 
 class BlocAllProduitFilter extends Bloc<EvenetsAllProduitFilters ,  ListProduitsColors> {
-  BlocAllProduitFilter() : super(ListProduitsColors());
-
-  @override
-  Stream<ListProduitsColors> mapEventToState(event) async* {
-    // TODO: implement mapEventToState
-    if(event.runtimeType == EventAllProduitTypeFhone){
-      EventAllProduitTypeFhone result = event ;
-      yield  result.filtType() ;
-    }
-    if(event.runtimeType == EventAllProduitTheBest ){
-      EventAllProduitTheBest result =  event  ;
-      final _thebest =  await result.fiterTheBest() ;
-      //print('_thebest =====================${_thebest.produits.length}') ;
-      yield _thebest ;
-    }
-    if(event.runtimeType == EventAllRecentOffers ){
-      EventAllRecentOffers result =  event  ;
-      final _thebest =  await result.fiterRecentOffers() ;
-      //print('_thebest =====================${_thebest.produits.length}') ;
-      yield _thebest ;
-    }
-    if(event is  EventAllProduitAfterFillter ){
-      yield event.dataFilter ;
-
-    }
+   BlocAllProduitFilter() : super(ListProduitsColors()){
+   on<EventAllProduitTypeFhone>(_getAllProducts) ;
+   on<EventAllRecentOffers>(_getTheRecentOffers) ;
+   on<EventAllProduitAfterFillter>(_getAllAfterFilter) ;
+   on<EventAllProduitTheBest>(_getTheBestProduct) ;
   }
+
+  void _getAllProducts(EventAllProduitTypeFhone event , Emitter<ListProduitsColors> emit ){
+    ListProduitsColors result = event.filtType() ;
+    emit(result) ;
+  }
+  void _getTheBestProduct(EventAllProduitTheBest event , Emitter<ListProduitsColors> emit )async{
+    ListProduitsColors result = await  event.fiterTheBest() ;
+    emit(result) ;
+  }
+  void _getTheRecentOffers(EventAllRecentOffers event , Emitter<ListProduitsColors> emit )async{
+    ListProduitsColors result = await  event.fiterRecentOffers() ;
+    emit(result) ;
+  }
+  void _getAllAfterFilter(EventAllProduitAfterFillter event , Emitter<ListProduitsColors> emit )async{
+    ListProduitsColors result =   event.dataFilter ;
+    emit(result) ;
+  }
+
 }
