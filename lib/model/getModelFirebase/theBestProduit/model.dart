@@ -1,7 +1,6 @@
 import 'package:phoneshop/model/getModelFirebase/getTotalProduitColors.dart';
-import 'package:phoneshop/model/produit/produit.dart';
 import 'package:phoneshop/model/produit/produit_colors.dart';
-
+/*
 class GetTheBestProduits {
 
   final GetProduitTotalFromFirebas _produit = new  GetProduitTotalFromFirebas();
@@ -55,3 +54,4 @@ class GetTheBestProduits {
     return r;
   }
 }
+*/

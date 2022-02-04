@@ -127,7 +127,7 @@ class CardPhoneItems extends StatelessWidget {
                   padding: const EdgeInsets.symmetric(horizontal: 10 , vertical:  10),
                   child: Row(
                     children: [
-                      pricintage != null ? Container(
+                      pricintage != 0.0 ? Container(
                         alignment: Alignment.center ,
                         height:  35,
                         width:  35,
@@ -198,7 +198,7 @@ class CardPhoneItems extends StatelessWidget {
                         ]
                     )) ,
                 //SizedBox(height: 10,) ,
-                 //Text('n pay : $nombrePay'),
+                Text('n pay : $nombrePay'),
                 Spacer() ,
                 Container(
                   alignment: Alignment.center,

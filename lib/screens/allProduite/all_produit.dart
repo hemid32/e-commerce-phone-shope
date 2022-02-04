@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:phoneshop/bloc/fatchAllData/bloc.dart';
 import 'package:phoneshop/bloc/filterAllProduit/bloc.dart';
 import 'package:phoneshop/bloc/laodingCirceler/bloc.dart';
 import 'package:phoneshop/bloc/manageScreen/detailProduit/bloc.dart';
@@ -26,6 +27,7 @@ class AllProduit extends StatelessWidget {
         BlocProvider<BlocLoading>(
           create: (BuildContext context) => BlocLoading(),
         ),
+
         //              BlocProvider.of<BlocLoading>(context).add(EventLoadingStop()) ;
       ],
       child: Scaffold(

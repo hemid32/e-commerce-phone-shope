@@ -1,12 +1,10 @@
 import 'package:phoneshop/model/produit/produit.dart';
+import 'package:phoneshop/model/produit/produit_colors.dart';
 
 class FilterProduitFromProduitColors {
 
 
 
-  // priority 1 == contitue > 1
-  // priority 2 == the most  contitue
-  // priority 3 == if list => empty return [0] produit from index  0
   static Produit getPriorityProduitFromProduitColors(List<Produit> listProduit ){
     List<Produit> newList = [] ;
     Produit produitPriority ;
@@ -25,6 +23,18 @@ class FilterProduitFromProduitColors {
     }
 
    return produitPriority ;
+
+
+  }
+
+
+  static getProduitsFromProduitColor(ProduitsColors produitsColors , String idProduit){
+
+    for(var produit in produitsColors.listProduits!  ){
+      if(produit.id.toString() == idProduit.toString() ){
+        return produit ;
+      }
+    }
 
 
   }

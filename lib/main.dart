@@ -11,7 +11,9 @@ import 'package:phoneshop/model/hiveModel/hive_cart.dart';
 import 'package:phoneshop/screens/homescreen/homescreen.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:phoneshop/services/lang/appLocat.dart';
+import 'bloc/fatchAllData/bloc.dart';
 import 'bloc/favorite/bloc/bloc.dart';
+import 'bloc/userManagze/userVirifaid/bloc.dart';
 import 'model/getModelFirebase/getMayOrder/my_order.dart';
 import 'model/hiveModel/addres.dart';
 import 'model/hiveModel/favorite.dart';
@@ -116,10 +118,16 @@ class MyApp extends StatelessWidget {
         return MultiBlocProvider(
           //providers[] : (context) => BlocTheme()..add(EventsThemeChangedInitilis()) ,
           providers: [
+            BlocProvider<BlocUserVerifaid>(
+              create: (BuildContext context) => BlocUserVerifaid(),
+            ),
+
             BlocProvider(create: (context) => BlocTheme()..add(EventsThemeChangedInitilis())) ,
             BlocProvider(create: (context) => BlocNotification()) ,
             BlocProvider(create: (context) => BlocFavorite()..intiStateData()) ,
             BlocProvider(create: (context) => BlocLanguage()..intialValue()) ,
+            BlocProvider(create: (context)=> BlocFatchData()..getDataProduitCoolorFromFireBase())
+
           ],
           child: BlocBuilder<BlocTheme , List>(
             builder: (context, state) {

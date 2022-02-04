@@ -1,4 +1,4 @@
-
+/*
 
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:phoneshop/bloc/allProduitFilter/event.dart';
@@ -32,3 +32,5 @@ class BlocAllProduitFilter extends Bloc<EvenetsAllProduitFilters ,  ListProduits
   }
 
 }
+
+ */

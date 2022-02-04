@@ -14,32 +14,6 @@ class GetProduitTotalFromFirebas {
     List<Map<String , dynamic>> _data =  await getLiistProduitColorsFromFireBase() ;
 
     _data.forEach((element) {
-      /*
-      List<Produit>  _listProduits = [] ;
-
-      element['listProduits'].forEach((elemntsProduit){
-        if(elemntsProduit['contitu']>1) {
-          _listProduits.add(
-              Produit.formJson({
-                'image': elemntsProduit['image'],
-                'nomPhone': elemntsProduit['nomPhone'],
-                'detail': elemntsProduit['detail'],
-                'phoneType': elemntsProduit['phoneType'],
-                'ram': elemntsProduit['ram'],
-                'storage': elemntsProduit['storage'],
-                'contitu': elemntsProduit['contitu'],
-                'price': elemntsProduit['price'] + .0,
-                'priceOriginal': elemntsProduit['priceOriginal'] + .0,
-                'spu': elemntsProduit['spu'],
-                'id': elemntsProduit['id'],
-                'camera': elemntsProduit['camera']
-              }));
-        }
-      });
-
-      */
-
-
       ProduitsColors _produit = ProduitsColors.fromJsonHive({
         'id' : element['id'] ,
         'nomPhone': element['nomPhone'] ,

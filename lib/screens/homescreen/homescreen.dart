@@ -7,6 +7,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:phoneshop/bloc/allProduitFilter/bloc.dart';
 import 'package:phoneshop/bloc/allProduitFilter/event.dart';
 import 'package:phoneshop/bloc/cartScreenManage/bloc.dart';
+import 'package:phoneshop/bloc/fatchAllData/bloc.dart';
 import 'package:phoneshop/bloc/manageScreen/detailProduit/bloc.dart';
 import 'package:phoneshop/bloc/manageScreen/home/bloc.dart';
 import 'package:phoneshop/bloc/userManagze/userVirifaid/bloc.dart';
@@ -29,9 +30,12 @@ class HomeScreen extends StatelessWidget {
         BlocProvider<BlocListDataCart>(
           create: (BuildContext context) => BlocListDataCart(),
         ),
+        /*
         BlocProvider<BlocAllProduitFilter>(
           create: (BuildContext context) => BlocAllProduitFilter()..add(EventAllProduitTypeFhone()),
         ),
+
+         */
         /*
         BlocProvider<BlocFavoriteIs>(
           create: (BuildContext context) => BlocFavoriteIs(),
@@ -41,15 +45,13 @@ class HomeScreen extends StatelessWidget {
                 ),
 
          */
-        BlocProvider<BlocUserVerifaid>(
-                  create: (BuildContext context) => BlocUserVerifaid(),
-                ),
         /*
         BlocProvider<BlocMassegersGet>(
                   create: (BuildContext context) => BlocMassegersGet(),
                 ),
 
          */
+
       ],
       child: Scaffold(
         body:   WillPopScope(child: Body() ,

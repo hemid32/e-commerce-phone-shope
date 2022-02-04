@@ -154,6 +154,7 @@ Future<void> _showMyDialogFilter(contextOrigin) async {
             TextButton(
               child: Text('Approve'),
               onPressed: () async  {
+                /*
                 //print('produitsColors.produits.length ===${} }') ;
                 BlocProvider.of<BlocLoading>(contextOrigin).add(EventLoadingStart()) ;
 
@@ -177,6 +178,8 @@ Future<void> _showMyDialogFilter(contextOrigin) async {
 
                 Navigator.of(context).pop();
                 BlocProvider.of<BlocLoading>(contextOrigin).add(EventLoadingStop()) ;
+
+                 */
 
 
 

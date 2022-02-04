@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:phoneshop/bloc/allProduitFilter/bloc.dart';
 import 'package:phoneshop/bloc/allProduitFilter/event.dart';
+import 'package:phoneshop/bloc/fatchAllData/bloc.dart';
 import 'package:phoneshop/screens/allProduite/all_produit.dart';
 
 class ItemsMenu extends StatelessWidget {
@@ -63,17 +64,13 @@ class ItemMenu extends StatelessWidget {
         children: [
           GestureDetector(
             onTap: () {
-              BlocProvider.of<BlocAllProduitFilter>(context).add(EventAllProduitTypeFhone(
-                phoneType:  title,
-              ));
+              BlocFatchData.get(context).changeLogo(icon);
+              BlocFatchData.get(context).showAllDataFronScreenAll(title);
               Navigator.push(
                   context,
                   MaterialPageRoute(
-                      builder: (_) => BlocProvider.value(
-                            value:
-                                BlocProvider.of<BlocAllProduitFilter>(context),
-                            child: AllProduit(),
-                          )));
+                      builder: (_) => AllProduit(),
+                          ));
             },
             child: Container(
               height: 70,
