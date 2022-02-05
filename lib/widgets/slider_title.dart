@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:phoneshop/constant.dart';
 
 
 class SlideContainer extends StatelessWidget {
@@ -26,6 +27,8 @@ class SlideContainer extends StatelessWidget {
         children: [
           Text('$title : $label ' , style: Theme.of(context).textTheme.button?.copyWith(color: Colors.black.withOpacity(0.4) , fontSize: 15),  ) ,
           Slider(
+            inactiveColor: kPrimaryColor.withOpacity(0.15),
+            activeColor: kPrimaryColor,
             value: value,
             min: min,
             max: max,

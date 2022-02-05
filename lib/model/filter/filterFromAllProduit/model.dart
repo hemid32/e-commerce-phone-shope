@@ -1,5 +1,5 @@
-import 'package:phoneshop/model/produit/produit_colors.dart';
-
+//import 'package:phoneshop/model/produit/produit_colors.dart';
+/*
 class FilterFromAllProduits  {
 
   final double price ;
@@ -32,3 +32,5 @@ class FilterFromAllProduits  {
 
 
 }
+
+ */

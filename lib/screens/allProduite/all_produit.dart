@@ -2,8 +2,6 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:phoneshop/bloc/fatchAllData/bloc.dart';
-import 'package:phoneshop/bloc/filterAllProduit/bloc.dart';
 import 'package:phoneshop/bloc/laodingCirceler/bloc.dart';
 import 'package:phoneshop/bloc/manageScreen/detailProduit/bloc.dart';
 import 'package:phoneshop/constant.dart';
@@ -20,13 +18,11 @@ class AllProduit extends StatelessWidget {
           create: (BuildContext context) => BlocScreenDetailProduit(),
         ),
 
-        BlocProvider<BlocFiltersAllProduits>(
-          create: (BuildContext context) => BlocFiltersAllProduits(),
-        ),
 
         BlocProvider<BlocLoading>(
           create: (BuildContext context) => BlocLoading(),
         ),
+
 
         //              BlocProvider.of<BlocLoading>(context).add(EventLoadingStop()) ;
       ],

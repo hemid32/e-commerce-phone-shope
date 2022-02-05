@@ -45,13 +45,22 @@ class BlocFatchData extends Cubit<StateFatchData> {
     return _produitColors ;
     //emit(StateFatchDataIniGetTheBest());
   }
+
+
+  // keyword search productsColor
+  String target = 'all' ;
+  changeTarget(String  newTarget ){
+    target = newTarget ;
+    emit(StateFatchDataIniGetTheCahngTargetSearch()) ;
+  }
+
   //filter by the recent
 
   // show all
   // targer == 'best' , 'Recent' , else => mode_product'
-  void showAllDataFronScreenAll(String target) {
+  void showAllDataFronScreenAll() {
     print('fatch data target === $target') ;
-    print('listProduitColorsTheBestProduct lentg == ${listProduitColorsTheBestProduct.length}') ;
+    //print('listProduitColorsTheBestProduct lentg == ${listProduitColorsTheBestProduct.length}') ;
     showAllFromScreenAllProducts.clear() ;
     if (target == 'best') {
       listProduitColorsTheBestProduct.forEach((element) {
@@ -74,7 +83,46 @@ class BlocFatchData extends Cubit<StateFatchData> {
         }
       }
     }
+    print('showAllFromScreenAllProducts from all == ${showAllFromScreenAllProducts.length}') ;
     emit(StateFatchDataIniGetAllShow());
+  }
+
+
+
+
+  // filter bay ram or storage or camera  or price
+
+  filterBay(double ram , double storage , double camera , double price){
+    List<ProduitColorsWtithPreority> nowShowAllFromScreenAllProducts = [];
+    showAllDataFronScreenAll() ;
+    for(var produitColorWithId in showAllFromScreenAllProducts){
+      List<Produit> listNewProduit = [] ;
+      for(var produit in produitColorWithId.produitsColors.listProduits!){
+
+        if(produit.ram!<= ram &&  produit.price! <= price && produit.camera! <= camera && produit.storage! <= storage){
+          listNewProduit.add(produit) ;
+        }
+      }
+      if(listNewProduit.isNotEmpty){
+        ProduitsColors newProduitColor = ProduitsColors(
+          nombrePay: produitColorWithId.produitsColors.nombrePay ,
+          nomPhone: produitColorWithId.produitsColors.nomPhone ,
+          contitu: produitColorWithId.produitsColors.contitu ,
+          imagePosterPhone: produitColorWithId.produitsColors.imagePosterPhone ,
+          id: produitColorWithId.produitsColors.id ,
+          typePhone: produitColorWithId.produitsColors.typePhone ,
+          isFavorite: produitColorWithId.produitsColors.isFavorite ,
+          listProduits: listNewProduit ,
+        );
+        nowShowAllFromScreenAllProducts.add(ProduitColorsWtithPreority(
+            produitsColors: newProduitColor,
+            id: _getProduitColorWithProduitPreorityContitue(newProduitColor)));
+      }
+    }
+
+    showAllFromScreenAllProducts = nowShowAllFromScreenAllProducts ;
+    emit(StateFatchDataIniFilterData() );
+
   }
 
 

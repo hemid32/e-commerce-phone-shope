@@ -53,8 +53,9 @@ class Home extends StatelessWidget {
                 title: 'Best Selling',
                 suptitle: 'See all',
                 onTap: () {
-
-                  BlocFatchData.get(context).showAllDataFronScreenAll('best') ;
+                  
+                  BlocFatchData.get(context).changeTarget('best') ;
+                  BlocFatchData.get(context).showAllDataFronScreenAll() ;
                   BlocFatchData.get(context).changeLogo('assets/icons/best-offer.svg') ;
 
                   Navigator.push(
@@ -103,7 +104,8 @@ class Home extends StatelessWidget {
                 title: 'Recent Offers',
                 suptitle: 'See all',
                 onTap: () {
-                  BlocFatchData.get(context).showAllDataFronScreenAll('Recent') ;
+                  BlocFatchData.get(context).changeTarget('Recent') ;
+                  BlocFatchData.get(context).showAllDataFronScreenAll() ;
                   BlocFatchData.get(context).changeLogo('assets/icons/recent.svg') ;
 
                   Navigator.push(

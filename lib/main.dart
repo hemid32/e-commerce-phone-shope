@@ -5,6 +5,7 @@ import 'package:phoneshop/bloc/languge/bloc.dart';
 import 'package:phoneshop/bloc/languge/state.dart';
 import 'package:phoneshop/bloc/manageScreen/home/bloc.dart';
 import 'package:phoneshop/bloc/notification/bloc.dart';
+import 'package:phoneshop/bloc/slideFilter/bloc.dart';
 import 'package:phoneshop/bloc/theme/bloc.dart';
 import 'package:phoneshop/bloc/theme/event.dart';
 import 'package:phoneshop/model/hiveModel/hive_cart.dart';
@@ -20,7 +21,7 @@ import 'model/hiveModel/favorite.dart';
 import 'oitil/theme/theme.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
-void main() async   {
+void main() async {
   //Bloc.observer = SimpleBlocObserver();
   await Hive.initFlutter();
   WidgetsFlutterBinding.ensureInitialized();
@@ -31,11 +32,10 @@ void main() async   {
   //var r = GetProduitTotalFromFirebas()  ;
   //print(await r.getLiistProduitColorsFromFireBase() ) ;
 
-
   Hive
     ..registerAdapter(FavoriteHiveNewModelAdapter())
     ..registerAdapter(CartHiveAdapter())
-    ..registerAdapter(AssressHiveAdapter()) ;
+    ..registerAdapter(AssressHiveAdapter());
 
   //var t = GetProduitTotalFromFirebas() ;
   //int u = await t.nombreProduitFromFireBase('352bbfb0-f515-11eb-aa94-a7d781b6bab6', 2) ;
@@ -53,7 +53,7 @@ void main() async   {
   //print('**********/*/*/*/*/**======${l.domands.length}' )  ;
   //var l = CancelDomandSanded(uidDomand: '9fe787c0-de46-11eb-aeaa-b52aeaa89fb0') ;
   //print( await l.getIdDecDomand()) ;
-   /*
+  /*
   var a = Message(
     type : 'admin' , text : 'hello hemidi' , uidUser :  FirebaseAuth.instance.currentUser.uid
   ) ;
@@ -63,8 +63,6 @@ void main() async   {
   await b.saveToFireBase() ;
 
     */
-
-
 
   //var box = await Hive.openBox('ModelCart');
   //var box2 = await Hive.openBox('FavoriteHive');
@@ -94,16 +92,8 @@ var o = GetMyOrder() ;
 
   //ThemeMode.dark  ;
 
-
-
-
-
-
-  GetMyOrder getOrder = new GetMyOrder() ;
+  GetMyOrder getOrder = new GetMyOrder();
   getOrder.getListDomandsSendRequest();
-
-
-
 
   runApp(MyApp());
 }
@@ -113,79 +103,74 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder(
-      builder: (context, snapshot) {
-        return MultiBlocProvider(
-          //providers[] : (context) => BlocTheme()..add(EventsThemeChangedInitilis()) ,
-          providers: [
-            BlocProvider<BlocUserVerifaid>(
-              create: (BuildContext context) => BlocUserVerifaid(),
-            ),
-
-            BlocProvider(create: (context) => BlocTheme()..add(EventsThemeChangedInitilis())) ,
-            BlocProvider(create: (context) => BlocNotification()) ,
-            BlocProvider(create: (context) => BlocFavorite()..intiStateData()) ,
-            BlocProvider(create: (context) => BlocLanguage()..intialValue()) ,
-            BlocProvider(create: (context)=> BlocFatchData()..getDataProduitCoolorFromFireBase())
-
-          ],
-          child: BlocBuilder<BlocTheme , List>(
-            builder: (context, state) {
-              return BlocConsumer<BlocLanguage, StateBlocLanguage>(
-                listener: (context , state){},
-                builder: (context, snapshot) {
-                  return MaterialApp(
-                    debugShowCheckedModeBanner: false,
-                    title: 'Flutter Demo',
-                    theme: themeLigth,
-                    darkTheme: themeDark ,
-                    themeMode: state[0] ,
-                    home:   BlocProvider.value(
-                        value: BlocProvider.of<BlocTheme>(context),
-                        child: HomeScreen()),
-
-                    locale: BlocLanguage.get(context).locale, // _local
-                    localizationsDelegates: [
-                      AppLocale.delegate,
-                      GlobalMaterialLocalizations.delegate,
-                      GlobalWidgetsLocalizations.delegate,
-                      //DefaultCupertinoLocalizations.delegate,
-                      GlobalCupertinoLocalizations.delegate,
-                    ],
-                    supportedLocales: [
-                      Locale("en", ""),
-                      Locale("ar", ""),
-                      Locale("fr", ""),
-                    ],
-                    localeResolutionCallback: (locale, supportedLocales)  {
-                      //print('lang 17 == ${widget.lang}');
-
-                      if('lang' == 'from story')
-                                  return Locale('ar', ""); // from story
-                      for (var supportedLocale in supportedLocales) {
-                        if (supportedLocale.languageCode == locale!.languageCode &&
-                            supportedLocale.countryCode == locale.countryCode) {
-
-                          //suportat lang
-
-
-                          return supportedLocale;
-                        }
-                      }
-
-                      return supportedLocales.first;
-                    },
-
-
-
-                  );
-                }
-              );
-            }
+    return FutureBuilder(builder: (context, snapshot) {
+      return MultiBlocProvider(
+        //providers[] : (context) => BlocTheme()..add(EventsThemeChangedInitilis()) ,
+        providers: [
+          BlocProvider<BlocUserVerifaid>(
+            create: (BuildContext context) => BlocUserVerifaid(),
           ),
-        );
-      }
-    );
+          BlocProvider(
+              create: (context) =>
+                  BlocTheme()..add(EventsThemeChangedInitilis())),
+          BlocProvider(create: (context) => BlocNotification()),
+          BlocProvider(create: (context) => BlocFavorite()..intiStateData()),
+          BlocProvider(create: (context) => BlocLanguage()..intialValue()),
+          BlocProvider(
+              create: (context) =>
+                  BlocFatchData()..getDataProduitCoolorFromFireBase()),
+          BlocProvider(
+            create: (_) => BlocSlideFilter(),
+          ),
+        ],
+        child: BlocBuilder<BlocTheme, List>(builder: (context, state) {
+          return BlocConsumer<BlocLanguage, StateBlocLanguage>(
+              listener: (context, state) {},
+              builder: (context, snapshot) {
+                return MaterialApp(
+                  debugShowCheckedModeBanner: false,
+                  title: 'Flutter Demo',
+                  theme: themeLigth,
+                  darkTheme: themeDark,
+                  themeMode: state[0],
+                  home: BlocProvider.value(
+                      value: BlocProvider.of<BlocTheme>(context),
+                      child: HomeScreen()),
+
+                  locale: BlocLanguage.get(context).locale, // _local
+                  localizationsDelegates: [
+                    AppLocale.delegate,
+                    GlobalMaterialLocalizations.delegate,
+                    GlobalWidgetsLocalizations.delegate,
+                    //DefaultCupertinoLocalizations.delegate,
+                    GlobalCupertinoLocalizations.delegate,
+                  ],
+                  supportedLocales: [
+                    Locale("en", ""),
+                    Locale("ar", ""),
+                    Locale("fr", ""),
+                  ],
+                  localeResolutionCallback: (locale, supportedLocales) {
+                    //print('lang 17 == ${widget.lang}');
+
+                    if ('lang' == 'from story')
+                      return Locale('ar', ""); // from story
+                    for (var supportedLocale in supportedLocales) {
+                      if (supportedLocale.languageCode ==
+                              locale!.languageCode &&
+                          supportedLocale.countryCode == locale.countryCode) {
+                        //suportat lang
+
+                        return supportedLocale;
+                      }
+                    }
+
+                    return supportedLocales.first;
+                  },
+                );
+              });
+        }),
+      );
+    });
   }
 }
-

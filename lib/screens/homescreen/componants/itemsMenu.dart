@@ -65,7 +65,8 @@ class ItemMenu extends StatelessWidget {
           GestureDetector(
             onTap: () {
               BlocFatchData.get(context).changeLogo(icon);
-              BlocFatchData.get(context).showAllDataFronScreenAll(title);
+              BlocFatchData.get(context).changeTarget(title);
+              BlocFatchData.get(context).showAllDataFronScreenAll();
               Navigator.push(
                   context,
                   MaterialPageRoute(
