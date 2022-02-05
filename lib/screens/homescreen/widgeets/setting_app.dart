@@ -109,6 +109,7 @@ class SettingAPP extends StatelessWidget {
         //CostomListTile(title: 'Language' , icon: Icons.language,onTap: (){
           BlocConsumer<BlocLanguage , StateBlocLanguage>(
             listener: (context, state){
+
               if(state is StateBlocLanguageChangeLanguage){
                 //Toast.show('Language has changed', context ) ;
                 showInSnackBar(context ,'Language has changed', color: kPrimaryColor ) ;
@@ -120,7 +121,7 @@ class SettingAPP extends StatelessWidget {
               return PopupMenuButton(
                 color: Theme.of(context).accentColor,
                 onSelected: (String  newLang)=>BlocLanguage.get(context).changeLocal(newLang),
-                child: CostomListTile(title: getLang(context , 'language') , icon: Icons.language , onTap: (){},),
+                child: CostomListTileChangeLang(title: getLang(context , 'language') , icon: Icons.language ),
                 itemBuilder:(context)=> [
                 PopupMenuItem(  value: 'ar',child: ItemListMenu(title: 'ar', icon:  'assets/icons/ar.svg', valueLang: 'ar',)) ,
                 PopupMenuItem(  value: 'fr',child: ItemListMenu(title: 'fr', icon:  'assets/icons/ar.svg', valueLang: 'fr',)) ,

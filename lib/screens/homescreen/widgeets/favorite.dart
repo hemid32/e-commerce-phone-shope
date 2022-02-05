@@ -27,7 +27,7 @@ class Favorite extends StatelessWidget {
         builder: (context, snapshot) {
           return  FutureBuilder(
             builder: (context, state) {
-              return BlocFavorite.get(context).listFav.isEmpty  ? Container() :  Column(
+              return   Column(
                 children: [
                   //SearchAndIconMenu() ,
                   //HeaderFavorite() ,
